@@ -20,6 +20,7 @@
 \usepackage{multirow}
 \usepackage{tikz}
 \usepackage{comment}
+\usepackage{dsfont}
 
 \usepackage{graphicx}
 \usepackage{caption}
@@ -231,12 +232,12 @@ The set of {\bf variables} $X$ comprises:
 \begin{itemize}
 \item For each action $a$ observed in a $\omega$:
 \begin{itemize}
-\item $start_a$, indicating the scheduled time-stamp for the start of the observed action $a$. The domain of this variable is a singleton given by the input observation.
-\item $duration_a$ representing the action duration. The domain of this variable is $[]$.
-\item $end_a$, indicates the time-stamp for the end of the observed action $a$. The domain of this variable is $[]$.
-\item $supports_{f,a_i}$ is a variable indicating that action $a_i$ is the supporter of the fluent $f$ in the observed plan. The domain of this variable is the set of actions.
-\item $preS_{f,a}$ and $preE_{f,a}$ are Boolean variables indicating whether fuent $f$ is precondition of the action $a$.
-\item $time_{f,a}$ is a variable indicating when the value of $f$ is modified as a result of applying some effects of action $a$. The domain of this variable is $[]$.
+\item $start_a$, indicating the scheduled time-stamp for the start of the observed action $a$. The domain of this variable is $[t_a]$, i.e. a singleton given by the input observation.
+\item $duration_a$ representing the action duration. The domain of this variable is $\mathds{Z}^+$.
+\item $end_a$ is a derived variable, defined in $\mathds{Z}^+$, that indicates the time-stamp for the end of the observed action $a$. The value of this variable is $end_a = start_a + duration_a$. 
+\item $supports_{f,a_i}$ indicates that action $a_j$ is the supporter of the fluent $f$ for action $a_i$ in the observed plan. The domain of this variable is the set of actions.
+\item $preS_{f,a}$ and $preE_{f,a}$ are Boolean variables indicating whether fuent $f$ is precondition of the action $a$. The value of this variables is set by the classical planning model that is given as input.
+\item $time_{f,a}$ is a variable indicating when the value of $f$ is modified as a result of applying some effects of action $a$. The domain of this variable is also $\mathds{Z}^+$.
 \end{itemize}
 \end{itemize}
 
