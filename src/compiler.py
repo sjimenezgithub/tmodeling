@@ -34,7 +34,7 @@ class PlanStep:
 try:
     domain_filename  = sys.argv[1]
     problem_filename = sys.argv[2]
-    plan_file_name = sys.argv[3]
+    plan_filename = sys.argv[3]
 
 except:
     print "Usage:"
@@ -47,10 +47,43 @@ fd_domain = pddl_parser.pddl_file.parse_pddl_file("domain", domain_filename)
 fd_problem = pddl_parser.pddl_file.parse_pddl_file("task", problem_filename)
 fd_task = pddl_parser.pddl_file.parsing_functions.parse_task(fd_domain, fd_problem)
 
+# Domain and problem name
+print "domain:"
+print domain_filename
+print ""
 
-# Creating a plan step
-s = PlanStep("hola",fd_task.actions[0],0,1)
-print s
-    
+print "problem:"
+print problem_filename
+print ""
+
+# Init and goals
+print "init:"
+print fdtask_to_pddl.format_condition([i for i in fd_task.init if i.predicate!="="])
+print ""
+
+print "goals:"
+print fdtask_to_pddl.format_condition(fd_task.goal)
+print ""
+
+# Reading plan
+makespan=0
+plan_file = open(plan_filename, 'r')
+for line in plan_file:
+    if not ";" in line and ":" in line:
+        # Creating a plan step
+        st = float(line.split(":")[0])
+        d = float(line.split("[")[1].replace("]",""))
+        aname = line.split(":")[1].split("[")[0]
+        operator = [o for o in fd_task.actions if o.name.lower() in aname.lower()][0]
+        s = PlanStep(aname,operator,st,d)        
+        makespan = max(makespan,st+d)
+        print s
+        print 
+
+plan_file.close()
+print "makespan:"
+print str(makespan)
+
+print "end:"
 
 sys.exit(0)
