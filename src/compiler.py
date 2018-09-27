@@ -86,7 +86,7 @@ print ""
 
 print "goals:"
 formattedgoal = fdtask_to_pddl.format_condition(fd_task.goal)
-print format_string_literals(formattedinit.split(") ("),1)
+print format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1)
 print ""
 
 
