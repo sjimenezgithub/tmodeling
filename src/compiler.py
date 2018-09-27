@@ -36,15 +36,14 @@ class PlanStep:
             str_effs = str_effs + fdtask_to_pddl.format_effect(item)
         for i in range(len(self.oparams)):
             str_effs = str_effs.replace(self.oparams[i],self.aparams[i])
-        str_out = str_out + format_string_literals(str_effs.split(")("),len(self.operator.precondition.parts)+2)            
+        str_out = str_out + format_string_literals(str_effs.split(")("),len(self.operator.precondition.parts)+1)            
             
         return str_out
 
 
 def format_string_literals(str_literals, offset):
     str_out = str(offset) +" "+ str_literals[0] + ")"
-    offset = offset + 1
-    for i in range(len(str_literals)):
+    for i in range(1,len(str_literals)):
         str_out = str_out + " & " + str(offset+i) + " (" + str_literals[i].replace(" ","_") + ")"
     return str_out.replace(")_)",")").replace("((","(").replace("(_(","(").replace("(not ","not-").replace("(not_","not-").replace("))",")").replace("))",")")
         
@@ -89,7 +88,6 @@ formattedgoal = fdtask_to_pddl.format_condition(fd_task.goal)
 print format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1)
 print ""
 
-
 # Reading plan
 steps = []
 makespan=0
@@ -110,10 +108,12 @@ for line in plan_file:
         makespan = max(makespan,st+d)
 plan_file.close()
 
+
 # Makespan
 print "makespan:"
 print str(makespan)
 print
+
 
 # Plan steps 
 for s in steps:
@@ -121,6 +121,7 @@ for s in steps:
     print s
     print
 
+    
 print "end:\n"
 sys.exit(0)
 
