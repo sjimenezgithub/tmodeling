@@ -28,7 +28,7 @@ class PlanStep:
         for i in range(len(self.oparams)):
             str_precs = str_precs.replace(self.oparams[i],self.aparams[i])        
             
-        str_out = str_out + format_string_literals(str_precs.replace("(and","").split(")(")) + "\n"
+        str_out = str_out + format_string_literals(str_precs.replace("(and","").split(")("),1) + "\n"
         
         str_out = str_out + "effs:\n"
         str_effs = ""
@@ -36,17 +36,19 @@ class PlanStep:
             str_effs = str_effs + fdtask_to_pddl.format_effect(item)
         for i in range(len(self.oparams)):
             str_effs = str_effs.replace(self.oparams[i],self.aparams[i])
-        str_out = str_out + format_string_literals(str_effs.split(")("))            
+        str_out = str_out + format_string_literals(str_effs.split(")("),len(self.operator.precondition.parts)+2)            
             
         return str_out
 
 
-def format_string_literals(str_literals):
-    str_out = "1 " + str_literals[0] + ")"
+def format_string_literals(str_literals, offset):
+    str_out = str(offset) +" "+ str_literals[0] + ")"
+    offset = offset + 1
     for i in range(len(str_literals)):
-        str_out = str_out + " & " + str(i+2)+ " (" + str_literals[i].replace(" ","_") + ")"
+        str_out = str_out + " & " + str(offset+i) + " (" + str_literals[i].replace(" ","_") + ")"
     return str_out.replace(")_)",")").replace("((","(").replace("(_(","(").replace("(not ","not-").replace("(not_","not-").replace("))",")").replace("))",")")
         
+
 
 # **************************************#
 # MAIN
@@ -79,12 +81,12 @@ print ""
 # Init and goals
 print "init:"
 formattedinit = fdtask_to_pddl.format_condition([i for i in fd_task.init if i.predicate!="="])
-print format_string_literals(formattedinit.split(") ("))
+print format_string_literals(formattedinit.split(") ("),1)
 print ""
 
 print "goals:"
 formattedgoal = fdtask_to_pddl.format_condition(fd_task.goal)
-print format_string_literals(formattedinit.split(") ("))
+print format_string_literals(formattedinit.split(") ("),1)
 print ""
 
 
@@ -108,10 +110,12 @@ for line in plan_file:
         makespan = max(makespan,st+d)
 plan_file.close()
 
+# Makespan
 print "makespan:"
 print str(makespan)
 print
 
+# Plan steps 
 for s in steps:
     s.duration = makespan -  s.stime
     print s
