@@ -99,7 +99,9 @@ plan_file = open(plan_filename, 'r')
 for line in plan_file:
     if not ";" in line and ":" in line:
         # Creating a plan step
-        st = int(float(line.split(":")[0]) * 100) + 1
+        start_time = float(line.split(":")[0])
+        number_dec = int(str(start_time).split(".")[1])
+        st = int(start_time) + 1 + (100*number_dec)
         d = int(line.split("[")[1].replace("]",""))
        
         aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_")
