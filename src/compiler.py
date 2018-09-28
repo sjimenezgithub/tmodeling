@@ -40,12 +40,16 @@ class PlanStep:
             
         return str_out
 
+def filter_literal_string(str_in):
+    str_in = str_in.replace("(not","not-").replace("not (","not-(").replace(" ","_").replace("_(","(").replace("))",")")
+    return str_in
+    
 
 def format_string_literals(str_literals, offset):
-    str_out = str(offset) +" "+ str_literals[0] + ")"
+    str_out = str(offset) +" "+ filter_literal_string(str_literals[0]) + ")"
     for i in range(1,len(str_literals)):
-        str_out = str_out + " & " + str(offset+i) + " (" + str_literals[i].replace(" ","_") + ")"
-    return str_out.replace(")_)",")").replace("((","(").replace("(_(","(").replace("(not ","not-").replace("(not_","not-").replace("))",")").replace("))",")")
+        str_out = str_out + " & " + str(offset+i) + " (" + filter_literal_string(str_literals[i]) + ")"
+    return str_out.replace("))",")").replace("(not-(","not-(")
         
 
 
