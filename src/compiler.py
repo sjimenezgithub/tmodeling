@@ -99,8 +99,8 @@ for line in plan_file:
     if not ";" in line and ":" in line:
         # Creating a plan step
         start_time = float(line.split(":")[0])
-        number_dec = int(str(start_time).split(".")[1])
-        st = int(start_time) + 1 + (100*number_dec)
+        number_dec = int(str(start_time).split(".")[1])      
+        st = int(start_time) + 1 + number_dec        
         d = int(line.split("[")[1].replace("]",""))
        
         aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_")
@@ -125,7 +125,6 @@ for s in steps:
     s.duration = makespan -  s.stime
     print s
     print
-
     
 print "end:\n"
 sys.exit(0)
