@@ -79,15 +79,15 @@ This paper shows that existing CSP compilations for temporal planning can be ada
 \label{sec:introduction}
 {\em Automated Planning} is the model-based approach for the task of selecting actions that achieve a given set of goals. {\em Classical planning} is the vanilla model for automated planning. This planning model assumes: fully observable states, actions with deterministic and instant effects and, goals that are exclusively referred to the last state reached by a plan~\cite{geffner2013concise}.
 
-Besides {\em classical planning}, there is a bunch of more expressive planning models that take these aspects into account to compute more detailed solutions than classical plans. One of these models is {\em temporal planning}, that relaxes the assumption of instant effects to compute plans that indicate the precise time-stamp where actions start and end. Actions in {\em temporal planning} can then have durations, be applied in parallel and overlap~\cite{ghallab2004automated}.
+Besides {\em classical planning}, there is a bunch of more expressive planning models that take these aspects into account to compute more detailed solutions than classical plans. {\em Temporal planning} is one of these models since it relaxes the {\em instant effects} assumption to compute plans that indicate the precise time-stamp where actions start and end. Actions in {\em temporal planning} have then duration and can be applied in parallel and overlap~\cite{ghallab2004automated}.
 
-Despite the potential of automated planning (state-of-the-art planners are able to compute plans with hundreds of actions in seconds time), its applicability is still limited because of the complexity of specifying correct and complete planning models. The more expressive the planning model, the more evident becomes this knowledge acquisition bottleneck. In this paper we show that existing CSP compilations for temporal planning can be adapted for improving the expressiveness of a given classical planning model with regard to observations of plan executions.
+Despite the potential of automated planning (state-of-the-art planners are able to compute plans with hundreds of actions in seconds time), its applicability is still limited because of the complexity of specifying correct and complete planning models. The more expressive the planning model, the more evident becomes this {\em knowledge acquisition bottleneck}. In this paper we show that existing CSP compilations for temporal planning can be adapted for improving the expressiveness of a given classical planning model with regard to observations of plan executions.
 
 
 
 \section{Background}
 \label{sec:background}
-This section formalizes the models of {\em classical} and {\em temporal planning} that we use in the paper as well as the {\em Constraint Satisfaction Problem}, the techinque we leverage to improve the expressiveness of a given classical planning model with regard to observations of plan executions.
+This section formalizes the planning that we use in the paper ({\em classical} and {\em temporal planning}) as well as the {\em Constraint Satisfaction Problem}, the techinque we leverage to improve the expressiveness of a given classical planning model with regard to observations of plan executions.
 
 \subsection{Classical Planning}
 We use $F$ to denote the set of {\em fluents} (propositional variables) describing a state. A {\em literal} $l$ is a valuation of a fluent $f\in F$; i.e. either~$l=f$ or $l=\neg f$. A set of literals $L$ represents a partial assignment of values to fluents (without loss of generality, we will assume that $L$ does not contain conflicting values). We use $\mathcal{L}(F)$ to denote the set of all literal sets on $F$; i.e.~all partial assignments of values to fluents. A {\em state} $s$ is a full assignment of values to fluents; $|s|=|F|$. 
@@ -168,7 +168,7 @@ In this work we assume that there is {\em partial observability} of the executio
 Given a {\em temporal planning problem} $P=\tup{F,A,I,G}$, and a temporal plan $\pi$ s.t. $\pi$ solves $P$ and it induces the state trajectory $\tau=\tup{s_0, s_1, \ldots, s_m}$. The {\em observation} of that trajectory is denoted by $obs(\tau)$ and it defines the same sequence of states induced by the execution of $\pi$ on $P$ but where the value of certain fluents may be omitted, i.e.~$|s^o|\leq |F|$ for every $s^o\in obs(\tau)$. Each observed state is labeled with a time-stamp.
 
 \begin{definition}[Explaning an observation]
-Given a {\em temporal planning problem} $P$ and a sequence of partially observed states $\mathcal{O}(\tau)$, we say that a plan $\pi$ {\em explains the observation} (denoted $\pi\mapsto\mathcal{O}(\tau)$) iff $\pi$ is a solution for $P$ that is consistent with $\mathcal{O}(\tau)$. If $\pi$ is also optimal, we say that $\pi$ is the {\em best explanation} for $\mathcal{O}(\tau)$. 
+Given a {\em temporal planning problem} $P$ and a sequence of partially observed states $\mathcal{O}(\tau)$, we say that a plan $\pi$ {\em explains the observation} (denoted $\pi\mapsto\mathcal{O}(\tau)$) iff $\pi$ is a solution for $P$ that is {\em  consistent} with $\mathcal{O}(\tau)$. If $\pi$ is also optimal, we say that $\pi$ is the {\em best explanation} for $\mathcal{O}(\tau)$. 
 \end{definition}
 
 Given a temporal planning problem $P=\tup{F,A,I,G}$, we say that an action model $\mathcal{M}$ is a definition of the $\tup{\rho,\theta}$ functions of every action in $A$. Further we say that a model $\mathcal{M}$ {\em explains} a sequence of observations $\mathcal{O}(\tau)$ iff, when the $\tup{\rho,\theta}$ functions of the actions in $P$ are given by $\mathcal{M}$, there exists a solution plan for $P$ that explains $\mathcal{O}(\tau)$.
@@ -190,27 +190,32 @@ An {\em evaluation} of the variables is a function from a subset of variables to
 
 \section{Building Temporal Planning Models}
 \label{sec:learning}
-Our approach for building temporal planning models from a classical planning model and observations of plan executions is to compile this task into a CSP. 
+This section details our approach for building temporal planning models from a {\em classical planning model} and {\em observation of plan executions}.
 
 \subsection{The modeling task}
-First we formalize the task of building temporal planning models from a classical planning model and a set of observations of plan executions with the pair $\Lambda=\tup{P,obs(\tau)}$:
+We formalize the task of building temporal planning models from a classical planning model and a set of observations of plan executions with the pair $\Lambda=\tup{P,obs(\tau)}$:
 \begin{itemize}
 \item $P$ is a classical planning problem $P=\tup{F,A,I,G}$.
-\item $obs(\tau)$ is a sequence of partial states that corresponds to a noiseless observation of the actual temporal plan execution such that $s_0\in obs(\tau)$ is a {\em fully observed} state, i.e.~$|s_0|=|F|$. Consequently, the corresponding set of predicates and objects that shape the fluents in $F$ are inferrable from $s_0$. 
+\item $obs(\tau)$ is a sequence of partial states that corresponds to a noiseless observation of the actual temporal plan execution such that $s_0\in obs(\tau)$ is a {\em fully observed} state. More precisely, $s_0=I$ and $|s_0|=|F|$. This means that the set of predicates and objects that shape the fluents in $F$ are inferrable from $s_0$. 
 \end{itemize}
 
 A {\em solution} to a learning task $\Lambda=\tup{P,obs(\tau)}$ a temporal action model $\mathcal{M}$ that {\em explains} the input observation $obs(\tau)$.
 
-\subsection{Example}
-Figure~\ref{fig:plan} shows an example of a temporal plan for solving a problem from the {\em zenotravel domain}.
+\subsection{The space of temporal action models}
+We assume that the durative actions $a\in A$ of a temporal planning problem $P$ are instantiated from given action schemas, as in PDDL. The space of possible models for an {\em action schema} $\xi$ of temporal actions is given by $\Psi$, the set of {\em predicates} that shape the propositional state variables $F$ in $P$, and the list of {\em parameters} $pars(\xi)$ of the corresponding schema.
 
-\begin{figure}[hbt!]
-        \includegraphics[width=0.5\textwidth]{plan.pdf}
-	\caption{Example of a temporal plan for solving a problem from the {\em zenotravel domain}.}
-	\label{fig:plan}
-\end{figure}
+With this regard, we denote the set of FOL interpretations of $\Psi$ over the parameters $pars(\xi)$ as ${\mathcal I}_{\Psi,\xi}$ (for domains that allow object typing in the predicates, the FOL interpretations implies that objects and parameters share the same type). For instance, in the {\em zenotravel} domain the ${\mathcal I}_{\Psi,\xi}$ set contains eight elements for the {\small\tt fly} schemata, ${\mathcal I}_{\Psi,fly}$={\small\tt\{at($a,c_1$), at($a,c_2$), next($l_1,l_1$), next($l_1,l_2$), next($l_2,l_1$), next($l_2,l_2$), fuel-level($,l_1$), fuel-level($a,l_2$)\}}. 
 
-\subsection{The compilation}
+Despite any element of ${\mathcal I}_{\Psi,\xi}$ can {\em a priori} appear in the conditions and effects of schema $\xi$, the space of possible schemata is bounded by constraints of three kinds:
+\begin{enumerate}
+\item {\em Syntactic constraints}. We require $del_s(\xi)\subseteq cond_s(\xi)$, $del_s(\xi)\cap add_s(\xi)=\emptyset$ and $cond_s(\xi)\cap add_s(\xi)=\emptyset$ as well as the equivalent constraints for the {\em at end} time-stamp (similar syntactic constraints are usually follow for defining  \strips\ action models). Considering exclusively these syntactic constraints, the size of the space of possible \strips\ schemata is given by $2^{5\times|{\mathcal I}_{\Psi,\xi}|}$. 
+\item {\em Domain-specific constraints}. One can introduce domain-specific knowledge to constrain further the space of possible schemata. For instance, in the {\em zenotravel} domain one can argue that {\small\tt next($l_1$,$l_1$)} and {\small\tt next($l_2$,$l_2$)} will not appear in the conditions and effects of an action schema $\xi$ because, in this specific domain, the {\tt\small next} predicate codes the {\em successor} function for {\em natural numbers}. As a rule of thumb, {\it state invariants} constraining the possible states of a given planning domain belong to this second class of constraints~\cite{fox:TIM:JAIR1998}. 
+
+\item {\em Observation constraints}. A sequence of state observations $\mathcal{O}(\tau)$ depicts {\em semantic knowledge} that constraints further the space of possible action schemata. 
+\end{enumerate}
+
+
+\subsection{CSP for computing temporal action models}
 Given an observation $obs(\tau)$ of the execution of a temporal plan. The CSP task that is output by our compilation is built as follows.
 
 The set of {\bf variables} $X$ comprises:
@@ -275,6 +280,16 @@ An interesting aspect of our compilation approach is that when an input temporal
 \end{itemize}
 
 This validation capacity of our compilation is beyond the functionality of VAL (the plan validation tool~\cite{howey2004val}) because our approach is able to address {\em model validation} of a partial (or even an empty) action model with a partially observed plan trace. On the other hand, VAL requires (1) a full plan and (2), a full action model for plan validation.
+
+\subsection{Example}
+Figure~\ref{fig:plan} shows an example of a temporal plan for solving a problem from the {\em zenotravel domain}.
+
+\begin{figure}[hbt!]
+        \includegraphics[width=0.5\textwidth]{plan.pdf}
+	\caption{Example of a temporal plan for solving a problem from the {\em zenotravel domain}.}
+	\label{fig:plan}
+\end{figure}
+
 
 \section{Related work}
 \label{sec:related}
