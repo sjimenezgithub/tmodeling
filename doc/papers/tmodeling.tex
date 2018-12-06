@@ -173,7 +173,7 @@ A {\em Constraint Satisfaction Problem} is defined as the triple $\tup{X,D,C}$ w
 \item $D=\tup{D_{x_0}, \ldots, D_{x_n}}$ are the respective domains defining the set of possible values for each variable $x\in X$.
 \item $C=\tup{c_0, \ldots, c_m}$ is a set of constraints bounding the possible values of the variables in $X$. Every constraint $c\in C$, is in turn a pair $c=(X_c,r_c)$ where:
 \begin{itemize}
-\item $X_c\subseteq X$ is a subset of $k$ variables.
+\item $X_c\subseteq X$ is a subset of $k\leq n$ variables.
 \item $r_c$ is a $k$-ary relation on the corresponding subset of domains.
 \end{itemize}
 \end{itemize}
@@ -182,25 +182,25 @@ An {\em evaluation} of the variables is a function from a subset of variables to
 
 \section{Building Temporal Planning Models}
 \label{sec:learning}
-This section details our approach for building temporal planning models from a {\em classical planning model} and {\em observation of plan executions}.
+This section details our approach for building temporal planning models from a {\em classical planning model} and a {\em observation of plan executions}.
 
 \subsection{The modeling task}
 We formalize the task of building temporal planning models from a classical planning model and a set of observations of plan executions with the pair $\Lambda=\tup{P,obs(\tau)}$:
 \begin{itemize}
-\item $P$ is a classical planning problem $P=\tup{F,A,I,G}$.
-\item $obs(\tau)$ is a sequence of partial states that corresponds to a noiseless observation of the actual temporal plan execution such that $s_0\in obs(\tau)$ is a {\em fully observed} state. More precisely, $s_0=I$ and $|s_0|=|F|$. This means that the set of predicates and objects that shape the fluents in $F$ are inferrable from $s_0$. 
+\item $P=\tup{F,A,I,G}$ is a {\em classical planning} problem.
+\item $obs(\tau)$ is a sequence of partial states that corresponds to a noiseless observation of the actual temporal plan execution such that $s_0\in obs(\tau)$ is a {\em fully observed} state. More precisely, $s_0=I$ and $|s_0|=|F|$. This means that the set of predicates and objects that shape the fluents of the temporal plannin problem are inferrable from $s_0$. 
 \end{itemize}
 
-A {\em solution} to a learning task $\Lambda=\tup{P,obs(\tau)}$ a temporal action model $\mathcal{M}$ that {\em explains} the input observation $obs(\tau)$.
+A {\em solution} to a learning task $\Lambda=\tup{P,obs(\tau)}$ is a temporal action model $\mathcal{M}$ that {\em explains} the input observation $obs(\tau)$.
 
 \subsection{The space of temporal action models}
-We assume that the durative actions $a\in A$ of a temporal planning problem $P$ are instantiated from given action schemas, as in PDDL. The space of possible models for an {\em action schema} $\xi$ of temporal actions is given by $\Psi$, the set of {\em predicates} that shape the propositional state variables $F$ in $P$, and the list of {\em parameters} $pars(\xi)$ of the corresponding schema.
+We assume that the durative actions $a\in A$ of a temporal planning problem $P$ are instantiated from given action schemas, as in PDDL. The space of possible models for an {\em action schema} $\xi$ of temporal actions is then given by $\Psi$, the set of {\em predicates} that shape the propositional state variables, and the list of {\em parameters} $pars(\xi)$ of the corresponding schema.
 
-With this regard, we denote the set of FOL interpretations of $\Psi$ over the parameters $pars(\xi)$ as ${\mathcal I}_{\Psi,\xi}$ (for domains that allow object typing in the predicates, the FOL interpretations implies that objects and parameters share the same type). For instance, in the {\em zenotravel} domain the ${\mathcal I}_{\Psi,\xi}$ set contains eight elements for the {\small\tt fly} schemata, ${\mathcal I}_{\Psi,fly}$={\small\tt\{at($a,c_1$), at($a,c_2$), next($l_1,l_1$), next($l_1,l_2$), next($l_2,l_1$), next($l_2,l_2$), fuel-level($,l_1$), fuel-level($a,l_2$)\}}. 
+With this regard, we denote the set of FOL interpretations of $\Psi$ over the parameters $pars(\xi)$ as ${\mathcal I}_{\Psi,\xi}$ (for domains that allow object typing in the predicates, the FOL interpretations also requires that objects and parameters share the same type). For instance, in the {\em zenotravel} domain the ${\mathcal I}_{\Psi,\xi}$ set contains eight elements for the {\small\tt fly} schemata, ${\mathcal I}_{\Psi,fly}$={\small\tt\{at($a,c_1$), at($a,c_2$), next($l_1,l_1$), next($l_1,l_2$), next($l_2,l_1$), next($l_2,l_2$), fuel-level($a,l_1$), fuel-level($a,l_2$)\}}. 
 
 Despite any element of ${\mathcal I}_{\Psi,\xi}$ can {\em a priori} appear in the conditions and effects of schema $\xi$, the space of possible schemata is bounded by constraints of three kinds:
 \begin{enumerate}
-\item {\em Syntactic constraints}. We require $del_s(\xi)\subseteq cond_s(\xi)$, $del_s(\xi)\cap add_s(\xi)=\emptyset$ and $cond_s(\xi)\cap add_s(\xi)=\emptyset$ as well as the equivalent constraints for the {\em at end} time-stamp (similar syntactic constraints are usually follow for defining  \strips\ action models). Considering exclusively these syntactic constraints, the size of the space of possible \strips\ schemata is given by $2^{5\times|{\mathcal I}_{\Psi,\xi}|}$. 
+\item {\em Syntactic constraints}. We require $del_s(\xi)\subseteq cond_s(\xi)$, $del_s(\xi)\cap add_s(\xi)=\emptyset$ and $cond_s(\xi)\cap add_s(\xi)=\emptyset$ as well as the equivalent constraints for the {\em at end} time-stamp (similar syntactic constraints are usually followed when defining \strips\ action models). Considering exclusively these syntactic constraints, the size of the space of possible {\em durative} schemata is given by $2^{5\times|{\mathcal I}_{\Psi,\xi}|}$. 
 \item {\em Domain-specific constraints}. One can introduce domain-specific knowledge to constrain further the space of possible schemata. For instance, in the {\em zenotravel} domain one can argue that {\small\tt next($l_1$,$l_1$)} and {\small\tt next($l_2$,$l_2$)} will not appear in the conditions and effects of an action schema $\xi$ because, in this specific domain, the {\tt\small next} predicate codes the {\em successor} function for {\em natural numbers}. As a rule of thumb, {\it state invariants} constraining the possible states of a given planning domain belong to this second class of constraints~\cite{fox:TIM:JAIR1998}. 
 
 \item {\em Observation constraints}. A sequence of state observations $\mathcal{O}(\tau)$ depicts {\em semantic knowledge} that constraints further the space of possible action schemata. 
@@ -208,18 +208,18 @@ Despite any element of ${\mathcal I}_{\Psi,\xi}$ can {\em a priori} appear in th
 
 
 \subsection{CSP for computing temporal action models}
-Given an observation $obs(\tau)$ of the execution of a temporal plan. The CSP task that is output by our compilation is built as follows.
+Given a $\Lambda=\tup{P,obs(\tau)}$ task for building a {\em temporal planning} model, then we define a compilation that outputs the following $\tup{X,D,C}$ CSP:
 
 The set of {\bf variables} $X$ comprises:
 \begin{itemize}
-\item For each action $a$ observed in a $\omega$:
+\item For each action $a$ observed in $obs(\tau)$:
 \begin{itemize}
 \item $start_a$, indicating the scheduled time-stamp for the start of the observed action $a$. The domain of this variable is $[t_a]$, i.e. a singleton given by the input observation.
-\item $duration_a$ representing the action duration. The domain of this variable is $[0,max_t]$ where $max_t$ is the maximum-time stamp in the given input observation $obs(\tau)$.
+\item $duration_a$ representing the action duration. The domain of this variable is $[0,max_t]$ where $max_t$ is the maximum-time stamp in the input observation $obs(\tau)$.
 \item $end_a$ is a derived variable, defined in $\mathds{Z}^+$, that indicates the time-stamp for the end of the observed action $a$. The value of this variable is $end_a = start_a + duration_a$. 
 \item $preS_{f,a}$ and $preE_{f,a}$ are Boolean variables indicating whether fuent $f$ is a condition ({\em at start} or {\em at end}) of the action $a$ in the input. This set of variables is given by the input classical planning model.
-\item $supports_{f,a_i}$ indicates that action $a_j$ is the supporter of the fluent $f$ for action $a_i$ in the observed plan. The domain of this variable is the set of actions.
-\item $time_{f,a}$ is a variable indicating when the value of $f$ is modified as a result of applying some effects of action $a$. The domain of this variable is $[start_a,max_t]$.
+\item $support_{f,a_i}$ indicates the action supporter of the fluent $f$ for action $a_i$ in the observed plan. The domain of this variable is the set of actions.
+\item $time_{f,a}$ is a variable indicating when the value of $f$ is modified by action $a$. The domain of this variable is $[start_a,max_t]$.
 \end{itemize}
 \end{itemize}
 
@@ -228,7 +228,7 @@ The domains of the variables in $X$ is bound by the following set of {\bf constr
 \item For each action $a$ observed in a $\omega$:
 \begin{itemize}
 \item $end_a = start_a + duration_a$.
-\item $time_{f,a_i}!=time_{\neg f,a_j}$.
+\item $time_{f,a_i}\neq time_{\neg f,a_j}$.
 \item $time_{f,a}= start_a$ XOR $time_{f,a}= end_a$.
 \item $start_a\leq preS_{f,a}\leq preE_{f,a}\leq end_a$.
 \item IF $supports_{f,a_i}=a_j$ THEN:
