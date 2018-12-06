@@ -26,8 +26,7 @@ class PlanStep:
         str_out = str_out + "precs:\n"
         str_precs = fdtask_to_pddl.format_condition(self.operator.precondition)
         for i in range(len(self.oparams)):
-            str_precs = str_precs.replace(self.oparams[i],self.aparams[i])        
-            
+            str_precs = str_precs.replace(self.oparams[i],self.aparams[i])                      
         str_out = str_out + format_string_literals(str_precs.replace("(and","").split(")("),1) + "\n"
         
         str_out = str_out + "effs:\n"
@@ -104,8 +103,7 @@ for line in plan_file:
         d = float(line.split("[")[1].replace("]",""))
 
         aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_").replace("_(","(")
-        aparams = line.split(": ")[1].split(" [")[0].replace(")","").split(" ")[1:]
-
+        aparams = line.split("(")[1].split(")")[0].split(" ")[1:]
         operator = [o for o in fd_task.actions if o.name.lower() in aname.lower()][0]
         oparams = [str(p.name) for p in operator.parameters]
         
