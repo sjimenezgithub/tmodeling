@@ -21,7 +21,7 @@ class PlanStep:
         str_out = str_out + "start_time:\n"
         str_out = str_out + str(self.stime) + "\n"                
         str_out = str_out + "max_duration:\n"
-        str_out = str_out + str(self.duration) + "\n"
+        str_out = str_out + "%.2f" % self.duration + "\n"
         
         str_out = str_out + "precs:\n"
         str_precs = fdtask_to_pddl.format_condition(self.operator.precondition)
@@ -101,7 +101,7 @@ for line in plan_file:
         start_time = float(line.split(":")[0])
         number_dec = int(str(start_time).split(".")[1])      
         st = int(start_time) + 1 + number_dec        
-        d = int(line.split("[")[1].replace("]",""))
+        d = float(line.split("[")[1].replace("]",""))
        
         aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_")
         aparams = line.split(": ")[1].split(" [")[0].replace(")","").split(" ")[1:]
