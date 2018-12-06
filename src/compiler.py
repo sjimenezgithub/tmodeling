@@ -102,8 +102,8 @@ for line in plan_file:
         number_dec = int(str(start_time).split(".")[1])      
         st = int(start_time) + 1 + number_dec        
         d = float(line.split("[")[1].replace("]",""))
-       
-        aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_")
+
+        aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_").replace("_(","(")
         aparams = line.split(": ")[1].split(" [")[0].replace(")","").split(" ")[1:]
 
         operator = [o for o in fd_task.actions if o.name.lower() in aname.lower()][0]
