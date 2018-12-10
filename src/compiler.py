@@ -8,7 +8,7 @@ class PlanStep:
         self.name = n
         self.operator = o
         self.stime = st
-        self.duration = d
+        self.durations = d
         self.oparams = op
         self.aparams = ap
 
@@ -20,8 +20,8 @@ class PlanStep:
         str_out = str_out + self.operator.name + "\n"        
         str_out = str_out + "start_time:\n"
         str_out = str_out + str(self.stime) + "\n"                
-        str_out = str_out + "max_duration:\n"
-        str_out = str_out + "%.2f" % self.duration + "\n"
+        str_out = str_out + "durations:\n"
+        str_out = str_out + str(self.durations) + "\n"
         
         str_out = str_out + "precs:\n"
         str_precs = fdtask_to_pddl.format_condition(self.operator.precondition)
@@ -93,22 +93,24 @@ print format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),
 # Reading plan
 steps = []
 makespan=0
+timestaps = set([])
 plan_file = open(plan_filename, 'r')
 for line in plan_file:
     if not ";" in line and ":" in line:
         # Creating a plan step
         start_time = float(line.split(":")[0])
         number_dec = int(str(start_time).split(".")[1])      
-        st = int(start_time) + 1 + number_dec        
-        d = float(line.split("[")[1].replace("]",""))
+        st = int(start_time) + 1 + number_dec
+        timestaps.add(st)
+        duration = float(line.split("[")[1].replace("]",""))
 
         aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_").replace("_(","(")
         aparams = line.split("(")[1].split(")")[0].split(" ")[1:]
         operator = [o for o in fd_task.actions if o.name.lower() in aname.lower()][0]
         oparams = [str(p.name) for p in operator.parameters]
         
-        steps.append(PlanStep(aname,operator,st,d,oparams,aparams))
-        makespan = max(makespan,st+d)
+        steps.append(PlanStep(aname,operator,st,[],oparams,aparams))
+        makespan = max(makespan,st+duration)
 plan_file.close()
 
 
@@ -118,9 +120,11 @@ print str(makespan)
 print
 
 
-# Plan steps 
+# Plan steps
+steps.sort(key=lambda x: x.stime)
 for s in steps:
-    s.duration = makespan -  s.stime
+    aux_stamps = sorted(timestaps)    
+    s.durations = [makespan - st for st in aux_stamps[aux_stamps.index(s.stime):]]
     print s
     print
     
