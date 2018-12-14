@@ -274,15 +274,16 @@ Completeness. Any set of action models $\mathcal{M}'$ that solves $\Lambda=\tup{
 \end{small}
 \end{proof}
 
-An interesting aspect of our compilation approach is that when an input temporal planning model $\mathcal{M}$ is given in $\Lambda$, the compilation serves to validate whether the observation $obs(\tau)$ follows the given model $\mathcal{M}$:
+
+
+\section{Assessing Temporal Planning Models with Constraint Programming}
+An interesting aspect of our compilation approach is that when a single possible input model $M=\{\mathcal{M}\}$ is given in $\Lambda$, the compilation serves to validate whether the observation $obs(\tau)$ follows the given model $\mathcal{M}$:
 
 \begin{itemize}
 	\item $\mathcal{M}$ is proved to be a {\em valid} action model for the given input data in $obs(\tau)$ iff a solution for the output CSP can be found.
 	\item $\mathcal{M}$ is proved to be a {\em invalid} action model for the given input data $obs(\tau)$ iff the output CSP is unsolvable. This means that $\mathcal{M}$ cannot {\em explain} the given observation of the plan execution.
 \end{itemize}
 
-
-\section{Assessing Temporal Planning Models with Constraint Programming}
 This validation capacity of our compilation is beyond the functionality of VAL (the plan validation tool~\cite{howey2004val}) because our approach is able to address {\em model validation} of a partial (or even an empty) action model with a partially observed plan trace. On the other hand, VAL requires (1) a full plan and (2), a full action model for plan validation.
 
 \section{Experimental evaluation}
