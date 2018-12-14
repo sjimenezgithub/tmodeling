@@ -4,10 +4,11 @@ import pddl, pddl_parser
 import fdtask_to_pddl
 
 class PlanStep:
-    def __init__(self, n, o, st, d, op, ap):
+    def __init__(self, n, o, st, b, d, op, ap):
         self.name = n
         self.operator = o
         self.stime = st
+        self.block = b        
         self.durations = d
         self.oparams = op
         self.aparams = ap
@@ -19,7 +20,7 @@ class PlanStep:
         str_out = str_out + "operator:\n"
         str_out = str_out + self.operator.name + "\n"        
         str_out = str_out + "start_time:\n"
-        str_out = str_out + str(self.stime) + "\n"                
+        str_out = str_out + str(self.stime + self.block) + "\n"                
         str_out = str_out + "durations:\n"
         str_out = str_out + str(self.durations).replace("[","").replace("]","").replace(",","") + "\n"
         
@@ -71,6 +72,7 @@ fd_domain = pddl_parser.pddl_file.parse_pddl_file("domain", domain_filename)
 fd_problem = pddl_parser.pddl_file.parse_pddl_file("task", problem_filename)
 fd_task = pddl_parser.pddl_file.parsing_functions.parse_task(fd_domain, fd_problem)
 
+
 # Domain and problem name
 print "domain:"
 print domain_filename
@@ -90,42 +92,45 @@ print "goals:"
 formattedgoal = fdtask_to_pddl.format_condition(fd_task.goal)
 print format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1)
 
+
 # Reading plan
 steps = []
 makespan=0
-timestaps = set([])
+timestamps = set([])
 plan_file = open(plan_filename, 'r')
 for line in plan_file:
     if not ";" in line and ":" in line:
         # Creating a plan step
-        start_time = float(line.split(":")[0])
-        number_dec = int(str(start_time).split(".")[1])      
-        st = int(start_time) + 1 + number_dec
-        timestaps.add(st)
-        duration = float(line.split("[")[1].replace("]",""))
+        start_time = int(line.split(".")[0])
+        timestamps.add(start_time)
+        block = len(timestamps)
+        
+        duration = int(line.split("[")[1].replace("]",""))
 
         aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_").replace("_(","(")
         aparams = line.split("(")[1].split(")")[0].split(" ")[1:]
         operator = [o for o in fd_task.actions if o.name.lower() in aname.lower()][0]
         oparams = [str(p.name) for p in operator.parameters]
         
-        steps.append(PlanStep(aname,operator,st,[],oparams,aparams))
-        makespan = max(makespan,st+duration)
+        steps.append(PlanStep(aname,operator, start_time, block, [] , oparams, aparams))
+        makespan = max(makespan, start_time + block + duration)
 plan_file.close()
 
 
 # Makespan
 print "makespan:"
-print str(makespan)
+print str(makespan+1)
 print
 
+# Adding the last timestamp
+nblocks  = len(timestamps)
+timestamps.add(makespan - nblocks)
 
 # Plan steps
 steps.sort(key=lambda x: x.stime)
 for s in steps:
-    aux_stamps = sorted(timestaps)
-    s.durations = [int(makespan - st) for st in aux_stamps[aux_stamps.index(s.stime):]]
-    s.durations.reverse()
+    aux_timestamps = sorted(timestamps)
+    s.durations = [item - s.stime for item in aux_timestamps[aux_timestamps.index(s.stime)+1:]]
     print s
     print
     
