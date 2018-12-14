@@ -123,8 +123,9 @@ print
 # Plan steps
 steps.sort(key=lambda x: x.stime)
 for s in steps:
-    aux_stamps = sorted(timestaps,reverse=True)
+    aux_stamps = sorted(timestaps)
     s.durations = [int(makespan - st) for st in aux_stamps[aux_stamps.index(s.stime):]]
+    s.durations.reverse()
     print s
     print
     
