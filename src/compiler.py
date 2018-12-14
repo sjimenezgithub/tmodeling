@@ -40,6 +40,7 @@ class PlanStep:
             
         return str_out
 
+    
 def filter_literal_string(str_in):
     str_in = str_in.replace("(not","not-").replace("not (","not-(").replace(" ","_").replace("_(","(").replace("))",")")
     return str_in
@@ -103,9 +104,6 @@ for line in plan_file:
         # Creating a plan step
         start_time = int(line.split(".")[0])
         timestamps.add(start_time)
-
-        aux_timestamps = sorted(timestamps)
-        block = aux_timestamps.index(start_time)+1
         
         duration = int(line.split("[")[1].replace("]",""))
 
@@ -114,24 +112,25 @@ for line in plan_file:
         operator = [o for o in fd_task.actions if o.name.lower() in aname.lower()][0]
         oparams = [str(p.name) for p in operator.parameters]
         
-        steps.append(PlanStep(aname,operator, start_time, block, [] , oparams, aparams))
-        makespan = max(makespan, start_time + block + duration)
+        steps.append(PlanStep(aname,operator, start_time, -1, [] , oparams, aparams))
+        makespan = max(makespan, start_time + duration)
 plan_file.close()
+
+# Adding the last timestamp
+timestamps.add(makespan)
 
 
 # Makespan
 print "makespan:"
-print str(makespan+1)
+print str(makespan + len(timestamps))
 print
 
-# Adding the last timestamp
-nblocks  = len(timestamps)
-timestamps.add(makespan - nblocks)
 
 # Plan steps
 steps.sort(key=lambda x: x.stime)
 for s in steps:
     aux_timestamps = sorted(timestamps)
+    s.block = aux_timestamps.index(s.stime) + 1    
     s.durations = [item - s.stime for item in aux_timestamps[aux_timestamps.index(s.stime)+1:]]
     print s
     print
