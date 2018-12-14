@@ -21,7 +21,7 @@ class PlanStep:
         str_out = str_out + "start_time:\n"
         str_out = str_out + str(self.stime) + "\n"                
         str_out = str_out + "durations:\n"
-        str_out = str_out + str(self.durations) + "\n"
+        str_out = str_out + str(self.durations).replace("[","").replace("]","") + "\n"
         
         str_out = str_out + "precs:\n"
         str_precs = fdtask_to_pddl.format_condition(self.operator.precondition)
@@ -123,8 +123,8 @@ print
 # Plan steps
 steps.sort(key=lambda x: x.stime)
 for s in steps:
-    aux_stamps = sorted(timestaps)    
-    s.durations = [makespan - st for st in aux_stamps[aux_stamps.index(s.stime):]]
+    aux_stamps = sorted(timestaps)
+    s.durations = [int(makespan - st) for st in aux_stamps[aux_stamps.index(s.stime):]]
     print s
     print
     
