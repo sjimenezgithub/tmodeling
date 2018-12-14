@@ -21,7 +21,7 @@ class PlanStep:
         str_out = str_out + "start_time:\n"
         str_out = str_out + str(self.stime) + "\n"                
         str_out = str_out + "durations:\n"
-        str_out = str_out + str(self.durations).replace("[","").replace("]","") + "\n"
+        str_out = str_out + str(self.durations).replace("[","").replace("]","").replace(",","") + "\n"
         
         str_out = str_out + "precs:\n"
         str_precs = fdtask_to_pddl.format_condition(self.operator.precondition)
