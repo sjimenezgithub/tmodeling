@@ -103,7 +103,9 @@ for line in plan_file:
         # Creating a plan step
         start_time = int(line.split(".")[0])
         timestamps.add(start_time)
-        block = len(timestamps)
+
+        aux_timestamps = sorted(timestamps)
+        block = aux_timestamps.index(start_time)+1
         
         duration = int(line.split("[")[1].replace("]",""))
 
