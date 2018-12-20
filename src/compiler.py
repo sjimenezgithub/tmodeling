@@ -38,7 +38,7 @@ class PlanStep:
             str_effs = str_effs.replace(self.oparams[i],self.aparams[i])
         str_out = str_out + format_string_literals(str_effs.split(")("),len(self.operator.precondition.parts)+1)            
             
-        return str_out
+        return str_out.lower()
 
     
 def filter_literal_string(str_in):
@@ -105,7 +105,7 @@ for line in plan_file:
         start_time = int(line.split(".")[0])
         timestamps.add(start_time)
         
-        duration = int(line.split("[")[1].replace("]",""))
+        duration = float(line.split("[")[1].replace("]",""))
 
         aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_").replace("_(","(")
         aparams = line.split("(")[1].split(")")[0].split(" ")[1:]
@@ -113,7 +113,7 @@ for line in plan_file:
         oparams = [str(p.name) for p in operator.parameters]
         
         steps.append(PlanStep(aname,operator, start_time, -1, [] , oparams, aparams))
-        makespan = max(makespan, start_time + duration)
+        makespan = max(makespan, int(start_time + duration))
 plan_file.close()
 
 # Adding the last timestamp
