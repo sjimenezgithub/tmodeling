@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-import os, sys
+import os, sys, itertools
 import pddl, pddl_parser
 import fdtask_to_pddl
 
@@ -51,20 +51,32 @@ def format_string_literals(str_literals, offset):
     for i in range(1,len(str_literals)):
         str_out = str_out + " & " + str(offset+i) + " (" + filter_literal_string(str_literals[i]) + ")"
     return str_out.replace("))",")").replace("(not-(","not-(")
-        
+
+
+
+
 
 
 # **************************************#
 # MAIN
 # **************************************#
 try:
+
+    if "-n" in sys.argv:
+        index = sys.argv.index("-n")
+        sys.argv.pop(index)
+        bneginit = True
+    else:
+        bneginit = False 
+    
     domain_filename  = sys.argv[1]
     problem_filename = sys.argv[2]
     plan_filename = sys.argv[3]
+   
 
 except:
     print "Usage:"
-    print sys.argv[0] + " <domain file name> <problem file name> <plan file name>"
+    print sys.argv[0] + " [-n, negative facts at initial state] <domain file name> <problem file name> <plan file name>"
     sys.exit(-1)
 
 
@@ -72,7 +84,6 @@ except:
 fd_domain = pddl_parser.pddl_file.parse_pddl_file("domain", domain_filename)
 fd_problem = pddl_parser.pddl_file.parse_pddl_file("task", problem_filename)
 fd_task = pddl_parser.pddl_file.parsing_functions.parse_task(fd_domain, fd_problem)
-
 
 # Domain and problem name
 print "domain:"
@@ -85,8 +96,31 @@ print ""
 
 # Init and goals
 print "init:"
-formattedinit = fdtask_to_pddl.format_condition([i for i in fd_task.init if i.predicate!="="])
-print format_string_literals(formattedinit.split(") ("),1).replace(")_)",")")
+formattedinit1 = fdtask_to_pddl.format_condition([i for i in fd_task.init if i.predicate!="="])
+formattedinit2 = format_string_literals(formattedinit1.split(") ("),1).replace(")_)",")")
+npositive =  len(formattedinit1.split(") (")) 
+
+atoms = ""
+if bneginit==True: # Completing initial state with negated literals
+    for p in fd_task.predicates:
+        candidate_objects = []
+        for arg in p.arguments:
+            candidate_pos=[]
+            for o in sorted(set(fd_task.objects)):
+                aux = [t for t in fd_task.types if t.name==o.type_name]
+                supernames = [str(t.name) for t in aux] + [str(t) for t in aux[0].supertype_names]
+                if arg.type_name in supernames:
+                    candidate_pos = candidate_pos + [str(o.name)]
+            candidate_objects.append(candidate_pos)
+
+        combinations = list(itertools.product(*candidate_objects))
+        for item in combinations:
+            atom = "(" + p.name + "_" + "_".join(map(str,item)) + ")"
+            if not atom in formattedinit2:
+                npositive = npositive + 1
+                atoms = atoms + " & " + str(npositive) + str(" not-(" + p.name + "_" + "_".join(map(str,item)) + ")")            
+    
+print formattedinit2 + atoms
 print ""
 
 print "goals:"
@@ -109,7 +143,9 @@ for line in plan_file:
 
         aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_").replace("_(","(")
         aparams = line.split("(")[1].split(")")[0].split(" ")[1:]
-        operator = [o for o in fd_task.actions if o.name.lower() in aname.lower()][0]
+
+        clean_aname=aname.lower().replace("(","").replace(")","").split("_")[0]        
+        operator = [o for o in fd_task.actions if clean_aname==o.name.lower()][0]
         oparams = [str(p.name) for p in operator.parameters]
         
         steps.append(PlanStep(aname,operator, start_time, -1, [] , oparams, aparams))
