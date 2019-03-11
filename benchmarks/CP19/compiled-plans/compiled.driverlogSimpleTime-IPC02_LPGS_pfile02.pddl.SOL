@@ -10,44 +10,44 @@ init:
 goals:
 1 (at_driver1_s1) & 2 (at_driver2_s1) & 3 (at_truck1_s2) & 4 (at_truck2_s0) & 5 (at_package1_s0) & 6 (at_package2_s2) & 7 (at_package3_s0)
 makespan:
-131
+183
 
 action:
-(board-truck_driver2_truck1_s0)
+(board-truck_driver1_truck1_s0)
 operator:
 board-truck
 start_time:
 1
 durations:
-1 11 13 20 23 25 35 37 40 41 47 49 51 52 59 69 70 72 90 110
+1 11 13 20 23 25 35 37 47 49 59 69 70 90 110 111 121 122 142 162
 precs:
-1 (at_truck1_s0) & 2 (at_driver2_s0) & 3 (empty_truck1)
+1 (at_truck1_s0) & 2 (at_driver1_s0) & 3 (empty_truck1)
 effs:
-4 not-(at_driver2_s0) & 5 (driving_driver2_truck1) & 6 not-(empty_truck1)
+4 not-(at_driver1_s0) & 5 (driving_driver1_truck1) & 6 not-(empty_truck1)
 
 action:
-(walk_driver1_s0_p0-1)
+(walk_driver2_s0_p0-1)
 operator:
 walk
 start_time:
 1
 durations:
-1 11 13 20 23 25 35 37 40 41 47 49 51 52 59 69 70 72 90 110
+1 11 13 20 23 25 35 37 47 49 59 69 70 90 110 111 121 122 142 162
 precs:
-1 (at_driver1_s0) & 2 (path_s0_p0-1)
+1 (at_driver2_s0) & 2 (path_s0_p0-1)
 effs:
-3 not-(at_driver1_s0) & 4 (at_driver1_p0-1)
+3 not-(at_driver2_s0) & 4 (at_driver2_p0-1)
 
 action:
-(drive-truck_truck1_s0_s2_driver2)
+(drive-truck_truck1_s0_s2_driver1)
 operator:
 drive-truck
 start_time:
 3
 durations:
-10 12 19 22 24 34 36 39 40 46 48 50 51 58 68 69 71 89 109
+10 12 19 22 24 34 36 46 48 58 68 69 89 109 110 120 121 141 161
 precs:
-1 (at_truck1_s0) & 2 (driving_driver2_truck1) & 3 (link_s0_s2)
+1 (at_truck1_s0) & 2 (driving_driver1_truck1) & 3 (link_s0_s2)
 effs:
 4 not-(at_truck1_s0) & 5 (at_truck1_s2)
 
@@ -58,37 +58,37 @@ load-truck
 start_time:
 14
 durations:
-2 9 12 14 24 26 29 30 36 38 40 41 48 58 59 61 79 99
+2 9 12 14 24 26 36 38 48 58 59 79 99 100 110 111 131 151
 precs:
 1 (at_truck1_s2) & 2 (at_package1_s2)
 effs:
 3 not-(at_package1_s2) & 4 (in_package1_truck1)
 
 action:
-(drive-truck_truck1_s2_s0_driver2)
+(drive-truck_truck1_s2_s0_driver1)
 operator:
 drive-truck
 start_time:
 17
 durations:
-7 10 12 22 24 27 28 34 36 38 39 46 56 57 59 77 97
+7 10 12 22 24 34 36 46 56 57 77 97 98 108 109 129 149
 precs:
-1 (at_truck1_s2) & 2 (driving_driver2_truck1) & 3 (link_s2_s0)
+1 (at_truck1_s2) & 2 (driving_driver1_truck1) & 3 (link_s2_s0)
 effs:
 4 not-(at_truck1_s2) & 5 (at_truck1_s0)
 
 action:
-(walk_driver1_p0-1_s1)
+(walk_driver2_p0-1_s1)
 operator:
 walk
 start_time:
 25
 durations:
-3 5 15 17 20 21 27 29 31 32 39 49 50 52 70 90
+3 5 15 17 27 29 39 49 50 70 90 91 101 102 122 142
 precs:
-1 (at_driver1_p0-1) & 2 (path_p0-1_s1)
+1 (at_driver2_p0-1) & 2 (path_p0-1_s1)
 effs:
-3 not-(at_driver1_p0-1) & 4 (at_driver1_s1)
+3 not-(at_driver2_p0-1) & 4 (at_driver2_s1)
 
 action:
 (unload-truck_package1_truck1_s0)
@@ -97,22 +97,22 @@ unload-truck
 start_time:
 29
 durations:
-2 12 14 17 18 24 26 28 29 36 46 47 49 67 87
+2 12 14 24 26 36 46 47 67 87 88 98 99 119 139
 precs:
 1 (at_truck1_s0) & 2 (in_package1_truck1)
 effs:
 3 not-(in_package1_truck1) & 4 (at_package1_s0)
 
 action:
-(drive-truck_truck1_s0_s1_driver2)
+(drive-truck_truck1_s0_s1_driver1)
 operator:
 drive-truck
 start_time:
 32
 durations:
-10 12 15 16 22 24 26 27 34 44 45 47 65 85
+10 12 22 24 34 44 45 65 85 86 96 97 117 137
 precs:
-1 (at_truck1_s0) & 2 (driving_driver2_truck1) & 3 (link_s0_s1)
+1 (at_truck1_s0) & 2 (driving_driver1_truck1) & 3 (link_s0_s1)
 effs:
 4 not-(at_truck1_s0) & 5 (at_truck1_s1)
 
@@ -123,7 +123,7 @@ load-truck
 start_time:
 43
 durations:
-2 5 6 12 14 16 17 24 34 35 37 55 75
+2 12 14 24 34 35 55 75 76 86 87 107 127
 precs:
 1 (at_truck1_s1) & 2 (at_package2_s1)
 effs:
@@ -136,33 +136,124 @@ load-truck
 start_time:
 43
 durations:
-2 5 6 12 14 16 17 24 34 35 37 55 75
+2 12 14 24 34 35 55 75 76 86 87 107 127
 precs:
 1 (at_truck1_s1) & 2 (at_package3_s1)
 effs:
 3 not-(at_package3_s1) & 4 (in_package3_truck1)
 
 action:
-(drive-truck_truck1_s1_s0_driver2)
+(drive-truck_truck1_s1_s0_driver1)
 operator:
 drive-truck
 start_time:
 46
 durations:
-3 4 10 12 14 15 22 32 33 35 53 73
+10 12 22 32 33 53 73 74 84 85 105 125
 precs:
-1 (at_truck1_s1) & 2 (driving_driver2_truck1) & 3 (link_s1_s0)
+1 (at_truck1_s1) & 2 (driving_driver1_truck1) & 3 (link_s1_s0)
 effs:
 4 not-(at_truck1_s1) & 5 (at_truck1_s0)
+
+action:
+(unload-truck_package3_truck1_s0)
+operator:
+unload-truck
+start_time:
+57
+durations:
+2 12 22 23 43 63 64 74 75 95 115
+precs:
+1 (at_truck1_s0) & 2 (in_package3_truck1)
+effs:
+3 not-(in_package3_truck1) & 4 (at_package3_s0)
+
+action:
+(drive-truck_truck1_s0_s1_driver1)
+operator:
+drive-truck
+start_time:
+60
+durations:
+10 20 21 41 61 62 72 73 93 113
+precs:
+1 (at_truck1_s0) & 2 (driving_driver1_truck1) & 3 (link_s0_s1)
+effs:
+4 not-(at_truck1_s0) & 5 (at_truck1_s1)
+
+action:
+(drive-truck_truck1_s1_s2_driver1)
+operator:
+drive-truck
+start_time:
+71
+durations:
+10 11 31 51 52 62 63 83 103
+precs:
+1 (at_truck1_s1) & 2 (driving_driver1_truck1) & 3 (link_s1_s2)
+effs:
+4 not-(at_truck1_s1) & 5 (at_truck1_s2)
+
+action:
+(unload-truck_package2_truck1_s2)
+operator:
+unload-truck
+start_time:
+82
+durations:
+1 21 41 42 52 53 73 93
+precs:
+1 (at_truck1_s2) & 2 (in_package2_truck1)
+effs:
+3 not-(in_package2_truck1) & 4 (at_package2_s2)
+
+action:
+(disembark-truck_driver1_truck1_s2)
+operator:
+disembark-truck
+start_time:
+82
+durations:
+1 21 41 42 52 53 73 93
+precs:
+1 (at_truck1_s2) & 2 (driving_driver1_truck1)
+effs:
+3 not-(driving_driver1_truck1) & 4 (at_driver1_s2) & 5 (empty_truck1)
+
+action:
+(walk_driver1_s2_p2-1)
+operator:
+walk
+start_time:
+84
+durations:
+20 40 41 51 52 72 92
+precs:
+1 (at_driver1_s2) & 2 (path_s2_p2-1)
+effs:
+3 not-(at_driver1_s2) & 4 (at_driver1_p2-1)
+
+action:
+(walk_driver1_p2-1_s1)
+operator:
+walk
+start_time:
+105
+durations:
+20 21 31 32 52 72
+precs:
+1 (at_driver1_p2-1) & 2 (path_p2-1_s1)
+effs:
+3 not-(at_driver1_p2-1) & 4 (at_driver1_s1)
 
 action:
 (board-truck_driver1_truck2_s1)
 operator:
 board-truck
 start_time:
-50
+126
 durations:
-1 7 9 11 12 19 29 30 32 50 70
+1 11 12 32 52
 precs:
 1 (at_truck2_s1) & 2 (at_driver1_s1) & 3 (empty_truck2)
 effs:
@@ -173,48 +264,22 @@ action:
 operator:
 drive-truck
 start_time:
-52
+128
 durations:
-6 8 10 11 18 28 29 31 49 69
+10 11 31 51
 precs:
 1 (at_truck2_s1) & 2 (driving_driver1_truck2) & 3 (link_s1_s0)
 effs:
 4 not-(at_truck2_s1) & 5 (at_truck2_s0)
 
 action:
-(unload-truck_package3_truck1_s0)
-operator:
-unload-truck
-start_time:
-59
-durations:
-2 4 5 12 22 23 25 43 63
-precs:
-1 (at_truck1_s0) & 2 (in_package3_truck1)
-effs:
-3 not-(in_package3_truck1) & 4 (at_package3_s0)
-
-action:
-(drive-truck_truck1_s0_s1_driver2)
-operator:
-drive-truck
-start_time:
-62
-durations:
-2 3 10 20 21 23 41 61
-precs:
-1 (at_truck1_s0) & 2 (driving_driver2_truck1) & 3 (link_s0_s1)
-effs:
-4 not-(at_truck1_s0) & 5 (at_truck1_s1)
-
-action:
 (disembark-truck_driver1_truck2_s0)
 operator:
 disembark-truck
 start_time:
-65
+139
 durations:
-1 8 18 19 21 39 59
+1 21 41
 precs:
 1 (at_truck2_s0) & 2 (driving_driver1_truck2)
 effs:
@@ -225,91 +290,26 @@ action:
 operator:
 walk
 start_time:
-67
+141
 durations:
-7 17 18 20 38 58
+20 40
 precs:
 1 (at_driver1_s0) & 2 (path_s0_p0-1)
 effs:
 3 not-(at_driver1_s0) & 4 (at_driver1_p0-1)
 
 action:
-(drive-truck_truck1_s1_s2_driver2)
-operator:
-drive-truck
-start_time:
-75
-durations:
-10 11 13 31 51
-precs:
-1 (at_truck1_s1) & 2 (driving_driver2_truck1) & 3 (link_s1_s2)
-effs:
-4 not-(at_truck1_s1) & 5 (at_truck1_s2)
-
-action:
-(unload-truck_package2_truck1_s2)
-operator:
-unload-truck
-start_time:
-86
-durations:
-1 3 21 41
-precs:
-1 (at_truck1_s2) & 2 (in_package2_truck1)
-effs:
-3 not-(in_package2_truck1) & 4 (at_package2_s2)
-
-action:
-(disembark-truck_driver2_truck1_s2)
-operator:
-disembark-truck
-start_time:
-86
-durations:
-1 3 21 41
-precs:
-1 (at_truck1_s2) & 2 (driving_driver2_truck1)
-effs:
-3 not-(driving_driver2_truck1) & 4 (at_driver2_s2) & 5 (empty_truck1)
-
-action:
-(walk_driver2_s2_p2-1)
-operator:
-walk
-start_time:
-88
-durations:
-2 20 40
-precs:
-1 (at_driver2_s2) & 2 (path_s2_p2-1)
-effs:
-3 not-(at_driver2_s2) & 4 (at_driver2_p2-1)
-
-action:
 (walk_driver1_p0-1_s1)
 operator:
 walk
 start_time:
-91
+162
 durations:
-18 38
+20
 precs:
 1 (at_driver1_p0-1) & 2 (path_p0-1_s1)
 effs:
 3 not-(at_driver1_p0-1) & 4 (at_driver1_s1)
-
-action:
-(walk_driver2_p2-1_s1)
-operator:
-walk
-start_time:
-110
-durations:
-20
-precs:
-1 (at_driver2_p2-1) & 2 (path_p2-1_s1)
-effs:
-3 not-(at_driver2_p2-1) & 4 (at_driver2_s1)
 
 end:
 
