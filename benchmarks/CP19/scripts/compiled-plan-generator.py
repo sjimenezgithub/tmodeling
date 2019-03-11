@@ -23,16 +23,15 @@ for p in plan_files:
     problem = p.split("_")[2].split(".")[:-1]
     problem = ".".join(map(str,problem))
 
-    output_name = COMPILED_PLANS_FOLDER + "compiled." + p
-
     cwd = os.getcwd() + "/"
-    cmd = "cd ../../../src/; ./compiler.py " + DOMAINS_FOLDER + domain + "/domain-classical.pddl " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p 
+    output_name = cwd + COMPILED_PLANS_FOLDER + "compiled." + p
+    cmd = "cd ../../../src/; ./compiler.py " + DOMAINS_FOLDER + domain + "/domain-classical.pddl " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " > "+output_name
     print cmd
     os.system(cmd)
 
     cmd = "cd "+ cwd
     os.system(cmd)
-    sys.exit(0)
+    
 sys.exit(0)
 
 
