@@ -9,7 +9,7 @@
 	area crate - surface)
 
 (:predicates (clear ?s - storearea)
-	     (in ?x - (either storearea crate) ?p - place)
+	     (in ?x - object ?p - place)
 	     (available ?h - hoist) 
 	     (lifting ?h - hoist ?c - crate) 
 	     (at ?h - hoist ?a - area)
