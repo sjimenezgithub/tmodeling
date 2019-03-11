@@ -105,7 +105,7 @@
 	)
 )
 
-(:durative-action communicate-rock_data
+(:durative-action communicate-rock-data
  :parameters (?r - rover ?l - lander ?p - waypoint ?x - waypoint ?y - waypoint)
  :duration (= ?duration 10)
  :condition (and (over all (at ?r ?x)) (over all (at_lander ?l ?y)) (at start (have_rock_analysis ?r ?p)) 
