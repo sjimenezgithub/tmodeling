@@ -49,6 +49,6 @@
 	(have_image Phenomenon8 thermograph2)
 	(have_image Phenomenon9 infrared0)
 ))
-(:metric minimize (total-time))
+
 
 )

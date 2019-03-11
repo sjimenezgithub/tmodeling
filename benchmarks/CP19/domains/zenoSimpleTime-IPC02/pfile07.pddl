@@ -48,5 +48,5 @@
 	(at person6 city2)
 	))
 
-(:metric minimize (total-time))
+
 )

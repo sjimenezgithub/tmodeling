@@ -111,6 +111,6 @@
 	(have_image Star15 spectrograph1)
 	(have_image Star16 image2)
 ))
-(:metric minimize (total-time))
+
 
 )

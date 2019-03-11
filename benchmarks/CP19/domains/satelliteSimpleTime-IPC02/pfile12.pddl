@@ -121,6 +121,6 @@
 	(have_image Star23 spectrograph4)
 	(have_image Phenomenon24 infrared0)
 ))
-(:metric minimize (total-time))
+
 
 )

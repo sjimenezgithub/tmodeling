@@ -97,5 +97,5 @@
 	(in crate3 depot1)
 	(in crate4 depot1)))
 
-(:metric minimize (total-time))
+
 )

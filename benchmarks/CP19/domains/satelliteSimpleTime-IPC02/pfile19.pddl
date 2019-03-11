@@ -206,6 +206,6 @@
 	(have_image Phenomenon24 spectrograph6)
 	(have_image Phenomenon24 image5)
 ))
-(:metric minimize (total-time))
+
 
 )

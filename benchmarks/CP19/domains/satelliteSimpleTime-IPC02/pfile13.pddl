@@ -128,6 +128,6 @@
 	(have_image Planet28 thermograph2)
 	(have_image Planet29 thermograph0)
 ))
-(:metric minimize (total-time))
+
 
 )
