@@ -1,0 +1,152 @@
+=== Limited Instantiation with N=2 (Rintanen 2017)
+For type <object>: 0 objects
+For type <thing>: 2 objects
+For type <location>: 5 objects
+For type <direction>: 2 objects
+For type <player>: 1 objects
+For type <stone>: 2 objects
+=== PRS List ===
+PRS 1:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 2:
+	precs: 	at_1
+	del_precs: 	
+	adds: 	
+PRS 3:
+	precs: 	at_2, move-dir_1
+	del_precs: 	at_2
+	adds: 	clear_1
+PRS 4:
+	precs: 	clear_1, move-dir_2
+	del_precs: 	clear_1
+	adds: 	at_2
+PRS 5:
+	precs: 	move-dir_3
+	del_precs: 	
+	adds: 	
+PRS 6:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 7:
+	precs: 	at_1
+	del_precs: 	
+	adds: 	
+PRS 8:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 9:
+	precs: 	at_1
+	del_precs: 	at-goal_1
+	adds: 	
+PRS 10:
+	precs: 	at_2, move-dir_1
+	del_precs: 	at_2
+	adds: 	clear_1
+PRS 11:
+	precs: 	at_2, move-dir_1, move-dir_2
+	del_precs: 	at_2
+	adds: 	at_2
+PRS 12:
+	precs: 	at_2, move-dir_1, move-dir_2
+	del_precs: 	
+	adds: 	
+PRS 13:
+	precs: 	clear_1, is-nongoal_1, move-dir_2
+	del_precs: 	clear_1
+	adds: 	at_2
+PRS 14:
+	precs: 	move-dir_3move-dir_3
+	del_precs: 	
+	adds: 	
+PRS 15:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 16:
+	precs: 	at_1
+	del_precs: 	
+	adds: 	
+PRS 17:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 18:
+	precs: 	at_1
+	del_precs: 	
+	adds: 	at-goal_1
+PRS 19:
+	precs: 	at_2, move-dir_1
+	del_precs: 	at_2
+	adds: 	clear_1
+PRS 20:
+	precs: 	at_2, move-dir_1, move-dir_2
+	del_precs: 	at_2
+	adds: 	at_2
+PRS 21:
+	precs: 	at_2, move-dir_1, move-dir_2
+	del_precs: 	
+	adds: 	
+PRS 22:
+	precs: 	clear_1, is-goal_1, move-dir_2
+	del_precs: 	clear_1
+	adds: 	at_2
+PRS 23:
+	precs: 	move-dir_3move-dir_3
+	del_precs: 	
+	adds: 	
+=== Transition rules ===
+TR 1:
+	null => at_1 -> at_1
+TR 2:
+	move-dir_1 => at_2 -> clear_1
+TR 3:
+	move-dir_2 => clear_1 -> at_2
+TR 4:
+	null => at_1 -> at_1
+TR 5:
+	null => at_1 -> at_1
+TR 6:
+	at_1 => at-goal_1 -> null
+TR 7:
+	move-dir_1 => at_2 -> clear_1
+TR 8:
+	move-dir_1, move-dir_2 => at_2 -> at_2
+TR 9:
+	is-nongoal_1, move-dir_2 => clear_1 -> at_2
+TR 10:
+	null => at_1 -> at_1
+TR 11:
+	null => at_1 -> at_1
+TR 12:
+	at_1 => null -> at-goal_1
+TR 13:
+	move-dir_1 => at_2 -> clear_1
+TR 14:
+	move-dir_1, move-dir_2 => at_2 -> at_2
+TR 15:
+	is-goal_1, move-dir_2 => clear_1 -> at_2
+=== Property spaces ===
+PS 1:
+	{clear_1, at_2}	%%%	move-dir_1 => at_2 -> clear_1 | move-dir_2 => clear_1 -> at_2 | move-dir_1 => at_2 -> clear_1 | move-dir_1, move-dir_2 => at_2 -> at_2 | is-nongoal_1, move-dir_2 => clear_1 -> at_2 | move-dir_1 => at_2 -> clear_1 | move-dir_1, move-dir_2 => at_2 -> at_2 | is-goal_1, move-dir_2 => clear_1 -> at_2	%%%	pos-01-07, pos-01-05, pos-01-03, pos-01-01, pos-09-05, pos-02-02, pos-08-02, pos-02-06, pos-08-06, pos-10-02, pos-10-04, pos-10-06, pos-05-03, pos-05-07, pos-06-04, pos-06-02, pos-12-06, pos-14-04, pos-07-05, pos-13-01, pos-08-04, pos-11-03, pos-14-02, pos-11-05, pos-03-01, pos-03-07, pos-04-04, pos-04-06	%%%	{clear_1} | {at_2}
+PS 2:
+	{at_1}	%%%	null => at_1 -> at_1 | null => at_1 -> at_1 | null => at_1 -> at_1 | null => at_1 -> at_1 | null => at_1 -> at_1	%%%	player-01, player-02, stone-01, stone-02, stone-03, stone-04	%%%	{at_1}
+PS 3:
+	{at-goal_1}	%%%	at_1 => at-goal_1 -> null | at_1 => null -> at-goal_1	%%%	player-01, player-02, stone-01, stone-02, stone-03, stone-04	%%%	
+=== Types ===
+Type 0: pos-01-01, pos-01-03, pos-01-05, pos-01-07, pos-02-02, pos-02-06, pos-03-01, pos-03-07, pos-04-04, pos-04-06, pos-05-03, pos-05-07, pos-06-02, pos-06-04, pos-07-05, pos-08-02, pos-08-04, pos-08-06, pos-09-05, pos-10-02, pos-10-04, pos-10-06, pos-11-03, pos-11-05, pos-12-06, pos-13-01, pos-14-02, pos-14-04
+Type 1: player-01, player-02, stone-01, stone-02, stone-03, stone-04
+Type 2: dir-east, dir-northeast, dir-northwest, dir-southeast, dir-southwest, dir-west, pos-02-04, pos-03-03, pos-03-05, pos-04-02, pos-05-01, pos-05-05, pos-06-06, pos-07-01, pos-07-03, pos-07-07, pos-09-01, pos-09-03, pos-09-07, pos-11-01, pos-11-07, pos-12-02, pos-12-04, pos-13-03, pos-13-05, pos-13-07, pos-14-06
+=== Invariants ===
+(:derived (invariant-1)
+	(forall(?x - location ?y1 - thing ?y2 - thing)
+		(not (and  (at ?y1 ?x)  (at ?y2 ?x) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-2)
+	(forall (?x - location ?y1 - thing)
+		(not (and (clear ?x) (at ?y1 ?x)))))
+(:derived (invariant-3)
+	(forall(?x - thing ?y1 - location ?y2 - location)
+		(not (and  (at ?x ?y1)  (at ?x ?y2) (not (= ?y1 ?y2)) ))))
