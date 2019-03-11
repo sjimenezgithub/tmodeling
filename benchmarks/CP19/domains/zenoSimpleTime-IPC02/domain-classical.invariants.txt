@@ -1,0 +1,185 @@
+=== Limited Instantiation with N=2 (Rintanen 2017)
+For type <object>: 0 objects
+For type <locatable>: 2 objects
+For type <city>: 3 objects
+For type <flevel>: 5 objects
+For type <aircraft>: 2 objects
+For type <person>: 2 objects
+=== PRS List ===
+PRS 1:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	in_1
+PRS 2:
+	precs: 	at_1
+	del_precs: 	
+	adds: 	in_2
+PRS 3:
+	precs: 	at_2at_2
+	del_precs: 	at_2
+	adds: 	
+PRS 4:
+	precs: 	in_1
+	del_precs: 	in_1
+	adds: 	at_1
+PRS 5:
+	precs: 	at_1, in_2
+	del_precs: 	in_2
+	adds: 	
+PRS 6:
+	precs: 	at_2
+	del_precs: 	
+	adds: 	at_2
+PRS 7:
+	precs: 	at_1, fuel-level_1
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 8:
+	precs: 	at_1, fuel-level_1
+	del_precs: 	fuel-level_1
+	adds: 	fuel-level_1
+PRS 9:
+	precs: 	at_1, fuel-level_1
+	del_precs: 	
+	adds: 	
+PRS 10:
+	precs: 	at_2
+	del_precs: 	at_2
+	adds: 	
+PRS 11:
+	precs: 	
+	del_precs: 	
+	adds: 	at_2
+PRS 12:
+	precs: 	fuel-level_2, next_2
+	del_precs: 	fuel-level_2
+	adds: 	
+PRS 13:
+	precs: 	next_1
+	del_precs: 	
+	adds: 	fuel-level_2
+PRS 14:
+	precs: 	at_1, fuel-level_1
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 15:
+	precs: 	at_1, fuel-level_1
+	del_precs: 	fuel-level_1
+	adds: 	fuel-level_1
+PRS 16:
+	precs: 	at_1, fuel-level_1
+	del_precs: 	
+	adds: 	
+PRS 17:
+	precs: 	at_2
+	del_precs: 	at_2
+	adds: 	
+PRS 18:
+	precs: 	
+	del_precs: 	
+	adds: 	at_2
+PRS 19:
+	precs: 	fuel-level_2, next_2
+	del_precs: 	fuel-level_2
+	adds: 	
+PRS 20:
+	precs: 	next_1, next_2
+	del_precs: 	
+	adds: 	
+PRS 21:
+	precs: 	next_1
+	del_precs: 	
+	adds: 	fuel-level_2
+PRS 22:
+	precs: 	at_1, fuel-level_1
+	del_precs: 	fuel-level_1
+	adds: 	fuel-level_1
+PRS 23:
+	precs: 	at_1, fuel-level_1
+	del_precs: 	
+	adds: 	
+PRS 24:
+	precs: 	at_2
+	del_precs: 	
+	adds: 	
+PRS 25:
+	precs: 	fuel-level_2, next_1
+	del_precs: 	fuel-level_2
+	adds: 	
+PRS 26:
+	precs: 	next_2
+	del_precs: 	
+	adds: 	fuel-level_2
+=== Transition rules ===
+TR 1:
+	null => at_1 -> in_1
+TR 2:
+	at_1 => null -> in_2
+TR 3:
+	at_2 => at_2 -> null
+TR 4:
+	null => in_1 -> at_1
+TR 5:
+	at_1 => in_2 -> null
+TR 6:
+	at_2 => null -> at_2
+TR 7:
+	fuel-level_1 => at_1 -> at_1
+TR 8:
+	at_1 => fuel-level_1 -> fuel-level_1
+TR 9:
+	null => at_2 -> null
+TR 10:
+	null => null -> at_2
+TR 11:
+	next_2 => fuel-level_2 -> null
+TR 12:
+	next_1 => null -> fuel-level_2
+TR 13:
+	fuel-level_1 => at_1 -> at_1
+TR 14:
+	at_1 => fuel-level_1 -> fuel-level_1
+TR 15:
+	null => at_2 -> null
+TR 16:
+	null => null -> at_2
+TR 17:
+	next_2 => fuel-level_2 -> null
+TR 18:
+	next_1 => null -> fuel-level_2
+TR 19:
+	at_1 => fuel-level_1 -> fuel-level_1
+TR 20:
+	next_1 => fuel-level_2 -> null
+TR 21:
+	next_2 => null -> fuel-level_2
+=== Property spaces ===
+PS 1:
+	{at_1, in_1}	%%%	null => at_1 -> in_1 | null => in_1 -> at_1 | fuel-level_1 => at_1 -> at_1 | fuel-level_1 => at_1 -> at_1	%%%	person2, person1, plane1	%%%	{at_1} | {in_1}
+PS 2:
+	{in_2}	%%%	at_1 => null -> in_2 | at_1 => in_2 -> null	%%%	person2, person1, plane1	%%%	
+PS 3:
+	{fuel-level_1}	%%%	at_1 => fuel-level_1 -> fuel-level_1 | at_1 => fuel-level_1 -> fuel-level_1 | at_1 => fuel-level_1 -> fuel-level_1	%%%	plane1	%%%	{fuel-level_1}
+PS 4:
+	{fuel-level_2}	%%%	next_2 => fuel-level_2 -> null | next_1 => null -> fuel-level_2 | next_2 => fuel-level_2 -> null | next_1 => null -> fuel-level_2 | next_1 => fuel-level_2 -> null | next_2 => null -> fuel-level_2	%%%	fl1	%%%	
+PS 5:
+	{at_2}	%%%	at_2 => at_2 -> null | at_2 => null -> at_2 | null => at_2 -> null | null => null -> at_2 | null => at_2 -> null | null => null -> at_2	%%%	city2, city0	%%%	
+=== Types ===
+Type 0: plane1
+Type 1: city0, city2
+Type 2: city1, fl0, fl2, fl3, fl4, fl5, fl6
+Type 3: person1, person2
+Type 4: fl1
+=== Invariants ===
+(:derived (invariant-1)
+	(forall(?x - locatable ?y1 - city ?y2 - city)
+		(not (and  (at ?x ?y1)  (at ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-2)
+	(forall(?x - person ?y1 - aircraft ?y2 - aircraft)
+		(not (and  (in ?x ?y1)  (in ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-3)
+	(forall (?x - person ?y1 - city ?y2 - aircraft)
+		(not (and (at ?x ?y1) (in ?x ?y2)))))
+(:derived (invariant-4)
+	(forall(?x - aircraft ?y1 - flevel ?y2 - flevel)
+		(not (and  (fuel-level ?x ?y1)  (fuel-level ?x ?y2) (not (= ?y1 ?y2)) ))))
