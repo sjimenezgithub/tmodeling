@@ -14,7 +14,7 @@
  
  
 
-  (:action turn_to
+  (:action turn-to
    :parameters (?s - satellite ?d_new - direction ?d_prev - direction)
    :precondition (and (pointing ?s ?d_prev)
                    (not (= ?d_new ?d_prev))
@@ -25,7 +25,7 @@
   )
 
  
-  (:action switch_on
+  (:action switch-on
    :parameters (?i - instrument ?s - satellite)
  
    :precondition (and (on_board ?i ?s) 
@@ -39,7 +39,7 @@
   )
 
  
-  (:action switch_off
+  (:action switch-off
    :parameters (?i - instrument ?s - satellite)
  
    :precondition (and (on_board ?i ?s)
@@ -61,7 +61,7 @@
   )
 
 
-  (:action take_image
+  (:action take-image
    :parameters (?s - satellite ?d - direction ?i - instrument ?m - mode)
    :precondition (and (calibrated ?i)
                       (on_board ?i ?s)

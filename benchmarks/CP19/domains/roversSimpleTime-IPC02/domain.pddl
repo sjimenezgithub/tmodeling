@@ -41,7 +41,7 @@
 		)
 )
 
-(:durative-action sample_soil
+(:durative-action sample-soil
 :parameters (?x - rover ?s - store ?p - waypoint)
 :duration (= ?duration 10)
 :condition (and (over all (at ?x ?p)) (at start (at ?x ?p)) (at start (at_soil_sample ?p)) (at start (equipped_for_soil_analysis ?x)) (at start (store_of ?s ?x)) (at start (empty ?s))
@@ -50,7 +50,7 @@
 		)
 )
 
-(:durative-action sample_rock
+(:durative-action sample-rock
 :parameters (?x - rover ?s - store ?p - waypoint)
 :duration (= ?duration 8)
 :condition (and (over all (at ?x ?p)) (at start (at ?x ?p)) (at start (at_rock_sample ?p)) (at start (equipped_for_rock_analysis ?x)) (at start (store_of ?s ?x)) (at start (empty ?s))
@@ -79,7 +79,7 @@
 
 
 
-(:durative-action take_image
+(:durative-action take-image
  :parameters (?r - rover ?p - waypoint ?o - objective ?i - camera ?m - mode)
  :duration (= ?duration 7)
  :condition (and (over all (calibrated ?i ?r))
@@ -94,7 +94,7 @@
 )
 
 
-(:durative-action communicate_soil_data
+(:durative-action communicate-soil-data
  :parameters (?r - rover ?l - lander ?p - waypoint ?x - waypoint ?y - waypoint)
  :duration (= ?duration 10)
  :condition (and (over all (at ?r ?x)) (over all (at_lander ?l ?y)) (at start (have_soil_analysis ?r ?p)) 
@@ -105,7 +105,7 @@
 	)
 )
 
-(:durative-action communicate_rock_data
+(:durative-action communicate-rock_data
  :parameters (?r - rover ?l - lander ?p - waypoint ?x - waypoint ?y - waypoint)
  :duration (= ?duration 10)
  :condition (and (over all (at ?r ?x)) (over all (at_lander ?l ?y)) (at start (have_rock_analysis ?r ?p)) 
@@ -116,7 +116,7 @@
 )
 
 
-(:durative-action communicate_image_data
+(:durative-action communicate-image-data
  :parameters (?r - rover ?l - lander ?o - objective ?m - mode ?x - waypoint ?y - waypoint)
  :duration (= ?duration 15)
  :condition (and (over all (at ?r ?x)) (over all (at_lander ?l ?y)) (at start (have_image ?r ?o ?m)) 

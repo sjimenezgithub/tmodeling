@@ -15,7 +15,7 @@
  
 
 
-  (:durative-action turn_to
+  (:durative-action turn-to
    :parameters (?s - satellite ?d_new - direction ?d_prev - direction)
    :duration (= ?duration 5)
    :condition (and (at start (pointing ?s ?d_prev))
@@ -27,7 +27,7 @@
   )
 
  
-  (:durative-action switch_on
+  (:durative-action switch-on
    :parameters (?i - instrument ?s - satellite)
    :duration (= ?duration 2)
    :condition (and (over all (on_board ?i ?s)) 
@@ -40,7 +40,7 @@
   )
 
  
-  (:durative-action switch_off
+  (:durative-action switch-off
    :parameters (?i - instrument ?s - satellite)
    :duration (= ?duration 1)
    :condition (and (over all (on_board ?i ?s))
@@ -64,7 +64,7 @@
   )
 
 
-  (:durative-action take_image
+  (:durative-action take-image
    :parameters (?s - satellite ?d - direction ?i - instrument ?m - mode)
    :duration (= ?duration 7)
    :condition (and (over all (calibrated ?i))

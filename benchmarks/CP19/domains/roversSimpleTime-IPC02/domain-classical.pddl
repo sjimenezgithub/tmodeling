@@ -40,7 +40,7 @@
 		)
 )
 
-(:action sample_soil
+(:action sample-soil
 :parameters (?x - rover ?s - store ?p - waypoint)
 :precondition (and (at ?x ?p) (at_soil_sample ?p) (equipped_for_soil_analysis ?x) (store_of ?s ?x) (empty ?s)
 		)
@@ -48,7 +48,7 @@
 		)
 )
 
-(:action sample_rock
+(:action sample-rock
 :parameters (?x - rover ?s - store ?p - waypoint)
 :precondition (and (at ?x ?p) (at_rock_sample ?p) (equipped_for_rock_analysis ?x) (store_of ?s ?x)(empty ?s)
 		)
@@ -74,7 +74,7 @@
 
 
 
-(:action take_image
+(:action take-image
  :parameters (?r - rover ?p - waypoint ?o - objective ?i - camera ?m - mode)
  :precondition (and (calibrated ?i ?r)
 			 (on_board ?i ?r)
@@ -88,7 +88,7 @@
 )
 
 
-(:action communicate_soil_data
+(:action communicate-soil-data
  :parameters (?r - rover ?l - lander ?p - waypoint ?x - waypoint ?y - waypoint)
  :precondition (and (at ?r ?x)(at_lander ?l ?y)(have_soil_analysis ?r ?p) 
                    (visible ?x ?y)(available ?r)(channel_free ?l)
@@ -98,7 +98,7 @@
 	)
 )
 
-(:action communicate_rock_data
+(:action communicate-rock-data
  :parameters (?r - rover ?l - lander ?p - waypoint ?x - waypoint ?y - waypoint)
  :precondition (and (at ?r ?x)(at_lander ?l ?y)(have_rock_analysis ?r ?p)
                    (visible ?x ?y)(available ?r)(channel_free ?l)
@@ -108,7 +108,7 @@
 )
 
 
-(:action communicate_image_data
+(:action communicate-image-data
  :parameters (?r - rover ?l - lander ?o - objective ?m - mode ?x - waypoint ?y - waypoint)
  :precondition (and (at ?r ?x)(at_lander ?l ?y)(have_image ?r ?o ?m)(visible ?x ?y)(available ?r)(channel_free ?l)
             )
