@@ -1,6 +1,0 @@
-;;;; init: (action) [duration]
-0.0000: (JUMP POS-3-4 POS-2-4 POS-1-4) [1.0000]
-1.0002: (JUMP POS-1-4 POS-1-3 POS-1-2) [1.0000]
-2.0004: (JUMP POS-1-2 POS-2-2 POS-3-2) [1.0000]
-3.0006: (JUMP POS-3-1 POS-3-2 POS-3-3) [1.0000]
-
