@@ -71,6 +71,4 @@
 	(at package7 s1)
 	))
 
-(:metric minimize (total-time))
-
 )

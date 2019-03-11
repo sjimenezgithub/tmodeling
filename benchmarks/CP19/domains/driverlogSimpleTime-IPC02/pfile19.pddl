@@ -457,6 +457,4 @@
 	(at package25 s12)
 	))
 
-(:metric minimize (total-time))
-
 )

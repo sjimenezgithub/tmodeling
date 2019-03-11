@@ -312,6 +312,4 @@
 	(at package10 s8)
 	))
 
-(:metric minimize (total-time))
-
 )
