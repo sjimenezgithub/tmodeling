@@ -1,0 +1,177 @@
+=== Limited Instantiation with N=2 (Rintanen 2017)
+For type <object>: 0 objects
+For type <place>: 3 objects
+For type <locatable>: 2 objects
+For type <depot>: 0 objects
+For type <distributor>: 0 objects
+For type <truck>: 2 objects
+For type <hoist>: 2 objects
+For type <surface>: 2 objects
+For type <pallet>: 0 objects
+For type <crate>: 2 objects
+=== PRS List ===
+PRS 1:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 2:
+	precs: 	at_1
+	del_precs: 	
+	adds: 	
+PRS 3:
+	precs: 	at_2
+	del_precs: 	at_2
+	adds: 	
+PRS 4:
+	precs: 	
+	del_precs: 	
+	adds: 	at_2
+PRS 5:
+	precs: 	at_1, available_1
+	del_precs: 	available_1
+	adds: 	lifting_1
+PRS 6:
+	precs: 	at_1, on_1, clear_1
+	del_precs: 	at_1, on_1, clear_1
+	adds: 	lifting_2
+PRS 7:
+	precs: 	on_2
+	del_precs: 	on_2
+	adds: 	clear_1
+PRS 8:
+	precs: 	at_2at_2
+	del_precs: 	at_2
+	adds: 	
+PRS 9:
+	precs: 	at_1, lifting_1
+	del_precs: 	lifting_1
+	adds: 	available_1
+PRS 10:
+	precs: 	lifting_2
+	del_precs: 	lifting_2
+	adds: 	at_1, on_1, clear_1
+PRS 11:
+	precs: 	at_1, clear_1
+	del_precs: 	clear_1
+	adds: 	on_2
+PRS 12:
+	precs: 	at_2at_2
+	del_precs: 	
+	adds: 	at_2
+PRS 13:
+	precs: 	at_1, lifting_1
+	del_precs: 	lifting_1
+	adds: 	available_1
+PRS 14:
+	precs: 	lifting_2
+	del_precs: 	lifting_2
+	adds: 	in_1
+PRS 15:
+	precs: 	at_1
+	del_precs: 	
+	adds: 	in_2
+PRS 16:
+	precs: 	at_2at_2
+	del_precs: 	
+	adds: 	
+PRS 17:
+	precs: 	at_1, available_1
+	del_precs: 	available_1
+	adds: 	lifting_1
+PRS 18:
+	precs: 	in_1
+	del_precs: 	in_1
+	adds: 	lifting_2
+PRS 19:
+	precs: 	at_1, in_2
+	del_precs: 	in_2
+	adds: 	
+PRS 20:
+	precs: 	at_2at_2
+	del_precs: 	
+	adds: 	
+=== Transition rules ===
+TR 1:
+	null => at_1 -> at_1
+TR 2:
+	null => at_2 -> null
+TR 3:
+	null => null -> at_2
+TR 4:
+	at_1 => available_1 -> lifting_1
+TR 5:
+	null => at_1, on_1, clear_1 -> lifting_2
+TR 6:
+	null => on_2 -> clear_1
+TR 7:
+	at_2 => at_2 -> null
+TR 8:
+	at_1 => lifting_1 -> available_1
+TR 9:
+	null => lifting_2 -> at_1, on_1, clear_1
+TR 10:
+	at_1 => clear_1 -> on_2
+TR 11:
+	at_2at_2 => null -> at_2
+TR 12:
+	at_1 => lifting_1 -> available_1
+TR 13:
+	null => lifting_2 -> in_1
+TR 14:
+	at_1 => null -> in_2
+TR 15:
+	at_1 => available_1 -> lifting_1
+TR 16:
+	null => in_1 -> lifting_2
+TR 17:
+	at_1 => in_2 -> null
+=== Property spaces ===
+PS 1:
+	{at_2}	%%%	null => at_2 -> null | null => null -> at_2 | at_2 => at_2 -> null | at_2at_2 => null -> at_2	%%%	distributor1, distributor0, depot0	%%%	
+PS 2:
+	{at_1, on_1, on_2, in_1, lifting_2, clear_1}	%%%	null => at_1 -> at_1 | null => at_1, on_1, clear_1 -> lifting_2 | null => on_2 -> clear_1 | null => lifting_2 -> at_1, on_1, clear_1 | at_1 => clear_1 -> on_2 | null => lifting_2 -> in_1 | null => in_1 -> lifting_2	%%%	truck1, truck0, hoist2, crate1, crate0, pallet1, pallet0, pallet2, hoist1, hoist0	%%%	{at_1} | {at_1, on_2} | {at_1, clear_1} | {at_1, on_1, clear_1} | {lifting_2} | {at_1, on_1, on_2}
+PS 3:
+	{in_2}	%%%	at_1 => null -> in_2 | at_1 => in_2 -> null	%%%	truck1, truck0, hoist2, crate1, crate0, pallet1, pallet0, pallet2, hoist1, hoist0	%%%	
+PS 4:
+	{lifting_1, available_1}	%%%	at_1 => available_1 -> lifting_1 | at_1 => lifting_1 -> available_1 | at_1 => lifting_1 -> available_1 | at_1 => available_1 -> lifting_1	%%%	hoist1, hoist0, hoist2	%%%	{available_1} | {lifting_1}
+=== Types ===
+Type 0: hoist0, hoist1, hoist2
+Type 1: truck0, truck1, pallet0, pallet1, pallet2, crate0, crate1
+Type 2: depot0, distributor0, distributor1
+=== Invariants ===
+(:derived (invariant-1)
+	(forall(?x - locatable ?y1 - place ?y2 - place)
+		(not (and  (at ?x ?y1)  (at ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-2)
+	(forall(?x - crate ?y1 - surface ?y2 - surface)
+		(not (and  (on ?x ?y1)  (on ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-3)
+	(forall(?x - surface ?y1 - crate ?y2 - crate)
+		(not (and  (on ?y1 ?x)  (on ?y2 ?x) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-4)
+	(forall(?x - crate ?y1 - truck ?y2 - truck)
+		(not (and  (in ?x ?y1)  (in ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-5)
+	(forall(?x - crate ?y1 - hoist ?y2 - hoist)
+		(not (and  (lifting ?y1 ?x)  (lifting ?y2 ?x) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-6)
+	(forall (?y1 - hoist ?x - crate ?y2 - crate)
+		(not (and (lifting ?y1 ?x) (on ?y2 ?x)))))
+(:derived (invariant-7)
+	(forall (?y1 - hoist ?x - crate ?y2 - place)
+		(not (and (lifting ?y1 ?x) (at ?x ?y2)))))
+(:derived (invariant-8)
+	(forall (?y1 - hoist ?x - crate ?y2 - surface)
+		(not (and (lifting ?y1 ?x) (on ?x ?y2)))))
+(:derived (invariant-9)
+	(forall (?x - crate ?y1 - hoist)
+		(not (and (clear ?x) (lifting ?y1 ?x)))))
+(:derived (invariant-10)
+	(forall (?x - surface ?y1 - crate)
+		(not (and (clear ?x) (on ?y1 ?x)))))
+(:derived (invariant-11)
+	(forall(?x - hoist ?y1 - crate ?y2 - crate)
+		(not (and  (lifting ?x ?y1)  (lifting ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-12)
+	(forall (?x - hoist ?y1 - crate)
+		(not (and (lifting ?x ?y1) (available ?x)))))
