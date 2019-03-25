@@ -98,38 +98,30 @@ Learning the classical action model has been addressed by different approaches~\
 \section{Background}
 \label{sec:background}
 
-This section formalizes the classical and temporal planning models we use in the paper, and the Constraint Satisfaction Problem as the general framework to formulate our learning task.
+This section formalizes the {\em classical} and {\em temporal} planning models we use in the paper as well as the {\em Constraint Satisfaction Problem}, the general framework we follow to formulate our learning task.
 
 \subsection{Classical Planning}
 \label{sec:classicalplanning}
 
-%Given $F$, a set of {\em fluents} (propositional variables), a literal $l$ is a valuation of a fluent $f\in F$; i.e. either $l=f$ or $l=\neg f$. A set of literals $L$ represents a partial assignment of values to fluents (without loss of generality, we assume that $L$ does not contain conflicting values). We use $\mathcal{L}(F)$ to denote the set of all literal sets on $F$; i.e. all possible $L$. A state $s$ is a full assignment of values to fluents, $|s|=|F|$.
+{\em States} are represented with a set $F$ of propositional variables. A state $s$ is a full assignment of values to fluents, $|s|=|F|$. Without loss of generality, we assume that $F$ does not contain conflicting values $f$ and $\neg f$.
 
-Let $F$ be a set of facts that represent propositional variables. Without loss of generality, we assume that $F$ does not contain conflicting values $f$ and $\neg f$. A classical planning problem is a tuple $\tup{F,I,G,A}$, where $I$ is the initial state, $G \subseteq F$ is a goal condition, and $A$ is the set of actions. We assume that actions are grounded from given action schemas or operators, as in PDDL (Planning Domain Definition Language~\cite{fox2003pddl2,Ghallab98,ghallab2004automated,hoffmann2005}). Each action $a \in A$ has a set of preconditions $\pre(a)$ and a set of effects; $\pre(a), \eff(a) \subseteq F$. In a classical model, $\pre(a)$ must hold before $a$ starts (this is why they are named \emph{pre}conditions), whereas $\eff(a)$ happen when $a$ ends. This way, $a$ is applicable in a state $s$ if $\pre(a) \subseteq s$. When $a$ is executed, a new state, the successor of $s$, is created that results of applying $\eff(a)$ on $s$. Typically, $\eff(a)$ is formed by positive and negative/delete effects.
-Fig.~\ref{fig:exampleactions}-top shows an example of two classical actions.
+A {\em classical planning problem} is a tuple $\tup{F,I,G,A}$, where $I$ is a total assignment of the state variables representing the initial state, $G \subseteq F$ is a set of goal conditions over the state variables, and $A$ is the set of actions for updating the state variables. We assume that actions are grounded from given action schemas or operators, as in PDDL (Planning Domain Definition Language~\cite{fox2003pddl2}).
 
-A classical plan is a set of pairs $\tup{(a_1,s_1),(a_2,s_2)\ldots (a_n,s_n)}$. Each $(a_i,s_i)$ pair contains an instantaneous action $a_i$ and the planning step $s_i$ when $a_i$ starts. Classical plans can be sequential plans, where only one action is executed at each planning step, or parallel plans, where several actions can be executed at the same planning step.
+Each {\em action} $a \in A$ has a set of preconditions $\pre(a)$ and a set of effects; $\pre(a), \eff(a) \subseteq F$ s.t., $\pre(a)$ must hold before $a$ starts (this is why they are named \emph{pre}conditions), whereas $\eff(a)$ happen when $a$ ends. This way, $a$ is applicable in a state $s$ if $\pre(a) \subseteq s$. When $a$ is executed, a new state, the successor of $s$, is created that results of applying $\eff(a)$ on $s$. Typically, $\eff(a)$ is formed by positive and negative/delete effects. Fig.~\ref{fig:exampleactions}-top shows an example of two classical actions.
 
-
+A {\em classical plan} is a set of pairs $\tup{(a_1,s_1),(a_2,s_2)\ldots (a_n,s_n)}$. Each $(a_i,s_i)$ pair contains an instantaneous action $a_i$ and the planning step $s_i$ when $a_i$ starts and ends. Classical plans can be sequential plans, where only one action is executed at each planning step, or parallel plans, where several actions can be executed at the same planning step. {\em A solution} to a classical planning problem is a plan such that its execution, starting from the initial state, reaches a final state where goals are satisfied. 
 
 \subsection{Temporal Planning}
 \label{sec:temporalplanning}
 
-A temporal planning problem is a tuple $\tup{F,I,G,A}$ where $F$, $I$ and $G$ are like in the classical planning problem, and $A$ represents the set of durative actions. Time is usually modeled in
-$\mathbb{R}^+$.
-There are several options that allow for a high expressiveness of durative actions. An action can have a fixed duration, a duration that ranges within an interval or a distribution of durations. Similarly, actions may have conditions/effects at different times, such as conditions that must hold some time before the action starts, effects that happen just when the action starts, in the middle of the action or some time after the action finishes~\cite{garrido2009constraint}.
-However, the planning community uses the slightly restrictive temporal definition of durative actions introduced in PDDL2.1~\cite{fox2003pddl2}, which defines a durative action as follows:
+A {\em temporal planning problem} is a tuple $\tup{F,I,G,A}$ where $F$, $I$ and $G$ are defined like in the classical planning problem, and $A$ represents the set of {\em durative actions}. There are several options that allow for a high expressiveness of durative actions. An action can have a fixed duration, a duration that ranges within an interval or a distribution of durations (time is usually modeled in $\mathbb{R}^+$). Similarly, actions may have conditions/effects at different times, such as conditions that must hold some time before the action starts, effects that happen just when the action starts, in the middle of the action or some time after the action finishes~\cite{garrido2009constraint}.
 
+The planning community uses the slightly restrictive temporal definition of durative actions introduced in PDDL2.1~\cite{fox2003pddl2}, which defines a durative action as follows:
 \begin{itemize}
-
 \item $\dur(a)$, a positive value for the action duration.
-
 \item $\cond_s(a), \cond_o(a), \cond_e(a) \subseteq F$. Unlike the \emph{pre}conditions of a classical action, now conditions must hold before $a$ ({\em at start}), during the entire execution of $a$ ({\em over all}) or when $a$ finishes ({\em at end}), respectively.
-
 \item $\eff_s(a)$ and $\eff_e(a)$. Now effects can happen {\em at start} or {\em at end} of $a$, respectively, and can still be positive or negative.
-
 \end{itemize}
-
 
 Despite durative actions are no longer instantaneous in PDDL2.1, {\em at start} and {\em at end} conditions are checked instantaneously. In the same way, {\em at start} and {\em at end} effects are instantaneously applied ---continuous effects are not considered. With this regard, the semantics of a durative action can be defined in terms of two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$.
 {\em Over all} conditions must hold at any state between $[\start(a)..\en(a)]$. Fig.~\ref{fig:exampleactions}-bottom shows an example of two durative actions.
@@ -137,7 +129,6 @@ Despite durative actions are no longer instantaneous in PDDL2.1, {\em at start} 
 PDDL2.2 is an extension of PDDL2.1 that includes the notion of Timed Initial Literal~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f$ (literal) that becomes true at a certain time $t$, independently of the actions in the plan. TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario ($\til(open,8)$ and $\til(not-open,20)$).
 
 A temporal plan is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and induces two discrete events, $t_i=\start(a_i)$ and $t_i+\dur(a_i)=\en(a_i)$. Though a sequential temporal plan is syntactically possible, it is semantically useless. Consequently, temporal plans are always given as parallel plans.
-From the trace of a temporal plan we can optionally extract a set of partial observations $\tup{\obs(f_1,t_1),\obs(f_2,t_2)\ldots \obs(f_n,t_n)}$, where each $\obs(f_i,t_i)$ denotes the value observed for fact $f_i \in F$ at time $t_i$. Note that we work with partial observability of the temporal plan, as we observe only a few facts at certain times. Obviously, the observability of all facts at all actions' starting/ending times would lead to a full observability of the plan state trajectory.
 
 \begin{figure}
 \caption{Operators that define the schema for two classical and PDDL2.1 durative actions, respectively, for a logistics scenario from the International Planning Competition (IPC, \texttt{http://www.icaps-conference.org/index.php/Main/Competitions}). This is part of the \emph{driverlog} domain, where \texttt{board-truck} boards a driver on an empty truck at a given location, with a fixed duration. In \texttt{drive-truck} a driver drives a truck between two locations, provided there is a link between them (the duration depends on the locations).}
@@ -169,13 +160,22 @@ From the trace of a temporal plan we can optionally extract a set of partial obs
                   (over all (driving ?d ?t)))
   :effect (and (at start (not (at ?t ?from))) (at end (at ?t ?to))))
 \end{verbatim}
-
 \end{tabular}
 \label{fig:exampleactions}
-
 \end{figure}
 
 
+\subsection{The observation model}
+\label{sec:omodel}
+From the trace of a temporal plan we can optionally extract a set of partial observations $\tup{\obs(f_1,t_1),\obs(f_2,t_2)\ldots \obs(f_n,t_n)}$, where each $\obs(f_i,t_i)$ denotes the value observed for fact $f_i \in F$ at time $t_i$. Note that we work with partial observability of the temporal plan, as we observe only a few facts at certain times. Obviously, the observability of all facts at all actions' starting/ending times would lead to a full observability of the plan state trajectory.
+
+Given a set of propositional variables $F$, a set of {\em durative actions} $A$ and an observation $\mathcal{O}=\tup{s_0^o,s_1^o \ldots , s_m^o}$ of the execution of a temporal plan within these two sets given planning frame, then $P_\mathcal{O}$ is the temporal planning problem that is built as follows $P_\mathcal{O}=\tup{F,A,s_0^o,s_m^o}$. 
+
+\begin{definition}[Explanation]
+We say that a plan $\pi$ {\em explains} $\mathcal{O}$ iff $\pi$ is a solution for $P_\mathcal{O}$ that is {\em consistent} with the state trajectory constraints imposed by the sequence of partial states $\mathcal{O}$. 
+\end{definition}
+
+The {\em observation} $\mathcal{O}$ is then a sequence of ordered {\em landmarks} for the $P_\mathcal{O}$ classical planning problem~\cite{hoffmann2004ordered}, because all the literals in the observation must be achieved by any plan that solves $P_\mathcal{O}$ and in the same order as are defined in the observation $\mathcal{O}$.
 
 
 \subsection{Constraint Satisfaction Problem}
