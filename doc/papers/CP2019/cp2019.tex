@@ -37,7 +37,7 @@
 
 \begin{document}
 
-\title{On the Application of Constraint Programming for One-Shot Learning Temporal Planning Models\thanks{This work is supported by the Spanish...}}
+\title{One-Shot Learning of Temporal Action Models with Constraint Programming}
 
 
 \titlerunning{CP to Learn Temporal Planning Models}
@@ -71,39 +71,28 @@ Paper: 15 pages
 Application track - scheduling, rostering and planning;
 Incluso en Testing and Verification como segunda opción
 
-\keywords{First keyword  \and Second keyword \and Another keyword.}
+\keywords{Learning action models \and Temporal planning \and Constraint programming.}
 \end{abstract}
 
 
 \section{Introduction}
 \label{sec:introduction}
 
-{\em Automated planning} is the model-based approach for the task of selecting actions, described in terms of preconditions and effects, that achieve a given set of goals. {\em Classical planning} is the vanilla model for automated planning that assumes fully observable states under a deterministic world, instantaneous actions, and goals that are exclusively referred to the last state reached by a plan~\cite{geffner2013concise,ghallab2004automated}. Beyond classical planning, there is a bunch of more expressive planning models that relax the previous assumptions to compute more detailed solutions than classical plans~\cite{ghallab2004automated}. {\em Temporal planning} is one of these expressive models, as it relaxes the instantaneous assumption. Now, actions have different duration and groups of conditions/effects that must hold/happen at different times, which means actions can be executed in several parallel and overlapping ways~\cite{cushing2007temporal,fox2003pddl2}. Consequently, valid plans need to indicate the precise time-stamp when actions start and end.
+{\em Automated planning} is the model-based approach for the task of selecting actions that achieve a given set of goals starting from a given initial state. {\em Classical planning} is the vanilla model for automated planning and it assumes: fully observable states under a deterministic world, instantaneous actions, and goals that are exclusively referred to the last state reached by a plan~\cite{geffner2013concise,ghallab2004automated}. Beyond classical planning, there is a bunch of more expressive planning models that relax the previous assumptions to compute more detailed solutions than classical plans~\cite{ghallab2004automated}.
 
-Despite the performance and potential of state-of-the-art planners, its applicability to real-world tasks is somewhat limited because of the complexity of specifying correct and complete planning models. The more expressive the planning model is, the more evident becomes this knowledge acquisition bottleneck~\cite{kambhampati2007model}, which jeopardizes the usability of AI planning technology. This has led to a growing interest in model recognition and learning, a kind of inverse-planning-based approach. The objective here is to identify the action model that best fits, i.e. that most likely explains, a set of observations (typically defined as some sequence of state changes, world transitions, expert demonstrations or plan traces/logs) on an input plan~\cite{aineto2018icaps,aineto2019icaps,bonet2009icaps,cresswell2013,geffner2013concise,ramirez2012,segovia2016ijcai}. The main inconvenient here is that learning usually requires large datasets of observations and plans.
+{\em Temporal planning} is one of these more expressive planning models, as it relaxes the assumption of {\em instantaneous actions}~\cite{fox2003pddl2}. Temporal actions have durations and their corresponding conditions/effects that must hold/happen at different times, which means that temporal actions can be executed in parallel and overlapping in several ways~\cite{cushing2007temporal}. Consequently, valid solution plans for temporal planning problems indicate the precise time-stamp when an action starts and ends~\cite{howey2004val}.
 
-Model learning from observation of past behaviour provides indirect, but very valuable information to hypothesize the action models, thus helping future planning decisions and recommendations. This is specially interesting for proactive assistants when recognizing activities of (human or software) agents to assist them in their daily activities and, as the last frontier, to predict and anticipate their needs or actions.
-In particular, learning an action model means to identify which are the action's conditions+effects subject to a set of partial observations, whereas learning a temporal action model extends this to identify how these conditions+effects are temporally distributed within the action execution and to estimate its duration.
-As a motivating example, let us assume a logistics plan trace. Loosely speaking, learning the temporal planning model will allow us: i) to better understand the insights of the logistics scenario in terms of what is possible (or not) and why, because the model is consistent with the observed data; ii) to suggest changes that can improve the model originally created by a human, e.g. re-distributing the action's conditions, provided they still explain the observations; and iii) to automatically elaborate similar models for similar scenarios, such as public transit for commuters, tourists or people in general in metropolitan areas (\emph{a.k.a.} smart urban mobility).
-%Learning models from military operations can be very valuable for emergency management, transportation models can be applied to traffic management decision making scenarios, etc.
+Despite the performance and potential of state-of-the-art planners, its applicability to real-world tasks is still somewhat limited because of the complexity of specifying correct and complete planning models~\cite{kambhampati2007model}. The more expressive the planning model is, the more evident becomes this knowledge acquisition bottleneck, which jeopardizes the usability of AI planning technology. This has led to a growing interest in the automated planning community for the learning of action models~\cite{jimenez2012review}. The objective of this learning task is to compute action models (i.e. identifying the action's conditions and effects) that are {\em consistent} with a set of observations (defined as some sequence of state changes, world transitions, expert demonstrations or plan traces/logs). Model learning from observation of past behaviour provides indirect, but very valuable information to hypothesize the action models, thus helping future planning decisions and recommendations. This is specially interesting for proactive assistants when recognizing activities of (human or software) agents to assist them in their daily activities and, as the last frontier, to predict and anticipate their needs or actions.
 
+Machine Learning approaches for the learning of planning action models typically follows an inductive learning approach. The main inconvenient of this approach is that usually requires large datasets of observations e.g., thousands of plan observations to compute a statistically significant model by minimizing some error metric over the observations~\cite{yang2007learning,MouraoZPS12,zhuo2013action,kuvcera2018louga}. Defining model learning as an optimization task over a set of observations does not guarantee completeness (the model may not explain all the observations) nor correctness (the states induced by the execution of the plan generated with the model may contain contradictory information). This paper analyses the application of {\em Constraint Programming} for the {\em one-shot learning} of temporal action models that is, the extreme case of learning planning action models from a single observation sample and proposes a simple but effective CSP formulation to learn temporal planning models regarding the partial observations of the execution of an input temporal plan. 
 
-Learning the classical action model has been addressed by several approaches~\cite{aineto2018icaps,bonet2009icaps,cresswell2013,ramirez2012} but, to our knowledge, none learns the temporal features. The learning task strongly resembles the task of finding a model that is consistent with all the observations. In other words, the learned model must satisfy all the constraints imposed by the observations. Unlike other approaches that need to learn from many plans, we learn the temporal model only from one plan (one-shot learning), which reduces both the size of the required datasets and the computation time to the minimum. In consequence, in this paper we face the learning task by means of constraint programming and propose a simple but effective CSP formulation to learn temporal planning models regarding the partial observations of the execution of a single temporal plan. Our work assumes that, despite the aimed temporal action model is unknown, the classical preconditions+effects are already known and that such observations are noiseless, meaning that if a value is observed, then the observation is correct.
+While learning an action model for classical planning means to identify which are the action's conditions and effects that are consistent with a set of partial observations, the learning a temporal action model extends this to (1), identify how these conditions and effects are temporally distributed within the action execution and (2), estimate the actions duration. As a motivating example, let us assume a logistics plan trace. Loosely speaking, learning the temporal planning model will allow us: i) to better understand the insights of the logistics scenario in terms of what is possible (or not) and why, because the model is consistent with the observed data; ii) to suggest changes that can improve the model originally created by a human, e.g. re-distributing the action's conditions, provided they still explain the observations; and iii) to automatically elaborate similar models for similar scenarios, such as public transit for commuters, tourists or people in general in metropolitan areas (\emph{a.k.a.} smart urban mobility). 
 
-
-
-ALGO DE VALIDACION DE PLANES??
-
-IDEAS A COMENTAR (E INCLUIR POSIBLEMENTE EN EL TITULO):
-
--one shot con mas detalle??
-
--aprendemos un modelo de acciones concurrentes, con acciones que se solapan y que podemos tener varios agentes en paralelo.
-
-contributions aqui o en conclusiones??
+Learning the classical action model has been addressed by different approaches~\cite{arora2018review} but, to our knowledge, none learns the temporal features. This means that observations may refer to the executions of concurrent actions which makes our approach suitable for learning in multi-agent environments. Further, the paper evidences that the learning of action models strongly resembles the task of synthesizing and validating a plan that is consistent with the input observations. Our work assumes that input observations are noiseless, meaning that if a value is observed, then the observation is correct. Further, despite the aimed temporal action model is unknown, a set of possible action models (defined as a partially specified action model) is already known and given as input.
 
 
-The paper is organized as follows...
+%contributions aqui o en conclusiones??
+%The paper is organized as follows...
 
 
 \section{Background}
