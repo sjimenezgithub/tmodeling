@@ -32,6 +32,8 @@
 \newcommand{\reqe}{\mathsf{req\_{end}}}   % req_end
 \newcommand{\ini}{\mathsf{init}}   % init
 \newcommand{\goal}{\mathsf{goal}}  % goal
+\newcommand{\add}{\mathsf{add}}
+\newcommand{\del}{\mathsf{del}}
 
 
 
@@ -98,18 +100,18 @@ The learning of classical action models has been addressed by different approach
 \section{Background}
 \label{sec:background}
 
-This section formalizes the {\em classical} and {\em temporal} planning models we use in the paper as well as the {\em Constraint Satisfaction Problem}, the general framework we follow to formulate our learning task.
+This section formalizes the planning models we use in the paper as well as the {\em Constraint Satisfaction Problem}, the general framework we follow to formulate our learning task.
 
 \subsection{Classical Planning}
 \label{sec:classicalplanning}
 
-{\em States} are represented with a set $F$ of propositional variables. A state $s$ is a full assignment of values to fluents, $|s|=|F|$. Without loss of generality, we assume that $F$ does not contain conflicting values $f$ and $\neg f$.
+{\em States} are represented with a set $F$ of propositional variables. A state $s$ is a full assignment of values to fluents, $|s|=|F|$ so the size of the state space is $2^{|F|}$.
 
 A {\em classical planning problem} is a tuple $\tup{F,I,G,A}$, where $I$ is a total assignment of the state variables representing the initial state, $G \subseteq F$ is a set of goal conditions over the state variables, and $A$ is the set of actions for updating the state variables. We assume that actions are grounded from given action schemas or operators, as in PDDL (Planning Domain Definition Language~\cite{fox2003pddl2}).
 
-Each {\em action} $a \in A$ has a set of preconditions $\pre(a)$ and a set of effects; $\pre(a), \eff(a) \subseteq F$ s.t., $\pre(a)$ must hold before $a$ starts (this is why they are named \emph{pre}conditions), whereas $\eff(a)$ happen when $a$ ends. This way, $a$ is applicable in a state $s$ if $\pre(a) \subseteq s$. When $a$ is executed, a new state, the successor of $s$, is created that results of applying $\eff(a)$ on $s$. Typically, $\eff(a)$ is formed by positive and negative/delete effects. Fig.~\ref{fig:exampleactions1}-top shows an example of two classical actions, for a {\em logistics} scenario, taken the \emph{driverlog} domain of the International Planning Competition\footnote{IPC, \texttt{http://www.icaps-conference.org/index.php/Main/Competitions}}. Action \texttt{board-truck} boards a driver on an empty truck at a given location, with a fixed duration. In \texttt{drive-truck} a driver drives a truck between two locations, provided there is a link between them (the duration depends on the locations)
+Each {\em action} $a \in A$ has a set of preconditions $\pre(a)$ and a set of effects; $\pre(a), \eff(a) \subseteq F$ s.t., $\pre(a)$ must hold before $a$ starts (this is why they are named \emph{pre}conditions), whereas $\eff(a)$ happen when $a$ ends. This way, $a$ is applicable in a state $s$ if $\pre(a) \subseteq s$. When $a$ is executed, a new state, the successor of $s$, is created that results of applying $\eff(a)$ on $s$. Typically, $\eff(a)$ is formed by positive and negative/delete effects. Fig.~\ref{fig:exampleactions1} shows an example of two classical actions, for a {\em logistics} scenario, taken the \emph{driverlog} domain of the International Planning Competition\footnote{IPC, \texttt{http://www.icaps-conference.org/index.php/Main/Competitions}}. Action \texttt{board-truck} boards a driver on an empty truck at a given location, with a fixed duration. In \texttt{drive-truck} a driver drives a truck between two locations, provided there is a link between them (the duration depends on the locations)
 
-A {\em classical plan} is a set of pairs $\tup{(a_1,s_1),(a_2,s_2)\ldots (a_n,s_n)}$. Each $(a_i,s_i)$ pair contains an instantaneous action $a_i$ and the planning step $s_i$ when $a_i$ starts and ends. Classical plans can be sequential plans, where only one action is executed at each planning step, or parallel plans, where several actions can be executed at the same planning step. {\em A solution} to a classical planning problem is a plan such that its execution, starting from the initial state, reaches a final state where goals are satisfied.
+In this work we define a {\em plan} for a classical planning problem $P$ as an action sequence $\pi=\tup{a_1, \ldots, a_n}$ that induces the {\em state trajectory} $\tup{s_0, s_1, \ldots, s_n}$ such that $s_0=I$ and $a_i$ ({\small $1\leq i\leq n$}) is applicable in $s_{i-1}$ and generates the successor state $s_i=\theta(s_{i-1},a_i)$. The {\em plan length} is denoted with $|\pi|=n$. A plan $\pi$ {\em solves} $P$ iff $G\subseteq s_n$; i.e.~if the goal condition is satisfied in the last state resulting from the application of the plan $\pi$ in the initial state $I$.
 
 
 \begin{figure}
@@ -133,9 +135,9 @@ A {\em classical plan} is a set of pairs $\tup{(a_1,s_1),(a_2,s_2)\ldots (a_n,s_
 \subsection{Temporal Planning}
 \label{sec:temporalplanning}
 
-A {\em temporal planning problem} is a tuple $\tup{F,I,G,A}$ where $F$, $I$ and $G$ are defined like in the classical planning problem, and $A$ represents the set of {\em durative actions}. There are several options that allow for a high expressiveness of durative actions. An action can have a fixed duration, a duration that ranges within an interval or a distribution of durations (in this work we model time in $\mathbb{Z}^+$). Similarly, actions may have conditions/effects at different times, such as conditions that must hold some time before the action starts, effects that happen just when the action starts, in the middle of the action or some time after the action finishes~\cite{garrido2009constraint}.
+A {\em temporal planning problem} is a tuple $\tup{F,I,G,A}$ where $F$, $I$ and $G$ are defined like in the classical planning problem, and $A$ represents the set of {\em durative actions}. There are several options that allow for a high expressiveness of durative actions. An action can have a fixed duration, a duration that ranges within an interval or a distribution of durations (in this work we model time in $\mathbb{Z}^+$). Actions may have conditions/effects at different times, such as conditions that must hold some time before the action starts, effects that happen just when the action starts, in the middle of the action or some time after the action finishes~\cite{garrido2009constraint}.
 
-The planning community uses the slightly restrictive temporal definition of durative actions introduced in PDDL2.1~\cite{fox2003pddl2}, which defines a durative action as follows:
+A popular model for temporal planning is the slightly restrictive temporal definition of durative actions introduced in PDDL2.1~\cite{fox2003pddl2}, which defines a durative action as follows:
 \begin{itemize}
 \item $\dur(a)$, a positive value for the action duration.
 \item $\cond_s(a), \cond_o(a), \cond_e(a) \subseteq F$. Unlike the \emph{pre}conditions of a classical action, now conditions must hold before $a$ ({\em at start}), during the entire execution of $a$ ({\em over all}) or when $a$ finishes ({\em at end}), respectively.
@@ -143,11 +145,26 @@ The planning community uses the slightly restrictive temporal definition of dura
 \end{itemize}
 
 Despite durative actions are no longer instantaneous in PDDL2.1, {\em at start} and {\em at end} conditions are checked instantaneously. In the same way, {\em at start} and {\em at end} effects are instantaneously applied ---continuous effects are not considered. With this regard, the semantics of a durative action can be defined in terms of two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$.
-{\em Over all} conditions must hold at any state between $[\start(a)..\en(a)]$. Fig.~\ref{fig:exampleactions2}-bottom shows an example of two durative actions.
+{\em Over all} conditions must hold at any state between $[\start(a)..\en(a)]$. Fig.~\ref{fig:exampleactions2} shows an example of two durative actions.
 
-PDDL2.2 is an extension of PDDL2.1 that includes the notion of Timed Initial Literal~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f$ (literal) that becomes true at a certain time $t$, independently of the actions in the plan. TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario ($\til(open,8)$ and $\til(not-open,20)$).
+PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f\in F$ that becomes true at a certain time $t$, independently of the actions in the plan. TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario ($\til(open,8)$ and $\til(\neg open,20)$).
 
-A temporal plan is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and induces two discrete events, $t_i=\start(a_i)$ and $t_i+\dur(a_i)=\en(a_i)$. Though a sequential temporal plan is syntactically possible, it is semantically useless. Consequently, temporal plans are always given as parallel plans.
+A {\em temporal plan} is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and induces two discrete events, $t_i=\start(a_i)$ and $t_i+\dur(a_i)=\en(a_i)$. Though a sequential temporal plan is syntactically possible, it is semantically useless. Consequently, temporal plans are always given as parallel plans.
+
+The semantics of temporal actions can be defined in terms of two discrete \textit{events} $\mathsf{start}_a$ and $\mathsf{end}_a$, each of which is naturally expressed as a classical action~\cite{jimenez2015temporal}:
+
+\vspace*{5pt}
+\begin{tabular}{ll}
+$\pre(\mathsf{start}_a) = \pre_s(a)$, & $\pre(\mathsf{end}_a) = \pre_e(a)$,\\[2pt]
+$\add(\mathsf{start}_a) = \add_s(a)$, & $\add(\mathsf{end}_a) = \add_e(a)$,\\[2pt]
+$\del(\mathsf{start}_a) = \del_s(a)$, & $\del(\mathsf{end}_a) = \del_e(a)$.
+\end{tabular}
+\vspace*{5pt}
+
+Starting temporal action $a$ in state $s$ is equivalent to applying the classical action $\mathsf{start}_a$ in $s$, first verifying that $\mathsf{pre}(\mathsf{start}_a)$ holds in $s$. Ending $a$ in state $s'$ is equivalent to applying $\mathsf{end}_a$ in $s'$, first verifying that $\pre(\mathsf{end}_a)$ holds in $s'$. The duration $d(a)$ and precondition over all $\pre_o(a)$ impose restrictions on this process: the end of action $a$ has to occur exactly $d(a)$ time units after action $a$ starts and $\pre_o(a)$ has to hold in all states between the start and the end of the action. 
+
+A temporal plan $\pi=\{(a_1,t_1),\ldots,(a_k,t_k)\}$ solves $P$ if and only if the induced concurrent plan $\pi'=\langle\mathcal{A}_1,\ldots,\mathcal{A}_m\rangle$ solves the associated classical planning problem $P'$ and, for each $(a,t)\in\pi$ the overall preconditions hold in the states $s_i,\ldots,s_{j-1}$ of the state sequence induced by $\pi'$, i.e.~in all states between actions $\mathcal{A}_i$ and $\mathcal{A}_j$.
+
 
 \begin{figure}
 \begin{tabular}{p{\textwidth}}
@@ -204,12 +221,20 @@ In this work we define a {\em Constraint Satisfaction Problem} as the triple $\t
 An evaluation of values to variables is {\em consistent} if it does not violate any of the constraints in $C$. Such an evaluation is a {\em solution} for a given CSP if it includes values for all the variables while keeping the consistency.
 
 
-\section{Learning Temporal Models. A Simple Task?}
-%\subsection{Preliminary Notes on Learning Temporal Models}
-\label{sec:preliminarynotes}
+\section{Learning Temporal Models}
+\label{sec:learning}
+We define the {\em one-shot} learning of temporal action models as a tuple $\Lambda=\tup{\mathcal{M},{\mathcal O},\Phi}$, where:
 
-%A priori, learning a temporal action model does not seem to differ a lot from learning a classical action model.
+\begin{itemize}
+\item $\mathcal{M}$ is the {\em initial empty model} that contains only the header of each action model to be learned.
+\item $\mathcal{O}$ is a single learning example or plan observation; i.e. a sequence of (partially) observable states representing the evidence of the execution of an observed agent.
+\end{itemize}
 
+A {\em solution} to a learning task $\Lambda=\tup{\mathcal{M},{\mathcal O},\Phi}$ is a model $\mathcal{M}'$ s.t. there exists a plan computable with $\mathcal{M}'$ that is consistent with the headers of $\mathcal{M}$ and the observed states of $\mathcal{O}$.
+
+
+
+\subsection{Learning from partially specified action models.A Simple Task?}
 Once we have learned the preconditions+effects of a classical action, learning a temporal action model may seem, a priori, a straightforward task as it \emph{just} implies to distribute the conditions+effects in time and estimate durations. However, this is untrue.
 
 \begin{figure}
