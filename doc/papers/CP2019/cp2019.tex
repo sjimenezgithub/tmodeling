@@ -196,31 +196,6 @@ From the trace of a temporal plan we can optionally extract a set of partial obs
 
 Our observation model considers also {\em observed actions} as extra fluents that indicate the action applied in a given state. Further, this observation model can also distinguish between {\em observable state variables}, whose value may be read from sensors, and {\em hidden} (or {\em latent}) {\em state variables}, that cannot be observed. Given a subset of fluents $\Gamma\subseteq F$ we say that the observation of the execution of a plan $\pi$ on a planning problem $P$ is a {\em $\Gamma$-observation} iff it only contains observations of fluents in $\Gamma$.
 
-PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f\in F$ that becomes true at a certain time $t$, independently of the actions in the plan. TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario ($\til(open,8)$ and $\til(\neg open,20)$).
-
-A {\em temporal plan} is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and induces two discrete events, $t_i=\start(a_i)$ and $t_i+\dur(a_i)=\en(a_i)$. Though a sequential temporal plan is syntactically possible, it is semantically useless. Consequently, temporal plans are always given as parallel plans.
-
-The semantics of temporal actions can be defined in terms of two discrete \textit{events} $\mathsf{start}_a$ and $\mathsf{end}_a$, each of which is naturally expressed as a classical action~\cite{jimenez2015temporal}:
-
-\vspace*{5pt}
-\begin{tabular}{ll}
-$\pre(\mathsf{start}_a) = \pre_s(a)$, & $\pre(\mathsf{end}_a) = \pre_e(a)$,\\[2pt]
-$\add(\mathsf{start}_a) = \add_s(a)$, & $\add(\mathsf{end}_a) = \add_e(a)$,\\[2pt]
-$\del(\mathsf{start}_a) = \del_s(a)$, & $\del(\mathsf{end}_a) = \del_e(a)$.
-\end{tabular}
-\vspace*{5pt}
-
-Starting temporal action $a$ in state $s$ is equivalent to applying the classical action $\mathsf{start}_a$ in $s$, first verifying that $\mathsf{pre}(\mathsf{start}_a)$ holds in $s$. Ending $a$ in state $s'$ is equivalent to applying $\mathsf{end}_a$ in $s'$, first verifying that $\pre(\mathsf{end}_a)$ holds in $s'$. The duration $d(a)$ and precondition over all $\pre_o(a)$ impose restrictions on this process: the end of action $a$ has to occur exactly $d(a)$ time units after action $a$ starts and $\pre_o(a)$ has to hold in all states between the start and the end of the action.
-
-A temporal plan $\pi=\{(a_1,t_1),\ldots,(a_k,t_k)\}$ solves $P$ if and only if the induced concurrent plan $\pi'=\langle\mathcal{A}_1,\ldots,\mathcal{A}_m\rangle$ solves the associated classical planning problem $P'$ and, for each $(a,t)\in\pi$ the overall preconditions hold in the states $s_i,\ldots,s_{j-1}$ of the state sequence induced by $\pi'$, i.e.~in all states between actions $\mathcal{A}_i$ and $\mathcal{A}_j$. [PERO AQUI EN NINGUN MOMENTO TRABAJAMOS CON SECUENCIAS DE ESTADOS]
-
-
-
-\subsection{The observation model}
-\label{sec:omodel}
-
-From the trace of a temporal plan we can optionally extract a set of partial observations $\tup{\obs(f_1,t_1),\obs(f_2,t_2)\ldots \obs(f_n,t_n)}$, where each $\obs(f_i,t_i)$ denotes the value observed for fact $f_i \in F$ at time $t_i$. Note that we work with partial observability of the temporal plan, as we observe only a few facts at certain times. Obviously, the observability of all facts at all actions' starting/ending times would lead to a full observability of the plan state trajectory.
-
 Given a set of propositional variables $F$, a set of {\em durative actions} $A$ and an a sequence of observations $\mathcal{O}=\tup{o_0^o,o_1^o \ldots , o_m^o}$ such that each $o_i^o$ is a set of observed fluents $f$ at a given time-stamp $i$, i.e., $\obs(f,t_i)$. Let us define, $P_\mathcal{O}$ as the temporal planning problem that is built as follows $P_\mathcal{O}=\tup{F,A,o_0^o,o_m^o}$. 
 \begin{definition}[Explanation]
 We say that a plan $\pi$ {\em explains} $\mathcal{O}$ iff $\pi$ is a solution for $P_\mathcal{O}$ that is {\em consistent} with the state trajectory constraints imposed by the sequence of partial states $\mathcal{O}$.
