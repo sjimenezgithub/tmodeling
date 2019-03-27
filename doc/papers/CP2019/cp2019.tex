@@ -111,15 +111,9 @@ This section formalizes the planning models we use in the paper.
 
 A {\em classical planning problem} is a tuple $\tup{F,I,G,A}$, where $I$ is a total assignment of the state variables representing the initial state, $G \subseteq F$ is a set of goal conditions over the state variables, and $A$ is the set of actions for updating the state variables. We assume that actions are grounded from given action schemas or operators, as in PDDL (Planning Domain Definition Language~\cite{fox2003pddl2}).
 
-<<<<<<< HEAD
 Each {\em action} $a \in A$ has a set of preconditions $\pre(a)$ and a set of effects; $\pre(a), \eff(a) \subseteq F$ s.t., $\pre(a)$ must hold before $a$ starts (this is why they are named \emph{pre}conditions), whereas $\eff(a)$ happen when $a$ ends. This way, $a$ is applicable in a state $s$ if $\pre(a) \subseteq s$. When $a$ is executed, a new state, the successor of $s$, is created that results of applying $\eff(a)$ on $s$. Typically, $\eff(a)$ is formed by {\em positive} and {\em negative/delete} effects. Fig.~\ref{fig:exampleactions1} shows an example of two classical actions, for a {\em logistics} scenario, taken the \emph{driverlog} domain of the International Planning Competition\footnote{IPC, \texttt{http://www.icaps-conference.org/index.php/Main/Competitions}}. Action \texttt{board-truck} boards a driver on an empty truck at a given location, with a fixed duration. In \texttt{drive-truck} a driver drives a truck between two locations, provided there is a link between them (the duration depends on the locations)
 
 We define a {\em plan} for a classical planning problem $P$ as an action sequence $\pi=\tup{a_1, \ldots, a_n}$ that induces the {\em state trajectory} $\tup{s_0, s_1, \ldots, s_n}$ such that $s_0=I$ and $a_i$ ({\small $1\leq i\leq n$}) is applicable in $s_{i-1}$ and generates the successor state $s_i=\theta(s_{i-1},a_i)$. We say that a plan $\pi$ {\em solves} $P$ iff $G\subseteq s_n$; i.e.~if the goal condition is satisfied in the last state resulting from the application of the plan $\pi$ in the initial state $I$.
-=======
-Each {\em action} $a \in A$ has a set of preconditions $\pre(a)$ and a set of effects; $\pre(a), \eff(a) \subseteq F$ s.t., $\pre(a)$ must hold before $a$ starts (this is why they are named \emph{pre}conditions), whereas $\eff(a)$ happen when $a$ ends. This way, $a$ is applicable in a state $s$ if $\pre(a) \subseteq s$. When $a$ is executed, a new state, the successor of $s$, is created that results of applying $\eff(a)$ on $s$. Typically, $\eff(a)$ is formed by positive and negative/delete effects. Fig.~\ref{fig:exampleactions1} shows an example of two classical actions, for a {\em logistics} scenario, from the \emph{driverlog} domain of the International Planning Competition\footnote{IPC, \texttt{http://www.icaps-conference.org/index.php/Main/Competitions}}. Action \texttt{board-truck} boards a driver on an empty truck at a given location, with a fixed duration. In \texttt{drive-truck} a driver drives a truck between two locations, provided there is a link between them (the duration depends on the locations)
-
-In this work we define a {\em plan} for a classical planning problem $P$ as an action sequence $\pi=\tup{a_1, \ldots, a_n}$ that induces the {\em state trajectory} $\tup{s_0, s_1, \ldots, s_n}$ such that $s_0=I$ and $a_i$ ({\small $1\leq i\leq n$}) is applicable in $s_{i-1}$ and generates the successor state $s_i=\theta(s_{i-1},a_i)$. The {\em plan length} is denoted with $|\pi|=n$. A plan $\pi$ {\em solves} $P$ iff $G\subseteq s_n$; i.e.~if the goal condition is satisfied in the last state resulting from the application of the plan $\pi$ in the initial state $I$. [EN ESTE PAPER NECESITAMOS ESTO??? EN ESTE TRABAJO NO TENEMOS STATE TRAJECTORY CONSTRAINTS]
->>>>>>> 9f7d94a3b83c60b11a540f72548339fc61e67145
 
 
 \begin{figure}
@@ -144,7 +138,6 @@ In this work we define a {\em plan} for a classical planning problem $P$ as an a
 
 \subsection{Temporal Planning}
 \label{sec:temporalplanning}
-
 A {\em temporal planning problem} is a tuple $\tup{F,I,G,A}$ where $F$, $I$ and $G$ are defined like in a classical planning problem $P$, but $A$ represents a set of {\em durative actions}. There are several options that allow for a high expressiveness of durative actions. An action can have a fixed duration, a duration that ranges within an interval or a distribution of durations (in this work we model time in $\mathbb{Z}^+$). Actions may have conditions/effects at different times, such as conditions that must hold some time before the action starts, effects that happen just when the action starts, in the middle of the action or some time after the action finishes~\cite{garrido2009constraint}.
 
 One of the most popular action models for temporal planning is the slightly restrictive temporal definition of durative actions introduced in PDDL2.1~\cite{fox2003pddl2}, which defines a durative action as follows:
@@ -154,9 +147,8 @@ One of the most popular action models for temporal planning is the slightly rest
 \item $\eff_s(a)$ and $\eff_e(a)$. Now effects can happen {\em at start} or {\em at end} of $a$, respectively, and can still be positive or negative.
 \end{itemize}
 
-<<<<<<< HEAD
 Despite in PDDL2.1 {\em durative actions} are no longer instantaneous, {\em at start} and {\em at end} conditions are checked instantaneously. In the same way, {\em at start} and {\em at end} effects are instantaneously applied ---continuous effects are not considered. With this regard, the semantics of a PDDL2.1 durative action can be defined in terms of two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$.
-{\em Over all} conditions must hold at any state between $[\start(a)..\en(a)]$. Fig.~\ref{fig:exampleactions2} shows an example of two PDDL2.1 durative actions taken the \emph{driverlog} domain of the IPC.
+{\em Over all} conditions must hold at any state between $[\start(a)..\en(a)]$. Fig.~\ref{fig:exampleactions2} shows an example of two PDDL2.1 durative actions taken the \emph{driverlog} domain of the IPC that extend the classical actions of Fig.~\ref{fig:exampleactions1}. .
 
 A {\em temporal plan} is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and induces two discrete events, $t_i=\start(a_i)$ and $t_i+\dur(a_i)=\en(a_i)$. Though a sequential temporal plan is syntactically possible, it is semantically useless. Consequently, temporal plans are always given as parallel plans. The semantics of temporal actions can be defined in terms of two discrete \textit{events} $\mathsf{start}_a$ and $\mathsf{end}_a$, each of which is naturally expressed as a classical action~\cite{jimenez2015temporal}:
 
@@ -171,11 +163,6 @@ $\del(\mathsf{start}_a) = \del_s(a)$, & $\del(\mathsf{end}_a) = \del_e(a)$.
 Starting temporal action $a$ in state $s$ is equivalent to applying the classical action $\mathsf{start}_a$ in $s$, first verifying that $\mathsf{pre}(\mathsf{start}_a)$ holds in $s$. Ending $a$ in state $s'$ is equivalent to applying $\mathsf{end}_a$ in $s'$, first verifying that $\pre(\mathsf{end}_a)$ holds in $s'$. The duration $d(a)$ and precondition over all $\pre_o(a)$ impose restrictions on this process: the end of action $a$ has to occur exactly $d(a)$ time units after action $a$ starts and $\pre_o(a)$ has to hold in all states between the start and the end of the action. 
 
 A temporal plan $\pi=\{(a_1,t_1),\ldots,(a_k,t_k)\}$ solves $P$ if and only if the induced concurrent plan $\pi'=\langle\mathcal{A}_1,\ldots,\mathcal{A}_m\rangle$ solves the associated classical planning problem $P'$ and, for each $(a,t)\in\pi$ the overall preconditions hold in the states $s_i,\ldots,s_{j-1}$ of the state sequence induced by $\pi'$, i.e.~in all states between actions $\mathcal{A}_i$ and $\mathcal{A}_j$.
-
-=======
-Despite durative actions are no longer instantaneous in PDDL2.1, {\em at start} and {\em at end} conditions are checked instantaneously. In the same way, {\em at start} and {\em at end} effects are instantaneously applied ---continuous effects are not considered. With this regard, the semantics of a durative action can be defined in terms of two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$.
-{\em Over all} conditions must hold at any state between $[\start(a)..\en(a)]$. Fig.~\ref{fig:exampleactions2} shows two durative actions that extend the classical actions of Fig.~\ref{fig:exampleactions1}.
->>>>>>> 9f7d94a3b83c60b11a540f72548339fc61e67145
 
 \begin{figure}
 \begin{tabular}{p{\textwidth}}
@@ -202,7 +189,6 @@ Despite durative actions are no longer instantaneous in PDDL2.1, {\em at start} 
 
 PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f\in F$ that becomes true at a certain time $t$, independently of the actions in the plan. TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario ($\til(open,8)$ and $\til(\neg open,20)$).
 
-<<<<<<< HEAD
  
 \subsection{The observation model}
 \label{sec:omodel}
