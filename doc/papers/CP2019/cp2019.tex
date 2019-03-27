@@ -195,7 +195,6 @@ PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initia
 From the trace of a temporal plan we can optionally extract a set of partial observations $\obs(f,t)$, denoting the value observed for fact $f \in F$ at time $t$. Note that we work with partial observability of the temporal plan, as we observe only a few facts at certain times. Obviously, the observability of all facts at all actions' starting/ending times would lead to a full observability of the plan state trajectory.
 
 Our observation model considers also {\em observed actions} as extra fluents that indicate the action applied in a given state. Further, this observation model can also distinguish between {\em observable state variables}, whose value may be read from sensors, and {\em hidden} (or {\em latent}) {\em state variables}, that cannot be observed. Given a subset of fluents $\Gamma\subseteq F$ we say that the observation of the execution of a plan $\pi$ on a planning problem $P$ is a {\em $\Gamma$-observation} iff it only contains observations of fluents in $\Gamma$.
-=======
 
 PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f\in F$ that becomes true at a certain time $t$, independently of the actions in the plan. TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario ($\til(open,8)$ and $\til(\neg open,20)$).
 
@@ -221,9 +220,6 @@ A temporal plan $\pi=\{(a_1,t_1),\ldots,(a_k,t_k)\}$ solves $P$ if and only if t
 \label{sec:omodel}
 
 From the trace of a temporal plan we can optionally extract a set of partial observations $\tup{\obs(f_1,t_1),\obs(f_2,t_2)\ldots \obs(f_n,t_n)}$, where each $\obs(f_i,t_i)$ denotes the value observed for fact $f_i \in F$ at time $t_i$. Note that we work with partial observability of the temporal plan, as we observe only a few facts at certain times. Obviously, the observability of all facts at all actions' starting/ending times would lead to a full observability of the plan state trajectory.
-
-Given a set of propositional variables $F$, a set of {\em durative actions} $A$ and an observation $\mathcal{O}=\tup{s_0^o,s_1^o \ldots , s_m^o}$ of the execution of a temporal plan within these two sets given planning frame, then $P_\mathcal{O}$ is the temporal planning problem that is built as follows $P_\mathcal{O}=\tup{F,A,s_0^o,s_m^o}$.
->>>>>>> 9f7d94a3b83c60b11a540f72548339fc61e67145
 
 Given a set of propositional variables $F$, a set of {\em durative actions} $A$ and an a sequence of observations $\mathcal{O}=\tup{o_0^o,o_1^o \ldots , o_m^o}$ such that each $o_i^o$ is a set of observed fluents $f$ at a given time-stamp $i$, i.e., $\obs(f,t_i)$. Let us define, $P_\mathcal{O}$ as the temporal planning problem that is built as follows $P_\mathcal{O}=\tup{F,A,o_0^o,o_m^o}$. 
 \begin{definition}[Explanation]
