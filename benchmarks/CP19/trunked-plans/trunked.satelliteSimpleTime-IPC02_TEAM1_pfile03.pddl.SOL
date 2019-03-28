@@ -1,0 +1,157 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains/satelliteSimpleTime-IPC02/domain-classical.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains//satelliteSimpleTime-IPC02/pfile03.pddl
+
+init:
+1 (supports_instrument3_spectrograph2) & 2 (supports_instrument3_image1) & 3 (supports_instrument1_image1) & 4 (power_avail_satellite1) & 5 (calibration_target_instrument0_star1) & 6 (calibration_target_instrument2_star0) & 7 (calibration_target_instrument3_star0) & 8 (pointing_satellite1_star0) & 9 (calibration_target_instrument1_star2) & 10 (supports_instrument2_image1) & 11 (on_board_instrument3_satellite1) & 12 (supports_instrument0_spectrograph2) & 13 (power_avail_satellite0) & 14 (on_board_instrument0_satellite0) & 15 (pointing_satellite0_star4) & 16 (supports_instrument2_infrared0) & 17 (supports_instrument3_infrared0) & 18 (on_board_instrument2_satellite0) & 19 (supports_instrument0_infrared0) & 20 (on_board_instrument1_satellite0)
+
+goals:
+1 (pointing_satellite0_phenomenon5) & 2 (have_image_star3_infrared0) & 3 (have_image_star4_spectrograph2) & 4 (have_image_phenomenon5_spectrograph2) & 5 (have_image_phenomenon7_spectrograph2)
+makespan:
+66
+
+action:
+(switch-on_instrument3_satellite1)
+operator:
+switch-on
+start_time:
+1
+durations:
+2 7 12 19 24 31 36 43 48 55
+precs:
+1 (on_board_instrument3_satellite1) & 2 (power_avail_satellite1)
+effs:
+3 (power_on_instrument3) & 4 not-(calibrated_instrument3) & 5 not-(power_avail_satellite1)
+
+action:
+(turn-to_satellite0_phenomenon5_star4)
+operator:
+turn-to
+start_time:
+1
+durations:
+2 7 12 19 24 31 36 43 48 55
+precs:
+1 (pointing_satellite0_star4)
+effs:
+1 (pointing_satellite0_phenomenon5) & 2 not-(pointing_satellite0_star4)
+
+action:
+(calibrate_satellite1_instrument3_star0)
+operator:
+calibrate
+start_time:
+4
+durations:
+5 10 17 22 29 34 41 46 53
+precs:
+1 (on_board_instrument3_satellite1) & 2 (calibration_target_instrument3_star0) & 3 (pointing_satellite1_star0) & 4 (power_on_instrument3)
+effs:
+5 (calibrated_instrument3)
+
+action:
+(turn-to_satellite1_phenomenon5_star0)
+operator:
+turn-to
+start_time:
+10
+durations:
+5 12 17 24 29 36 41 48
+precs:
+1 (pointing_satellite1_star0)
+effs:
+1 (pointing_satellite1_phenomenon5) & 2 not-(pointing_satellite1_star0)
+
+action:
+(take-image_satellite1_phenomenon5_instrument3_spectrograph2)
+operator:
+take-image
+start_time:
+16
+durations:
+7 12 19 24 31 36 43
+precs:
+1 (calibrated_instrument3) & 2 (on_board_instrument3_satellite1) & 3 (supports_instrument3_spectrograph2) & 4 (power_on_instrument3) & 5 (pointing_satellite1_phenomenon5) & 6 (power_on_instrument3)
+effs:
+7 (have_image_phenomenon5_spectrograph2)
+
+action:
+(turn-to_satellite1_phenomenon7_phenomenon5)
+operator:
+turn-to
+start_time:
+24
+durations:
+5 12 17 24 29 36
+precs:
+1 (pointing_satellite1_phenomenon5)
+effs:
+1 (pointing_satellite1_phenomenon7) & 2 not-(pointing_satellite1_phenomenon5)
+
+action:
+(take-image_satellite1_phenomenon7_instrument3_spectrograph2)
+operator:
+take-image
+start_time:
+30
+durations:
+7 12 19 24 31
+precs:
+1 (calibrated_instrument3) & 2 (on_board_instrument3_satellite1) & 3 (supports_instrument3_spectrograph2) & 4 (power_on_instrument3) & 5 (pointing_satellite1_phenomenon7) & 6 (power_on_instrument3)
+effs:
+7 (have_image_phenomenon7_spectrograph2)
+
+action:
+(turn-to_satellite1_star3_phenomenon7)
+operator:
+turn-to
+start_time:
+38
+durations:
+5 12 17 24
+precs:
+1 (pointing_satellite1_phenomenon7)
+effs:
+1 (pointing_satellite1_star3) & 2 not-(pointing_satellite1_phenomenon7)
+
+action:
+(take-image_satellite1_star3_instrument3_infrared0)
+operator:
+take-image
+start_time:
+44
+durations:
+7 12 19
+precs:
+1 (calibrated_instrument3) & 2 (on_board_instrument3_satellite1) & 3 (supports_instrument3_infrared0) & 4 (power_on_instrument3) & 5 (pointing_satellite1_star3) & 6 (power_on_instrument3)
+effs:
+7 (have_image_star3_infrared0)
+
+action:
+(turn-to_satellite1_star4_star3)
+operator:
+turn-to
+start_time:
+52
+durations:
+5 12
+precs:
+1 (pointing_satellite1_star3)
+effs:
+1 (pointing_satellite1_star4) & 2 not-(pointing_satellite1_star3)
+
+action:
+(take-image_satellite1_star4_instrument3_spectrograph2)
+operator:
+take-image
+start_time:
+58
+durations:
+7
+precs:
+1 (calibrated_instrument3) & 2 (on_board_instrument3_satellite1) & 3 (supports_instrument3_spectrograph2) & 4 (power_on_instrument3) & 5 (pointing_satellite1_star4) & 6 (power_on_instrument3)
+effs:
+7 (have_image_star4_spectrograph2)
+

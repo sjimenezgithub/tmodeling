@@ -79,7 +79,7 @@ try:
 
 except:
     print "Usage:"
-    print sys.argv[0] + " [-n, negative facts at initial state] <domain file name> <problem file name> <plan file name>"
+    print sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line] <domain file name> <problem file name> <plan file name>"
     sys.exit(-1)
 
 

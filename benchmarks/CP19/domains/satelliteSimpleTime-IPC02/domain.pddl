@@ -18,8 +18,7 @@
   (:durative-action turn-to
    :parameters (?s - satellite ?d_new - direction ?d_prev - direction)
    :duration (= ?duration 5)
-   :condition (and (at start (pointing ?s ?d_prev))
-                   (over all (not (= ?d_new ?d_prev)))
+   :condition (and (at start (pointing ?s ?d_prev))                   
               )
    :effect (and  (at end (pointing ?s ?d_new))
                  (at start (not (pointing ?s ?d_prev)))

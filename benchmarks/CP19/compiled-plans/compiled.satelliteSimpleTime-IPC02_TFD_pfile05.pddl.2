@@ -1,0 +1,289 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains/satelliteSimpleTime-IPC02/domain-classical.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains//satelliteSimpleTime-IPC02/pfile05.pddl
+
+init:
+1 (supports_instrument1_image2) & 2 (calibration_target_instrument4_groundstation2) & 3 (supports_instrument5_thermograph0) & 4 (supports_instrument0_image2) & 5 (calibration_target_instrument0_groundstation2) & 6 (pointing_satellite1_groundstation2) & 7 (supports_instrument4_spectrograph1) & 8 (calibration_target_instrument3_groundstation0) & 9 (calibration_target_instrument2_groundstation0) & 10 (supports_instrument8_thermograph0) & 11 (on_board_instrument2_satellite0) & 12 (supports_instrument7_image2) & 13 (power_avail_satellite1) & 14 (calibration_target_instrument7_groundstation1) & 15 (supports_instrument2_image2) & 16 (on_board_instrument0_satellite0) & 17 (supports_instrument1_thermograph0) & 18 (pointing_satellite0_phenomenon8) & 19 (on_board_instrument1_satellite0) & 20 (supports_instrument0_thermograph0) & 21 (pointing_satellite2_phenomenon5) & 22 (power_avail_satellite0) & 23 (supports_instrument5_image2) & 24 (on_board_instrument3_satellite1) & 25 (on_board_instrument4_satellite1) & 26 (supports_instrument3_spectrograph1) & 27 (calibration_target_instrument8_groundstation0) & 28 (supports_instrument8_spectrograph1) & 29 (on_board_instrument6_satellite2) & 30 (supports_instrument1_spectrograph1) & 31 (supports_instrument8_image2) & 32 (on_board_instrument7_satellite2) & 33 (power_avail_satellite2) & 34 (calibration_target_instrument6_groundstation1) & 35 (on_board_instrument8_satellite2) & 36 (supports_instrument4_image2) & 37 (supports_instrument0_spectrograph1) & 38 (supports_instrument7_thermograph0) & 39 (supports_instrument6_image2) & 40 (calibration_target_instrument5_groundstation1) & 41 (on_board_instrument5_satellite1) & 42 (supports_instrument3_thermograph0) & 43 (calibration_target_instrument1_groundstation1) & 44 (supports_instrument5_spectrograph1)
+
+goals:
+1 (pointing_satellite0_phenomenon5) & 2 (pointing_satellite1_groundstation2) & 3 (have_image_star3_thermograph0) & 4 (have_image_phenomenon5_image2) & 5 (have_image_phenomenon6_image2) & 6 (have_image_star7_thermograph0) & 7 (have_image_phenomenon8_image2) & 8 (have_image_planet9_spectrograph1)
+makespan:
+66
+
+action:
+(turn-to_satellite0_phenomenon5_phenomenon8)
+operator:
+turn-to
+start_time:
+1
+durations:
+2 5 10 15 17 22 27 29 34 41 46 53
+precs:
+1 (pointing_satellite0_phenomenon8)
+effs:
+1 (pointing_satellite0_phenomenon5) & 2 not-(pointing_satellite0_phenomenon8)
+
+action:
+(switch-on_instrument4_satellite1)
+operator:
+switch-on
+start_time:
+1
+durations:
+2 5 10 15 17 22 27 29 34 41 46 53
+precs:
+1 (on_board_instrument4_satellite1) & 2 (power_avail_satellite1)
+effs:
+3 (power_on_instrument4) & 4 not-(calibrated_instrument4) & 5 not-(power_avail_satellite1)
+
+action:
+(switch-on_instrument7_satellite2)
+operator:
+switch-on
+start_time:
+1
+durations:
+2 5 10 15 17 22 27 29 34 41 46 53
+precs:
+1 (on_board_instrument7_satellite2) & 2 (power_avail_satellite2)
+effs:
+3 (power_on_instrument7) & 4 not-(calibrated_instrument7) & 5 not-(power_avail_satellite2)
+
+action:
+(turn-to_satellite2_groundstation1_phenomenon5)
+operator:
+turn-to
+start_time:
+1
+durations:
+2 5 10 15 17 22 27 29 34 41 46 53
+precs:
+1 (pointing_satellite2_phenomenon5)
+effs:
+1 (pointing_satellite2_groundstation1) & 2 not-(pointing_satellite2_phenomenon5)
+
+action:
+(calibrate_satellite1_instrument4_groundstation2)
+operator:
+calibrate
+start_time:
+4
+durations:
+3 8 13 15 20 25 27 32 39 44 51
+precs:
+1 (on_board_instrument4_satellite1) & 2 (calibration_target_instrument4_groundstation2) & 3 (pointing_satellite1_groundstation2) & 4 (power_on_instrument4)
+effs:
+5 (calibrated_instrument4)
+
+action:
+(calibrate_satellite2_instrument7_groundstation1)
+operator:
+calibrate
+start_time:
+8
+durations:
+5 10 12 17 22 24 29 36 41 48
+precs:
+1 (on_board_instrument7_satellite2) & 2 (calibration_target_instrument7_groundstation1) & 3 (pointing_satellite2_groundstation1) & 4 (power_on_instrument7)
+effs:
+5 (calibrated_instrument7)
+
+action:
+(turn-to_satellite2_phenomenon6_groundstation1)
+operator:
+turn-to
+start_time:
+8
+durations:
+5 10 12 17 22 24 29 36 41 48
+precs:
+1 (pointing_satellite2_groundstation1)
+effs:
+1 (pointing_satellite2_phenomenon6) & 2 not-(pointing_satellite2_groundstation1)
+
+action:
+(turn-to_satellite1_planet9_groundstation2)
+operator:
+turn-to
+start_time:
+8
+durations:
+5 10 12 17 22 24 29 36 41 48
+precs:
+1 (pointing_satellite1_groundstation2)
+effs:
+1 (pointing_satellite1_planet9) & 2 not-(pointing_satellite1_groundstation2)
+
+action:
+(take-image_satellite2_phenomenon6_instrument7_image2)
+operator:
+take-image
+start_time:
+14
+durations:
+5 7 12 17 19 24 31 36 43
+precs:
+1 (calibrated_instrument7) & 2 (on_board_instrument7_satellite2) & 3 (supports_instrument7_image2) & 4 (power_on_instrument7) & 5 (pointing_satellite2_phenomenon6) & 6 (power_on_instrument7)
+effs:
+7 (have_image_phenomenon6_image2)
+
+action:
+(turn-to_satellite1_phenomenon8_planet9)
+operator:
+turn-to
+start_time:
+14
+durations:
+5 7 12 17 19 24 31 36 43
+precs:
+1 (pointing_satellite1_planet9)
+effs:
+1 (pointing_satellite1_phenomenon8) & 2 not-(pointing_satellite1_planet9)
+
+action:
+(take-image_satellite1_phenomenon8_instrument4_image2)
+operator:
+take-image
+start_time:
+20
+durations:
+2 7 12 14 19 26 31 38
+precs:
+1 (calibrated_instrument4) & 2 (on_board_instrument4_satellite1) & 3 (supports_instrument4_image2) & 4 (power_on_instrument4) & 5 (pointing_satellite1_phenomenon8) & 6 (power_on_instrument4)
+effs:
+7 (have_image_phenomenon8_image2)
+
+action:
+(turn-to_satellite2_phenomenon5_phenomenon6)
+operator:
+turn-to
+start_time:
+23
+durations:
+5 10 12 17 24 29 36
+precs:
+1 (pointing_satellite2_phenomenon6)
+effs:
+1 (pointing_satellite2_phenomenon5) & 2 not-(pointing_satellite2_phenomenon6)
+
+action:
+(turn-to_satellite1_groundstation2_phenomenon8)
+operator:
+turn-to
+start_time:
+29
+durations:
+5 7 12 19 24 31
+precs:
+1 (pointing_satellite1_phenomenon8)
+effs:
+1 (pointing_satellite1_groundstation2) & 2 not-(pointing_satellite1_phenomenon8)
+
+action:
+(take-image_satellite2_phenomenon5_instrument7_image2)
+operator:
+take-image
+start_time:
+29
+durations:
+5 7 12 19 24 31
+precs:
+1 (calibrated_instrument7) & 2 (on_board_instrument7_satellite2) & 3 (supports_instrument7_image2) & 4 (power_on_instrument7) & 5 (pointing_satellite2_phenomenon5) & 6 (power_on_instrument7)
+effs:
+7 (have_image_phenomenon5_image2)
+
+action:
+(turn-to_satellite1_planet9_groundstation2)
+operator:
+turn-to
+start_time:
+35
+durations:
+2 7 14 19 26
+precs:
+1 (pointing_satellite1_groundstation2)
+effs:
+1 (pointing_satellite1_planet9) & 2 not-(pointing_satellite1_groundstation2)
+
+action:
+(turn-to_satellite2_star7_phenomenon5)
+operator:
+turn-to
+start_time:
+38
+durations:
+5 12 17 24
+precs:
+1 (pointing_satellite2_phenomenon5)
+effs:
+1 (pointing_satellite2_star7) & 2 not-(pointing_satellite2_phenomenon5)
+
+action:
+(take-image_satellite2_star7_instrument7_thermograph0)
+operator:
+take-image
+start_time:
+44
+durations:
+7 12 19
+precs:
+1 (calibrated_instrument7) & 2 (on_board_instrument7_satellite2) & 3 (supports_instrument7_thermograph0) & 4 (power_on_instrument7) & 5 (pointing_satellite2_star7) & 6 (power_on_instrument7)
+effs:
+7 (have_image_star7_thermograph0)
+
+action:
+(take-image_satellite1_planet9_instrument4_spectrograph1)
+operator:
+take-image
+start_time:
+44
+durations:
+7 12 19
+precs:
+1 (calibrated_instrument4) & 2 (on_board_instrument4_satellite1) & 3 (supports_instrument4_spectrograph1) & 4 (power_on_instrument4) & 5 (pointing_satellite1_planet9) & 6 (power_on_instrument4)
+effs:
+7 (have_image_planet9_spectrograph1)
+
+action:
+(turn-to_satellite2_star3_star7)
+operator:
+turn-to
+start_time:
+52
+durations:
+5 12
+precs:
+1 (pointing_satellite2_star7)
+effs:
+1 (pointing_satellite2_star3) & 2 not-(pointing_satellite2_star7)
+
+action:
+(turn-to_satellite1_groundstation2_planet9)
+operator:
+turn-to
+start_time:
+52
+durations:
+5 12
+precs:
+1 (pointing_satellite1_planet9)
+effs:
+1 (pointing_satellite1_groundstation2) & 2 not-(pointing_satellite1_planet9)
+
+action:
+(take-image_satellite2_star3_instrument7_thermograph0)
+operator:
+take-image
+start_time:
+58
+durations:
+7
+precs:
+1 (calibrated_instrument7) & 2 (on_board_instrument7_satellite2) & 3 (supports_instrument7_thermograph0) & 4 (power_on_instrument7) & 5 (pointing_satellite2_star3) & 6 (power_on_instrument7)
+effs:
+7 (have_image_star3_thermograph0)
+
+end:
+
