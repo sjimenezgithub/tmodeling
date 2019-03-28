@@ -8,7 +8,7 @@
 ;;   ###############
 
 (define (problem p009-multiban-temporal)
-  (:domain sokoban-temporal)
+  (:domain sokoban)
   (:objects
     dir-down - direction
     dir-left - direction

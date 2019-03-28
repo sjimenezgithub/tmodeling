@@ -1,4 +1,4 @@
-(define (domain sokoban-temporal)
+(define (domain sokoban)
   (:requirements :typing :durative-actions)
   (:types thing location direction - object
           player stone - thing)

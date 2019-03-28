@@ -1,0 +1,521 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains/sokoban/domain-classical.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains//sokoban/pfilep01.pddl
+
+init:
+1 (clear_pos-03-01) & 2 (is-nongoal_pos-01-03) & 3 (is-nongoal_pos-11-01) & 4 (move-dir_pos-08-02_pos-10-02_dir-east) & 5 (is-nongoal_pos-03-05) & 6 (move-dir_pos-08-06_pos-09-05_dir-northeast) & 7 (is-nongoal_pos-13-05) & 8 (clear_pos-14-02) & 9 (move-dir_pos-10-06_pos-09-05_dir-northwest) & 10 (move-dir_pos-14-02_pos-13-01_dir-northwest) & 11 (move-dir_pos-04-06_pos-05-07_dir-southeast) & 12 (is-nongoal_pos-08-06) & 13 (move-dir_pos-08-06_pos-07-05_dir-northwest) & 14 (is-nongoal_pos-10-04) & 15 (at-goal_stone-04) & 16 (clear_pos-05-07) & 17 (move-dir_pos-10-06_pos-08-06_dir-west) & 18 (move-dir_pos-13-01_pos-14-02_dir-southeast) & 19 (is-nongoal_pos-05-01) & 20 (move-dir_pos-09-05_pos-08-06_dir-southwest) & 21 (move-dir_pos-01-07_pos-02-06_dir-northeast) & 22 (move-dir_pos-11-03_pos-10-04_dir-southwest) & 23 (move-dir_pos-02-06_pos-04-06_dir-east) & 24 (move-dir_pos-02-02_pos-01-01_dir-northwest) & 25 (move-dir_pos-02-02_pos-01-03_dir-southwest) & 26 (clear_pos-05-03) & 27 (clear_pos-01-07) & 28 (is-nongoal_pos-06-02) & 29 (clear_pos-08-06) & 30 (at-goal_stone-03) & 31 (move-dir_pos-07-05_pos-06-04_dir-northwest) & 32 (is-nongoal_pos-09-01) & 33 (move-dir_pos-07-05_pos-08-04_dir-northeast) & 34 (move-dir_pos-08-04_pos-07-05_dir-southwest) & 35 (is-nongoal_pos-12-06) & 36 (is-nongoal_pos-06-06) & 37 (move-dir_pos-03-07_pos-01-07_dir-west) & 38 (is-goal_pos-06-04) & 39 (is-nongoal_pos-03-07) & 40 (is-nongoal_pos-14-06) & 41 (move-dir_pos-08-04_pos-10-04_dir-east) & 42 (is-goal_pos-09-05) & 43 (is-nongoal_pos-01-05) & 44 (move-dir_pos-08-02_pos-06-02_dir-west) & 45 (move-dir_pos-10-04_pos-11-05_dir-southeast) & 46 (move-dir_pos-06-04_pos-07-05_dir-southeast) & 47 (is-nongoal_pos-03-03) & 48 (move-dir_pos-04-04_pos-05-03_dir-northeast) & 49 (is-nongoal_pos-13-03) & 50 (move-dir_pos-03-01_pos-01-01_dir-west) & 51 (is-nongoal_pos-05-05) & 52 (is-nongoal_pos-10-02) & 53 (is-nongoal_pos-11-05) & 54 (at-goal_stone-01) & 55 (move-dir_pos-06-04_pos-04-04_dir-west) & 56 (clear_pos-04-04) & 57 (move-dir_pos-07-05_pos-08-06_dir-southeast) & 58 (is-nongoal_pos-09-07) & 59 (clear_pos-04-06) & 60 (move-dir_pos-09-05_pos-11-05_dir-east) & 61 (move-dir_pos-06-04_pos-08-04_dir-east) & 62 (move-dir_pos-02-06_pos-01-05_dir-northwest) & 63 (move-dir_pos-12-06_pos-10-06_dir-west) & 64 (clear_pos-11-03) & 65 (is-nongoal_pos-11-03) & 66 (is-nongoal_pos-07-07) & 67 (is-nongoal_pos-07-03) & 68 (move-dir_pos-11-05_pos-10-06_dir-southwest) & 69 (at_player-01_pos-06-02) & 70 (move-dir_pos-09-05_pos-08-04_dir-northwest) & 71 (is-goal_pos-10-06) & 72 (is-nongoal_pos-07-01) & 73 (move-dir_pos-05-07_pos-03-07_dir-west) & 74 (move-dir_pos-01-07_pos-03-07_dir-east) & 75 (clear_pos-13-01) & 76 (clear_pos-03-07) & 77 (move-dir_pos-09-05_pos-07-05_dir-west) & 78 (is-nongoal_pos-05-03) & 79 (is-nongoal_pos-02-06) & 80 (move-dir_pos-08-04_pos-06-04_dir-west) & 81 (is-nongoal_pos-12-02) & 82 (move-dir_pos-09-05_pos-10-06_dir-southeast) & 83 (move-dir_pos-01-01_pos-02-02_dir-southeast) & 84 (move-dir_pos-10-02_pos-08-02_dir-west) & 85 (move-dir_pos-11-05_pos-10-04_dir-northwest) & 86 (move-dir_pos-05-03_pos-06-04_dir-southeast) & 87 (clear_pos-12-06) & 88 (is-goal_pos-07-05) & 89 (is-nongoal_pos-14-02) & 90 (move-dir_pos-03-07_pos-02-06_dir-northwest) & 91 (clear_pos-02-06) & 92 (clear_pos-02-02) & 93 (move-dir_pos-04-06_pos-02-06_dir-west) & 94 (is-nongoal_pos-01-01) & 95 (clear_pos-01-01) & 96 (move-dir_pos-06-02_pos-08-02_dir-east) & 97 (is-nongoal_pos-13-07) & 98 (at_player-02_pos-10-06) & 99 (is-nongoal_pos-14-04) & 100 (move-dir_pos-08-06_pos-10-06_dir-east) & 101 (move-dir_pos-10-06_pos-11-05_dir-northeast) & 102 (is-nongoal_pos-01-07) & 103 (move-dir_pos-10-04_pos-08-04_dir-west) & 104 (move-dir_pos-01-05_pos-02-06_dir-southeast) & 105 (at_stone-02_pos-10-04) & 106 (is-nongoal_pos-03-01) & 107 (move-dir_pos-04-04_pos-06-04_dir-east) & 108 (move-dir_pos-02-02_pos-03-01_dir-northeast) & 109 (move-dir_pos-10-04_pos-09-05_dir-southwest) & 110 (is-nongoal_pos-09-03) & 111 (is-nongoal_pos-08-02) & 112 (is-nongoal_pos-05-07) & 113 (move-dir_pos-03-01_pos-02-02_dir-southwest) & 114 (is-nongoal_pos-11-07) & 115 (is-nongoal_pos-08-04) & 116 (is-nongoal_pos-04-06) & 117 (move-dir_pos-09-05_pos-10-04_dir-northeast) & 118 (move-dir_pos-12-06_pos-11-05_dir-northwest) & 119 (move-dir_pos-10-04_pos-11-03_dir-northeast) & 120 (move-dir_pos-03-07_pos-05-07_dir-east) & 121 (clear_pos-11-05) & 122 (move-dir_pos-04-06_pos-03-07_dir-southwest) & 123 (clear_pos-01-03) & 124 (move-dir_pos-11-05_pos-12-06_dir-southeast) & 125 (move-dir_pos-08-04_pos-09-05_dir-southeast) & 126 (move-dir_pos-01-01_pos-03-01_dir-east) & 127 (move-dir_pos-05-03_pos-06-02_dir-northeast) & 128 (is-nongoal_pos-13-01) & 129 (at_stone-04_pos-09-05) & 130 (is-nongoal_pos-12-04) & 131 (at_stone-03_pos-07-05) & 132 (move-dir_pos-10-02_pos-11-03_dir-southeast) & 133 (move-dir_pos-10-06_pos-12-06_dir-east) & 134 (move-dir_pos-07-05_pos-09-05_dir-east) & 135 (clear_pos-01-05) & 136 (clear_pos-08-04) & 137 (is-nongoal_pos-02-02) & 138 (move-dir_pos-11-03_pos-10-02_dir-northwest) & 139 (move-dir_pos-05-03_pos-04-04_dir-southwest) & 140 (clear_pos-14-04) & 141 (move-dir_pos-06-02_pos-05-03_dir-southwest) & 142 (move-dir_pos-02-06_pos-03-07_dir-southeast) & 143 (at_stone-01_pos-06-04) & 144 (move-dir_pos-06-04_pos-05-03_dir-northwest) & 145 (clear_pos-10-02) & 146 (move-dir_pos-01-03_pos-02-02_dir-northeast) & 147 (clear_pos-08-02) & 148 (is-nongoal_pos-04-04) & 149 (is-nongoal_pos-02-04) & 150 (move-dir_pos-11-05_pos-09-05_dir-west) & 151 (move-dir_pos-02-06_pos-01-07_dir-southwest) & 152 (is-nongoal_pos-04-02) & 153 (move-dir_pos-03-07_pos-04-06_dir-northeast) & 154 (move-dir_pos-05-07_pos-04-06_dir-northwest)
+
+goals:
+1 (at-goal_stone-01) & 2 (at-goal_stone-02) & 3 (at-goal_stone-03) & 4 (at-goal_stone-04)
+makespan:
+57
+
+action:
+(move_player-01_pos-06-02_pos-05-03_dir-southwest)
+operator:
+move
+start_time:
+1
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
+precs:
+1 (at_player-01_pos-06-02) & 2 (clear_pos-05-03) & 3 (move-dir_pos-06-02_pos-05-03_dir-southwest)
+effs:
+4 not-(at_player-01_pos-06-02) & 5 not-(clear_pos-05-03) & 6 (at_player-01_pos-05-03) & 7 (clear_pos-06-02)
+
+action:
+(move_player-02_pos-10-06_pos-08-06_dir-west)
+operator:
+move
+start_time:
+1
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28
+precs:
+1 (at_player-02_pos-10-06) & 2 (clear_pos-08-06) & 3 (move-dir_pos-10-06_pos-08-06_dir-west)
+effs:
+4 not-(at_player-02_pos-10-06) & 5 not-(clear_pos-08-06) & 6 (at_player-02_pos-08-06) & 7 (clear_pos-10-06)
+
+action:
+(move_player-01_pos-05-03_pos-04-04_dir-southwest)
+operator:
+move
+start_time:
+3
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27
+precs:
+1 (at_player-01_pos-05-03) & 2 (clear_pos-04-04) & 3 (move-dir_pos-05-03_pos-04-04_dir-southwest)
+effs:
+4 not-(at_player-01_pos-05-03) & 5 not-(clear_pos-04-04) & 6 (at_player-01_pos-04-04) & 7 (clear_pos-05-03)
+
+action:
+(push-to-nongoal_player-01_stone-01_pos-04-04_pos-06-04_pos-08-04_dir-east)
+operator:
+push-to-nongoal
+start_time:
+5
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26
+precs:
+1 (at_player-01_player-01pos) & 2 (at_stone-01_pos-06-04) & 3 (clear_pos-08-04) & 4 (move-dir_player-01pos_pos-06-04_dir-east) & 5 (move-dir_pos-06-04_pos-08-04_dir-east) & 6 (is-nongoal_pos-08-04)
+effs:
+7 not-(at_player-01_player-01pos) & 8 not-(at_stone-01_pos-06-04) & 9 not-(clear_pos-08-04) & 10 (at_player-01_pos-06-04) & 11 (at_stone-01_pos-08-04) & 12 (clear_player-01pos) & 13 not-(at-goal_stone-01)
+
+action:
+(move_player-01_pos-06-04_pos-05-03_dir-northwest)
+operator:
+move
+start_time:
+7
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25
+precs:
+1 (at_player-01_pos-06-04) & 2 (clear_pos-05-03) & 3 (move-dir_pos-06-04_pos-05-03_dir-northwest)
+effs:
+4 not-(at_player-01_pos-06-04) & 5 not-(clear_pos-05-03) & 6 (at_player-01_pos-05-03) & 7 (clear_pos-06-04)
+
+action:
+(move_player-01_pos-05-03_pos-06-02_dir-northeast)
+operator:
+move
+start_time:
+9
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+precs:
+1 (at_player-01_pos-05-03) & 2 (clear_pos-06-02) & 3 (move-dir_pos-05-03_pos-06-02_dir-northeast)
+effs:
+4 not-(at_player-01_pos-05-03) & 5 not-(clear_pos-06-02) & 6 (at_player-01_pos-06-02) & 7 (clear_pos-05-03)
+
+action:
+(push-to-goal_player-02_stone-03_pos-08-06_pos-07-05_pos-06-04_dir-northwest)
+operator:
+push-to-goal
+start_time:
+9
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+precs:
+1 (at_player-02_player-02pos) & 2 (at_stone-03_pos-07-05) & 3 (clear_pos-06-04) & 4 (move-dir_player-02pos_pos-07-05_dir-northwest) & 5 (move-dir_pos-07-05_pos-06-04_dir-northwest) & 6 (is-goal_pos-06-04)
+effs:
+7 not-(at_player-02_player-02pos) & 8 not-(at_stone-03_pos-07-05) & 9 not-(clear_pos-06-04) & 10 (at_player-02_pos-07-05) & 11 (at_stone-03_pos-06-04) & 12 (clear_player-02pos) & 13 (at-goal_stone-03)
+
+action:
+(move_player-01_pos-06-02_pos-08-02_dir-east)
+operator:
+move
+start_time:
+11
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+precs:
+1 (at_player-01_pos-06-02) & 2 (clear_pos-08-02) & 3 (move-dir_pos-06-02_pos-08-02_dir-east)
+effs:
+4 not-(at_player-01_pos-06-02) & 5 not-(clear_pos-08-02) & 6 (at_player-01_pos-08-02) & 7 (clear_pos-06-02)
+
+action:
+(push-to-nongoal_player-02_stone-04_pos-07-05_pos-09-05_pos-11-05_dir-east)
+operator:
+push-to-nongoal
+start_time:
+11
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+precs:
+1 (at_player-02_player-02pos) & 2 (at_stone-04_pos-09-05) & 3 (clear_pos-11-05) & 4 (move-dir_player-02pos_pos-09-05_dir-east) & 5 (move-dir_pos-09-05_pos-11-05_dir-east) & 6 (is-nongoal_pos-11-05)
+effs:
+7 not-(at_player-02_player-02pos) & 8 not-(at_stone-04_pos-09-05) & 9 not-(clear_pos-11-05) & 10 (at_player-02_pos-09-05) & 11 (at_stone-04_pos-11-05) & 12 (clear_player-02pos) & 13 not-(at-goal_stone-04)
+
+action:
+(move_player-01_pos-08-02_pos-10-02_dir-east)
+operator:
+move
+start_time:
+13
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
+precs:
+1 (at_player-01_pos-08-02) & 2 (clear_pos-10-02) & 3 (move-dir_pos-08-02_pos-10-02_dir-east)
+effs:
+4 not-(at_player-01_pos-08-02) & 5 not-(clear_pos-10-02) & 6 (at_player-01_pos-10-02) & 7 (clear_pos-08-02)
+
+action:
+(move_player-02_pos-09-05_pos-10-06_dir-southeast)
+operator:
+move
+start_time:
+13
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22
+precs:
+1 (at_player-02_pos-09-05) & 2 (clear_pos-10-06) & 3 (move-dir_pos-09-05_pos-10-06_dir-southeast)
+effs:
+4 not-(at_player-02_pos-09-05) & 5 not-(clear_pos-10-06) & 6 (at_player-02_pos-10-06) & 7 (clear_pos-09-05)
+
+action:
+(move_player-01_pos-10-02_pos-11-03_dir-southeast)
+operator:
+move
+start_time:
+15
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+precs:
+1 (at_player-01_pos-10-02) & 2 (clear_pos-11-03) & 3 (move-dir_pos-10-02_pos-11-03_dir-southeast)
+effs:
+4 not-(at_player-01_pos-10-02) & 5 not-(clear_pos-11-03) & 6 (at_player-01_pos-11-03) & 7 (clear_pos-10-02)
+
+action:
+(move_player-02_pos-10-06_pos-12-06_dir-east)
+operator:
+move
+start_time:
+15
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
+precs:
+1 (at_player-02_pos-10-06) & 2 (clear_pos-12-06) & 3 (move-dir_pos-10-06_pos-12-06_dir-east)
+effs:
+4 not-(at_player-02_pos-10-06) & 5 not-(clear_pos-12-06) & 6 (at_player-02_pos-12-06) & 7 (clear_pos-10-06)
+
+action:
+(push-to-goal_player-01_stone-02_pos-11-03_pos-10-04_pos-09-05_dir-southwest)
+operator:
+push-to-goal
+start_time:
+17
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+precs:
+1 (at_player-01_player-01pos) & 2 (at_stone-02_pos-10-04) & 3 (clear_pos-09-05) & 4 (move-dir_player-01pos_pos-10-04_dir-southwest) & 5 (move-dir_pos-10-04_pos-09-05_dir-southwest) & 6 (is-goal_pos-09-05)
+effs:
+7 not-(at_player-01_player-01pos) & 8 not-(at_stone-02_pos-10-04) & 9 not-(clear_pos-09-05) & 10 (at_player-01_pos-10-04) & 11 (at_stone-02_pos-09-05) & 12 (clear_player-01pos) & 13 (at-goal_stone-02)
+
+action:
+(move_player-01_pos-10-04_pos-11-03_dir-northeast)
+operator:
+move
+start_time:
+19
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19
+precs:
+1 (at_player-01_pos-10-04) & 2 (clear_pos-11-03) & 3 (move-dir_pos-10-04_pos-11-03_dir-northeast)
+effs:
+4 not-(at_player-01_pos-10-04) & 5 not-(clear_pos-11-03) & 6 (at_player-01_pos-11-03) & 7 (clear_pos-10-04)
+
+action:
+(move_player-01_pos-11-03_pos-10-02_dir-northwest)
+operator:
+move
+start_time:
+21
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+precs:
+1 (at_player-01_pos-11-03) & 2 (clear_pos-10-02) & 3 (move-dir_pos-11-03_pos-10-02_dir-northwest)
+effs:
+4 not-(at_player-01_pos-11-03) & 5 not-(clear_pos-10-02) & 6 (at_player-01_pos-10-02) & 7 (clear_pos-11-03)
+
+action:
+(push-to-nongoal_player-02_stone-04_pos-12-06_pos-11-05_pos-10-04_dir-northwest)
+operator:
+push-to-nongoal
+start_time:
+21
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18
+precs:
+1 (at_player-02_player-02pos) & 2 (at_stone-04_pos-11-05) & 3 (clear_pos-10-04) & 4 (move-dir_player-02pos_pos-11-05_dir-northwest) & 5 (move-dir_pos-11-05_pos-10-04_dir-northwest) & 6 (is-nongoal_pos-10-04)
+effs:
+7 not-(at_player-02_player-02pos) & 8 not-(at_stone-04_pos-11-05) & 9 not-(clear_pos-10-04) & 10 (at_player-02_pos-11-05) & 11 (at_stone-04_pos-10-04) & 12 (clear_player-02pos) & 13 not-(at-goal_stone-04)
+
+action:
+(move_player-01_pos-10-02_pos-08-02_dir-west)
+operator:
+move
+start_time:
+23
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
+precs:
+1 (at_player-01_pos-10-02) & 2 (clear_pos-08-02) & 3 (move-dir_pos-10-02_pos-08-02_dir-west)
+effs:
+4 not-(at_player-01_pos-10-02) & 5 not-(clear_pos-08-02) & 6 (at_player-01_pos-08-02) & 7 (clear_pos-10-02)
+
+action:
+(move_player-02_pos-11-05_pos-10-06_dir-southwest)
+operator:
+move
+start_time:
+23
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17
+precs:
+1 (at_player-02_pos-11-05) & 2 (clear_pos-10-06) & 3 (move-dir_pos-11-05_pos-10-06_dir-southwest)
+effs:
+4 not-(at_player-02_pos-11-05) & 5 not-(clear_pos-10-06) & 6 (at_player-02_pos-10-06) & 7 (clear_pos-11-05)
+
+action:
+(move_player-01_pos-08-02_pos-06-02_dir-west)
+operator:
+move
+start_time:
+25
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+precs:
+1 (at_player-01_pos-08-02) & 2 (clear_pos-06-02) & 3 (move-dir_pos-08-02_pos-06-02_dir-west)
+effs:
+4 not-(at_player-01_pos-08-02) & 5 not-(clear_pos-06-02) & 6 (at_player-01_pos-06-02) & 7 (clear_pos-08-02)
+
+action:
+(move_player-02_pos-10-06_pos-08-06_dir-west)
+operator:
+move
+start_time:
+25
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+precs:
+1 (at_player-02_pos-10-06) & 2 (clear_pos-08-06) & 3 (move-dir_pos-10-06_pos-08-06_dir-west)
+effs:
+4 not-(at_player-02_pos-10-06) & 5 not-(clear_pos-08-06) & 6 (at_player-02_pos-08-06) & 7 (clear_pos-10-06)
+
+action:
+(move_player-01_pos-06-02_pos-05-03_dir-southwest)
+operator:
+move
+start_time:
+27
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+precs:
+1 (at_player-01_pos-06-02) & 2 (clear_pos-05-03) & 3 (move-dir_pos-06-02_pos-05-03_dir-southwest)
+effs:
+4 not-(at_player-01_pos-06-02) & 5 not-(clear_pos-05-03) & 6 (at_player-01_pos-05-03) & 7 (clear_pos-06-02)
+
+action:
+(move_player-02_pos-08-06_pos-07-05_dir-northwest)
+operator:
+move
+start_time:
+27
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+precs:
+1 (at_player-02_pos-08-06) & 2 (clear_pos-07-05) & 3 (move-dir_pos-08-06_pos-07-05_dir-northwest)
+effs:
+4 not-(at_player-02_pos-08-06) & 5 not-(clear_pos-07-05) & 6 (at_player-02_pos-07-05) & 7 (clear_pos-08-06)
+
+action:
+(push-to-nongoal_player-02_stone-02_pos-07-05_pos-09-05_pos-11-05_dir-east)
+operator:
+push-to-nongoal
+start_time:
+29
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13 14
+precs:
+1 (at_player-02_player-02pos) & 2 (at_stone-02_pos-09-05) & 3 (clear_pos-11-05) & 4 (move-dir_player-02pos_pos-09-05_dir-east) & 5 (move-dir_pos-09-05_pos-11-05_dir-east) & 6 (is-nongoal_pos-11-05)
+effs:
+7 not-(at_player-02_player-02pos) & 8 not-(at_stone-02_pos-09-05) & 9 not-(clear_pos-11-05) & 10 (at_player-02_pos-09-05) & 11 (at_stone-02_pos-11-05) & 12 (clear_player-02pos) & 13 not-(at-goal_stone-02)
+
+action:
+(push-to-goal_player-01_stone-03_pos-05-03_pos-06-04_pos-07-05_dir-southeast)
+operator:
+push-to-goal
+start_time:
+31
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13
+precs:
+1 (at_player-01_player-01pos) & 2 (at_stone-03_pos-06-04) & 3 (clear_pos-07-05) & 4 (move-dir_player-01pos_pos-06-04_dir-southeast) & 5 (move-dir_pos-06-04_pos-07-05_dir-southeast) & 6 (is-goal_pos-07-05)
+effs:
+7 not-(at_player-01_player-01pos) & 8 not-(at_stone-03_pos-06-04) & 9 not-(clear_pos-07-05) & 10 (at_player-01_pos-06-04) & 11 (at_stone-03_pos-07-05) & 12 (clear_player-01pos) & 13 (at-goal_stone-03)
+
+action:
+(move_player-02_pos-09-05_pos-10-06_dir-southeast)
+operator:
+move
+start_time:
+31
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12 13
+precs:
+1 (at_player-02_pos-09-05) & 2 (clear_pos-10-06) & 3 (move-dir_pos-09-05_pos-10-06_dir-southeast)
+effs:
+4 not-(at_player-02_pos-09-05) & 5 not-(clear_pos-10-06) & 6 (at_player-02_pos-10-06) & 7 (clear_pos-09-05)
+
+action:
+(move_player-01_pos-06-04_pos-05-03_dir-northwest)
+operator:
+move
+start_time:
+33
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12
+precs:
+1 (at_player-01_pos-06-04) & 2 (clear_pos-05-03) & 3 (move-dir_pos-06-04_pos-05-03_dir-northwest)
+effs:
+4 not-(at_player-01_pos-06-04) & 5 not-(clear_pos-05-03) & 6 (at_player-01_pos-05-03) & 7 (clear_pos-06-04)
+
+action:
+(move_player-02_pos-10-06_pos-12-06_dir-east)
+operator:
+move
+start_time:
+33
+durations:
+1 2 3 4 5 6 7 8 9 10 11 12
+precs:
+1 (at_player-02_pos-10-06) & 2 (clear_pos-12-06) & 3 (move-dir_pos-10-06_pos-12-06_dir-east)
+effs:
+4 not-(at_player-02_pos-10-06) & 5 not-(clear_pos-12-06) & 6 (at_player-02_pos-12-06) & 7 (clear_pos-10-06)
+
+action:
+(move_player-01_pos-05-03_pos-06-02_dir-northeast)
+operator:
+move
+start_time:
+35
+durations:
+1 2 3 4 5 6 7 8 9 10 11
+precs:
+1 (at_player-01_pos-05-03) & 2 (clear_pos-06-02) & 3 (move-dir_pos-05-03_pos-06-02_dir-northeast)
+effs:
+4 not-(at_player-01_pos-05-03) & 5 not-(clear_pos-06-02) & 6 (at_player-01_pos-06-02) & 7 (clear_pos-05-03)
+
+action:
+(move_player-01_pos-06-02_pos-08-02_dir-east)
+operator:
+move
+start_time:
+37
+durations:
+1 2 3 4 5 6 7 8 9 10
+precs:
+1 (at_player-01_pos-06-02) & 2 (clear_pos-08-02) & 3 (move-dir_pos-06-02_pos-08-02_dir-east)
+effs:
+4 not-(at_player-01_pos-06-02) & 5 not-(clear_pos-08-02) & 6 (at_player-01_pos-08-02) & 7 (clear_pos-06-02)
+
+action:
+(move_player-01_pos-08-02_pos-10-02_dir-east)
+operator:
+move
+start_time:
+39
+durations:
+1 2 3 4 5 6 7 8 9
+precs:
+1 (at_player-01_pos-08-02) & 2 (clear_pos-10-02) & 3 (move-dir_pos-08-02_pos-10-02_dir-east)
+effs:
+4 not-(at_player-01_pos-08-02) & 5 not-(clear_pos-10-02) & 6 (at_player-01_pos-10-02) & 7 (clear_pos-08-02)
+
+action:
+(move_player-01_pos-10-02_pos-11-03_dir-southeast)
+operator:
+move
+start_time:
+41
+durations:
+1 2 3 4 5 6 7 8
+precs:
+1 (at_player-01_pos-10-02) & 2 (clear_pos-11-03) & 3 (move-dir_pos-10-02_pos-11-03_dir-southeast)
+effs:
+4 not-(at_player-01_pos-10-02) & 5 not-(clear_pos-11-03) & 6 (at_player-01_pos-11-03) & 7 (clear_pos-10-02)
+
+action:
+(push-to-goal_player-01_stone-04_pos-11-03_pos-10-04_pos-09-05_dir-southwest)
+operator:
+push-to-goal
+start_time:
+43
+durations:
+1 2 3 4 5 6 7
+precs:
+1 (at_player-01_player-01pos) & 2 (at_stone-04_pos-10-04) & 3 (clear_pos-09-05) & 4 (move-dir_player-01pos_pos-10-04_dir-southwest) & 5 (move-dir_pos-10-04_pos-09-05_dir-southwest) & 6 (is-goal_pos-09-05)
+effs:
+7 not-(at_player-01_player-01pos) & 8 not-(at_stone-04_pos-10-04) & 9 not-(clear_pos-09-05) & 10 (at_player-01_pos-10-04) & 11 (at_stone-04_pos-09-05) & 12 (clear_player-01pos) & 13 (at-goal_stone-04)
+
+action:
+(push-to-goal_player-01_stone-01_pos-10-04_pos-08-04_pos-06-04_dir-west)
+operator:
+push-to-goal
+start_time:
+45
+durations:
+1 2 3 4 5 6
+precs:
+1 (at_player-01_player-01pos) & 2 (at_stone-01_pos-08-04) & 3 (clear_pos-06-04) & 4 (move-dir_player-01pos_pos-08-04_dir-west) & 5 (move-dir_pos-08-04_pos-06-04_dir-west) & 6 (is-goal_pos-06-04)
+effs:
+7 not-(at_player-01_player-01pos) & 8 not-(at_stone-01_pos-08-04) & 9 not-(clear_pos-06-04) & 10 (at_player-01_pos-08-04) & 11 (at_stone-01_pos-06-04) & 12 (clear_player-01pos) & 13 (at-goal_stone-01)
+
+action:
+(push-to-goal_player-01_stone-04_pos-08-04_pos-09-05_pos-10-06_dir-southeast)
+operator:
+push-to-goal
+start_time:
+47
+durations:
+1 2 3 4 5
+precs:
+1 (at_player-01_player-01pos) & 2 (at_stone-04_pos-09-05) & 3 (clear_pos-10-06) & 4 (move-dir_player-01pos_pos-09-05_dir-southeast) & 5 (move-dir_pos-09-05_pos-10-06_dir-southeast) & 6 (is-goal_pos-10-06)
+effs:
+7 not-(at_player-01_player-01pos) & 8 not-(at_stone-04_pos-09-05) & 9 not-(clear_pos-10-06) & 10 (at_player-01_pos-09-05) & 11 (at_stone-04_pos-10-06) & 12 (clear_player-01pos) & 13 (at-goal_stone-04)
+
+action:
+(move_player-01_pos-09-05_pos-10-04_dir-northeast)
+operator:
+move
+start_time:
+49
+durations:
+1 2 3 4
+precs:
+1 (at_player-01_pos-09-05) & 2 (clear_pos-10-04) & 3 (move-dir_pos-09-05_pos-10-04_dir-northeast)
+effs:
+4 not-(at_player-01_pos-09-05) & 5 not-(clear_pos-10-04) & 6 (at_player-01_pos-10-04) & 7 (clear_pos-09-05)
+
+action:
+(move_player-01_pos-10-04_pos-11-03_dir-northeast)
+operator:
+move
+start_time:
+51
+durations:
+1 2 3
+precs:
+1 (at_player-01_pos-10-04) & 2 (clear_pos-11-03) & 3 (move-dir_pos-10-04_pos-11-03_dir-northeast)
+effs:
+4 not-(at_player-01_pos-10-04) & 5 not-(clear_pos-11-03) & 6 (at_player-01_pos-11-03) & 7 (clear_pos-10-04)
+
+action:
+(push-to-nongoal_player-02_stone-02_pos-12-06_pos-11-05_pos-10-04_dir-northwest)
+operator:
+push-to-nongoal
+start_time:
+53
+durations:
+1 2
+precs:
+1 (at_player-02_player-02pos) & 2 (at_stone-02_pos-11-05) & 3 (clear_pos-10-04) & 4 (move-dir_player-02pos_pos-11-05_dir-northwest) & 5 (move-dir_pos-11-05_pos-10-04_dir-northwest) & 6 (is-nongoal_pos-10-04)
+effs:
+7 not-(at_player-02_player-02pos) & 8 not-(at_stone-02_pos-11-05) & 9 not-(clear_pos-10-04) & 10 (at_player-02_pos-11-05) & 11 (at_stone-02_pos-10-04) & 12 (clear_player-02pos) & 13 not-(at-goal_stone-02)
+
+action:
+(push-to-goal_player-01_stone-02_pos-11-03_pos-10-04_pos-09-05_dir-southwest)
+operator:
+push-to-goal
+start_time:
+55
+durations:
+1
+precs:
+1 (at_player-01_player-01pos) & 2 (at_stone-02_pos-10-04) & 3 (clear_pos-09-05) & 4 (move-dir_player-01pos_pos-10-04_dir-southwest) & 5 (move-dir_pos-10-04_pos-09-05_dir-southwest) & 6 (is-goal_pos-09-05)
+effs:
+7 not-(at_player-01_player-01pos) & 8 not-(at_stone-02_pos-10-04) & 9 not-(clear_pos-09-05) & 10 (at_player-01_pos-10-04) & 11 (at_stone-02_pos-09-05) & 12 (clear_player-01pos) & 13 (at-goal_stone-02)
+

@@ -1,7 +1,7 @@
 ; IPC5 Domain: Storage Time
 ; Authors: Alfonso Gerevini and Alessandro Saetti 
 
-(define (domain Storage-Time)
+(define (domain Storage)
 (:requirements :typing :durative-actions)
 (:types hoist surface place area - object
 	container depot - place

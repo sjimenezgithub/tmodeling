@@ -8,7 +8,7 @@
 ;;    # # # #
 
 (define (problem p019-hexoban-temporal)
-  (:domain sokoban-temporal)
+  (:domain sokoban)
   (:objects
     dir-east - direction
     dir-northeast - direction

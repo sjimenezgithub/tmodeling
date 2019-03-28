@@ -7,7 +7,7 @@
 ; =: Transit area
 
 (define (problem storage-6)
-(:domain Storage-Time)
+(:domain Storage)
 (:objects
 	depot0-1-1 depot0-1-2 depot0-2-1 depot0-2-2 container-0-0 container-0-1 - storearea
 	hoist0 hoist1 hoist2 - hoist
