@@ -1,0 +1,196 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains/zenoSimpleTime-IPC02/domain-classical.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains//zenoSimpleTime-IPC02/pfile04.pddl
+
+init:
+1 (at_person4_city0) & 2 (at_person5_city2) & 3 (at_plane2_city2) & 4 (at_person1_city0) & 5 (at_person3_city0) & 6 (next_fl2_fl3) & 7 (at_person2_city1) & 8 (fuel-level_plane2_fl0) & 9 (at_plane1_city2) & 10 (next_fl0_fl1) & 11 (fuel-level_plane1_fl5) & 12 (next_fl5_fl6) & 13 (next_fl3_fl4) & 14 (next_fl4_fl5) & 15 (next_fl1_fl2)
+
+goals:
+1 (at_plane1_city0) & 2 (at_person2_city2) & 3 (at_person3_city0) & 4 (at_person4_city1) & 5 (at_person5_city2)
+makespan:
+897
+
+action:
+(zoom_plane1_city2_city1_fl5_fl4_fl3)
+operator:
+zoom
+start_time:
+1
+durations:
+100 120 220 293 393 466 539 639 712 785 885
+precs:
+1 (at_plane1_city2) & 2 (fuel-level_plane1_fl5) & 3 (next_fl4_fl5) & 4 (next_fl3_fl4)
+effs:
+5 not-(at_plane1_city2) & 6 (at_plane1_city1) & 7 not-(fuel-level_plane1_fl5) & 8 (fuel-level_plane1_fl3)
+
+action:
+(board_person2_plane1_city1)
+operator:
+board
+start_time:
+102
+durations:
+20 120 193 293 366 439 539 612 685 785
+precs:
+1 (at_person2_city1) & 2 (at_plane1_city1)
+effs:
+3 not-(at_person2_city1) & 4 (in_person2_plane1)
+
+action:
+(zoom_plane1_city1_city2_fl3_fl2_fl1)
+operator:
+zoom
+start_time:
+123
+durations:
+100 173 273 346 419 519 592 665 765
+precs:
+1 (at_plane1_city1) & 2 (fuel-level_plane1_fl3) & 3 (next_fl2_fl3) & 4 (next_fl1_fl2)
+effs:
+5 not-(at_plane1_city1) & 6 (at_plane1_city2) & 7 not-(fuel-level_plane1_fl3) & 8 (fuel-level_plane1_fl1)
+
+action:
+(debark_person2_plane1_city2)
+operator:
+debark
+start_time:
+224
+durations:
+73 173 246 319 419 492 565 665
+precs:
+1 (in_person2_plane1) & 2 (at_plane1_city2)
+effs:
+3 not-(in_person2_plane1) & 4 (at_person2_city2)
+
+action:
+(refuel_plane1_city2_fl1_fl2)
+operator:
+refuel
+start_time:
+224
+durations:
+73 173 246 319 419 492 565 665
+precs:
+1 (fuel-level_plane1_fl1) & 2 (next_fl1_fl11) & 3 (at_plane1_city2)
+effs:
+4 (fuel-level_plane1_fl11) & 5 not-(fuel-level_plane1_fl1)
+
+action:
+(zoom_plane1_city2_city0_fl2_fl1_fl0)
+operator:
+zoom
+start_time:
+298
+durations:
+100 173 246 346 419 492 592
+precs:
+1 (at_plane1_city2) & 2 (fuel-level_plane1_fl2) & 3 (next_fl1_fl2) & 4 (next_fl0_fl1)
+effs:
+5 not-(at_plane1_city2) & 6 (at_plane1_city0) & 7 not-(fuel-level_plane1_fl2) & 8 (fuel-level_plane1_fl0)
+
+action:
+(board_person4_plane1_city0)
+operator:
+board
+start_time:
+399
+durations:
+73 146 246 319 392 492
+precs:
+1 (at_person4_city0) & 2 (at_plane1_city0)
+effs:
+3 not-(at_person4_city0) & 4 (in_person4_plane1)
+
+action:
+(refuel_plane1_city0_fl0_fl1)
+operator:
+refuel
+start_time:
+399
+durations:
+73 146 246 319 392 492
+precs:
+1 (fuel-level_plane1_fl0) & 2 (next_fl0_fl01) & 3 (at_plane1_city0)
+effs:
+4 (fuel-level_plane1_fl01) & 5 not-(fuel-level_plane1_fl0)
+
+action:
+(refuel_plane1_city0_fl1_fl2)
+operator:
+refuel
+start_time:
+473
+durations:
+73 173 246 319 419
+precs:
+1 (fuel-level_plane1_fl1) & 2 (next_fl1_fl11) & 3 (at_plane1_city0)
+effs:
+4 (fuel-level_plane1_fl11) & 5 not-(fuel-level_plane1_fl1)
+
+action:
+(zoom_plane1_city0_city1_fl2_fl1_fl0)
+operator:
+zoom
+start_time:
+547
+durations:
+100 173 246 346
+precs:
+1 (at_plane1_city0) & 2 (fuel-level_plane1_fl2) & 3 (next_fl1_fl2) & 4 (next_fl0_fl1)
+effs:
+5 not-(at_plane1_city0) & 6 (at_plane1_city1) & 7 not-(fuel-level_plane1_fl2) & 8 (fuel-level_plane1_fl0)
+
+action:
+(debark_person4_plane1_city1)
+operator:
+debark
+start_time:
+648
+durations:
+73 146 246
+precs:
+1 (in_person4_plane1) & 2 (at_plane1_city1)
+effs:
+3 not-(in_person4_plane1) & 4 (at_person4_city1)
+
+action:
+(refuel_plane1_city1_fl0_fl1)
+operator:
+refuel
+start_time:
+648
+durations:
+73 146 246
+precs:
+1 (fuel-level_plane1_fl0) & 2 (next_fl0_fl01) & 3 (at_plane1_city1)
+effs:
+4 (fuel-level_plane1_fl01) & 5 not-(fuel-level_plane1_fl0)
+
+action:
+(refuel_plane1_city1_fl1_fl2)
+operator:
+refuel
+start_time:
+722
+durations:
+73 173
+precs:
+1 (fuel-level_plane1_fl1) & 2 (next_fl1_fl11) & 3 (at_plane1_city1)
+effs:
+4 (fuel-level_plane1_fl11) & 5 not-(fuel-level_plane1_fl1)
+
+action:
+(zoom_plane1_city1_city0_fl2_fl1_fl0)
+operator:
+zoom
+start_time:
+796
+durations:
+100
+precs:
+1 (at_plane1_city1) & 2 (fuel-level_plane1_fl2) & 3 (next_fl1_fl2) & 4 (next_fl0_fl1)
+effs:
+5 not-(at_plane1_city1) & 6 (at_plane1_city0) & 7 not-(fuel-level_plane1_fl2) & 8 (fuel-level_plane1_fl0)
+

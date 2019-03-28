@@ -54,20 +54,23 @@ def format_string_literals(str_literals, offset):
 
 
 
-
-
-
 # **************************************#
 # MAIN
 # **************************************#
 try:
-
     if "-n" in sys.argv:
         index = sys.argv.index("-n")
         sys.argv.pop(index)
         bneginit = True
     else:
-        bneginit = False 
+        bneginit = False
+
+    if "-e" in sys.argv:
+        index = sys.argv.index("-e")
+        sys.argv.pop(index)
+        btrunk = True
+    else:
+        btrunk = False         
     
     domain_filename  = sys.argv[1]
     problem_filename = sys.argv[2]
@@ -170,8 +173,9 @@ for s in steps:
     s.durations = [item - s.stime for item in aux_timestamps[aux_timestamps.index(s.stime)+1:]]
     print s
     print
-    
-print "end:\n"
+
+if not btrunk:    
+    print "end:\n"
 sys.exit(0)
 
 

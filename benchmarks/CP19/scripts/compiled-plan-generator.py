@@ -4,6 +4,7 @@ import os, sys
 PLANS_FOLDER = "../plans/"
 DOMAINS_FOLDER = "/home/slimbook/research/tmodeling/benchmarks/CP19/domains/"
 COMPILED_PLANS_FOLDER = "../compiled-plans/"
+TRUNKED_COMPILED_PLANS_FOLDER = "../trunked-plans/"
 
 
 # **************************************#
@@ -31,6 +32,15 @@ for p in plan_files:
 
     cmd = "cd "+ cwd
     os.system(cmd)
+
+    cwd = os.getcwd() + "/"
+    output_name = cwd + TRUNKED_COMPILED_PLANS_FOLDER + "trunked." + p
+    cmd = "cd ../../../src/; ./compiler.py -e " + DOMAINS_FOLDER + domain + "/domain-classical.pddl " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " > "+output_name
+    print cmd
+    os.system(cmd)
+
+    cmd = "cd "+ cwd
+    os.system(cmd)    
     
 sys.exit(0)
 

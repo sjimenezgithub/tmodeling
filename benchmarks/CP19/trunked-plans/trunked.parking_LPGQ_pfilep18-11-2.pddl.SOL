@@ -1,0 +1,235 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains/parking/domain-classical.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains//parking/pfilep18-11-2.pddl
+
+init:
+1 (at-curb_car_01) & 2 (car-clear_car_06) & 3 (at-curb_car_00) & 4 (at-curb-num_car_04_curb_06) & 5 (at-curb-num_car_05_curb_08) & 6 (at-curb-num_car_09_curb_00) & 7 (behind-car_car_07_car_08) & 8 (at-curb-num_car_01_curb_05) & 9 (at-curb_car_09) & 10 (at-curb-num_car_02_curb_03) & 11 (behind-car_car_10_car_09) & 12 (car-clear_car_07) & 13 (curb-clear_curb_12) & 14 (at-curb_car_03) & 15 (curb-clear_curb_16) & 16 (curb-clear_curb_17) & 17 (car-clear_car_10) & 18 (car-clear_car_04) & 19 (car-clear_car_01) & 20 (at-curb-num_car_08_curb_01) & 21 (at-curb_car_08) & 22 (curb-clear_curb_11) & 23 (at-curb_car_06) & 24 (curb-clear_curb_13) & 25 (curb-clear_curb_10) & 26 (car-clear_car_00) & 27 (curb-clear_curb_09) & 28 (curb-clear_curb_15) & 29 (at-curb_car_05) & 30 (at-curb_car_02) & 31 (at-curb-num_car_00_curb_02) & 32 (car-clear_car_05) & 33 (car-clear_car_02) & 34 (at-curb-num_car_03_curb_07) & 35 (car-clear_car_03) & 36 (at-curb-num_car_06_curb_04) & 37 (curb-clear_curb_14) & 38 (at-curb_car_04)
+
+goals:
+1 (at-curb-num_car_00_curb_00) & 2 (at-curb-num_car_01_curb_01) & 3 (at-curb-num_car_02_curb_02) & 4 (at-curb-num_car_03_curb_03) & 5 (at-curb-num_car_04_curb_04) & 6 (at-curb-num_car_05_curb_05) & 7 (at-curb-num_car_06_curb_06) & 8 (at-curb-num_car_07_curb_07) & 9 (at-curb-num_car_08_curb_08) & 10 (at-curb-num_car_09_curb_09) & 11 (at-curb-num_car_10_curb_10)
+makespan:
+16
+
+action:
+(move-car-to-car_car_10_car_09_car_05)
+operator:
+move-car-to-car
+start_time:
+1
+durations:
+2 3 4 5 6 7 8
+precs:
+1 (car-clear_car_10) & 2 (car-clear_car_10dest) & 3 (behind-car_car_10_car_10src) & 4 (at-curb_car_10dest)
+effs:
+5 not-(car-clear_car_10dest) & 6 (car-clear_car_10src) & 7 (behind-car_car_10_car_10dest) & 8 not-(behind-car_car_10_car_10src)
+
+action:
+(move-car-to-curb_car_07_car_08_curb_11)
+operator:
+move-car-to-curb
+start_time:
+1
+durations:
+2 3 4 5 6 7 8
+precs:
+1 (car-clear_car_07) & 2 (curb-clear_curb_11) & 3 (behind-car_car_07_car_07src)
+effs:
+4 not-(curb-clear_curb_11) & 5 (car-clear_car_07src) & 6 (at-curb-num_car_07_curb_11) & 7 not-(behind-car_car_07_car_07src) & 8 (at-curb_car_07)
+
+action:
+(move-curb-to-curb_car_08_curb_01_curb_16)
+operator:
+move-curb-to-curb
+start_time:
+4
+durations:
+1 2 3 4 5 6
+precs:
+1 (car-clear_car_08) & 2 (curb-clear_curb_16) & 3 (at-curb-num_car_08_curb_01)
+effs:
+4 not-(curb-clear_curb_16) & 5 (curb-clear_curb_01) & 6 (at-curb-num_car_08_curb_16) & 7 not-(at-curb-num_car_08_curb_01)
+
+action:
+(move-curb-to-car_car_06_curb_04_car_07)
+operator:
+move-curb-to-car
+start_time:
+4
+durations:
+1 2 3 4 5 6
+precs:
+1 (car-clear_car_06) & 2 (car-clear_car_06dest) & 3 (at-curb-num_car_06_curb_04) & 4 (at-curb_car_06dest)
+effs:
+5 not-(car-clear_car_06dest) & 6 (curb-clear_curb_04) & 7 (behind-car_car_06_car_06dest) & 8 not-(at-curb-num_car_06_curb_04) & 9 not-(at-curb_car_06)
+
+action:
+(move-curb-to-curb_car_09_curb_00_curb_12)
+operator:
+move-curb-to-curb
+start_time:
+6
+durations:
+1 2 3 4 5
+precs:
+1 (car-clear_car_09) & 2 (curb-clear_curb_12) & 3 (at-curb-num_car_09_curb_00)
+effs:
+4 not-(curb-clear_curb_12) & 5 (curb-clear_curb_00) & 6 (at-curb-num_car_09_curb_12) & 7 not-(at-curb-num_car_09_curb_00)
+
+action:
+(move-curb-to-curb_car_01_curb_05_curb_01)
+operator:
+move-curb-to-curb
+start_time:
+6
+durations:
+1 2 3 4 5
+precs:
+1 (car-clear_car_01) & 2 (curb-clear_curb_01) & 3 (at-curb-num_car_01_curb_05)
+effs:
+4 not-(curb-clear_curb_01) & 5 (curb-clear_curb_05) & 6 (at-curb-num_car_01_curb_01) & 7 not-(at-curb-num_car_01_curb_05)
+
+action:
+(move-car-to-car_car_10_car_05_car_01)
+operator:
+move-car-to-car
+start_time:
+6
+durations:
+1 2 3 4 5
+precs:
+1 (car-clear_car_10) & 2 (car-clear_car_10dest) & 3 (behind-car_car_10_car_10src) & 4 (at-curb_car_10dest)
+effs:
+5 not-(car-clear_car_10dest) & 6 (car-clear_car_10src) & 7 (behind-car_car_10_car_10dest) & 8 not-(behind-car_car_10_car_10src)
+
+action:
+(move-curb-to-curb_car_00_curb_02_curb_00)
+operator:
+move-curb-to-curb
+start_time:
+8
+durations:
+1 2 3 4
+precs:
+1 (car-clear_car_00) & 2 (curb-clear_curb_00) & 3 (at-curb-num_car_00_curb_02)
+effs:
+4 not-(curb-clear_curb_00) & 5 (curb-clear_curb_02) & 6 (at-curb-num_car_00_curb_00) & 7 not-(at-curb-num_car_00_curb_02)
+
+action:
+(move-curb-to-curb_car_04_curb_06_curb_04)
+operator:
+move-curb-to-curb
+start_time:
+8
+durations:
+1 2 3 4
+precs:
+1 (car-clear_car_04) & 2 (curb-clear_curb_04) & 3 (at-curb-num_car_04_curb_06)
+effs:
+4 not-(curb-clear_curb_04) & 5 (curb-clear_curb_06) & 6 (at-curb-num_car_04_curb_04) & 7 not-(at-curb-num_car_04_curb_06)
+
+action:
+(move-curb-to-curb_car_09_curb_12_curb_09)
+operator:
+move-curb-to-curb
+start_time:
+8
+durations:
+1 2 3 4
+precs:
+1 (car-clear_car_09) & 2 (curb-clear_curb_09) & 3 (at-curb-num_car_09_curb_12)
+effs:
+4 not-(curb-clear_curb_09) & 5 (curb-clear_curb_12) & 6 (at-curb-num_car_09_curb_09) & 7 not-(at-curb-num_car_09_curb_12)
+
+action:
+(move-curb-to-curb_car_02_curb_03_curb_02)
+operator:
+move-curb-to-curb
+start_time:
+10
+durations:
+1 2 3
+precs:
+1 (car-clear_car_02) & 2 (curb-clear_curb_02) & 3 (at-curb-num_car_02_curb_03)
+effs:
+4 not-(curb-clear_curb_02) & 5 (curb-clear_curb_03) & 6 (at-curb-num_car_02_curb_02) & 7 not-(at-curb-num_car_02_curb_03)
+
+action:
+(move-car-to-curb_car_06_car_07_curb_06)
+operator:
+move-car-to-curb
+start_time:
+10
+durations:
+1 2 3
+precs:
+1 (car-clear_car_06) & 2 (curb-clear_curb_06) & 3 (behind-car_car_06_car_06src)
+effs:
+4 not-(curb-clear_curb_06) & 5 (car-clear_car_06src) & 6 (at-curb-num_car_06_curb_06) & 7 not-(behind-car_car_06_car_06src) & 8 (at-curb_car_06)
+
+action:
+(move-curb-to-curb_car_03_curb_07_curb_03)
+operator:
+move-curb-to-curb
+start_time:
+12
+durations:
+1 2
+precs:
+1 (car-clear_car_03) & 2 (curb-clear_curb_03) & 3 (at-curb-num_car_03_curb_07)
+effs:
+4 not-(curb-clear_curb_03) & 5 (curb-clear_curb_07) & 6 (at-curb-num_car_03_curb_03) & 7 not-(at-curb-num_car_03_curb_07)
+
+action:
+(move-curb-to-curb_car_05_curb_08_curb_05)
+operator:
+move-curb-to-curb
+start_time:
+12
+durations:
+1 2
+precs:
+1 (car-clear_car_05) & 2 (curb-clear_curb_05) & 3 (at-curb-num_car_05_curb_08)
+effs:
+4 not-(curb-clear_curb_05) & 5 (curb-clear_curb_08) & 6 (at-curb-num_car_05_curb_05) & 7 not-(at-curb-num_car_05_curb_08)
+
+action:
+(move-car-to-curb_car_10_car_01_curb_10)
+operator:
+move-car-to-curb
+start_time:
+12
+durations:
+1 2
+precs:
+1 (car-clear_car_10) & 2 (curb-clear_curb_10) & 3 (behind-car_car_10_car_10src)
+effs:
+4 not-(curb-clear_curb_10) & 5 (car-clear_car_10src) & 6 (at-curb-num_car_10_curb_10) & 7 not-(behind-car_car_10_car_10src) & 8 (at-curb_car_10)
+
+action:
+(move-curb-to-curb_car_07_curb_11_curb_07)
+operator:
+move-curb-to-curb
+start_time:
+14
+durations:
+1
+precs:
+1 (car-clear_car_07) & 2 (curb-clear_curb_07) & 3 (at-curb-num_car_07_curb_11)
+effs:
+4 not-(curb-clear_curb_07) & 5 (curb-clear_curb_11) & 6 (at-curb-num_car_07_curb_07) & 7 not-(at-curb-num_car_07_curb_11)
+
+action:
+(move-curb-to-curb_car_08_curb_16_curb_08)
+operator:
+move-curb-to-curb
+start_time:
+14
+durations:
+1
+precs:
+1 (car-clear_car_08) & 2 (curb-clear_curb_08) & 3 (at-curb-num_car_08_curb_16)
+effs:
+4 not-(curb-clear_curb_08) & 5 (curb-clear_curb_16) & 6 (at-curb-num_car_08_curb_08) & 7 not-(at-curb-num_car_08_curb_16)
+
