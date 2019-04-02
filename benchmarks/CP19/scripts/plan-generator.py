@@ -2,7 +2,7 @@
 import os, sys
 
 TIME_LIMIT_SECS = 100
-PLANNERS = ["LPGS", "LPGQ", "TFD", "TFLAP", "TEAM1"]
+PLANNERS = ["TFD", "TFLAP", "TEAM1","LPGS", "LPGQ"]
 DOMAINS = ["zenoSimpleTime-IPC02", "depotsSimpleTime-IPC02", "driverlogSimpleTime-IPC02", "roversSimpleTime-IPC02", "satelliteSimpleTime-IPC02", "storageSimpleTime-IPC06", "floortile", "parking", "sokoban"]
 NPROBLEMS = -1
 DOMAINS_FOLDER = "../domains/"
@@ -71,7 +71,7 @@ for d in DOMAINS:
 
             # removing all solutions except the last one
             solutions = sorted([f for f in os.listdir(PLANS_FOLDER) if (d + "_" + p +"_" + pfile in f) and (os.path.isfile(os.path.join(PLANS_FOLDER, f)))])
-            for sol in solutions[1:]:
+            for sol in solutions[:-1]:
                 cmd = "rm " + PLANS_FOLDER+sol
                 print cmd
                 os.system(cmd)                    
