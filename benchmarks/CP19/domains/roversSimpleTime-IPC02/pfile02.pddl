@@ -58,6 +58,6 @@
 (communicated_image_data objective1 low_res)
 	)
 )
-
+(:metric minimize (total-time))
 
 )

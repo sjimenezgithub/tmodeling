@@ -58,4 +58,5 @@
 		(on crate8 pallet4)
 		(on crate9 pallet0)
 	)
-))
+)
+(:metric minimize (total-time)))

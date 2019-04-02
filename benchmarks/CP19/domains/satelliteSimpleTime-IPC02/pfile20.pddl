@@ -239,5 +239,5 @@
 	(have_image Star24 infrared5)
 ))
 
-
+(:metric minimize (total-time))
 )

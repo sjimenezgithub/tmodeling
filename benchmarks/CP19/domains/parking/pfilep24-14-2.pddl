@@ -69,7 +69,7 @@
       (at-curb-num car_13 curb_13)
     )
   )
-
+(:metric minimize (total-time))
 )
 ; =========== INIT =========== 
 ;  curb_00: car_00 car_12 

@@ -71,6 +71,6 @@
 (communicated_image_data objective0 colour)
 	)
 )
-
+(:metric minimize (total-time))
 
 )

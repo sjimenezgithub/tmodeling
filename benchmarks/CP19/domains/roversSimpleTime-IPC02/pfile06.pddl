@@ -110,5 +110,5 @@
 	)
 )
 
-
+(:metric minimize (total-time))
 )

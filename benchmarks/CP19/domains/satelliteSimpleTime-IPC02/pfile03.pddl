@@ -49,5 +49,5 @@
 	(have_image Phenomenon7 spectrograph2)
 ))
 
-
+(:metric minimize (total-time))
 )

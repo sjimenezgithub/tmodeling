@@ -122,5 +122,5 @@
 	(have_image Phenomenon24 infrared0)
 ))
 
-
+(:metric minimize (total-time))
 )

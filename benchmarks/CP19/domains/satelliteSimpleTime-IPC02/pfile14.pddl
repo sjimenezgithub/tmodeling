@@ -137,5 +137,5 @@
 	(have_image Planet23 image1)
 ))
 
-
+(:metric minimize (total-time))
 )

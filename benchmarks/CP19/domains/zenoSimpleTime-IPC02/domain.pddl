@@ -7,7 +7,6 @@
 	     (fuel-level ?a - aircraft ?l - flevel)
 	     (next ?l1 ?l2 - flevel))
 
-
 (:durative-action board
  :parameters (?p - person ?a - aircraft ?c - city)
  :duration (= ?duration 20)

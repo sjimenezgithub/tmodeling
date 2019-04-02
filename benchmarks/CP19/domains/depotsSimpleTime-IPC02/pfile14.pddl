@@ -72,4 +72,5 @@
 		(on crate7 crate6)
 		(on crate9 crate7)
 	)
-))
+)
+(:metric minimize (total-time)))

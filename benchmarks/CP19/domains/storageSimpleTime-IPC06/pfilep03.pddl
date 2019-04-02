@@ -40,5 +40,5 @@
 (:goal (and
 	(in crate0 depot0)))
 
-
+(:metric minimize (total-time))
 )

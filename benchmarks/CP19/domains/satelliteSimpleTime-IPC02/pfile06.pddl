@@ -63,5 +63,5 @@
 	(have_image Star10 infrared3)
 ))
 
-
+(:metric minimize (total-time))
 )

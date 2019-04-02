@@ -171,5 +171,5 @@
     (painted tile_5-4 black)
     (painted tile_5-5 white)
 ))
-
+(:metric minimize (total-time))
 )

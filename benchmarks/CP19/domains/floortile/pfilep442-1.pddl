@@ -114,5 +114,5 @@
     (painted tile-4-3 black)
     (painted tile-4-4 white)
 ))
- 
+ (:metric minimize (total-time))
 )

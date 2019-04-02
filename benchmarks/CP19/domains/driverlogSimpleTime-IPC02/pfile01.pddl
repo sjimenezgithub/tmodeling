@@ -42,4 +42,7 @@
 	(at truck1 s1)
 	(at package1 s0)
 	(at package2 s0)
-	)))
+	))
+
+(:metric minimize (total-time))
+)
