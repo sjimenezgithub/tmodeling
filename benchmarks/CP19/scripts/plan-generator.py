@@ -1,10 +1,10 @@
 #! /usr/bin/env python
 import os, sys
 
-TIME_LIMIT_SECS = 60
+TIME_LIMIT_SECS = 100
 PLANNERS = ["LPGS", "LPGQ", "TFD", "TFLAP", "TEAM1"]
-DOMAINS = ["depotsSimpleTime-IPC02", "driverlogSimpleTime-IPC02", "roversSimpleTime-IPC02", "satelliteSimpleTime-IPC02", "zenoSimpleTime-IPC02", "storageSimpleTime-IPC06", "floortile", "parking", "sokoban"]
-NPROBLEMS = 2
+DOMAINS = ["zenoSimpleTime-IPC02", "depotsSimpleTime-IPC02", "driverlogSimpleTime-IPC02", "roversSimpleTime-IPC02", "satelliteSimpleTime-IPC02", "storageSimpleTime-IPC06", "floortile", "parking", "sokoban"]
+NPROBLEMS = -1
 DOMAINS_FOLDER = "../domains/"
 PLANS_FOLDER = "../plans/"
 PLANNERS_FOLDER = "../../../planners/"
@@ -24,7 +24,10 @@ except:
 for d in DOMAINS:    
     for p in PLANNERS:    
         source_dir = DOMAINS_FOLDER + d
-        onlyfiles = sorted([f for f in os.listdir(source_dir) if os.path.isfile(os.path.join(source_dir, f))])        
+        onlyfiles = sorted([f for f in os.listdir(source_dir) if os.path.isfile(os.path.join(source_dir, f))])
+
+        if NPROBLEMS==-1:
+            NPROBLEMS = len(onlyfiles) - 3        
         for pfile in onlyfiles[3:3+NPROBLEMS]: # Starts in three to skip: 1) temp domain, 2) classical domain and 3) invariants 
             output_name = PLANS_FOLDER + d + "_" + p +"_" + pfile
             if p=="LPGS":
@@ -32,16 +35,19 @@ for d in DOMAINS:
                 cmd = cmd + PLANNERS_FOLDER +"/LPG/lpg-td-1.0 -o " + DOMAINS_FOLDER + d + "/domain.pddl -f " + DOMAINS_FOLDER + d + "/"+ pfile  + " -speed -out " + output_name
                 print cmd
                 os.system(cmd)
+                
             if p=="LPGQ":
                 cmd = "ulimit -t " + str(TIME_LIMIT_SECS) + "; "
                 cmd = cmd + PLANNERS_FOLDER +"/LPG/lpg-td-1.0 -o " + DOMAINS_FOLDER + d + "/domain.pddl -f " + DOMAINS_FOLDER + d + "/"+ pfile  + " -quality -out " + output_name
                 print cmd
                 os.system(cmd)
+                
             if p=="TFLAP":
                 cmd = "ulimit -t " + str(TIME_LIMIT_SECS) + "; "
                 cmd = cmd + PLANNERS_FOLDER +"/tflap/tflap " + DOMAINS_FOLDER + d + "/domain.pddl " + DOMAINS_FOLDER + d + "/"+ pfile  + " " + output_name
                 print cmd
                 os.system(cmd)
+                
             if p=="TFD":
                 cwd = os.getcwd()+"/"
                 cmd = "cd " + PLANNERS_FOLDER +"/tfd-src-0.4/downward/ ;"
@@ -51,6 +57,14 @@ for d in DOMAINS:
                 os.system(cmd)
                 cmd = "cd "+ cwd
                 os.system(cmd)
+
+                # removing all solutions except the last one
+                solutions = sorted([f for f in os.listdir(PLANS_FOLDER) if (pfile in f) and (os.path.isfile(os.path.join(PLANS_FOLDER, f)))])
+                for sol in solutions[1:]:
+                    cmd = "rm " + PLANS_FOLDER+sol
+                    print cmd
+                    os.system(cmd)                    
+                
             if p=="TEAM1":
                 output_name = output_name +".SOL"
                 cwd = os.getcwd()+"/"
