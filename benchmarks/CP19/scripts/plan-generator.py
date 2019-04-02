@@ -57,13 +57,6 @@ for d in DOMAINS:
                 os.system(cmd)
                 cmd = "cd "+ cwd
                 os.system(cmd)
-
-                # removing all solutions except the last one
-                solutions = sorted([f for f in os.listdir(PLANS_FOLDER) if (d + "_" + p +"_" + pfile in f) and (os.path.isfile(os.path.join(PLANS_FOLDER, f)))])
-                for sol in solutions[1:]:
-                    cmd = "rm " + PLANS_FOLDER+sol
-                    print cmd
-                    os.system(cmd)                    
                 
             if p=="TEAM1":
                 output_name = output_name +".SOL"
@@ -75,6 +68,14 @@ for d in DOMAINS:
                 os.system(cmd)
                 cmd = "cd "+ cwd
                 os.system(cmd)
+
+            # removing all solutions except the last one
+            solutions = sorted([f for f in os.listdir(PLANS_FOLDER) if (d + "_" + p +"_" + pfile in f) and (os.path.isfile(os.path.join(PLANS_FOLDER, f)))])
+            for sol in solutions[1:]:
+                cmd = "rm " + PLANS_FOLDER+sol
+                print cmd
+                os.system(cmd)                    
+                
 sys.exit(0)
 
 
