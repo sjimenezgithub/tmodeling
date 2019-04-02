@@ -59,7 +59,7 @@ for d in DOMAINS:
                 os.system(cmd)
 
                 # removing all solutions except the last one
-                solutions = sorted([f for f in os.listdir(PLANS_FOLDER) if (pfile in f) and (os.path.isfile(os.path.join(PLANS_FOLDER, f)))])
+                solutions = sorted([f for f in os.listdir(PLANS_FOLDER) if (d + "_" + p +"_" + pfile in f) and (os.path.isfile(os.path.join(PLANS_FOLDER, f)))])
                 for sol in solutions[1:]:
                     cmd = "rm " + PLANS_FOLDER+sol
                     print cmd
