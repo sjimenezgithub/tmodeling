@@ -1,0 +1,27 @@
+0.002: (walk driver2 s1 p1-2) [20.000]
+0.002: (load-truck package3 truck3 s3) [2.000]
+0.002: (load-truck package1 truck1 s2) [2.000]
+0.002: (walk driver1 s4 p4-0) [20.000]
+20.010: (walk driver2 p1-2 s2) [20.000]
+20.010: (walk driver1 p4-0 s0) [20.000]
+40.020: (board-truck driver1 truck2 s0) [1.000]
+40.020: (board-truck driver2 truck1 s2) [1.000]
+41.030: (drive-truck truck1 s2 s3 driver2) [10.000]
+41.030: (drive-truck truck2 s0 s3 driver1) [10.000]
+51.040: (unload-truck package1 truck1 s3) [2.000]
+51.040: (disembark-truck driver1 truck2 s3) [1.000]
+51.040: (disembark-truck driver2 truck1 s3) [1.000]
+52.050: (board-truck driver2 truck3 s3) [1.000]
+53.060: (drive-truck truck3 s3 s2 driver2) [10.000]
+63.070: (drive-truck truck3 s2 s1 driver2) [10.000]
+73.080: (unload-truck package3 truck3 s1) [2.000]
+73.080: (load-truck package2 truck3 s1) [2.000]
+75.090: (drive-truck truck3 s1 s2 driver2) [10.000]
+85.100: (unload-truck package2 truck3 s2) [2.000]
+87.110: (drive-truck truck3 s2 s4 driver2) [10.000]
+97.120: (disembark-truck driver2 truck3 s4) [1.000]
+;Makespan: 98
+;Actions:  22
+;Planning time: 1.429
+;Total time: 1.432
+;3928 expanded nodes
