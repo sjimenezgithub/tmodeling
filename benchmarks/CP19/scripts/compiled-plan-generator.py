@@ -26,7 +26,7 @@ for p in plan_files:
 
     cwd = os.getcwd() + "/"
     output_name = cwd + COMPILED_PLANS_FOLDER + "compiled." + p
-    cmd = "cd ../../../src/; ./compiler.py " + DOMAINS_FOLDER + domain + "/domain-classical.pddl " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " > "+output_name
+    cmd = "cd ../../../src/; ./compiler.py -n " + DOMAINS_FOLDER + domain + "/domain-classical.pddl " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " > "+output_name
     print cmd
     os.system(cmd)
 
@@ -34,8 +34,8 @@ for p in plan_files:
     os.system(cmd)
 
     cwd = os.getcwd() + "/"
-    output_name = cwd + TRUNKED_COMPILED_PLANS_FOLDER + "trunked." + p
-    cmd = "cd ../../../src/; ./compiler.py -e " + DOMAINS_FOLDER + domain + "/domain-classical.pddl " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " > "+output_name
+    output_name = cwd + TRUNKED_COMPILED_PLANS_FOLDER + "compiled." + p
+    cmd = "cd ../../../src/; ./compiler.py -n -e " + DOMAINS_FOLDER + domain + "/domain-classical.pddl " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " > "+output_name
     print cmd
     os.system(cmd)
 

@@ -2,8 +2,9 @@
 import os, sys
 
 TIME_LIMIT_SECS = 100
-PLANNERS = ["TFD", "TFLAP", "TEAM1","LPGS", "LPGQ"]
+PLANNERS = ["LPGS", "LPGQ","TFD", "TFLAP", "TEAM1"]
 DOMAINS = ["zenoSimpleTime-IPC02", "depotsSimpleTime-IPC02", "driverlogSimpleTime-IPC02", "roversSimpleTime-IPC02", "satelliteSimpleTime-IPC02", "storageSimpleTime-IPC06", "floortile", "parking", "sokoban"]
+DOMAINS = ["depotsSimpleTime-IPC02", "driverlogSimpleTime-IPC02", "roversSimpleTime-IPC02", "satelliteSimpleTime-IPC02", "storageSimpleTime-IPC06", "floortile", "parking", "sokoban"]
 NPROBLEMS = -1
 DOMAINS_FOLDER = "../domains/"
 PLANS_FOLDER = "../plans/"
@@ -32,13 +33,13 @@ for d in DOMAINS:
             output_name = PLANS_FOLDER + d + "_" + p +"_" + pfile
             if p=="LPGS":
                 cmd = "ulimit -t " + str(TIME_LIMIT_SECS) + "; "
-                cmd = cmd + PLANNERS_FOLDER +"/LPG/lpg-td-1.0 -o " + DOMAINS_FOLDER + d + "/domain.pddl -f " + DOMAINS_FOLDER + d + "/"+ pfile  + " -speed -out " + output_name
+                cmd = cmd + PLANNERS_FOLDER +"/LPG/lpg-td-1.0 -o " + DOMAINS_FOLDER + d + "/domain.pddl -f " + DOMAINS_FOLDER + d + "/"+ pfile  + " -cputime "  + str(TIME_LIMIT_SECS-5) + " -speed -out " + output_name
                 print cmd
                 os.system(cmd)
                 
             if p=="LPGQ":
                 cmd = "ulimit -t " + str(TIME_LIMIT_SECS) + "; "
-                cmd = cmd + PLANNERS_FOLDER +"/LPG/lpg-td-1.0 -o " + DOMAINS_FOLDER + d + "/domain.pddl -f " + DOMAINS_FOLDER + d + "/"+ pfile  + " -quality -out " + output_name
+                cmd = cmd + PLANNERS_FOLDER +"/LPG/lpg-td-1.0 -o " + DOMAINS_FOLDER + d + "/domain.pddl -f " + DOMAINS_FOLDER + d + "/"+ pfile  + " -cputime "  + str(TIME_LIMIT_SECS-5) + " -quality -out " + output_name
                 print cmd
                 os.system(cmd)
                 
