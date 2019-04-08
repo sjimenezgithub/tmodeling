@@ -79,13 +79,15 @@ try:
     domain_filename  = sys.argv[1]
     problem_filename = sys.argv[2]
     plan_filename = sys.argv[3]
-   
+    output_filename = sys.argv[4]    
 
 except:
     print "Usage:"
-    print sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line] <domain file name> <problem file name> <plan file name>"
+    print sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line] <domain file name> <problem file name> <plan file name> <output file name>"
     sys.exit(-1)
 
+str_out = ""
+    
 
 # Creating a FD task with the domain and the problem files
 fd_domain = pddl_parser.pddl_file.parse_pddl_file("domain", domain_filename)
@@ -93,16 +95,16 @@ fd_problem = pddl_parser.pddl_file.parse_pddl_file("task", problem_filename)
 fd_task = pddl_parser.pddl_file.parsing_functions.parse_task(fd_domain, fd_problem)
 
 # Domain and problem name
-print "domain:"
-print domain_filename
-print ""
+str_out = str_out + "domain:"
+str_out = str_out + domain_filename
+str_out = str_out + ""
 
-print "problem:"
-print problem_filename
-print ""
+str_out = str_out + "problem:"
+str_out = str_out + problem_filename
+str_out = str_out + ""
 
 # Init and goals
-print "init:"
+str_out = str_out + "init:"
 formattedinit1 = fdtask_to_pddl.format_condition([i for i in fd_task.init if i.predicate!="="])
 formattedinit2 = format_string_literals(formattedinit1.split(") ("),1).replace(")_)",")")
 npositive =  len(formattedinit1.split(") (")) 
@@ -127,12 +129,12 @@ if bneginit==True: # Completing initial state with negated literals
                 npositive = npositive + 1
                 atoms = atoms + " & " + str(npositive) + str(" not-(" + p.name + "_" + "_".join(map(str,item)) + ")")            
     
-print formattedinit2 + atoms
-print ""
+str_out = str_out + formattedinit2 + atoms
+str_out = str_out + ""
 
-print "goals:"
+str_out = str_out + "goals:"
 formattedgoal = fdtask_to_pddl.format_condition(fd_task.goal)
-print format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1)
+str_out = str_out + format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1)
 
 
 # Reading plan
@@ -140,8 +142,11 @@ steps = []
 makespan=0
 timestamps = set([])
 plan_file = open(plan_filename, 'r')
+nactions=0
 for line in plan_file:
     if not ";" in line and ":" in line:
+        nactions = nactions + 1
+        
         # Creating a plan step
         start_time = int(line.split(".")[0])
         timestamps.add(start_time)
@@ -162,11 +167,10 @@ plan_file.close()
 # Adding the last timestamp
 timestamps.add(makespan)
 
-
 # Makespan
-print "makespan:"
-print str(makespan + len(timestamps))
-print
+str_out = str_out + "makespan:"
+str_out = str_out + str(makespan + len(timestamps))
+str_out = str_out + "\n"
 
 
 # Plan steps
@@ -175,11 +179,17 @@ for s in steps:
     aux_timestamps = sorted(timestamps)
     s.block = aux_timestamps.index(s.stime) + 1    
     s.durations = [item - s.stime for item in aux_timestamps[aux_timestamps.index(s.stime)+1:]]
-    print s
-    print
+    str_out = str_out + str(s)
+    str_out = str_out + "\n"
 
 if not btrunk:    
-    print "end:\n"
+    str_out = str_out + "end:\n"
+
+if nactions > 0:
+    output_file = open(output_filename, 'w')
+    output_file.write(str_out)
+    output_file.close()
+    
 sys.exit(0)
 
 
