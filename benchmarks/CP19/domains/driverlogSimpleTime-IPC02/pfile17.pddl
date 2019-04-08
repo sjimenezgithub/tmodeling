@@ -350,5 +350,5 @@
 	(at package14 s1)
 	(at package15 s4)
 	))
-(:metric minimize (total-time))
+
 )

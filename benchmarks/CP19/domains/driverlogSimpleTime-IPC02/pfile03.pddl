@@ -54,5 +54,4 @@
 	(at package2 s1)
 	(at package3 s2)
 	))
-(:metric minimize (total-time))	
 )
