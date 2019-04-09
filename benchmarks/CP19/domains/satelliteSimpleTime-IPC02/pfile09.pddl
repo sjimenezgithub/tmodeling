@@ -114,5 +114,5 @@
 	(have_image Star14 image4)
 ))
 
-(:metric minimize (total-time))
+
 )

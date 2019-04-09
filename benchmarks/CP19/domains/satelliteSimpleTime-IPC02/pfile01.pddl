@@ -27,5 +27,5 @@
 	(have_image Phenomenon6 thermograph0)
 ))
 
-(:metric minimize (total-time))
+
 )

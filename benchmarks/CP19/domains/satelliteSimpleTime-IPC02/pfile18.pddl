@@ -126,5 +126,5 @@
 	(have_image Star22 thermograph3)
 ))
 
-(:metric minimize (total-time))
+
 )

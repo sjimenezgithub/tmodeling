@@ -84,5 +84,5 @@
 	(have_image Planet9 spectrograph1)
 ))
 
-(:metric minimize (total-time))
+
 )

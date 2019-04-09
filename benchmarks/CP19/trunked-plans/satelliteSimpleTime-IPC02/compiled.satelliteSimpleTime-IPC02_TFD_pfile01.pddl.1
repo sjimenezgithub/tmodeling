@@ -1,0 +1,131 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains/satelliteSimpleTime-IPC02/domain-classical.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains//satelliteSimpleTime-IPC02/pfile01.pddl
+
+init:
+1 (supports_instrument0_thermograph0) & 2 (on_board_instrument0_satellite0) & 3 (pointing_satellite0_phenomenon6) & 4 (power_avail_satellite0) & 5 (calibration_target_instrument0_groundstation2) & 6 not-(supports_instrument0_image1) & 7 not-(supports_instrument0_spectrograph2) & 8 not-(pointing_satellite0_groundstation1) & 9 not-(pointing_satellite0_star0) & 10 not-(pointing_satellite0_groundstation2) & 11 not-(pointing_satellite0_phenomenon3) & 12 not-(pointing_satellite0_phenomenon4) & 13 not-(pointing_satellite0_star5) & 14 not-(power_on_instrument0) & 15 not-(calibrated_instrument0) & 16 not-(have_image_groundstation1_image1) & 17 not-(have_image_groundstation1_spectrograph2) & 18 not-(have_image_groundstation1_thermograph0) & 19 not-(have_image_star0_image1) & 20 not-(have_image_star0_spectrograph2) & 21 not-(have_image_star0_thermograph0) & 22 not-(have_image_groundstation2_image1) & 23 not-(have_image_groundstation2_spectrograph2) & 24 not-(have_image_groundstation2_thermograph0) & 25 not-(have_image_phenomenon3_image1) & 26 not-(have_image_phenomenon3_spectrograph2) & 27 not-(have_image_phenomenon3_thermograph0) & 28 not-(have_image_phenomenon4_image1) & 29 not-(have_image_phenomenon4_spectrograph2) & 30 not-(have_image_phenomenon4_thermograph0) & 31 not-(have_image_star5_image1) & 32 not-(have_image_star5_spectrograph2) & 33 not-(have_image_star5_thermograph0) & 34 not-(have_image_phenomenon6_image1) & 35 not-(have_image_phenomenon6_spectrograph2) & 36 not-(have_image_phenomenon6_thermograph0) & 37 not-(calibration_target_instrument0_groundstation1) & 38 not-(calibration_target_instrument0_star0) & 39 not-(calibration_target_instrument0_phenomenon3) & 40 not-(calibration_target_instrument0_phenomenon4) & 41 not-(calibration_target_instrument0_star5) & 42 not-(calibration_target_instrument0_phenomenon6)
+
+goals:
+1 (have_image_phenomenon4_thermograph0) & 2 (have_image_star5_thermograph0) & 3 (have_image_phenomenon6_thermograph0)
+makespan:
+49
+
+action:
+(switch-on_instrument0_satellite0)
+operator:
+switch-on
+start_time:
+1
+durations:
+5 10 17 22 29 34 41
+precs:
+1 (on_board_instrument0_satellite0) & 2 (power_avail_satellite0)
+effs:
+3 (power_on_instrument0) & 4 not-(calibrated_instrument0) & 5 not-(power_avail_satellite0)
+
+action:
+(turn-to_satellite0_groundstation2_phenomenon6)
+operator:
+turn-to
+start_time:
+1
+durations:
+5 10 17 22 29 34 41
+precs:
+1 (pointing_satellite0_phenomenon6)
+effs:
+1 (pointing_satellite0_groundstation2) & 2 not-(pointing_satellite0_phenomenon6)
+
+action:
+(calibrate_satellite0_instrument0_groundstation2)
+operator:
+calibrate
+start_time:
+7
+durations:
+5 12 17 24 29 36
+precs:
+1 (on_board_instrument0_satellite0) & 2 (calibration_target_instrument0_groundstation2) & 3 (pointing_satellite0_groundstation2) & 4 (power_on_instrument0)
+effs:
+5 (calibrated_instrument0)
+
+action:
+(turn-to_satellite0_phenomenon4_groundstation2)
+operator:
+turn-to
+start_time:
+7
+durations:
+5 12 17 24 29 36
+precs:
+1 (pointing_satellite0_groundstation2)
+effs:
+1 (pointing_satellite0_phenomenon4) & 2 not-(pointing_satellite0_groundstation2)
+
+action:
+(take-image_satellite0_phenomenon4_instrument0_thermograph0)
+operator:
+take-image
+start_time:
+13
+durations:
+7 12 19 24 31
+precs:
+1 (calibrated_instrument0) & 2 (on_board_instrument0_satellite0) & 3 (supports_instrument0_thermograph0) & 4 (power_on_instrument0) & 5 (pointing_satellite0_phenomenon4) & 6 (power_on_instrument0)
+effs:
+7 (have_image_phenomenon4_thermograph0)
+
+action:
+(turn-to_satellite0_phenomenon6_phenomenon4)
+operator:
+turn-to
+start_time:
+21
+durations:
+5 12 17 24
+precs:
+1 (pointing_satellite0_phenomenon4)
+effs:
+1 (pointing_satellite0_phenomenon6) & 2 not-(pointing_satellite0_phenomenon4)
+
+action:
+(take-image_satellite0_phenomenon6_instrument0_thermograph0)
+operator:
+take-image
+start_time:
+27
+durations:
+7 12 19
+precs:
+1 (calibrated_instrument0) & 2 (on_board_instrument0_satellite0) & 3 (supports_instrument0_thermograph0) & 4 (power_on_instrument0) & 5 (pointing_satellite0_phenomenon6) & 6 (power_on_instrument0)
+effs:
+7 (have_image_phenomenon6_thermograph0)
+
+action:
+(turn-to_satellite0_star5_phenomenon6)
+operator:
+turn-to
+start_time:
+35
+durations:
+5 12
+precs:
+1 (pointing_satellite0_phenomenon6)
+effs:
+1 (pointing_satellite0_star5) & 2 not-(pointing_satellite0_phenomenon6)
+
+action:
+(take-image_satellite0_star5_instrument0_thermograph0)
+operator:
+take-image
+start_time:
+41
+durations:
+7
+precs:
+1 (calibrated_instrument0) & 2 (on_board_instrument0_satellite0) & 3 (supports_instrument0_thermograph0) & 4 (power_on_instrument0) & 5 (pointing_satellite0_star5) & 6 (power_on_instrument0)
+effs:
+7 (have_image_star5_thermograph0)
+

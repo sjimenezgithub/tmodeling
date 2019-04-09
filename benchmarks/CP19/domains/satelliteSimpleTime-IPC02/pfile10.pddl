@@ -112,5 +112,5 @@
 	(have_image Star16 image2)
 ))
 
-(:metric minimize (total-time))
+
 )

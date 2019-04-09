@@ -1,0 +1,197 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains/satelliteSimpleTime-IPC02/domain-classical.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains//satelliteSimpleTime-IPC02/pfile02.pddl
+
+init:
+1 (supports_instrument1_image2) & 2 (pointing_satellite0_planet4) & 3 (calibration_target_instrument0_star0) & 4 (supports_instrument1_infrared1) & 5 (on_board_instrument0_satellite0) & 6 (supports_instrument0_infrared0) & 7 (supports_instrument0_infrared1) & 8 (on_board_instrument1_satellite0) & 9 (supports_instrument1_infrared0) & 10 (calibration_target_instrument1_groundstation2) & 11 (power_avail_satellite0) & 12 not-(supports_instrument0_image2) & 13 not-(pointing_satellite0_groundstation1) & 14 not-(pointing_satellite0_star0) & 15 not-(pointing_satellite0_groundstation2) & 16 not-(pointing_satellite0_planet3) & 17 not-(pointing_satellite0_phenomenon5) & 18 not-(pointing_satellite0_phenomenon6) & 19 not-(pointing_satellite0_star7) & 20 not-(power_on_instrument0) & 21 not-(power_on_instrument1) & 22 not-(calibrated_instrument0) & 23 not-(calibrated_instrument1) & 24 not-(have_image_groundstation1_infrared0) & 25 not-(have_image_groundstation1_infrared1) & 26 not-(have_image_groundstation1_image2) & 27 not-(have_image_star0_infrared0) & 28 not-(have_image_star0_infrared1) & 29 not-(have_image_star0_image2) & 30 not-(have_image_groundstation2_infrared0) & 31 not-(have_image_groundstation2_infrared1) & 32 not-(have_image_groundstation2_image2) & 33 not-(have_image_planet3_infrared0) & 34 not-(have_image_planet3_infrared1) & 35 not-(have_image_planet3_image2) & 36 not-(have_image_planet4_infrared0) & 37 not-(have_image_planet4_infrared1) & 38 not-(have_image_planet4_image2) & 39 not-(have_image_phenomenon5_infrared0) & 40 not-(have_image_phenomenon5_infrared1) & 41 not-(have_image_phenomenon5_image2) & 42 not-(have_image_phenomenon6_infrared0) & 43 not-(have_image_phenomenon6_infrared1) & 44 not-(have_image_phenomenon6_image2) & 45 not-(have_image_star7_infrared0) & 46 not-(have_image_star7_infrared1) & 47 not-(have_image_star7_image2) & 48 not-(calibration_target_instrument0_groundstation1) & 49 not-(calibration_target_instrument0_groundstation2) & 50 not-(calibration_target_instrument0_planet3) & 51 not-(calibration_target_instrument0_planet4) & 52 not-(calibration_target_instrument0_phenomenon5) & 53 not-(calibration_target_instrument0_phenomenon6) & 54 not-(calibration_target_instrument0_star7) & 55 not-(calibration_target_instrument1_groundstation1) & 56 not-(calibration_target_instrument1_star0) & 57 not-(calibration_target_instrument1_planet3) & 58 not-(calibration_target_instrument1_planet4) & 59 not-(calibration_target_instrument1_phenomenon5) & 60 not-(calibration_target_instrument1_phenomenon6) & 61 not-(calibration_target_instrument1_star7)
+
+goals:
+1 (have_image_planet3_infrared0) & 2 (have_image_planet4_infrared0) & 3 (have_image_phenomenon5_image2) & 4 (have_image_phenomenon6_infrared0) & 5 (have_image_star7_infrared0)
+makespan:
+83
+
+action:
+(switch-on_instrument1_satellite0)
+operator:
+switch-on
+start_time:
+1
+durations:
+5 10 17 22 29 34 41 46 51 58 63 70
+precs:
+1 (on_board_instrument1_satellite0) & 2 (power_avail_satellite0)
+effs:
+3 (power_on_instrument1) & 4 not-(calibrated_instrument1) & 5 not-(power_avail_satellite0)
+
+action:
+(turn-to_satellite0_groundstation2_planet4)
+operator:
+turn-to
+start_time:
+1
+durations:
+5 10 17 22 29 34 41 46 51 58 63 70
+precs:
+1 (pointing_satellite0_planet4)
+effs:
+1 (pointing_satellite0_groundstation2) & 2 not-(pointing_satellite0_planet4)
+
+action:
+(calibrate_satellite0_instrument1_groundstation2)
+operator:
+calibrate
+start_time:
+7
+durations:
+5 12 17 24 29 36 41 46 53 58 65
+precs:
+1 (on_board_instrument1_satellite0) & 2 (calibration_target_instrument1_groundstation2) & 3 (pointing_satellite0_groundstation2) & 4 (power_on_instrument1)
+effs:
+5 (calibrated_instrument1)
+
+action:
+(turn-to_satellite0_phenomenon5_groundstation2)
+operator:
+turn-to
+start_time:
+7
+durations:
+5 12 17 24 29 36 41 46 53 58 65
+precs:
+1 (pointing_satellite0_groundstation2)
+effs:
+1 (pointing_satellite0_phenomenon5) & 2 not-(pointing_satellite0_groundstation2)
+
+action:
+(take-image_satellite0_phenomenon5_instrument1_image2)
+operator:
+take-image
+start_time:
+13
+durations:
+7 12 19 24 31 36 41 48 53 60
+precs:
+1 (calibrated_instrument1) & 2 (on_board_instrument1_satellite0) & 3 (supports_instrument1_image2) & 4 (power_on_instrument1) & 5 (pointing_satellite0_phenomenon5) & 6 (power_on_instrument1)
+effs:
+7 (have_image_phenomenon5_image2)
+
+action:
+(turn-to_satellite0_planet4_phenomenon5)
+operator:
+turn-to
+start_time:
+21
+durations:
+5 12 17 24 29 34 41 46 53
+precs:
+1 (pointing_satellite0_phenomenon5)
+effs:
+1 (pointing_satellite0_planet4) & 2 not-(pointing_satellite0_phenomenon5)
+
+action:
+(take-image_satellite0_planet4_instrument1_infrared0)
+operator:
+take-image
+start_time:
+27
+durations:
+7 12 19 24 29 36 41 48
+precs:
+1 (calibrated_instrument1) & 2 (on_board_instrument1_satellite0) & 3 (supports_instrument1_infrared0) & 4 (power_on_instrument1) & 5 (pointing_satellite0_planet4) & 6 (power_on_instrument1)
+effs:
+7 (have_image_planet4_infrared0)
+
+action:
+(turn-to_satellite0_planet3_planet4)
+operator:
+turn-to
+start_time:
+35
+durations:
+5 12 17 22 29 34 41
+precs:
+1 (pointing_satellite0_planet4)
+effs:
+1 (pointing_satellite0_planet3) & 2 not-(pointing_satellite0_planet4)
+
+action:
+(take-image_satellite0_planet3_instrument1_infrared0)
+operator:
+take-image
+start_time:
+41
+durations:
+7 12 17 24 29 36
+precs:
+1 (calibrated_instrument1) & 2 (on_board_instrument1_satellite0) & 3 (supports_instrument1_infrared0) & 4 (power_on_instrument1) & 5 (pointing_satellite0_planet3) & 6 (power_on_instrument1)
+effs:
+7 (have_image_planet3_infrared0)
+
+action:
+(turn-to_satellite0_groundstation1_planet3)
+operator:
+turn-to
+start_time:
+49
+durations:
+5 10 17 22 29
+precs:
+1 (pointing_satellite0_planet3)
+effs:
+1 (pointing_satellite0_groundstation1) & 2 not-(pointing_satellite0_planet3)
+
+action:
+(turn-to_satellite0_phenomenon6_groundstation1)
+operator:
+turn-to
+start_time:
+55
+durations:
+5 12 17 24
+precs:
+1 (pointing_satellite0_groundstation1)
+effs:
+1 (pointing_satellite0_phenomenon6) & 2 not-(pointing_satellite0_groundstation1)
+
+action:
+(take-image_satellite0_phenomenon6_instrument1_infrared0)
+operator:
+take-image
+start_time:
+61
+durations:
+7 12 19
+precs:
+1 (calibrated_instrument1) & 2 (on_board_instrument1_satellite0) & 3 (supports_instrument1_infrared0) & 4 (power_on_instrument1) & 5 (pointing_satellite0_phenomenon6) & 6 (power_on_instrument1)
+effs:
+7 (have_image_phenomenon6_infrared0)
+
+action:
+(turn-to_satellite0_star7_phenomenon6)
+operator:
+turn-to
+start_time:
+69
+durations:
+5 12
+precs:
+1 (pointing_satellite0_phenomenon6)
+effs:
+1 (pointing_satellite0_star7) & 2 not-(pointing_satellite0_phenomenon6)
+
+action:
+(take-image_satellite0_star7_instrument1_infrared0)
+operator:
+take-image
+start_time:
+75
+durations:
+7
+precs:
+1 (calibrated_instrument1) & 2 (on_board_instrument1_satellite0) & 3 (supports_instrument1_infrared0) & 4 (power_on_instrument1) & 5 (pointing_satellite0_star7) & 6 (power_on_instrument1)
+effs:
+7 (have_image_star7_infrared0)
+
+end:

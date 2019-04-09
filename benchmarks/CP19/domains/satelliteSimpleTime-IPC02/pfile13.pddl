@@ -129,5 +129,5 @@
 	(have_image Planet29 thermograph0)
 ))
 
-(:metric minimize (total-time))
+
 )

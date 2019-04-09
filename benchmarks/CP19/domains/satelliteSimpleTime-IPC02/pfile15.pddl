@@ -173,5 +173,5 @@
 	(have_image Planet24 infrared0)
 ))
 
-(:metric minimize (total-time))
+
 )
