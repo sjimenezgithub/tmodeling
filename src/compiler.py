@@ -87,7 +87,6 @@ except:
     sys.exit(-1)
 
 str_out = ""
-    
 
 # Creating a FD task with the domain and the problem files
 fd_domain = pddl_parser.pddl_file.parse_pddl_file("domain", domain_filename)
@@ -95,16 +94,16 @@ fd_problem = pddl_parser.pddl_file.parse_pddl_file("task", problem_filename)
 fd_task = pddl_parser.pddl_file.parsing_functions.parse_task(fd_domain, fd_problem)
 
 # Domain and problem name
-str_out = str_out + "domain:"
-str_out = str_out + domain_filename
-str_out = str_out + ""
+str_out = str_out + "domain:\n"
+str_out = str_out + domain_filename + "\n"
+str_out = str_out + "\n"
 
-str_out = str_out + "problem:"
-str_out = str_out + problem_filename
-str_out = str_out + ""
+str_out = str_out + "problem:\n"
+str_out = str_out + problem_filename + "\n"
+str_out = str_out + "\n"
 
 # Init and goals
-str_out = str_out + "init:"
+str_out = str_out + "init:\n"
 formattedinit1 = fdtask_to_pddl.format_condition([i for i in fd_task.init if i.predicate!="="])
 formattedinit2 = format_string_literals(formattedinit1.split(") ("),1).replace(")_)",")")
 npositive =  len(formattedinit1.split(") (")) 
@@ -129,12 +128,12 @@ if bneginit==True: # Completing initial state with negated literals
                 npositive = npositive + 1
                 atoms = atoms + " & " + str(npositive) + str(" not-(" + p.name + "_" + "_".join(map(str,item)) + ")")            
     
-str_out = str_out + formattedinit2 + atoms
-str_out = str_out + ""
+str_out = str_out + formattedinit2 + atoms + "\n"
+str_out = str_out + "\n"
 
-str_out = str_out + "goals:"
+str_out = str_out + "goals:\n"
 formattedgoal = fdtask_to_pddl.format_condition(fd_task.goal)
-str_out = str_out + format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1)
+str_out = str_out + format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1)+ "\n"
 
 
 # Reading plan
@@ -168,8 +167,8 @@ plan_file.close()
 timestamps.add(makespan)
 
 # Makespan
-str_out = str_out + "makespan:"
-str_out = str_out + str(makespan + len(timestamps))
+str_out = str_out + "makespan:\n"
+str_out = str_out + str(makespan + len(timestamps))+ "\n"
 str_out = str_out + "\n"
 
 
@@ -179,7 +178,7 @@ for s in steps:
     aux_timestamps = sorted(timestamps)
     s.block = aux_timestamps.index(s.stime) + 1    
     s.durations = [item - s.stime for item in aux_timestamps[aux_timestamps.index(s.stime)+1:]]
-    str_out = str_out + str(s)
+    str_out = str_out + str(s)+ "\n"
     str_out = str_out + "\n"
 
 if not btrunk:    
