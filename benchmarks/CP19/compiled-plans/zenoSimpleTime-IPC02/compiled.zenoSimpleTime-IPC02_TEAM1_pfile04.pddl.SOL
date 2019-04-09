@@ -1,0 +1,119 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains/zenoSimpleTime-IPC02/domain-classical.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains//zenoSimpleTime-IPC02/pfile04.pddl
+
+init:
+1 (at_person1_city0) & 2 (next_fl0_fl1) & 3 (next_fl5_fl6) & 4 (next_fl3_fl4) & 5 (at_plane2_city2) & 6 (at_plane1_city2) & 7 (fuel-level_plane1_fl5) & 8 (next_fl1_fl2) & 9 (fuel-level_plane2_fl0) & 10 (next_fl4_fl5) & 11 (at_person2_city1) & 12 (at_person4_city0) & 13 (at_person5_city2) & 14 (next_fl2_fl3) & 15 (at_person3_city0) & 16 not-(at_plane2_city0) & 17 not-(at_plane2_city1) & 18 not-(at_person1_city1) & 19 not-(at_person1_city2) & 20 not-(at_plane1_city0) & 21 not-(at_plane1_city1) & 22 not-(at_person2_city0) & 23 not-(at_person2_city2) & 24 not-(at_person3_city1) & 25 not-(at_person3_city2) & 26 not-(at_person4_city1) & 27 not-(at_person4_city2) & 28 not-(at_person5_city0) & 29 not-(at_person5_city1) & 30 not-(in_person1_plane2) & 31 not-(in_person1_plane1) & 32 not-(in_person2_plane2) & 33 not-(in_person2_plane1) & 34 not-(in_person3_plane2) & 35 not-(in_person3_plane1) & 36 not-(in_person4_plane2) & 37 not-(in_person4_plane1) & 38 not-(in_person5_plane2) & 39 not-(in_person5_plane1) & 40 not-(fuel-level_plane2_fl1) & 41 not-(fuel-level_plane2_fl2) & 42 not-(fuel-level_plane2_fl3) & 43 not-(fuel-level_plane2_fl4) & 44 not-(fuel-level_plane2_fl5) & 45 not-(fuel-level_plane2_fl6) & 46 not-(fuel-level_plane1_fl0) & 47 not-(fuel-level_plane1_fl1) & 48 not-(fuel-level_plane1_fl2) & 49 not-(fuel-level_plane1_fl3) & 50 not-(fuel-level_plane1_fl4) & 51 not-(fuel-level_plane1_fl6) & 52 not-(next_fl0_fl0) & 53 not-(next_fl0_fl2) & 54 not-(next_fl0_fl3) & 55 not-(next_fl0_fl4) & 56 not-(next_fl0_fl5) & 57 not-(next_fl0_fl6) & 58 not-(next_fl1_fl0) & 59 not-(next_fl1_fl1) & 60 not-(next_fl1_fl3) & 61 not-(next_fl1_fl4) & 62 not-(next_fl1_fl5) & 63 not-(next_fl1_fl6) & 64 not-(next_fl2_fl0) & 65 not-(next_fl2_fl1) & 66 not-(next_fl2_fl2) & 67 not-(next_fl2_fl4) & 68 not-(next_fl2_fl5) & 69 not-(next_fl2_fl6) & 70 not-(next_fl3_fl0) & 71 not-(next_fl3_fl1) & 72 not-(next_fl3_fl2) & 73 not-(next_fl3_fl3) & 74 not-(next_fl3_fl5) & 75 not-(next_fl3_fl6) & 76 not-(next_fl4_fl0) & 77 not-(next_fl4_fl1) & 78 not-(next_fl4_fl2) & 79 not-(next_fl4_fl3) & 80 not-(next_fl4_fl4) & 81 not-(next_fl4_fl6) & 82 not-(next_fl5_fl0) & 83 not-(next_fl5_fl1) & 84 not-(next_fl5_fl2) & 85 not-(next_fl5_fl3) & 86 not-(next_fl5_fl4) & 87 not-(next_fl5_fl5) & 88 not-(next_fl6_fl0) & 89 not-(next_fl6_fl1) & 90 not-(next_fl6_fl2) & 91 not-(next_fl6_fl3) & 92 not-(next_fl6_fl4) & 93 not-(next_fl6_fl5) & 94 not-(next_fl6_fl6)
+
+goals:
+1 (at_plane1_city0) & 2 (at_person2_city2) & 3 (at_person3_city0) & 4 (at_person4_city1) & 5 (at_person5_city2)
+makespan:
+808
+
+action:
+(fly_plane1_city2_city0_fl5_fl4)
+operator:
+fly
+start_time:
+1
+durations:
+180 200 380 410 590 620 800
+precs:
+1 (at_plane1_city2) & 2 (fuel-level_plane1_fl5) & 3 (next_fl4_fl5)
+effs:
+4 not-(at_plane1_city2) & 5 (at_plane1_city0) & 6 not-(fuel-level_plane1_fl5) & 7 (fuel-level_plane1_fl4)
+
+action:
+(board_person4_plane1_city0)
+operator:
+board
+start_time:
+182
+durations:
+20 200 230 410 440 620
+precs:
+1 (at_person4_city0) & 2 (at_plane1_city0)
+effs:
+3 not-(at_person4_city0) & 4 (in_person4_plane1)
+
+action:
+(fly_plane1_city0_city1_fl4_fl3)
+operator:
+fly
+start_time:
+203
+durations:
+180 210 390 420 600
+precs:
+1 (at_plane1_city0) & 2 (fuel-level_plane1_fl4) & 3 (next_fl3_fl4)
+effs:
+4 not-(at_plane1_city0) & 5 (at_plane1_city1) & 6 not-(fuel-level_plane1_fl4) & 7 (fuel-level_plane1_fl3)
+
+action:
+(debark_person4_plane1_city1)
+operator:
+debark
+start_time:
+384
+durations:
+30 210 240 420
+precs:
+1 (in_person4_plane1) & 2 (at_plane1_city1)
+effs:
+3 not-(in_person4_plane1) & 4 (at_person4_city1)
+
+action:
+(board_person2_plane1_city1)
+operator:
+board
+start_time:
+384
+durations:
+30 210 240 420
+precs:
+1 (at_person2_city1) & 2 (at_plane1_city1)
+effs:
+3 not-(at_person2_city1) & 4 (in_person2_plane1)
+
+action:
+(fly_plane1_city1_city2_fl3_fl2)
+operator:
+fly
+start_time:
+415
+durations:
+180 210 390
+precs:
+1 (at_plane1_city1) & 2 (fuel-level_plane1_fl3) & 3 (next_fl2_fl3)
+effs:
+4 not-(at_plane1_city1) & 5 (at_plane1_city2) & 6 not-(fuel-level_plane1_fl3) & 7 (fuel-level_plane1_fl2)
+
+action:
+(debark_person2_plane1_city2)
+operator:
+debark
+start_time:
+596
+durations:
+30 210
+precs:
+1 (in_person2_plane1) & 2 (at_plane1_city2)
+effs:
+3 not-(in_person2_plane1) & 4 (at_person2_city2)
+
+action:
+(fly_plane1_city2_city0_fl2_fl1)
+operator:
+fly
+start_time:
+627
+durations:
+180
+precs:
+1 (at_plane1_city2) & 2 (fuel-level_plane1_fl2) & 3 (next_fl1_fl2)
+effs:
+4 not-(at_plane1_city2) & 5 (at_plane1_city0) & 6 not-(fuel-level_plane1_fl2) & 7 (fuel-level_plane1_fl1)
+
+end:
