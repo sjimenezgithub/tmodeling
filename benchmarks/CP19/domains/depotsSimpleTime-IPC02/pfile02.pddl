@@ -37,6 +37,4 @@
 		(on crate2 pallet0)
 		(on crate3 pallet1)
 	)
-)
-(:metric minimize (total-time))
-)
+))

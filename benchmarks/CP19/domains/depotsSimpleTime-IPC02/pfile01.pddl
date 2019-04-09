@@ -30,6 +30,5 @@
 (:goal (and
 		(on crate0 pallet2)
 		(on crate1 pallet1)
-	))
-(:metric minimize (total-time))
-)
+	)
+))

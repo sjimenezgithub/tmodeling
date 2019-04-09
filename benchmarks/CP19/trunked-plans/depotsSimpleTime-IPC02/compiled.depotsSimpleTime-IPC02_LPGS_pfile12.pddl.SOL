@@ -1,0 +1,833 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains/depotsSimpleTime-IPC02/domain-classical.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/CP19/domains//depotsSimpleTime-IPC02/pfile12.pddl
+
+init:
+1 (clear_pallet2) & 2 (at_crate14_distributor1) & 3 (clear_crate14) & 4 (on_crate11_pallet4) & 5 (on_crate13_crate9) & 6 (at_crate2_distributor0) & 7 (at_pallet5_distributor2) & 8 (clear_crate13) & 9 (available_hoist0) & 10 (at_pallet0_depot0) & 11 (at_crate9_distributor2) & 12 (at_crate12_depot1) & 13 (available_hoist1) & 14 (available_hoist4) & 15 (at_hoist5_distributor2) & 16 (at_crate13_distributor2) & 17 (at_hoist0_depot0) & 18 (on_crate10_crate5) & 19 (at_crate11_distributor1) & 20 (at_crate8_distributor2) & 21 (on_crate0_pallet5) & 22 (clear_pallet0) & 23 (available_hoist5) & 24 (clear_crate4) & 25 (on_crate2_pallet3) & 26 (at_crate10_depot1) & 27 (at_crate0_distributor2) & 28 (on_crate14_crate11) & 29 (at_crate4_distributor0) & 30 (at_pallet2_depot2) & 31 (available_hoist2) & 32 (on_crate8_crate7) & 33 (at_pallet3_distributor0) & 34 (at_truck1_depot1) & 35 (at_hoist2_depot2) & 36 (at_pallet4_distributor1) & 37 (at_hoist3_distributor0) & 38 (on_crate6_crate3) & 39 (at_crate5_depot1) & 40 (at_pallet1_depot1) & 41 (at_crate1_depot1) & 42 (at_hoist4_distributor1) & 43 (on_crate5_crate1) & 44 (at_crate6_distributor2) & 45 (clear_crate12) & 46 (available_hoist3) & 47 (at_hoist1_depot1) & 48 (at_truck0_distributor1) & 49 (at_crate3_distributor2) & 50 (at_crate7_distributor2) & 51 (on_crate7_crate6) & 52 (on_crate9_crate8) & 53 (on_crate1_pallet1) & 54 (on_crate3_crate0) & 55 (on_crate4_crate2) & 56 (on_crate12_crate10) & 57 not-(at_truck0_depot1) & 58 not-(at_truck0_depot2) & 59 not-(at_truck0_distributor0) & 60 not-(at_truck0_depot0) & 61 not-(at_truck0_distributor2) & 62 not-(at_truck1_depot2) & 63 not-(at_truck1_distributor0) & 64 not-(at_truck1_distributor1) & 65 not-(at_truck1_depot0) & 66 not-(at_truck1_distributor2) & 67 not-(at_pallet0_depot1) & 68 not-(at_pallet0_depot2) & 69 not-(at_pallet0_distributor0) & 70 not-(at_pallet0_distributor1) & 71 not-(at_pallet0_distributor2) & 72 not-(at_pallet1_depot2) & 73 not-(at_pallet1_distributor0) & 74 not-(at_pallet1_distributor1) & 75 not-(at_pallet1_depot0) & 76 not-(at_pallet1_distributor2) & 77 not-(at_pallet2_depot1) & 78 not-(at_pallet2_distributor0) & 79 not-(at_pallet2_distributor1) & 80 not-(at_pallet2_depot0) & 81 not-(at_pallet2_distributor2) & 82 not-(at_pallet3_depot1) & 83 not-(at_pallet3_depot2) & 84 not-(at_pallet3_distributor1) & 85 not-(at_pallet3_depot0) & 86 not-(at_pallet3_distributor2) & 87 not-(at_pallet4_depot1) & 88 not-(at_pallet4_depot2) & 89 not-(at_pallet4_distributor0) & 90 not-(at_pallet4_depot0) & 91 not-(at_pallet4_distributor2) & 92 not-(at_pallet5_depot1) & 93 not-(at_pallet5_depot2) & 94 not-(at_pallet5_distributor0) & 95 not-(at_pallet5_distributor1) & 96 not-(at_pallet5_depot0) & 97 not-(at_crate0_depot1) & 98 not-(at_crate0_depot2) & 99 not-(at_crate0_distributor0) & 100 not-(at_crate0_distributor1) & 101 not-(at_crate0_depot0) & 102 not-(at_crate1_depot2) & 103 not-(at_crate1_distributor0) & 104 not-(at_crate1_distributor1) & 105 not-(at_crate1_depot0) & 106 not-(at_crate1_distributor2) & 107 not-(at_crate2_depot1) & 108 not-(at_crate2_depot2) & 109 not-(at_crate2_distributor1) & 110 not-(at_crate2_depot0) & 111 not-(at_crate2_distributor2) & 112 not-(at_crate3_depot1) & 113 not-(at_crate3_depot2) & 114 not-(at_crate3_distributor0) & 115 not-(at_crate3_distributor1) & 116 not-(at_crate3_depot0) & 117 not-(at_crate4_depot1) & 118 not-(at_crate4_depot2) & 119 not-(at_crate4_distributor1) & 120 not-(at_crate4_depot0) & 121 not-(at_crate4_distributor2) & 122 not-(at_crate5_depot2) & 123 not-(at_crate5_distributor0) & 124 not-(at_crate5_distributor1) & 125 not-(at_crate5_depot0) & 126 not-(at_crate5_distributor2) & 127 not-(at_crate6_depot1) & 128 not-(at_crate6_depot2) & 129 not-(at_crate6_distributor0) & 130 not-(at_crate6_distributor1) & 131 not-(at_crate6_depot0) & 132 not-(at_crate7_depot1) & 133 not-(at_crate7_depot2) & 134 not-(at_crate7_distributor0) & 135 not-(at_crate7_distributor1) & 136 not-(at_crate7_depot0) & 137 not-(at_crate8_depot1) & 138 not-(at_crate8_depot2) & 139 not-(at_crate8_distributor0) & 140 not-(at_crate8_distributor1) & 141 not-(at_crate8_depot0) & 142 not-(at_crate9_depot1) & 143 not-(at_crate9_depot2) & 144 not-(at_crate9_distributor0) & 145 not-(at_crate9_distributor1) & 146 not-(at_crate9_depot0) & 147 not-(at_crate10_depot2) & 148 not-(at_crate10_distributor0) & 149 not-(at_crate10_distributor1) & 150 not-(at_crate10_depot0) & 151 not-(at_crate10_distributor2) & 152 not-(at_crate11_depot1) & 153 not-(at_crate11_depot2) & 154 not-(at_crate11_distributor0) & 155 not-(at_crate11_depot0) & 156 not-(at_crate11_distributor2) & 157 not-(at_crate12_depot2) & 158 not-(at_crate12_distributor0) & 159 not-(at_crate12_distributor1) & 160 not-(at_crate12_depot0) & 161 not-(at_crate12_distributor2) & 162 not-(at_crate13_depot1) & 163 not-(at_crate13_depot2) & 164 not-(at_crate13_distributor0) & 165 not-(at_crate13_distributor1) & 166 not-(at_crate13_depot0) & 167 not-(at_crate14_depot1) & 168 not-(at_crate14_depot2) & 169 not-(at_crate14_distributor0) & 170 not-(at_crate14_depot0) & 171 not-(at_crate14_distributor2) & 172 not-(at_hoist0_depot1) & 173 not-(at_hoist0_depot2) & 174 not-(at_hoist0_distributor0) & 175 not-(at_hoist0_distributor1) & 176 not-(at_hoist0_distributor2) & 177 not-(at_hoist1_depot2) & 178 not-(at_hoist1_distributor0) & 179 not-(at_hoist1_distributor1) & 180 not-(at_hoist1_depot0) & 181 not-(at_hoist1_distributor2) & 182 not-(at_hoist2_depot1) & 183 not-(at_hoist2_distributor0) & 184 not-(at_hoist2_distributor1) & 185 not-(at_hoist2_depot0) & 186 not-(at_hoist2_distributor2) & 187 not-(at_hoist3_depot1) & 188 not-(at_hoist3_depot2) & 189 not-(at_hoist3_distributor1) & 190 not-(at_hoist3_depot0) & 191 not-(at_hoist3_distributor2) & 192 not-(at_hoist4_depot1) & 193 not-(at_hoist4_depot2) & 194 not-(at_hoist4_distributor0) & 195 not-(at_hoist4_depot0) & 196 not-(at_hoist4_distributor2) & 197 not-(at_hoist5_depot1) & 198 not-(at_hoist5_depot2) & 199 not-(at_hoist5_distributor0) & 200 not-(at_hoist5_distributor1) & 201 not-(at_hoist5_depot0) & 202 not-(on_crate0_pallet0) & 203 not-(on_crate0_pallet1) & 204 not-(on_crate0_pallet2) & 205 not-(on_crate0_pallet3) & 206 not-(on_crate0_pallet4) & 207 not-(on_crate0_crate0) & 208 not-(on_crate0_crate1) & 209 not-(on_crate0_crate2) & 210 not-(on_crate0_crate3) & 211 not-(on_crate0_crate4) & 212 not-(on_crate0_crate5) & 213 not-(on_crate0_crate6) & 214 not-(on_crate0_crate7) & 215 not-(on_crate0_crate8) & 216 not-(on_crate0_crate9) & 217 not-(on_crate0_crate10) & 218 not-(on_crate0_crate11) & 219 not-(on_crate0_crate12) & 220 not-(on_crate0_crate13) & 221 not-(on_crate0_crate14) & 222 not-(on_crate1_pallet0) & 223 not-(on_crate1_pallet2) & 224 not-(on_crate1_pallet3) & 225 not-(on_crate1_pallet4) & 226 not-(on_crate1_pallet5) & 227 not-(on_crate1_crate0) & 228 not-(on_crate1_crate1) & 229 not-(on_crate1_crate2) & 230 not-(on_crate1_crate3) & 231 not-(on_crate1_crate4) & 232 not-(on_crate1_crate5) & 233 not-(on_crate1_crate6) & 234 not-(on_crate1_crate7) & 235 not-(on_crate1_crate8) & 236 not-(on_crate1_crate9) & 237 not-(on_crate1_crate10) & 238 not-(on_crate1_crate11) & 239 not-(on_crate1_crate12) & 240 not-(on_crate1_crate13) & 241 not-(on_crate1_crate14) & 242 not-(on_crate2_pallet0) & 243 not-(on_crate2_pallet1) & 244 not-(on_crate2_pallet2) & 245 not-(on_crate2_pallet4) & 246 not-(on_crate2_pallet5) & 247 not-(on_crate2_crate0) & 248 not-(on_crate2_crate1) & 249 not-(on_crate2_crate2) & 250 not-(on_crate2_crate3) & 251 not-(on_crate2_crate4) & 252 not-(on_crate2_crate5) & 253 not-(on_crate2_crate6) & 254 not-(on_crate2_crate7) & 255 not-(on_crate2_crate8) & 256 not-(on_crate2_crate9) & 257 not-(on_crate2_crate10) & 258 not-(on_crate2_crate11) & 259 not-(on_crate2_crate12) & 260 not-(on_crate2_crate13) & 261 not-(on_crate2_crate14) & 262 not-(on_crate3_pallet0) & 263 not-(on_crate3_pallet1) & 264 not-(on_crate3_pallet2) & 265 not-(on_crate3_pallet3) & 266 not-(on_crate3_pallet4) & 267 not-(on_crate3_pallet5) & 268 not-(on_crate3_crate1) & 269 not-(on_crate3_crate2) & 270 not-(on_crate3_crate3) & 271 not-(on_crate3_crate4) & 272 not-(on_crate3_crate5) & 273 not-(on_crate3_crate6) & 274 not-(on_crate3_crate7) & 275 not-(on_crate3_crate8) & 276 not-(on_crate3_crate9) & 277 not-(on_crate3_crate10) & 278 not-(on_crate3_crate11) & 279 not-(on_crate3_crate12) & 280 not-(on_crate3_crate13) & 281 not-(on_crate3_crate14) & 282 not-(on_crate4_pallet0) & 283 not-(on_crate4_pallet1) & 284 not-(on_crate4_pallet2) & 285 not-(on_crate4_pallet3) & 286 not-(on_crate4_pallet4) & 287 not-(on_crate4_pallet5) & 288 not-(on_crate4_crate0) & 289 not-(on_crate4_crate1) & 290 not-(on_crate4_crate3) & 291 not-(on_crate4_crate4) & 292 not-(on_crate4_crate5) & 293 not-(on_crate4_crate6) & 294 not-(on_crate4_crate7) & 295 not-(on_crate4_crate8) & 296 not-(on_crate4_crate9) & 297 not-(on_crate4_crate10) & 298 not-(on_crate4_crate11) & 299 not-(on_crate4_crate12) & 300 not-(on_crate4_crate13) & 301 not-(on_crate4_crate14) & 302 not-(on_crate5_pallet0) & 303 not-(on_crate5_pallet1) & 304 not-(on_crate5_pallet2) & 305 not-(on_crate5_pallet3) & 306 not-(on_crate5_pallet4) & 307 not-(on_crate5_pallet5) & 308 not-(on_crate5_crate0) & 309 not-(on_crate5_crate2) & 310 not-(on_crate5_crate3) & 311 not-(on_crate5_crate4) & 312 not-(on_crate5_crate5) & 313 not-(on_crate5_crate6) & 314 not-(on_crate5_crate7) & 315 not-(on_crate5_crate8) & 316 not-(on_crate5_crate9) & 317 not-(on_crate5_crate10) & 318 not-(on_crate5_crate11) & 319 not-(on_crate5_crate12) & 320 not-(on_crate5_crate13) & 321 not-(on_crate5_crate14) & 322 not-(on_crate6_pallet0) & 323 not-(on_crate6_pallet1) & 324 not-(on_crate6_pallet2) & 325 not-(on_crate6_pallet3) & 326 not-(on_crate6_pallet4) & 327 not-(on_crate6_pallet5) & 328 not-(on_crate6_crate0) & 329 not-(on_crate6_crate1) & 330 not-(on_crate6_crate2) & 331 not-(on_crate6_crate4) & 332 not-(on_crate6_crate5) & 333 not-(on_crate6_crate6) & 334 not-(on_crate6_crate7) & 335 not-(on_crate6_crate8) & 336 not-(on_crate6_crate9) & 337 not-(on_crate6_crate10) & 338 not-(on_crate6_crate11) & 339 not-(on_crate6_crate12) & 340 not-(on_crate6_crate13) & 341 not-(on_crate6_crate14) & 342 not-(on_crate7_pallet0) & 343 not-(on_crate7_pallet1) & 344 not-(on_crate7_pallet2) & 345 not-(on_crate7_pallet3) & 346 not-(on_crate7_pallet4) & 347 not-(on_crate7_pallet5) & 348 not-(on_crate7_crate0) & 349 not-(on_crate7_crate1) & 350 not-(on_crate7_crate2) & 351 not-(on_crate7_crate3) & 352 not-(on_crate7_crate4) & 353 not-(on_crate7_crate5) & 354 not-(on_crate7_crate7) & 355 not-(on_crate7_crate8) & 356 not-(on_crate7_crate9) & 357 not-(on_crate7_crate10) & 358 not-(on_crate7_crate11) & 359 not-(on_crate7_crate12) & 360 not-(on_crate7_crate13) & 361 not-(on_crate7_crate14) & 362 not-(on_crate8_pallet0) & 363 not-(on_crate8_pallet1) & 364 not-(on_crate8_pallet2) & 365 not-(on_crate8_pallet3) & 366 not-(on_crate8_pallet4) & 367 not-(on_crate8_pallet5) & 368 not-(on_crate8_crate0) & 369 not-(on_crate8_crate1) & 370 not-(on_crate8_crate2) & 371 not-(on_crate8_crate3) & 372 not-(on_crate8_crate4) & 373 not-(on_crate8_crate5) & 374 not-(on_crate8_crate6) & 375 not-(on_crate8_crate8) & 376 not-(on_crate8_crate9) & 377 not-(on_crate8_crate10) & 378 not-(on_crate8_crate11) & 379 not-(on_crate8_crate12) & 380 not-(on_crate8_crate13) & 381 not-(on_crate8_crate14) & 382 not-(on_crate9_pallet0) & 383 not-(on_crate9_pallet1) & 384 not-(on_crate9_pallet2) & 385 not-(on_crate9_pallet3) & 386 not-(on_crate9_pallet4) & 387 not-(on_crate9_pallet5) & 388 not-(on_crate9_crate0) & 389 not-(on_crate9_crate1) & 390 not-(on_crate9_crate2) & 391 not-(on_crate9_crate3) & 392 not-(on_crate9_crate4) & 393 not-(on_crate9_crate5) & 394 not-(on_crate9_crate6) & 395 not-(on_crate9_crate7) & 396 not-(on_crate9_crate9) & 397 not-(on_crate9_crate10) & 398 not-(on_crate9_crate11) & 399 not-(on_crate9_crate12) & 400 not-(on_crate9_crate13) & 401 not-(on_crate9_crate14) & 402 not-(on_crate10_pallet0) & 403 not-(on_crate10_pallet1) & 404 not-(on_crate10_pallet2) & 405 not-(on_crate10_pallet3) & 406 not-(on_crate10_pallet4) & 407 not-(on_crate10_pallet5) & 408 not-(on_crate10_crate0) & 409 not-(on_crate10_crate1) & 410 not-(on_crate10_crate2) & 411 not-(on_crate10_crate3) & 412 not-(on_crate10_crate4) & 413 not-(on_crate10_crate6) & 414 not-(on_crate10_crate7) & 415 not-(on_crate10_crate8) & 416 not-(on_crate10_crate9) & 417 not-(on_crate10_crate10) & 418 not-(on_crate10_crate11) & 419 not-(on_crate10_crate12) & 420 not-(on_crate10_crate13) & 421 not-(on_crate10_crate14) & 422 not-(on_crate11_pallet0) & 423 not-(on_crate11_pallet1) & 424 not-(on_crate11_pallet2) & 425 not-(on_crate11_pallet3) & 426 not-(on_crate11_pallet5) & 427 not-(on_crate11_crate0) & 428 not-(on_crate11_crate1) & 429 not-(on_crate11_crate2) & 430 not-(on_crate11_crate3) & 431 not-(on_crate11_crate4) & 432 not-(on_crate11_crate5) & 433 not-(on_crate11_crate6) & 434 not-(on_crate11_crate7) & 435 not-(on_crate11_crate8) & 436 not-(on_crate11_crate9) & 437 not-(on_crate11_crate10) & 438 not-(on_crate11_crate11) & 439 not-(on_crate11_crate12) & 440 not-(on_crate11_crate13) & 441 not-(on_crate11_crate14) & 442 not-(on_crate12_pallet0) & 443 not-(on_crate12_pallet1) & 444 not-(on_crate12_pallet2) & 445 not-(on_crate12_pallet3) & 446 not-(on_crate12_pallet4) & 447 not-(on_crate12_pallet5) & 448 not-(on_crate12_crate0) & 449 not-(on_crate12_crate1) & 450 not-(on_crate12_crate2) & 451 not-(on_crate12_crate3) & 452 not-(on_crate12_crate4) & 453 not-(on_crate12_crate5) & 454 not-(on_crate12_crate6) & 455 not-(on_crate12_crate7) & 456 not-(on_crate12_crate8) & 457 not-(on_crate12_crate9) & 458 not-(on_crate12_crate11) & 459 not-(on_crate12_crate12) & 460 not-(on_crate12_crate13) & 461 not-(on_crate12_crate14) & 462 not-(on_crate13_pallet0) & 463 not-(on_crate13_pallet1) & 464 not-(on_crate13_pallet2) & 465 not-(on_crate13_pallet3) & 466 not-(on_crate13_pallet4) & 467 not-(on_crate13_pallet5) & 468 not-(on_crate13_crate0) & 469 not-(on_crate13_crate1) & 470 not-(on_crate13_crate2) & 471 not-(on_crate13_crate3) & 472 not-(on_crate13_crate4) & 473 not-(on_crate13_crate5) & 474 not-(on_crate13_crate6) & 475 not-(on_crate13_crate7) & 476 not-(on_crate13_crate8) & 477 not-(on_crate13_crate10) & 478 not-(on_crate13_crate11) & 479 not-(on_crate13_crate12) & 480 not-(on_crate13_crate13) & 481 not-(on_crate13_crate14) & 482 not-(on_crate14_pallet0) & 483 not-(on_crate14_pallet1) & 484 not-(on_crate14_pallet2) & 485 not-(on_crate14_pallet3) & 486 not-(on_crate14_pallet4) & 487 not-(on_crate14_pallet5) & 488 not-(on_crate14_crate0) & 489 not-(on_crate14_crate1) & 490 not-(on_crate14_crate2) & 491 not-(on_crate14_crate3) & 492 not-(on_crate14_crate4) & 493 not-(on_crate14_crate5) & 494 not-(on_crate14_crate6) & 495 not-(on_crate14_crate7) & 496 not-(on_crate14_crate8) & 497 not-(on_crate14_crate9) & 498 not-(on_crate14_crate10) & 499 not-(on_crate14_crate12) & 500 not-(on_crate14_crate13) & 501 not-(on_crate14_crate14) & 502 not-(in_crate0_truck0) & 503 not-(in_crate0_truck1) & 504 not-(in_crate1_truck0) & 505 not-(in_crate1_truck1) & 506 not-(in_crate2_truck0) & 507 not-(in_crate2_truck1) & 508 not-(in_crate3_truck0) & 509 not-(in_crate3_truck1) & 510 not-(in_crate4_truck0) & 511 not-(in_crate4_truck1) & 512 not-(in_crate5_truck0) & 513 not-(in_crate5_truck1) & 514 not-(in_crate6_truck0) & 515 not-(in_crate6_truck1) & 516 not-(in_crate7_truck0) & 517 not-(in_crate7_truck1) & 518 not-(in_crate8_truck0) & 519 not-(in_crate8_truck1) & 520 not-(in_crate9_truck0) & 521 not-(in_crate9_truck1) & 522 not-(in_crate10_truck0) & 523 not-(in_crate10_truck1) & 524 not-(in_crate11_truck0) & 525 not-(in_crate11_truck1) & 526 not-(in_crate12_truck0) & 527 not-(in_crate12_truck1) & 528 not-(in_crate13_truck0) & 529 not-(in_crate13_truck1) & 530 not-(in_crate14_truck0) & 531 not-(in_crate14_truck1) & 532 not-(lifting_hoist0_crate0) & 533 not-(lifting_hoist0_crate1) & 534 not-(lifting_hoist0_crate2) & 535 not-(lifting_hoist0_crate3) & 536 not-(lifting_hoist0_crate4) & 537 not-(lifting_hoist0_crate5) & 538 not-(lifting_hoist0_crate6) & 539 not-(lifting_hoist0_crate7) & 540 not-(lifting_hoist0_crate8) & 541 not-(lifting_hoist0_crate9) & 542 not-(lifting_hoist0_crate10) & 543 not-(lifting_hoist0_crate11) & 544 not-(lifting_hoist0_crate12) & 545 not-(lifting_hoist0_crate13) & 546 not-(lifting_hoist0_crate14) & 547 not-(lifting_hoist1_crate0) & 548 not-(lifting_hoist1_crate1) & 549 not-(lifting_hoist1_crate2) & 550 not-(lifting_hoist1_crate3) & 551 not-(lifting_hoist1_crate4) & 552 not-(lifting_hoist1_crate5) & 553 not-(lifting_hoist1_crate6) & 554 not-(lifting_hoist1_crate7) & 555 not-(lifting_hoist1_crate8) & 556 not-(lifting_hoist1_crate9) & 557 not-(lifting_hoist1_crate10) & 558 not-(lifting_hoist1_crate11) & 559 not-(lifting_hoist1_crate12) & 560 not-(lifting_hoist1_crate13) & 561 not-(lifting_hoist1_crate14) & 562 not-(lifting_hoist2_crate0) & 563 not-(lifting_hoist2_crate1) & 564 not-(lifting_hoist2_crate2) & 565 not-(lifting_hoist2_crate3) & 566 not-(lifting_hoist2_crate4) & 567 not-(lifting_hoist2_crate5) & 568 not-(lifting_hoist2_crate6) & 569 not-(lifting_hoist2_crate7) & 570 not-(lifting_hoist2_crate8) & 571 not-(lifting_hoist2_crate9) & 572 not-(lifting_hoist2_crate10) & 573 not-(lifting_hoist2_crate11) & 574 not-(lifting_hoist2_crate12) & 575 not-(lifting_hoist2_crate13) & 576 not-(lifting_hoist2_crate14) & 577 not-(lifting_hoist3_crate0) & 578 not-(lifting_hoist3_crate1) & 579 not-(lifting_hoist3_crate2) & 580 not-(lifting_hoist3_crate3) & 581 not-(lifting_hoist3_crate4) & 582 not-(lifting_hoist3_crate5) & 583 not-(lifting_hoist3_crate6) & 584 not-(lifting_hoist3_crate7) & 585 not-(lifting_hoist3_crate8) & 586 not-(lifting_hoist3_crate9) & 587 not-(lifting_hoist3_crate10) & 588 not-(lifting_hoist3_crate11) & 589 not-(lifting_hoist3_crate12) & 590 not-(lifting_hoist3_crate13) & 591 not-(lifting_hoist3_crate14) & 592 not-(lifting_hoist4_crate0) & 593 not-(lifting_hoist4_crate1) & 594 not-(lifting_hoist4_crate2) & 595 not-(lifting_hoist4_crate3) & 596 not-(lifting_hoist4_crate4) & 597 not-(lifting_hoist4_crate5) & 598 not-(lifting_hoist4_crate6) & 599 not-(lifting_hoist4_crate7) & 600 not-(lifting_hoist4_crate8) & 601 not-(lifting_hoist4_crate9) & 602 not-(lifting_hoist4_crate10) & 603 not-(lifting_hoist4_crate11) & 604 not-(lifting_hoist4_crate12) & 605 not-(lifting_hoist4_crate13) & 606 not-(lifting_hoist4_crate14) & 607 not-(lifting_hoist5_crate0) & 608 not-(lifting_hoist5_crate1) & 609 not-(lifting_hoist5_crate2) & 610 not-(lifting_hoist5_crate3) & 611 not-(lifting_hoist5_crate4) & 612 not-(lifting_hoist5_crate5) & 613 not-(lifting_hoist5_crate6) & 614 not-(lifting_hoist5_crate7) & 615 not-(lifting_hoist5_crate8) & 616 not-(lifting_hoist5_crate9) & 617 not-(lifting_hoist5_crate10) & 618 not-(lifting_hoist5_crate11) & 619 not-(lifting_hoist5_crate12) & 620 not-(lifting_hoist5_crate13) & 621 not-(lifting_hoist5_crate14) & 622 not-(clear_pallet1) & 623 not-(clear_pallet3) & 624 not-(clear_pallet4) & 625 not-(clear_pallet5) & 626 not-(clear_crate0) & 627 not-(clear_crate1) & 628 not-(clear_crate2) & 629 not-(clear_crate3) & 630 not-(clear_crate5) & 631 not-(clear_crate6) & 632 not-(clear_crate7) & 633 not-(clear_crate8) & 634 not-(clear_crate9) & 635 not-(clear_crate10) & 636 not-(clear_crate11)
+
+goals:
+1 (on_crate0_pallet4) & 2 (on_crate1_crate12) & 3 (on_crate2_crate0) & 4 (on_crate3_crate9) & 5 (on_crate5_pallet0) & 6 (on_crate6_crate2) & 7 (on_crate9_pallet2) & 8 (on_crate10_crate13) & 9 (on_crate12_pallet5) & 10 (on_crate13_pallet1) & 11 (on_crate14_crate10)
+makespan:
+148
+
+action:
+(drive_truck0_distributor1_distributor2)
+operator:
+drive
+start_time:
+1
+durations:
+3 6 9 10 13 16 19 22 23 25 28 31 33 37 41 44 47 50 51 53 61 62 63 66 67 76 79 80 81 85 95 99 109 113
+precs:
+1 (at_truck0_distributor1)
+effs:
+1 not-(at_truck0_distributor1) & 2 (at_truck0_distributor2)
+
+action:
+(lift_hoist5_crate13_crate9_distributor2)
+operator:
+lift
+start_time:
+1
+durations:
+3 6 9 10 13 16 19 22 23 25 28 31 33 37 41 44 47 50 51 53 61 62 63 66 67 76 79 80 81 85 95 99 109 113
+precs:
+1 (at_hoist5_distributor2) & 2 (available_hoist5) & 3 (at_crate13_distributor2) & 4 (on_crate13_crate9) & 5 (clear_crate13)
+effs:
+6 not-(at_crate13_distributor2) & 7 (lifting_hoist5_crate13) & 8 not-(clear_crate13) & 9 not-(available_hoist5) & 10 (clear_crate9) & 11 not-(on_crate13_crate9)
+
+action:
+(lift_hoist1_crate12_crate10_depot1)
+operator:
+lift
+start_time:
+1
+durations:
+3 6 9 10 13 16 19 22 23 25 28 31 33 37 41 44 47 50 51 53 61 62 63 66 67 76 79 80 81 85 95 99 109 113
+precs:
+1 (at_hoist1_depot1) & 2 (available_hoist1) & 3 (at_crate12_depot1) & 4 (on_crate12_crate10) & 5 (clear_crate12)
+effs:
+6 not-(at_crate12_depot1) & 7 (lifting_hoist1_crate12) & 8 not-(clear_crate12) & 9 not-(available_hoist1) & 10 (clear_crate10) & 11 not-(on_crate12_crate10)
+
+action:
+(load_hoist1_crate12_truck1_depot1)
+operator:
+load
+start_time:
+1
+durations:
+3 6 9 10 13 16 19 22 23 25 28 31 33 37 41 44 47 50 51 53 61 62 63 66 67 76 79 80 81 85 95 99 109 113
+precs:
+1 (at_hoist1_depot1) & 2 (at_truck1_depot1) & 3 (lifting_hoist1_crate12)
+effs:
+4 not-(lifting_hoist1_crate12) & 5 (in_crate12_truck1) & 6 (available_hoist1)
+
+action:
+(lift_hoist4_crate14_crate11_distributor1)
+operator:
+lift
+start_time:
+1
+durations:
+3 6 9 10 13 16 19 22 23 25 28 31 33 37 41 44 47 50 51 53 61 62 63 66 67 76 79 80 81 85 95 99 109 113
+precs:
+1 (at_hoist4_distributor1) & 2 (available_hoist4) & 3 (at_crate14_distributor1) & 4 (on_crate14_crate11) & 5 (clear_crate14)
+effs:
+6 not-(at_crate14_distributor1) & 7 (lifting_hoist4_crate14) & 8 not-(clear_crate14) & 9 not-(available_hoist4) & 10 (clear_crate11) & 11 not-(on_crate14_crate11)
+
+action:
+(lift_hoist3_crate4_crate2_distributor0)
+operator:
+lift
+start_time:
+1
+durations:
+3 6 9 10 13 16 19 22 23 25 28 31 33 37 41 44 47 50 51 53 61 62 63 66 67 76 79 80 81 85 95 99 109 113
+precs:
+1 (at_hoist3_distributor0) & 2 (available_hoist3) & 3 (at_crate4_distributor0) & 4 (on_crate4_crate2) & 5 (clear_crate4)
+effs:
+6 not-(at_crate4_distributor0) & 7 (lifting_hoist3_crate4) & 8 not-(clear_crate4) & 9 not-(available_hoist3) & 10 (clear_crate2) & 11 not-(on_crate4_crate2)
+
+action:
+(lift_hoist1_crate10_crate5_depot1)
+operator:
+lift
+start_time:
+5
+durations:
+3 6 7 10 13 16 19 20 22 25 28 30 34 38 41 44 47 48 50 58 59 60 63 64 73 76 77 78 82 92 96 106 110
+precs:
+1 (at_hoist1_depot1) & 2 (available_hoist1) & 3 (at_crate10_depot1) & 4 (on_crate10_crate5) & 5 (clear_crate10)
+effs:
+6 not-(at_crate10_depot1) & 7 (lifting_hoist1_crate10) & 8 not-(clear_crate10) & 9 not-(available_hoist1) & 10 (clear_crate5) & 11 not-(on_crate10_crate5)
+
+action:
+(load_hoist1_crate10_truck1_depot1)
+operator:
+load
+start_time:
+5
+durations:
+3 6 7 10 13 16 19 20 22 25 28 30 34 38 41 44 47 48 50 58 59 60 63 64 73 76 77 78 82 92 96 106 110
+precs:
+1 (at_hoist1_depot1) & 2 (at_truck1_depot1) & 3 (lifting_hoist1_crate10)
+effs:
+4 not-(lifting_hoist1_crate10) & 5 (in_crate10_truck1) & 6 (available_hoist1)
+
+action:
+(lift_hoist1_crate5_crate1_depot1)
+operator:
+lift
+start_time:
+9
+durations:
+3 4 7 10 13 16 17 19 22 25 27 31 35 38 41 44 45 47 55 56 57 60 61 70 73 74 75 79 89 93 103 107
+precs:
+1 (at_hoist1_depot1) & 2 (available_hoist1) & 3 (at_crate5_depot1) & 4 (on_crate5_crate1) & 5 (clear_crate5)
+effs:
+6 not-(at_crate5_depot1) & 7 (lifting_hoist1_crate5) & 8 not-(clear_crate5) & 9 not-(available_hoist1) & 10 (clear_crate1) & 11 not-(on_crate5_crate1)
+
+action:
+(load_hoist1_crate5_truck1_depot1)
+operator:
+load
+start_time:
+9
+durations:
+3 4 7 10 13 16 17 19 22 25 27 31 35 38 41 44 45 47 55 56 57 60 61 70 73 74 75 79 89 93 103 107
+precs:
+1 (at_hoist1_depot1) & 2 (at_truck1_depot1) & 3 (lifting_hoist1_crate5)
+effs:
+4 not-(lifting_hoist1_crate5) & 5 (in_crate5_truck1) & 6 (available_hoist1)
+
+action:
+(drive_truck1_depot1_depot0)
+operator:
+drive
+start_time:
+13
+durations:
+1 4 7 10 13 14 16 19 22 24 28 32 35 38 41 42 44 52 53 54 57 58 67 70 71 72 76 86 90 100 104
+precs:
+1 (at_truck1_depot1)
+effs:
+1 not-(at_truck1_depot1) & 2 (at_truck1_depot0)
+
+action:
+(lift_hoist1_crate1_pallet1_depot1)
+operator:
+lift
+start_time:
+13
+durations:
+1 4 7 10 13 14 16 19 22 24 28 32 35 38 41 42 44 52 53 54 57 58 67 70 71 72 76 86 90 100 104
+precs:
+1 (at_hoist1_depot1) & 2 (available_hoist1) & 3 (at_crate1_depot1) & 4 (on_crate1_pallet1) & 5 (clear_crate1)
+effs:
+6 not-(at_crate1_depot1) & 7 (lifting_hoist1_crate1) & 8 not-(clear_crate1) & 9 not-(available_hoist1) & 10 (clear_pallet1) & 11 not-(on_crate1_pallet1)
+
+action:
+(load_hoist5_crate13_truck0_distributor2)
+operator:
+load
+start_time:
+15
+durations:
+3 6 9 12 13 15 18 21 23 27 31 34 37 40 41 43 51 52 53 56 57 66 69 70 71 75 85 89 99 103
+precs:
+1 (at_hoist5_distributor2) & 2 (at_truck0_distributor2) & 3 (lifting_hoist5_crate13)
+effs:
+4 not-(lifting_hoist5_crate13) & 5 (in_crate13_truck0) & 6 (available_hoist5)
+
+action:
+(lift_hoist5_crate9_crate8_distributor2)
+operator:
+lift
+start_time:
+19
+durations:
+3 6 9 10 12 15 18 20 24 28 31 34 37 38 40 48 49 50 53 54 63 66 67 68 72 82 86 96 100
+precs:
+1 (at_hoist5_distributor2) & 2 (available_hoist5) & 3 (at_crate9_distributor2) & 4 (on_crate9_crate8) & 5 (clear_crate9)
+effs:
+6 not-(at_crate9_distributor2) & 7 (lifting_hoist5_crate9) & 8 not-(clear_crate9) & 9 not-(available_hoist5) & 10 (clear_crate8) & 11 not-(on_crate9_crate8)
+
+action:
+(load_hoist5_crate9_truck0_distributor2)
+operator:
+load
+start_time:
+19
+durations:
+3 6 9 10 12 15 18 20 24 28 31 34 37 38 40 48 49 50 53 54 63 66 67 68 72 82 86 96 100
+precs:
+1 (at_hoist5_distributor2) & 2 (at_truck0_distributor2) & 3 (lifting_hoist5_crate9)
+effs:
+4 not-(lifting_hoist5_crate9) & 5 (in_crate9_truck0) & 6 (available_hoist5)
+
+action:
+(lift_hoist5_crate8_crate7_distributor2)
+operator:
+lift
+start_time:
+23
+durations:
+3 6 7 9 12 15 17 21 25 28 31 34 35 37 45 46 47 50 51 60 63 64 65 69 79 83 93 97
+precs:
+1 (at_hoist5_distributor2) & 2 (available_hoist5) & 3 (at_crate8_distributor2) & 4 (on_crate8_crate7) & 5 (clear_crate8)
+effs:
+6 not-(at_crate8_distributor2) & 7 (lifting_hoist5_crate8) & 8 not-(clear_crate8) & 9 not-(available_hoist5) & 10 (clear_crate7) & 11 not-(on_crate8_crate7)
+
+action:
+(load_hoist5_crate8_truck0_distributor2)
+operator:
+load
+start_time:
+23
+durations:
+3 6 7 9 12 15 17 21 25 28 31 34 35 37 45 46 47 50 51 60 63 64 65 69 79 83 93 97
+precs:
+1 (at_hoist5_distributor2) & 2 (at_truck0_distributor2) & 3 (lifting_hoist5_crate8)
+effs:
+4 not-(lifting_hoist5_crate8) & 5 (in_crate8_truck0) & 6 (available_hoist5)
+
+action:
+(lift_hoist5_crate7_crate6_distributor2)
+operator:
+lift
+start_time:
+27
+durations:
+3 4 6 9 12 14 18 22 25 28 31 32 34 42 43 44 47 48 57 60 61 62 66 76 80 90 94
+precs:
+1 (at_hoist5_distributor2) & 2 (available_hoist5) & 3 (at_crate7_distributor2) & 4 (on_crate7_crate6) & 5 (clear_crate7)
+effs:
+6 not-(at_crate7_distributor2) & 7 (lifting_hoist5_crate7) & 8 not-(clear_crate7) & 9 not-(available_hoist5) & 10 (clear_crate6) & 11 not-(on_crate7_crate6)
+
+action:
+(load_hoist5_crate7_truck0_distributor2)
+operator:
+load
+start_time:
+27
+durations:
+3 4 6 9 12 14 18 22 25 28 31 32 34 42 43 44 47 48 57 60 61 62 66 76 80 90 94
+precs:
+1 (at_hoist5_distributor2) & 2 (at_truck0_distributor2) & 3 (lifting_hoist5_crate7)
+effs:
+4 not-(lifting_hoist5_crate7) & 5 (in_crate7_truck0) & 6 (available_hoist5)
+
+action:
+(unload_hoist0_crate5_truck1_depot0)
+operator:
+unload
+start_time:
+27
+durations:
+3 4 6 9 12 14 18 22 25 28 31 32 34 42 43 44 47 48 57 60 61 62 66 76 80 90 94
+precs:
+1 (at_hoist0_depot0) & 2 (at_truck1_depot0) & 3 (available_hoist0) & 4 (in_crate5_truck1)
+effs:
+5 not-(in_crate5_truck1) & 6 not-(available_hoist0) & 7 (lifting_hoist0_crate5)
+
+action:
+(drop_hoist0_crate5_pallet0_depot0)
+operator:
+drop
+start_time:
+27
+durations:
+3 4 6 9 12 14 18 22 25 28 31 32 34 42 43 44 47 48 57 60 61 62 66 76 80 90 94
+precs:
+1 (at_hoist0_depot0) & 2 (at_pallet0_depot0) & 3 (clear_pallet0) & 4 (lifting_hoist0_crate5)
+effs:
+5 (available_hoist0) & 6 not-(lifting_hoist0_crate5) & 7 (at_crate5_depot0) & 8 not-(clear_pallet0) & 9 (clear_crate5) & 10 (on_crate5_pallet0)
+
+action:
+(lift_hoist5_crate6_crate3_distributor2)
+operator:
+lift
+start_time:
+31
+durations:
+1 3 6 9 11 15 19 22 25 28 29 31 39 40 41 44 45 54 57 58 59 63 73 77 87 91
+precs:
+1 (at_hoist5_distributor2) & 2 (available_hoist5) & 3 (at_crate6_distributor2) & 4 (on_crate6_crate3) & 5 (clear_crate6)
+effs:
+6 not-(at_crate6_distributor2) & 7 (lifting_hoist5_crate6) & 8 not-(clear_crate6) & 9 not-(available_hoist5) & 10 (clear_crate3) & 11 not-(on_crate6_crate3)
+
+action:
+(load_hoist5_crate6_truck0_distributor2)
+operator:
+load
+start_time:
+31
+durations:
+1 3 6 9 11 15 19 22 25 28 29 31 39 40 41 44 45 54 57 58 59 63 73 77 87 91
+precs:
+1 (at_hoist5_distributor2) & 2 (at_truck0_distributor2) & 3 (lifting_hoist5_crate6)
+effs:
+4 not-(lifting_hoist5_crate6) & 5 (in_crate6_truck0) & 6 (available_hoist5)
+
+action:
+(drive_truck1_depot0_distributor2)
+operator:
+drive
+start_time:
+33
+durations:
+2 5 8 10 14 18 21 24 27 28 30 38 39 40 43 44 53 56 57 58 62 72 76 86 90
+precs:
+1 (at_truck1_depot0)
+effs:
+1 not-(at_truck1_depot0) & 2 (at_truck1_distributor2)
+
+action:
+(lift_hoist5_crate3_crate0_distributor2)
+operator:
+lift
+start_time:
+36
+durations:
+3 6 8 12 16 19 22 25 26 28 36 37 38 41 42 51 54 55 56 60 70 74 84 88
+precs:
+1 (at_hoist5_distributor2) & 2 (available_hoist5) & 3 (at_crate3_distributor2) & 4 (on_crate3_crate0) & 5 (clear_crate3)
+effs:
+6 not-(at_crate3_distributor2) & 7 (lifting_hoist5_crate3) & 8 not-(clear_crate3) & 9 not-(available_hoist5) & 10 (clear_crate0) & 11 not-(on_crate3_crate0)
+
+action:
+(load_hoist5_crate3_truck0_distributor2)
+operator:
+load
+start_time:
+36
+durations:
+3 6 8 12 16 19 22 25 26 28 36 37 38 41 42 51 54 55 56 60 70 74 84 88
+precs:
+1 (at_hoist5_distributor2) & 2 (at_truck0_distributor2) & 3 (lifting_hoist5_crate3)
+effs:
+4 not-(lifting_hoist5_crate3) & 5 (in_crate3_truck0) & 6 (available_hoist5)
+
+action:
+(lift_hoist5_crate0_pallet5_distributor2)
+operator:
+lift
+start_time:
+40
+durations:
+3 5 9 13 16 19 22 23 25 33 34 35 38 39 48 51 52 53 57 67 71 81 85
+precs:
+1 (at_hoist5_distributor2) & 2 (available_hoist5) & 3 (at_crate0_distributor2) & 4 (on_crate0_pallet5) & 5 (clear_crate0)
+effs:
+6 not-(at_crate0_distributor2) & 7 (lifting_hoist5_crate0) & 8 not-(clear_crate0) & 9 not-(available_hoist5) & 10 (clear_pallet5) & 11 not-(on_crate0_pallet5)
+
+action:
+(load_hoist5_crate0_truck0_distributor2)
+operator:
+load
+start_time:
+40
+durations:
+3 5 9 13 16 19 22 23 25 33 34 35 38 39 48 51 52 53 57 67 71 81 85
+precs:
+1 (at_hoist5_distributor2) & 2 (at_truck0_distributor2) & 3 (lifting_hoist5_crate0)
+effs:
+4 not-(lifting_hoist5_crate0) & 5 (in_crate0_truck0) & 6 (available_hoist5)
+
+action:
+(drive_truck0_distributor2_distributor1)
+operator:
+drive
+start_time:
+44
+durations:
+2 6 10 13 16 19 20 22 30 31 32 35 36 45 48 49 50 54 64 68 78 82
+precs:
+1 (at_truck0_distributor2)
+effs:
+1 not-(at_truck0_distributor2) & 2 (at_truck0_distributor1)
+
+action:
+(unload_hoist5_crate12_truck1_distributor2)
+operator:
+unload
+start_time:
+47
+durations:
+4 8 11 14 17 18 20 28 29 30 33 34 43 46 47 48 52 62 66 76 80
+precs:
+1 (at_hoist5_distributor2) & 2 (at_truck1_distributor2) & 3 (available_hoist5) & 4 (in_crate12_truck1)
+effs:
+5 not-(in_crate12_truck1) & 6 not-(available_hoist5) & 7 (lifting_hoist5_crate12)
+
+action:
+(drop_hoist5_crate12_pallet5_distributor2)
+operator:
+drop
+start_time:
+47
+durations:
+4 8 11 14 17 18 20 28 29 30 33 34 43 46 47 48 52 62 66 76 80
+precs:
+1 (at_hoist5_distributor2) & 2 (at_pallet5_distributor2) & 3 (clear_pallet5) & 4 (lifting_hoist5_crate12)
+effs:
+5 (available_hoist5) & 6 not-(lifting_hoist5_crate12) & 7 (at_crate12_distributor2) & 8 not-(clear_pallet5) & 9 (clear_crate12) & 10 (on_crate12_pallet5)
+
+action:
+(drive_truck1_distributor2_distributor0)
+operator:
+drive
+start_time:
+52
+durations:
+4 7 10 13 14 16 24 25 26 29 30 39 42 43 44 48 58 62 72 76
+precs:
+1 (at_truck1_distributor2)
+effs:
+1 not-(at_truck1_distributor2) & 2 (at_truck1_distributor0)
+
+action:
+(load_hoist4_crate14_truck0_distributor1)
+operator:
+load
+start_time:
+57
+durations:
+3 6 9 10 12 20 21 22 25 26 35 38 39 40 44 54 58 68 72
+precs:
+1 (at_hoist4_distributor1) & 2 (at_truck0_distributor1) & 3 (lifting_hoist4_crate14)
+effs:
+4 not-(lifting_hoist4_crate14) & 5 (in_crate14_truck0) & 6 (available_hoist4)
+
+action:
+(lift_hoist4_crate11_pallet4_distributor1)
+operator:
+lift
+start_time:
+61
+durations:
+3 6 7 9 17 18 19 22 23 32 35 36 37 41 51 55 65 69
+precs:
+1 (at_hoist4_distributor1) & 2 (available_hoist4) & 3 (at_crate11_distributor1) & 4 (on_crate11_pallet4) & 5 (clear_crate11)
+effs:
+6 not-(at_crate11_distributor1) & 7 (lifting_hoist4_crate11) & 8 not-(clear_crate11) & 9 not-(available_hoist4) & 10 (clear_pallet4) & 11 not-(on_crate11_pallet4)
+
+action:
+(load_hoist4_crate11_truck0_distributor1)
+operator:
+load
+start_time:
+61
+durations:
+3 6 7 9 17 18 19 22 23 32 35 36 37 41 51 55 65 69
+precs:
+1 (at_hoist4_distributor1) & 2 (at_truck0_distributor1) & 3 (lifting_hoist4_crate11)
+effs:
+4 not-(lifting_hoist4_crate11) & 5 (in_crate11_truck0) & 6 (available_hoist4)
+
+action:
+(unload_hoist4_crate0_truck0_distributor1)
+operator:
+unload
+start_time:
+65
+durations:
+3 4 6 14 15 16 19 20 29 32 33 34 38 48 52 62 66
+precs:
+1 (at_hoist4_distributor1) & 2 (at_truck0_distributor1) & 3 (available_hoist4) & 4 (in_crate0_truck0)
+effs:
+5 not-(in_crate0_truck0) & 6 not-(available_hoist4) & 7 (lifting_hoist4_crate0)
+
+action:
+(drop_hoist4_crate0_pallet4_distributor1)
+operator:
+drop
+start_time:
+65
+durations:
+3 4 6 14 15 16 19 20 29 32 33 34 38 48 52 62 66
+precs:
+1 (at_hoist4_distributor1) & 2 (at_pallet4_distributor1) & 3 (clear_pallet4) & 4 (lifting_hoist4_crate0)
+effs:
+5 (available_hoist4) & 6 not-(lifting_hoist4_crate0) & 7 (at_crate0_distributor1) & 8 not-(clear_pallet4) & 9 (clear_crate0) & 10 (on_crate0_pallet4)
+
+action:
+(load_hoist3_crate4_truck1_distributor0)
+operator:
+load
+start_time:
+65
+durations:
+3 4 6 14 15 16 19 20 29 32 33 34 38 48 52 62 66
+precs:
+1 (at_hoist3_distributor0) & 2 (at_truck1_distributor0) & 3 (lifting_hoist3_crate4)
+effs:
+4 not-(lifting_hoist3_crate4) & 5 (in_crate4_truck1) & 6 (available_hoist3)
+
+action:
+(lift_hoist3_crate2_pallet3_distributor0)
+operator:
+lift
+start_time:
+69
+durations:
+1 3 11 12 13 16 17 26 29 30 31 35 45 49 59 63
+precs:
+1 (at_hoist3_distributor0) & 2 (available_hoist3) & 3 (at_crate2_distributor0) & 4 (on_crate2_pallet3) & 5 (clear_crate2)
+effs:
+6 not-(at_crate2_distributor0) & 7 (lifting_hoist3_crate2) & 8 not-(clear_crate2) & 9 not-(available_hoist3) & 10 (clear_pallet3) & 11 not-(on_crate2_pallet3)
+
+action:
+(load_hoist3_crate2_truck1_distributor0)
+operator:
+load
+start_time:
+69
+durations:
+1 3 11 12 13 16 17 26 29 30 31 35 45 49 59 63
+precs:
+1 (at_hoist3_distributor0) & 2 (at_truck1_distributor0) & 3 (lifting_hoist3_crate2)
+effs:
+4 not-(lifting_hoist3_crate2) & 5 (in_crate2_truck1) & 6 (available_hoist3)
+
+action:
+(drive_truck0_distributor1_depot2)
+operator:
+drive
+start_time:
+71
+durations:
+2 10 11 12 15 16 25 28 29 30 34 44 48 58 62
+precs:
+1 (at_truck0_distributor1)
+effs:
+1 not-(at_truck0_distributor1) & 2 (at_truck0_depot2)
+
+action:
+(drive_truck1_distributor0_distributor1)
+operator:
+drive
+start_time:
+74
+durations:
+8 9 10 13 14 23 26 27 28 32 42 46 56 60
+precs:
+1 (at_truck1_distributor0)
+effs:
+1 not-(at_truck1_distributor0) & 2 (at_truck1_distributor1)
+
+action:
+(unload_hoist2_crate9_truck0_depot2)
+operator:
+unload
+start_time:
+83
+durations:
+1 2 5 6 15 18 19 20 24 34 38 48 52
+precs:
+1 (at_hoist2_depot2) & 2 (at_truck0_depot2) & 3 (available_hoist2) & 4 (in_crate9_truck0)
+effs:
+5 not-(in_crate9_truck0) & 6 not-(available_hoist2) & 7 (lifting_hoist2_crate9)
+
+action:
+(drop_hoist2_crate9_pallet2_depot2)
+operator:
+drop
+start_time:
+83
+durations:
+1 2 5 6 15 18 19 20 24 34 38 48 52
+precs:
+1 (at_hoist2_depot2) & 2 (at_pallet2_depot2) & 3 (clear_pallet2) & 4 (lifting_hoist2_crate9)
+effs:
+5 (available_hoist2) & 6 not-(lifting_hoist2_crate9) & 7 (at_crate9_depot2) & 8 not-(clear_pallet2) & 9 (clear_crate9) & 10 (on_crate9_pallet2)
+
+action:
+(unload_hoist2_crate3_truck0_depot2)
+operator:
+unload
+start_time:
+85
+durations:
+1 4 5 14 17 18 19 23 33 37 47 51
+precs:
+1 (at_hoist2_depot2) & 2 (at_truck0_depot2) & 3 (available_hoist2) & 4 (in_crate3_truck0)
+effs:
+5 not-(in_crate3_truck0) & 6 not-(available_hoist2) & 7 (lifting_hoist2_crate3)
+
+action:
+(drop_hoist2_crate3_crate9_depot2)
+operator:
+drop
+start_time:
+85
+durations:
+1 4 5 14 17 18 19 23 33 37 47 51
+precs:
+1 (at_hoist2_depot2) & 2 (at_crate9_depot2) & 3 (clear_crate9) & 4 (lifting_hoist2_crate3)
+effs:
+5 (available_hoist2) & 6 not-(lifting_hoist2_crate3) & 7 (at_crate3_depot2) & 8 not-(clear_crate9) & 9 (clear_crate3) & 10 (on_crate3_crate9)
+
+action:
+(unload_hoist4_crate2_truck1_distributor1)
+operator:
+unload
+start_time:
+87
+durations:
+3 4 13 16 17 18 22 32 36 46 50
+precs:
+1 (at_hoist4_distributor1) & 2 (at_truck1_distributor1) & 3 (available_hoist4) & 4 (in_crate2_truck1)
+effs:
+5 not-(in_crate2_truck1) & 6 not-(available_hoist4) & 7 (lifting_hoist4_crate2)
+
+action:
+(drop_hoist4_crate2_crate0_distributor1)
+operator:
+drop
+start_time:
+87
+durations:
+3 4 13 16 17 18 22 32 36 46 50
+precs:
+1 (at_hoist4_distributor1) & 2 (at_crate0_distributor1) & 3 (clear_crate0) & 4 (lifting_hoist4_crate2)
+effs:
+5 (available_hoist4) & 6 not-(lifting_hoist4_crate2) & 7 (at_crate2_distributor1) & 8 not-(clear_crate0) & 9 (clear_crate2) & 10 (on_crate2_crate0)
+
+action:
+(drive_truck0_depot2_depot1)
+operator:
+drive
+start_time:
+91
+durations:
+1 10 13 14 15 19 29 33 43 47
+precs:
+1 (at_truck0_depot2)
+effs:
+1 not-(at_truck0_depot2) & 2 (at_truck0_depot1)
+
+action:
+(drive_truck1_distributor1_depot1)
+operator:
+drive
+start_time:
+93
+durations:
+9 12 13 14 18 28 32 42 46
+precs:
+1 (at_truck1_distributor1)
+effs:
+1 not-(at_truck1_distributor1) & 2 (at_truck1_depot1)
+
+action:
+(load_hoist1_crate1_truck0_depot1)
+operator:
+load
+start_time:
+103
+durations:
+3 4 5 9 19 23 33 37
+precs:
+1 (at_hoist1_depot1) & 2 (at_truck0_depot1) & 3 (lifting_hoist1_crate1)
+effs:
+4 not-(lifting_hoist1_crate1) & 5 (in_crate1_truck0) & 6 (available_hoist1)
+
+action:
+(unload_hoist1_crate13_truck0_depot1)
+operator:
+unload
+start_time:
+107
+durations:
+1 2 6 16 20 30 34
+precs:
+1 (at_hoist1_depot1) & 2 (at_truck0_depot1) & 3 (available_hoist1) & 4 (in_crate13_truck0)
+effs:
+5 not-(in_crate13_truck0) & 6 not-(available_hoist1) & 7 (lifting_hoist1_crate13)
+
+action:
+(drop_hoist1_crate13_pallet1_depot1)
+operator:
+drop
+start_time:
+107
+durations:
+1 2 6 16 20 30 34
+precs:
+1 (at_hoist1_depot1) & 2 (at_pallet1_depot1) & 3 (clear_pallet1) & 4 (lifting_hoist1_crate13)
+effs:
+5 (available_hoist1) & 6 not-(lifting_hoist1_crate13) & 7 (at_crate13_depot1) & 8 not-(clear_pallet1) & 9 (clear_crate13) & 10 (on_crate13_pallet1)
+
+action:
+(unload_hoist1_crate10_truck1_depot1)
+operator:
+unload
+start_time:
+109
+durations:
+1 5 15 19 29 33
+precs:
+1 (at_hoist1_depot1) & 2 (at_truck1_depot1) & 3 (available_hoist1) & 4 (in_crate10_truck1)
+effs:
+5 not-(in_crate10_truck1) & 6 not-(available_hoist1) & 7 (lifting_hoist1_crate10)
+
+action:
+(drop_hoist1_crate10_crate13_depot1)
+operator:
+drop
+start_time:
+109
+durations:
+1 5 15 19 29 33
+precs:
+1 (at_hoist1_depot1) & 2 (at_crate13_depot1) & 3 (clear_crate13) & 4 (lifting_hoist1_crate10)
+effs:
+5 (available_hoist1) & 6 not-(lifting_hoist1_crate10) & 7 (at_crate10_depot1) & 8 not-(clear_crate13) & 9 (clear_crate10) & 10 (on_crate10_crate13)
+
+action:
+(unload_hoist1_crate14_truck0_depot1)
+operator:
+unload
+start_time:
+111
+durations:
+4 14 18 28 32
+precs:
+1 (at_hoist1_depot1) & 2 (at_truck0_depot1) & 3 (available_hoist1) & 4 (in_crate14_truck0)
+effs:
+5 not-(in_crate14_truck0) & 6 not-(available_hoist1) & 7 (lifting_hoist1_crate14)
+
+action:
+(drop_hoist1_crate14_crate10_depot1)
+operator:
+drop
+start_time:
+111
+durations:
+4 14 18 28 32
+precs:
+1 (at_hoist1_depot1) & 2 (at_crate10_depot1) & 3 (clear_crate10) & 4 (lifting_hoist1_crate14)
+effs:
+5 (available_hoist1) & 6 not-(lifting_hoist1_crate14) & 7 (at_crate14_depot1) & 8 not-(clear_crate10) & 9 (clear_crate14) & 10 (on_crate14_crate10)
+
+action:
+(drive_truck0_depot1_distributor1)
+operator:
+drive
+start_time:
+116
+durations:
+10 14 24 28
+precs:
+1 (at_truck0_depot1)
+effs:
+1 not-(at_truck0_depot1) & 2 (at_truck0_distributor1)
+
+action:
+(unload_hoist4_crate6_truck0_distributor1)
+operator:
+unload
+start_time:
+127
+durations:
+4 14 18
+precs:
+1 (at_hoist4_distributor1) & 2 (at_truck0_distributor1) & 3 (available_hoist4) & 4 (in_crate6_truck0)
+effs:
+5 not-(in_crate6_truck0) & 6 not-(available_hoist4) & 7 (lifting_hoist4_crate6)
+
+action:
+(drop_hoist4_crate6_crate2_distributor1)
+operator:
+drop
+start_time:
+127
+durations:
+4 14 18
+precs:
+1 (at_hoist4_distributor1) & 2 (at_crate2_distributor1) & 3 (clear_crate2) & 4 (lifting_hoist4_crate6)
+effs:
+5 (available_hoist4) & 6 not-(lifting_hoist4_crate6) & 7 (at_crate6_distributor1) & 8 not-(clear_crate2) & 9 (clear_crate6) & 10 (on_crate6_crate2)
+
+action:
+(drive_truck0_distributor1_distributor2)
+operator:
+drive
+start_time:
+132
+durations:
+10 14
+precs:
+1 (at_truck0_distributor1)
+effs:
+1 not-(at_truck0_distributor1) & 2 (at_truck0_distributor2)
+
+action:
+(unload_hoist5_crate1_truck0_distributor2)
+operator:
+unload
+start_time:
+143
+durations:
+4
+precs:
+1 (at_hoist5_distributor2) & 2 (at_truck0_distributor2) & 3 (available_hoist5) & 4 (in_crate1_truck0)
+effs:
+5 not-(in_crate1_truck0) & 6 not-(available_hoist5) & 7 (lifting_hoist5_crate1)
+
+action:
+(drop_hoist5_crate1_crate12_distributor2)
+operator:
+drop
+start_time:
+143
+durations:
+4
+precs:
+1 (at_hoist5_distributor2) & 2 (at_crate12_distributor2) & 3 (clear_crate12) & 4 (lifting_hoist5_crate1)
+effs:
+5 (available_hoist5) & 6 not-(lifting_hoist5_crate1) & 7 (at_crate1_distributor2) & 8 not-(clear_crate12) & 9 (clear_crate1) & 10 (on_crate1_crate12)
+
