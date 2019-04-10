@@ -5,7 +5,7 @@ problem:
 /home/slimbook/research/tmodeling/benchmarks/CP19/domains//satelliteSimpleTime-IPC02/pfile01.pddl
 
 init:
-1 (supports_instrument0_thermograph0) & 2 (on_board_instrument0_satellite0) & 3 (pointing_satellite0_phenomenon6) & 4 (power_avail_satellite0) & 5 (calibration_target_instrument0_groundstation2) & 6 not-(supports_instrument0_image1) & 7 not-(supports_instrument0_spectrograph2) & 8 not-(pointing_satellite0_groundstation1) & 9 not-(pointing_satellite0_star0) & 10 not-(pointing_satellite0_groundstation2) & 11 not-(pointing_satellite0_phenomenon3) & 12 not-(pointing_satellite0_phenomenon4) & 13 not-(pointing_satellite0_star5) & 14 not-(power_on_instrument0) & 15 not-(calibrated_instrument0) & 16 not-(have_image_groundstation1_image1) & 17 not-(have_image_groundstation1_spectrograph2) & 18 not-(have_image_groundstation1_thermograph0) & 19 not-(have_image_star0_image1) & 20 not-(have_image_star0_spectrograph2) & 21 not-(have_image_star0_thermograph0) & 22 not-(have_image_groundstation2_image1) & 23 not-(have_image_groundstation2_spectrograph2) & 24 not-(have_image_groundstation2_thermograph0) & 25 not-(have_image_phenomenon3_image1) & 26 not-(have_image_phenomenon3_spectrograph2) & 27 not-(have_image_phenomenon3_thermograph0) & 28 not-(have_image_phenomenon4_image1) & 29 not-(have_image_phenomenon4_spectrograph2) & 30 not-(have_image_phenomenon4_thermograph0) & 31 not-(have_image_star5_image1) & 32 not-(have_image_star5_spectrograph2) & 33 not-(have_image_star5_thermograph0) & 34 not-(have_image_phenomenon6_image1) & 35 not-(have_image_phenomenon6_spectrograph2) & 36 not-(have_image_phenomenon6_thermograph0) & 37 not-(calibration_target_instrument0_groundstation1) & 38 not-(calibration_target_instrument0_star0) & 39 not-(calibration_target_instrument0_phenomenon3) & 40 not-(calibration_target_instrument0_phenomenon4) & 41 not-(calibration_target_instrument0_star5) & 42 not-(calibration_target_instrument0_phenomenon6)
+1 (calibration_target_instrument0_groundstation2) & 2 (power_avail_satellite0) & 3 (pointing_satellite0_phenomenon6) & 4 (on_board_instrument0_satellite0) & 5 (supports_instrument0_thermograph0) & 6 not-(supports_instrument0_image1) & 7 not-(supports_instrument0_spectrograph2) & 8 not-(pointing_satellite0_groundstation2) & 9 not-(pointing_satellite0_star0) & 10 not-(pointing_satellite0_groundstation1) & 11 not-(pointing_satellite0_phenomenon3) & 12 not-(pointing_satellite0_phenomenon4) & 13 not-(pointing_satellite0_star5) & 14 not-(power_on_instrument0) & 15 not-(calibrated_instrument0) & 16 not-(have_image_groundstation2_image1) & 17 not-(have_image_groundstation2_spectrograph2) & 18 not-(have_image_groundstation2_thermograph0) & 19 not-(have_image_star0_image1) & 20 not-(have_image_star0_spectrograph2) & 21 not-(have_image_star0_thermograph0) & 22 not-(have_image_groundstation1_image1) & 23 not-(have_image_groundstation1_spectrograph2) & 24 not-(have_image_groundstation1_thermograph0) & 25 not-(have_image_phenomenon3_image1) & 26 not-(have_image_phenomenon3_spectrograph2) & 27 not-(have_image_phenomenon3_thermograph0) & 28 not-(have_image_phenomenon4_image1) & 29 not-(have_image_phenomenon4_spectrograph2) & 30 not-(have_image_phenomenon4_thermograph0) & 31 not-(have_image_star5_image1) & 32 not-(have_image_star5_spectrograph2) & 33 not-(have_image_star5_thermograph0) & 34 not-(have_image_phenomenon6_image1) & 35 not-(have_image_phenomenon6_spectrograph2) & 36 not-(have_image_phenomenon6_thermograph0) & 37 not-(calibration_target_instrument0_star0) & 38 not-(calibration_target_instrument0_groundstation1) & 39 not-(calibration_target_instrument0_phenomenon3) & 40 not-(calibration_target_instrument0_phenomenon4) & 41 not-(calibration_target_instrument0_star5) & 42 not-(calibration_target_instrument0_phenomenon6)
 
 goals:
 1 (have_image_phenomenon4_thermograph0) & 2 (have_image_star5_thermograph0) & 3 (have_image_phenomenon6_thermograph0)
@@ -36,7 +36,7 @@ durations:
 precs:
 1 (pointing_satellite0_phenomenon6)
 effs:
-1 (pointing_satellite0_groundstation2) & 2 not-(pointing_satellite0_phenomenon6)
+2 (pointing_satellite0_groundstation2) & 3 not-(pointing_satellite0_phenomenon6)
 
 action:
 (calibrate_satellite0_instrument0_groundstation2)
@@ -62,7 +62,7 @@ durations:
 precs:
 1 (pointing_satellite0_groundstation2)
 effs:
-1 (pointing_satellite0_phenomenon4) & 2 not-(pointing_satellite0_groundstation2)
+2 (pointing_satellite0_phenomenon4) & 3 not-(pointing_satellite0_groundstation2)
 
 action:
 (take-image_satellite0_phenomenon4_instrument0_thermograph0)
@@ -88,7 +88,7 @@ durations:
 precs:
 1 (pointing_satellite0_phenomenon4)
 effs:
-1 (pointing_satellite0_phenomenon6) & 2 not-(pointing_satellite0_phenomenon4)
+2 (pointing_satellite0_phenomenon6) & 3 not-(pointing_satellite0_phenomenon4)
 
 action:
 (take-image_satellite0_phenomenon6_instrument0_thermograph0)
@@ -114,7 +114,7 @@ durations:
 precs:
 1 (pointing_satellite0_phenomenon6)
 effs:
-1 (pointing_satellite0_star5) & 2 not-(pointing_satellite0_phenomenon6)
+2 (pointing_satellite0_star5) & 3 not-(pointing_satellite0_phenomenon6)
 
 action:
 (take-image_satellite0_star5_instrument0_thermograph0)

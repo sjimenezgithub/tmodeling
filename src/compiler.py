@@ -28,7 +28,7 @@ class PlanStep:
         str_precs = fdtask_to_pddl.format_condition(self.operator.precondition)
         for i in range(len(self.oparams)):
             str_precs = str_precs.replace(self.oparams[i]+" ",self.aparams[i]+" ")
-            str_precs = str_precs.replace(self.oparams[i]+")",self.aparams[i]+")")            
+            str_precs = str_precs.replace(self.oparams[i]+")",self.aparams[i]+")")
         str_out = str_out + format_string_literals(str_precs.replace("(and","").split(")("),1) + "\n"
         
         str_out = str_out + "effs:\n"
@@ -39,8 +39,15 @@ class PlanStep:
         for i in range(len(self.oparams)):            
             str_effs = str_effs.replace(self.oparams[i]+" ",self.aparams[i]+" ")
             str_effs = str_effs.replace(self.oparams[i]+")",self.aparams[i]+")")
+
+        if isinstance(self.operator.precondition, pddl.conditions.Conjunction):
+            npres = len(self.operator.precondition.parts)
+        elif isinstance(self.operator.precondition, pddl.conditions.Atom):
+            npres = 1
+        else:
+            npres = 0
             
-        str_out = str_out + format_string_literals(str_effs.split(")("),len(self.operator.precondition.parts)+1)            
+        str_out = str_out + format_string_literals(str_effs.split(")("), npres+1)            
             
         return str_out.lower()
 
