@@ -208,6 +208,7 @@ As can be noticed, the partially specified model $A[\cdot]$ and the observations
   
   
 \subsection{Example}
+  \label{sec:simpleTask}
 Given a partially specified model of actions $A[\cdot]$ and a single sequence of observations $O$, learning a temporal action model $\mathcal{A}$  may seem, a priori, a straightforward task as it \emph{just} implies to distribute the conditions+effects in time and estimate durations. However, this is untrue.
 
 \begin{figure}
@@ -391,25 +392,6 @@ $\forall p_i: (\forall a_j: \tim(p_i,a_j) = \start(a_j))$ OR $(\forall a_j: \tim
 As a conclusion, in our formulation each action of $A[\cdot]$ is modeled separately so it does not need to share the same structure or duration of other actions. Moreover, the time-stamps for conditions/effects can be arbitrarily placed inside or outside the execution of the action, which allows for a flexible and expressive temporal model. But, when necessary, we can simply include additional constraints to restrict the expressiveness of the model, such as the ones provided by PDDL2.1.
 
 
-\subsection{Using the CP Formulation for Validation}
-\label{sec:usingCPValidation}
-
-As seen above, adding constraints allows us to restrict the temporal expressiveness of the learned model.
-But we can also restrict the learned model by constraining the variables to known values, which is specially interesting when there is additional information on the temporal model that needs to be represented. For instance, based on past learned models, we may know the precise duration of an action $a$,
-%or we can figure out that a condition is a start condition
-or we can figure out that an effect $p$ always happens at end.
-Our CP formulation can include this by simply adding $\dur(a)=value$ and $\tim(p,a)=\en(a)$, which is useful to enrich the partially specified actions in $A[\cdot]$ of the learning task.
-
-
-In particular, the possibility of adding these constraints is very appealing when used for validating whether a partial action model is consistent, as we will see in section~\ref{sec:evaluation}.
-Let us assume that the distribution of all (or just a few) conditions and/or effects is known and, consequently, represented in the learning task. If a learned model is found, then that structure of conditions/effects is consistent for the learned model. On the contrary, if no solution is found that structure is inconsistent and cannot be explained.
-Analogously, we can represent known values of the durations. If a solution is found the durations are consistent, or inconsistent otherwise.
-Hence, we have (at least) three options for validating a partial model \emph{w.r.t.}: i) a known structure with the distribution of conditions/effects; ii) a known set of durations; and iii) a known structure plus a known set of durations (i+ii).
-The first and second option allows for some flexibility in the learning task because some variables remain open. However, the third option checks whether a learned model can fit the given constraints, thus reproducing a strict validation task similar to~\cite{howey2004val}.
-
-
-
-
 \subsection{Example}
 \label{sec:example}
 
@@ -429,7 +411,7 @@ In fact, the specific constraint of PDDL2.1, with regard to having multiple occu
 \begin{figure}
 \footnotesize
 \begin{tabular}{ll}
-\hspace{-0.6cm}\begin{tabular}{lllllll}
+\hspace{-0.6cm}\begin{tabular}{cr|ccccc}
 Action & $\dur$ & $\cond_s$ & $\cond_o$ & $\cond_e$ & $\eff_s$ & $\eff_e$ \\
 
 \hline
@@ -457,7 +439,8 @@ $a3$ & 1 & & & $r$  & & $\neg p$ \\
 $a4$ & 1 & & $p,q,r$ & & & $\neg r$ \\
 \end{tabular} &
 
-\hspace{0.3cm}\begin{tabular}{lllllll}
+
+\hspace{0.3cm}\begin{tabular}{cr|ccccc}  
 
 Action & $\dur$ & $\cond_s$ & $\cond_o$ & $\cond_e$ & $\eff_s$ & $\eff_e$ \\
 
@@ -520,31 +503,45 @@ Although this can reduce the CSP resolution performance, we are interested in us
 %This simple collection of heuristics is very intuitive and has been used in \textsf{Choco} by simply overriding the default search strategy for the variable and value selectors. Although these heuristics have shown very efficient in our experiments, they cannot always guarantee the best performance.
 
 
+\subsection{Using the CP Formulation for Validation}
+\label{sec:usingCPValidation}
+
+As seen above, adding constraints allows us to restrict the temporal expressiveness of the learned model.
+But we can also restrict the learned model by constraining the variables to known values, which is specially interesting when there is additional information on the temporal model that needs to be represented. For instance, based on past learned models, we may know the precise duration of an action $a$,
+%or we can figure out that a condition is a start condition
+or we can figure out that an effect $p$ always happens at end.
+Our CP formulation can include this by simply adding $\dur(a)=value$ and $\tim(p,a)=\en(a)$, which is useful to enrich the partially specified actions in $A[\cdot]$ of the learning task.
+
+
+In particular, the possibility of adding these constraints is very appealing when used for validating whether a partial action model is consistent, as we will see in section~\ref{sec:evaluation}.
+Let us assume that the distribution of all (or just a few) conditions and/or effects is known and, consequently, represented in the learning task. If a learned model is found, then that structure of conditions/effects is consistent for the learned model. On the contrary, if no solution is found that structure is inconsistent and cannot be explained.
+Analogously, we can represent known values of the durations. If a solution is found the durations are consistent, or inconsistent otherwise.
+Hence, we have (at least) three options for validating a partial model \emph{w.r.t.}: i) a known structure with the distribution of conditions/effects; ii) a known set of durations; and iii) a known structure plus a known set of durations (i+ii).
+The first and second option allows for some flexibility in the learning task because some variables remain open. However, the third option checks whether a learned model can fit the given constraints, thus reproducing a strict validation task similar to~\cite{howey2004val}.
+
+
 
 \section{Evaluation}
 \label{sec:evaluation}
+This sections shows the empirical evaluation of our CP approach for the one-shot learning of temporal action models.
 
-The evaluation of a learning task can be addressed from two perspectives. From a syntactic perspective, learning can be considered as an automated design task to create a new model that is similar to the reference one. Consequently, the success of learning is a precision measure of how similar these two models are, which usually counts the number of differences (in terms of incorrect durations or distribution of conditions/effects). However, this syntax-based measure usually returns misleading results, as it may count as incorrect a different duration or a change in the distribution of conditions/effects that really represent equivalent reformulations of the reference model. For instance, given the example of Fig.~\ref{fig:exampleactions2}, the condition learned \texttt{(over all (link ?from ?to))} would be counted as a difference in action \texttt{drive-truck} (as it is \texttt{at start} in the reference model), but it is, semantically speaking, more correct. Analogously, some durations may differ from the reference model but they should not be counted as incorrect. As seen in section~\ref{sec:simpleTask}, some learned durations cannot be granted, but the underlying model is still consistent. Therefore, performing a syntactic evaluation in learning is not always a good idea.
+\subsection{Domains}
+Our learning method is evaluated at eight different temporal planning domains, all taken from the IPC and encoded in PDDL2.1 (so we have included the constraints introduced in section~\ref{sec:PDDL21constraints}). Table~\ref{table:evaluationExperiments} reports the number of actions schema for each domain.
 
+\subsection{Evaluation metric}
+The evaluation of the learned action models can be addressed from a pure syntactic perspective, comparing the learned models to a {\em ground truth model}. The success of the learning is given by an accuracy metric that asseses how similar is a learned model wrt the ground truth (e.g.~counting the number of differences in terms of incorrect conditions/effects and durations).
 
-From a semantic perspective, learning can be considered as a classification task where we first learn a model from a training dataset, then tune the model on a validation test and, finally, asses the model on a test dataset. Our approach represents a one-shot learning task because we only use one plan sample to learn the model and no validation step is required.
-Consequently, the success of the learned model can be assessed by analyzing the success ratio of the learned model \emph{vs.} all the samples of a test dataset. In other words, we are interested in learning a model that fits as many samples of the test dataset as possible. This is the evaluation that we consider most valuable for learning, and define the success ratio as the percentage of samples of the test dataset that are consistent with the learned model. A higher ratio means that the learned model explains, or adequately fits, the observed constraints the test dataset imposes.
+In real problems there is no {\em ground truth model}. Further, pure syntactic metrics are often too pesimist since they account as incorrect a different duration or distribution of conditions/effects that actually represents an equivalent reformulation of the reference model. For instance, given the example of Fig.~\ref{fig:exampleactions2}, the condition learned \texttt{(over all (link ?from ?to))} would be counted as a difference in action \texttt{drive-truck} (as it is \texttt{at start} in the reference model), but it is, semantically speaking, more correct. Analogously, some durations may differ from the reference model but they should not be counted as incorrect. As seen in section~\ref{subsec:simpleTask}, some learned durations cannot be granted, but the underlying model is still consistent. 
 
+Our approach for the evaluation is assesing the quality of the learned models with respect to its performance on a test dataset of unseen temporal planning problems. The success of learned models is assessed by analyzing the success ratio of a learned model in all temporal planning instances in the test dataset and define the success ratio as the percentage of samples of the test dataset that are consistent with the learned model. A higher ratio means that the learned model explains, or adequately fits, the observed constraints the test dataset imposes.
 
-We have run experiments on several IPC planning domains. It is important to highlight that these domains are encoded in PDDL2.1, with the number of operators shown in Table~\ref{table:evaluationExperiments}, so we have included the constraints introduced in section~\ref{sec:PDDL21constraints}. We first get the plans for these domains by using five known planners (\textit{LPG-Quality}, \textit{LPG-Speed}, \textit{TEAM}, \textit{TFD} and \textit{TFLAP}), where the planning time is limited to 100 seconds. The actions and observations on each plan are compiled into a learning instance. Then
-%we create the CP formulation and
-we run the one-shot learning task to get a temporal action model for each instance, where the learning time is limited to 100s on an Intel i5-6400 @ 2.70GHz with 8GB of RAM.
-In order to assess the learned model, we validate each model \emph{vs.} the other models \emph{w.r.t.} the structure, the duration and the structure+duration.
-For instance, the \emph{zenotravel} domain contains 78 instances, which means learning 78 models. Each model is validated by using the 77 remaining models, thus producing 78$\times$77=6006 validations per struct, dur and struct+dur each. The value for each cell is the average success ratio.
-In \emph{zenotravel}, the struct value means the distribution of conditions/effects learned by using only one plan sample is consistent with all (100\%) the samples used as dataset, which is the perfect value.
-The dur value means the durations learned explain 68.83\% of the dataset. The struct+dur value means that the learned model explains entirely 35.76\% of the samples.
-As seen in Table~\ref{table:evaluationExperiments}, the results are specially good, taking into consideration that we use only one sample to learn the temporal action model.
-The results depend on the domain size (number of operators, which need to be grounded), the relationships (causal links, threats and interferences) among the actions, and the quality of the plans. 
-Some planners return plans with unnecessary actions, which has a negative impact for learning precise durations.
-%Some planners return plans with unnecessary actions, thus making an adequate learning more difficult. In particular, actions that are redundant have a negative impact for learning precise durations.
+\subsection{Setup}
+For each of the domains we first build a test data set of plans using these five planners (\textit{LPG-Quality}, \textit{LPG-Speed}\cite{gerevini2003planning}, \textit{TP}~\cite{jimenez2015temporal}, \textit{TFD}~\cite{eyerich2009using} and \textit{TFLAP}~\cite{marzal2016temporal}), where the planning time is limited to 100 seconds.
 
+For each plan in the test data set we create the CP formulation and we run the one-shot learning task to get a temporal action model, where the learning time is limited to 100s on an Intel i5-6400 @ 2.70GHz with 8GB of RAM. To evaluate the quality of each learned model, we validate it \emph{vs.} the other models \emph{w.r.t.} the structure, the duration and the structure+duration. For instance, the \emph{zenotravel} domain contains 78 instances, which means that we learn 78 models. Each model is validated by using the 77 remaining models, thus producing 78$\times$77=6006 validations per struct, dur and struct+dur each. Table~\ref{table:evaluationExperiments} reports the average success ratio.
 
-
+\subsection{Experimental results}
+In \emph{zenotravel}, the struct value means the distribution of conditions/effects learned by using only one plan sample is consistent with all (100\%) the samples used as dataset, which is the perfect value. The dur value means the durations learned explain 68.83\% of the dataset. The struct+dur value means that the learned model explains entirely 35.76\% of the samples. As seen in Table~\ref{table:evaluationExperiments}, the results are specially good, taking into consideration that we use only one sample to learn the temporal action model. The results depend on the domain size (number of operators, which need to be grounded), the relationships (causal links, threats and interferences) among the actions, and the quality of the plans.  Some planners return plans with unnecessary actions, which has a negative impact for learning precise durations.
 
 The worst result is returned in the \emph{rovers} domain, which models a group of planetary rovers to explore the planet they are on. Since there are many parallel actions for taking pictures/samples and navigation of multiple rovers, learning the duration is particularly complex in this domain.
 
@@ -555,20 +552,20 @@ The worst result is returned in the \emph{rovers} domain, which models a group o
 \small
 %\begin{tabular}{p{2cm}p{2cm}p{1cm}p{1cm}p{2cm}}
 \begin{tabular}{p{2cm}ccccc}
-Domain & No. operators & No. instances & struct & dur & struct+dur  \\
+ & No. operators & No. instances & struct & dur & struct+dur  \\
 
 \hline
 
-\emph{zenotravel} & 5 & 78 & 100\% & 68.83\% & 35.76\% \\
-\emph{driverlog} & 6 & 73 & 97.6\% & 44.86\% & 21.04\% \\
-\emph{depots} & 5 & 64 & 55.41\% & 76.22\% & 23.19\% \\
-\emph{rovers} & 9 & 84 & 78.84\% & 5.35\% & 0.17\% \\
-\emph{satellite} & 5 & 84 & 80.74\% & 57.13\% & 40.53\% \\
-\emph{storage} & 5 & 69 & 58.08\% & 70.1\% & 38.36\% \\
+\emph{Zenotravel} & 5 & 78 & 100\% & 68.83\% & 35.76\% \\
+\emph{Driverlog} & 6 & 73 & 97.6\% & 44.86\% & 21.04\% \\
+\emph{Depots} & 5 & 64 & 55.41\% & 76.22\% & 23.19\% \\
+\emph{Rovers} & 9 & 84 & 78.84\% & 5.35\% & 0.17\% \\
+\emph{Satellite} & 5 & 84 & 80.74\% & 57.13\% & 40.53\% \\
+\emph{Storage} & 5 & 69 & 58.08\% & 70.1\% & 38.36\% \\
 
-\emph{floortile} & 7 &\\
-\emph{parking} & 4 &\\
-\emph{sokoban} & 3 & \\
+\emph{Floortile} & 7 &\\
+\emph{Parking} & 4 &\\
+\emph{Sokoban} & 3 & \\
 
 \hline
 \end{tabular}
@@ -578,12 +575,6 @@ Domain & No. operators & No. instances & struct & dur & struct+dur  \\
 \label{table:evaluationExperiments}
 \end{table}
 
-
-
-%\section{Discussion}
-%\label{sec:discussion}
-
-%Indicar que cambios hace falta para que un cp-planner pueda actuar como learner/validator.
 
 
 \section{Conclusions through Related Work}
