@@ -384,9 +384,9 @@ On the other hand, the constraints are: $\en(a3) \leq \start(\goal)$; $\reqs(r,a
 There are many consistent solutions for this simple example, mainly because there is a huge range of possible durations that make the learned model consistent with the partially specified model $A[\cdot]$.
 Fig.~\ref{figure:solutionsExample} shows six arbitrary solutions. What is important to note is that the structure, i.e. distribution of conditions/effects, is similar in all the solutions. Actually, the distribution of the effects is identical except in solution 2 for $q$, and the distribution of conditions is very similar (e.g. $q$ is always in $\cond_o$ and $r$ in $a4$ is very often in $\cond_e$).
 This shows that the one-shot learning, using only one sample, returns not only consistent models but also similar, which is very positive.
-The durations are, however, more different: $\dur(a1)$ ranges in the shown solutions from 7 to 19, whereas $\dur(a2)$ ranges from 5 to 18. As explained in section~\ref{sec:simpleTask}, learning the precise duration from just one sample may not be always possible, which is the main limitation of the one-shot learning task.
-Clearly, the duration learned for only one sample of \texttt{drive-truck(truck1,loc1,loc2,driver1)} cannot be always generalized to any other driving between these two locations.
-In fact, the specific constraint of PDDL2.1, with regard to having multiple occurrences of the same action having the same duration, can significantly help us to learn the actions' duration in a more precise way as the learned duration must be consistent with all those occurrences.
+The durations are, however, more different: $\dur(a1)$ ranges in the shown solutions from 7 to 19, whereas $\dur(a2)$ ranges from 5 to 18.
+
+As explained in section~\ref{sec:simpleTask}, learning the precise duration from just one sample may not be always possible, which is the main limitation of the one-shot learning task. The duration learned for only one sample of \texttt{drive-truck(truck1,loc1,loc2,driver1)} cannot be always generalized to any other driving between these two locations. In fact, the specific constraint of PDDL2.1, with regard to having multiple occurrences of the same action having the same duration, can significantly help us to learn the actions' duration in a more precise way as the learned duration must be consistent with all those occurrences.
 
 
 \begin{figure}
@@ -462,11 +462,9 @@ $a4$ & 1 & & $q,r$ & $p$ & & $\neg r$ \\
 \subsection{Implementation. Use of Heuristics for Resolution}
 \label{sec:implementation}
 
-Our CSP formulation is automatically compiled from a partially specified action model, as defined in a classical planning problem, and the observations from a plan execution.
-The formulation has been implemented in \textsf{Choco}\footnote{\texttt{http://www.choco-solver.org}}, an open-source Java library for constraint programming that provides an object-oriented API to state the constraints to be satisfied.
+Our CSP formulation is automatically compiled from a partially specified action model, as defined in a classical planning problem, and the observation of a single plan execution. The formulation is solver-independent, which means we do not use heuristics that may require changes in the implementation of the CSP engine. Although this can reduce the CSP resolution performance, we are interested in using the solver as a blackbox that can be easily changed with no modification in our formulation.
 
-Our formulation is solver-independent, which means we do not use heuristics that may require changes in the implementation of the CSP engine.
-Although this can reduce the CSP resolution performance, we are interested in using the solver as a blackbox that can be easily changed with no modification in our formulation. However, we can easily encode standard static heuristics for variable and value selection that help improve efficiency by following the next ordering, which has shown very efficient in our experiments:
+However, we can easily encode standard static heuristics for variable and value selection that help improve efficiency by following the next ordering, which has shown very efficient in our experiments:
 
 %%IMPORTANTE: ahorramos espacio juntando en la viñeta el orden de seleccion de variables y de valores
 
@@ -480,46 +478,38 @@ Although this can reduce the CSP resolution performance, we are interested in us
   \item Duration ($\dur$). First the lower value, thus applying the principle of the shortest actions that make the learned model consistent.
 \end{enumerate}
 
-
 %This simple collection of heuristics is very intuitive and has been used in \textsf{Choco} by simply overriding the default search strategy for the variable and value selectors. Although these heuristics have shown very efficient in our experiments, they cannot always guarantee the best performance.
-
 
 \subsection{Using the CP Formulation for Validation}
 \label{sec:usingCPValidation}
 
-As seen above, adding constraints allows us to restrict the temporal expressiveness of the learned model.
-But we can also restrict the learned model by constraining the variables to known values, which is specially interesting when there is additional information on the temporal model that needs to be represented. For instance, based on past learned models, we may know the precise duration of an action $a$,
-%or we can figure out that a condition is a start condition
-or we can figure out that an effect $p$ always happens at end.
-Our CP formulation can include this by simply adding $\dur(a)=value$ and $\tim(p,a)=\en(a)$, which is useful to enrich the partially specified actions in $A[\cdot]$ of the learning task.
+We explained that adding extra constraints allows us to restrict the temporal expressiveness of the learned model. Here we show that it is alos usefull to restrict the models constraining the variables to known values. This is specially interesting when there is additional information on the temporal model that needs to be represented. For instance, based on past learned models, we may know the precise duration of an action $a$, or we can figure out that a condition is a start condition or that an effect $p$ always happens at end. Our CP formulation can include this by simply adding $\dur(a)=value$ and $\tim(p,a)=\en(a)$, which is useful to enrich the partially specified actions in $A[\cdot]$ of the learning task.
 
-
-In particular, the possibility of adding these constraints is very appealing when used for validating whether a partial action model is consistent, as we will see in section~\ref{sec:evaluation}.
-Let us assume that the distribution of all (or just a few) conditions and/or effects is known and, consequently, represented in the learning task. If a learned model is found, then that structure of conditions/effects is consistent for the learned model. On the contrary, if no solution is found that structure is inconsistent and cannot be explained.
-Analogously, we can represent known values of the durations. If a solution is found the durations are consistent, or inconsistent otherwise.
-Hence, we have (at least) three options for validating a partial model \emph{w.r.t.}: i) a known structure with the distribution of conditions/effects; ii) a known set of durations; and iii) a known structure plus a known set of durations (i+ii).
-The first and second option allows for some flexibility in the learning task because some variables remain open. However, the third option checks whether a learned model can fit the given constraints, thus reproducing a strict validation task similar to~\cite{howey2004val}.
+The CP formaluation is also appealing to validate whether a given action model is consistent, as we will see in section~\ref{sec:evaluation}. Let us assume that the distribution of all (or just a few) conditions and/or effects is known and, consequently, represented in the learning task. If a learned model is found, then that structure of conditions/effects is consistent for the learned model. On the contrary, if no solution is found that structure is inconsistent and cannot be explained. Analogously, we can represent known values of the durations. If a solution is found the durations are consistent, or inconsistent otherwise.
+Hence, we have (at least) three options for validating a partial model \emph{w.r.t.}: i) a known structure with the distribution of conditions/effects; ii) a known set of durations; and iii) a known structure plus a known set of durations (i+ii). The first and second option allows for some flexibility in the learning task because some variables remain open. However, the third option checks whether a learned model can fit the given constraints, thus reproducing a strict validation task similar to~\cite{howey2004val}.
 
 
 
 \section{Evaluation}
 \label{sec:evaluation}
-This sections shows the empirical evaluation of our CP approach for the one-shot learning of temporal action models.
+This section shows the empirical evaluation of our CP approach for the one-shot learning of temporal action models.
 
 \subsection{Domains}
-Our learning method is evaluated at eight different temporal planning domains, all taken from the IPC and encoded in PDDL2.1 (so we have included the constraints introduced in section~\ref{sec:PDDL21constraints}). Table~\ref{table:evaluationExperiments} reports the number of actions schema for each domain.
+Our learning method is evaluated at eight different temporal planning domains, all taken from the International Planning Competition, and encoded in PDDL2.1 (so we have included the constraints introduced in Section~\ref{sec:PDDL21constraints}). Table~\ref{table:evaluationExperiments} reports the number of actions schema for each domain.
 
 \subsection{Evaluation metric}
-The evaluation of the learned action models can be addressed from a pure syntactic perspective, comparing the learned models to a {\em ground truth model}. The success of the learning is given by an accuracy metric that asseses how similar is a learned model wrt the ground truth (e.g.~counting the number of differences in terms of incorrect conditions/effects and durations).
+The evaluation of the learned action models can be addressed from a pure syntactic perspective, comparing the learned models to a {\em ground truth model}. The success of the learning is then given by accuracy metrics that asses how similar the learned model is wrt the ground truth (e.g.~counting the number of differences between the models).
 
-In real problems there is no {\em ground truth model}. Further, pure syntactic metrics are often too pesimist since they account as incorrect a different duration or distribution of conditions/effects that actually represents an equivalent reformulation of the reference model. For instance, given the example of Fig.~\ref{fig:exampleactions2}, the condition learned \texttt{(over all (link ?from ?to))} would be counted as a difference in action \texttt{drive-truck} (as it is \texttt{at start} in the reference model), but it is, semantically speaking, more correct. Analogously, some durations may differ from the reference model but they should not be counted as incorrect. As seen in section~\ref{subsec:simpleTask}, some learned durations cannot be granted, but the underlying model is still consistent. 
+Unfortunately there is no {\em ground truth model} when learning models at real-world problems. Further, pure syntactic metrics are often pesimist since they account as incorrect different durations or distributions of conditions/effects that actually represent equivalent reformulations of the reference model. For instance, given the example of Fig.~\ref{fig:exampleactions2}, the condition learned \texttt{(over all (link ?from ?to))} would be counted as a difference in action \texttt{drive-truck} (as it is \texttt{at start} in the reference model), but it is, semantically speaking, more correct. Analogously, some durations may differ from the reference model but they should not be counted as incorrect. As seen in section~\ref{sec:simpleTask}, some learned durations cannot be granted, but the underlying model is still consistent. 
 
-Our approach for the evaluation is assesing the quality of the learned models with respect to its performance on a test dataset of unseen temporal planning problems. The success of learned models is assessed by analyzing the success ratio of a learned model in all temporal planning instances in the test dataset and define the success ratio as the percentage of samples of the test dataset that are consistent with the learned model. A higher ratio means that the learned model explains, or adequately fits, the observed constraints the test dataset imposes.
+Our approach for the evaluation is assesing the quality of the learned models with respect to its performance on a test dataset of unseen temporal plans. The quality of the learned models is assessed by the {\em success ratio} defined as the percentage of plans in the test dataset that are consistent with the learned model. A higher ratio means that the learned model explains, or adequately fits, the observed constraints the test dataset imposes.
 
 \subsection{Setup}
 For each of the domains we first build a test data set of plans using these five planners (\textit{LPG-Quality}, \textit{LPG-Speed}\cite{gerevini2003planning}, \textit{TP}~\cite{jimenez2015temporal}, \textit{TFD}~\cite{eyerich2009using} and \textit{TFLAP}~\cite{marzal2016temporal}), where the planning time is limited to 100 seconds.
 
-For each plan in the test data set we create the CP formulation and we run the one-shot learning task to get a temporal action model, where the learning time is limited to 100s on an Intel i5-6400 @ 2.70GHz with 8GB of RAM. To evaluate the quality of each learned model, we validate it \emph{vs.} the other models \emph{w.r.t.} the structure, the duration and the structure+duration. For instance, the \emph{zenotravel} domain contains 78 instances, which means that we learn 78 models. Each model is validated by using the 77 remaining models, thus producing 78$\times$77=6006 validations per struct, dur and struct+dur each. Table~\ref{table:evaluationExperiments} reports the average success ratio.
+For each plan in the test data set we create the CP formulation and we run the one-shot learning task to get a temporal action model, where the learning time is limited to 100s on an Intel i5-6400 @ 2.70GHz with 8GB of RAM. The formulation is implemented in \textsf{Choco}\footnote{\texttt{http://www.choco-solver.org}}, an open-source Java library for constraint programming that provides an object-oriented API to state the constraints to be satisfied.
+
+To evaluate the quality of each learned model, we validate it \emph{vs.} the other models \emph{w.r.t.} the structure, the duration and the structure+duration. For instance, the \emph{zenotravel} domain contains 78 instances, which means that we learn 78 models. Each model is validated by using the 77 remaining models, thus producing 78$\times$77=6006 validations per struct, dur and struct+dur each. Table~\ref{table:evaluationExperiments} reports the average success ratio.
 
 \subsection{Experimental results}
 In \emph{zenotravel}, the struct value means the distribution of conditions/effects learned by using only one plan sample is consistent with all (100\%) the samples used as dataset, which is the perfect value. The dur value means the durations learned explain 68.83\% of the dataset. The struct+dur value means that the learned model explains entirely 35.76\% of the samples. As seen in Table~\ref{table:evaluationExperiments}, the results are specially good, taking into consideration that we use only one sample to learn the temporal action model. The results depend on the domain size (number of operators, which need to be grounded), the relationships (causal links, threats and interferences) among the actions, and the quality of the plans.  Some planners return plans with unnecessary actions, which has a negative impact for learning precise durations.
