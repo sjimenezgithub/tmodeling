@@ -89,19 +89,18 @@ As a motivating example, let us assume a logistics plan trace. Learning the temp
 %The paper is organized as follows...
 
 
-\section{Background and Terminology}
+\section{Background}
 \label{sec:background}
 
-This section formalizes the classical+temporal planning models, the Constraint Satisfaction Problem and the learning task, as they will be used in the paper.
+This section formalizes the {\em classical} and {\em temporal} planning models that we follow in this work.
 
 \subsection{Classical Planning}
 \label{sec:classicalplanning}
-Let $F$ be a set of facts that represent propositional variables.
-%Without loss of generality, we assume that $F$ does not contain conflicting values $f$ and $\neg f$.
-A state $s$ is a full assignment of values to variables, $|s|=|F|$, so the size of the state space is $2^{|F|}$.
-A {\em classical planning problem} is a tuple $\tup{F,I,G,A}$, where $I$ is a state that represents the initial state, $G \subseteq F$ is a set of goal conditions over $F$, and $A$ is the set of actions that modify states. We assume that actions are grounded from given action schemas, as in PDDL (Planning Domain Definition Language~\cite{fox2003pddl2,Ghallab98,ghallab2004automated}).
+Let $F$ be a set of propositional variables ({\em fluents}). A {\em state} $s$ is a full assignment of values to these variables so $|s|=|F|$ and the size of the state space is $2^{|F|}$.
 
-Each action $a \in A$ has a set of preconditions $\pre(a)$ and a set of effects $\eff(a)$; $\pre(a), \eff(a) \subseteq F$. $\pre(a)$ must hold before $a$ starts (this is why they are named \emph{pre}conditions), whereas $\eff(a)$ happen when $a$ ends. This way, $a$ is applicable in a state $s$ if $\pre(a) \subseteq s$. When $a$ is executed, a new state, the successor of $s$, is created that results of applying $\eff(a)$ on $s$. Typically, $\eff(a)$ is formed by positive and negative/delete effects. Fig.~\ref{fig:exampleactions1} shows an example of two action scheme for the actions of the \emph{driverlog} domain taken from the International Planning Competition\footnote{IPC, \texttt{http://www.icaps-conference.org/index.php/Main/Competitions}}. The schema \texttt{board-truck} is used to board a driver on an empty truck at a given location. In \texttt{drive-truck} a truck is driven between two locations, provided there is a link between them.
+A {\em classical planning problem} is a tuple $\tup{F,I,G,A}$, where $I$ is the initial state, $G \subseteq F$ is a set of goal conditions over $F$, and $A$ is the set of actions that modify the states variables. We assume that the actions in $A$ are grounded from given action schemas, as in the Planning Domain Definition Language (PDDL)~\cite{fox2003pddl2,Ghallab98,ghallab2004automated}).
+
+Each action $a \in A$ has a set of preconditions $\pre(a)$ and a set of effects $\eff(a)$; $\pre(a), \eff(a) \subseteq F$. This way, $a$ is applicable in a state $s$ if $\pre(a) \subseteq s$. When $a$ is executed, a new state, the successor of $s$, is created that results of applying $\eff(a)$ on $s$. Typically, $\eff(a)$ is formed by positive and negative/delete effects. Fig.~\ref{fig:exampleactions1} shows an example of two action scheme for the actions of the \emph{driverlog} domain taken from the International Planning Competition\footnote{IPC, \texttt{http://www.icaps-conference.org/index.php/Main/Competitions}}. The schema \texttt{board-truck} is used to board a driver on an empty truck at a given location. In \texttt{drive-truck} a truck is driven between two locations, provided there is a link between them.
 
 \begin{figure}
 \begin{tabular}{p{\textwidth}}
@@ -122,34 +121,29 @@ Each action $a \in A$ has a set of preconditions $\pre(a)$ and a set of effects 
 \end{figure}
 
 
-In this work we define a plan for a classical planning problem as a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains an instantaneous action $a_i$ and the planning step $t_i$ when $a_i$ starts. This action sequence induces a state sequence $\tup{s_1,s_2\ldots s_n}$, where each $a_i$ is applicable in $s_{i-1}$, being $s_0=I$, and generates state $s_i$. In every valid plan $G\subseteq s_n$, i.e. the goal condition is satisfied in the last state. %In general terms, classical plans can be sequential plans, where only one action is executed at each planning step, or parallel plans, where several actions can be executed at the same planning step.
+In this work we define a {\em plan} $\pi$ for a {\em classical planning problem} as an action sequence $\pi=(a_1,\ldots,a_n)$ that induces the state sequence $\tup{s_1,s_2\ldots s_n}$, where each $a_i$ is applicable in $s_{i-1}$, being $s_0=I$, and generates state $s_i$. In every valid solution plan $G\subseteq s_n$, i.e. the goal condition is satisfied in the last state. 
 
 \subsection{Temporal Planning}
 \label{sec:temporalplanning}
 
-A {\em temporal planning problem} is also a tuple $\tup{F,I,G,A}$ where $F$, $I$ and $G$ are defined like in the classical planning model, but $A$ represents now a set of {\em durative actions}. There are several options that allow for a high expressiveness of durative actions. On the one hand, durative actions can have a fixed duration, a duration that ranges within an interval or a distribution of durations. On the other hand, actions may have conditions/effects at different times, such as conditions that must hold some time before the action starts, effects that happen just when the action starts, in the middle of the action or some time after the action finishes~\cite{garrido2009constraint}.
+A {\em temporal planning problem} is also a tuple $\tup{F,I,G,A}$ where $F$, $I$ and $G$ are defined like in the classical planning model, but $A$ represents now a set of {\em durative actions}.
 
-A popular model for temporal planning is given by PDDL2.1~\cite{fox2003pddl2}, a language that somewhat restricts temporal expressiveness, and that defines a durative action as follows:
+There are several options that allow for a high expressiveness of durative actions. On the one hand, durative actions can have a fixed duration, a duration that ranges within an interval or a distribution of durations. On the other hand, actions may have conditions/effects at different times, such as conditions that must hold some time before the action starts, effects that happen just when the action starts, in the middle of the action or some time after the action finishes~\cite{garrido2009constraint}.
+
+A popular model for temporal planning is given by PDDL2.1~\cite{fox2003pddl2}, a language that somewhat restricts temporal expressiveness, and that defines a durative action $a\in A$ with the following elments:
 
 \begin{itemize}
 
 \item $\dur(a)$, a positive value for the action duration.
 
 \item $\cond_s(a), \cond_o(a), \cond_e(a) \subseteq F$. Unlike the \emph{pre}conditions of a classical action, now conditions must hold when $a$ starts ({\em at start}), during the entire execution of $a$ ({\em over all}) or when $a$ finishes ({\em at end}), respectively. In the general case, $\cond_s(a) \cup \cond_o(a) \cup \cond_e(a) = \pre(a)$\footnote{Note that in classical planning $pre(a)=\{p,\neg p\}$ is contradictory, but in temporal planning, $\cond_s(a)=\{p\}$ and $\cond_e(a)=\{\neg p\}$ is a possible, though unusual, situation}.
-%Note that $\cond_s(a) \cup \cond_o(a) \cup \cond_e(a) \subseteq \pre(a)$, since $\cond_s(a)=\{p\}$ and $\cond_e(a)=\{not-p\}$ is, for instance, now possible.
-
 
 \item $\eff_s(a)$ and $\eff_e(a)$. Now effects can happen {\em at start} or {\em at end} of $a$, respectively, and can still be positive or negative. Again, in the general case $\eff_s(a) \cup \eff_e(a) = \eff(a)$.
-%Again, $\eff_s(a) \cup \eff_e(a) \subseteq \eff(a)$.
-
 \end{itemize}
 
-
-%Despite durative actions are no longer instantaneous in PDDL2.1, {\em at start} and {\em at end} conditions are checked instantaneously.
-
-The semantics of a durative action $a$ can be defined in terms of two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$. This means that if action $a$ starts on state $s$, $\cond_s(a)$ must hold in $s$, and ending $a$ in state $s'$ means $\cond_e(a)$ holds in $s'$. {\em Over all} conditions must hold at any state between $s$ and $s'$ or, in other words, throughout interval $[\start(a),\en(a)]$.
+The semantics of a durative action $a\in A$ can be defined in terms of two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$. This means that if action $a$ starts on state $s$, $\cond_s(a)$ must hold in $s$, and ending $a$ in state $s'$ means $\cond_e(a)$ holds in $s'$. {\em Over all} conditions must hold at any state between $s$ and $s'$ or, in other words, throughout interval $[\start(a),\en(a)]$.
 Analogously, {\em at start} and {\em at end} effects are instantaneously applied at states $s$ and $s'$, respectively ---continuous effects are not considered.
-Fig.~\ref{fig:exampleactions2} shows two durative actions that extend the classical actions of Fig.~\ref{fig:exampleactions1}. Now \texttt{board-truck} has a fixed duration whereas in \texttt{drive-truck} the duration depends on the locations.
+Fig.~\ref{fig:exampleactions2} shows two schemes for durative actions that extend the classical schemes of Fig.~\ref{fig:exampleactions1} for temporal planning. Now \texttt{board-truck} has a fixed duration whereas in \texttt{drive-truck} the duration depends on the locations.
 
 \begin{figure}
 \begin{tabular}{p{\textwidth}}
@@ -174,52 +168,48 @@ Fig.~\ref{fig:exampleactions2} shows two durative actions that extend the classi
 \label{fig:exampleactions2}
 \end{figure}
 
-
-
 %PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f\in F$ that becomes true at a certain time $t$, independently of the actions in the plan. TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario ($\til(open,8)$ and $\til(\neg open,20)$).
 
-
-A temporal plan is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and $t_i=\start(a_i)$.
+A {\em temporal plan} is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and $t_i=\start(a_i)$.
 This temporal plan induces a state sequence formed by the union of all states $\{s_{t_i}, s_{t_i+\dur(a_i)}\}$, where $s_{t_0}=I$ and $G\subseteq s_{t_n}$, being $s_{t_n}$ the last state induced by the plan.
 Though a sequential temporal plan is syntactically possible, it is semantically useless. Consequently, temporal plans are always given as parallel plans.
 
 
-\section{One-Shot Learning of Temporal Action Models}
+\section{One-Shot learning of temporal action models}
   \label{sec:learningtask}
   We define the task of the one-shot learning of a temporal action model as a tuple $\tup{F,I,G,A[\cdot],O}$, where:
   \begin{itemize}
-  \item $\tup{F,I,G,A[\cdot]}$ is a temporal planning problem in which actions are partially specified.  Actions in $A[\cdot]$ are partially specified because we do not know the structure in terms of their distribution of conditions/effects nor their duration. For each action $a \in A[\cdot]$, we only know the sets $\pre(a)=(\cond_s(a) \cup \cond_o(a) \cup \cond_e(a))$ and $\eff(a)=(\eff_s(a) \cup \eff_e(a))$, as this information can be extracted from the classical version of the planning problem, from prior knowledge we have on the problem, or given by an expert. 
-  \item $O$ is the single sequence of observations corresponding to a plan trace and contains the time when action $a$ in $A[\cdot]$ started, i.e. all $\start(a)$ that have been observed (by a sensor or human observer).    
+  \item $\tup{F,I,G,A[\cdot]}$ is a temporal planning problem in which actions are partially specified.  This means that we do not know the exact structure of the actions in $A[\cdot]$ (in terms of the distribution of conditions/effects nor their duration) but that we have some prior knowledge. In this work we assume that, for each action $a \in A[\cdot]$, we only know the sets $\pre(a)=(\cond_s(a) \cup \cond_o(a) \cup \cond_e(a))$ and $\eff(a)=(\eff_s(a) \cup \eff_e(a))$ (as this information can be extracted from the classical version of the planning problem). 
+  \item $O$ is the single sequence of observations corresponding to a plan trace. This observation contains the time when each action in the plan started, i.e. all $\start(a)$ that have been observed (by a sensor or human observer).    
   \end{itemize}    
 
-  A solution to this learning task is a fully specified model of temporal actions $\mathcal{A}$, with all actions of $A[\cdot]$, where the duration and distribution of conditions/effects is completely specified, as defined in section~\ref{sec:temporalplanning}. Every action in $\mathcal{A}$ must be consistent with the knowlege partially specified in $A[\cdot]$, must start as it is observed in $O$, and must induce a temporal plan from $I$ that satisfies $G$. Intuitively, $\mathcal{A}$ is a solution if it explains the input observation and its subjacent temporal model implies no contradictions in the states induced by their execution.
+  A solution to this learning task is a fully specified model of temporal actions $\mathcal{A}$, where the duration and distribution of conditions/effects of all actions in $A[\cdot]$ is fully specified, as defined in section~\ref{sec:temporalplanning}. Every action in $\mathcal{A}$ is consistent with the knowlege partially specified in $A[\cdot]$, can start as it is observed in $O$, and induces a valid temporal plan that when executed starting from $I$ satisfies $G$.
 
-
-As can be noticed, the partially specified model $A[\cdot]$ and the observations $O$ impose constraints that the learned model $\mathcal{A}$ must satisfy. Consequently, formulating a CSP to address the learning task and finding a consistent solution that explains that formulation seems a suitable approach to learn temporal models.  
+Intuitively, $\mathcal{A}$ is a solution if it {\em explains} the input observation and its subjacent temporal model implies no contradictions in the states induced by their execution. This means that the partially specified model $A[\cdot]$ and the observations $O$ impose constraints that the learned model $\mathcal{A}$ must satisfy. Consequently, formulating a CSP to address the learning task and finding a consistent solution that explains that formulation seems a suitable approach to learn temporal models.  
   
   
 \subsection{Example}
   \label{sec:simpleTask}
-Given a partially specified model of actions $A[\cdot]$ and a single sequence of observations $O$, learning a temporal action model $\mathcal{A}$  may seem, a priori, a straightforward task as it \emph{just} implies to distribute the conditions+effects in time and estimate durations. However, this is untrue.
+Given a partially specified model of actions $A[\cdot]$ and a single sequence of observations $O$, learning a temporal action model $\mathcal{A}$ may seem straightforward (as it \emph{just} implies to distribute the conditions+effects in time and estimate durations). However, this is untrue.
 
 \begin{figure}
   \begin{small}
-    \begin{tabular}{c| c| c}
+    \begin{tabular}{c| c| c| c}
 \vspace{-4cm}\\
-$\start(a)$ &$\pre(a)$ &$\eff(a)$ \\\hline
-2 &$\pre(a1)=\{\}$ &$\eff(a1)=\{p,r\}$ \\
-4 &$\pre(a2)=\{\}$ &$\eff(a2)=\{p,q\}$ \\
-7 &$\pre(a3)=\{r\}$ &$\eff(a3)=\{\neg p\}$ \\
-10 &$\pre(a4)=\{p,q,r\}$ &$\eff(a4)=\{\neg r\}$ \\    
+   &$\pre(a)$ &$\eff(a)$&$\start(a)$ \\\hline
+a1 &$\pre(a1)=\{\}$ &$\eff(a1)=\{p,r\}$&2 \\
+a2 &$\pre(a2)=\{\}$ &$\eff(a2)=\{p,q\}$&4 \\
+a3 &$\pre(a3)=\{r\}$ &$\eff(a3)=\{\neg p\}$&7 \\
+a4 &$\pre(a4)=\{p,q,r\}$ &$\eff(a4)=\{\neg r\}$&10 \\    
   \end{tabular}
   \end{small}    
 \includegraphics[width=6cm]{ejemploacciones.png}
-\caption{\small Example showing that learning a temporal action model from $A[\cdot]$ and $O$ is not straightforward. We know the plan makespan is 22, but depending on the distribution of conditions, effects and durations, many situations are possible, though some of them inconsistent.}
+\caption{\small An example of learning a temporal action model from $A[\cdot]$ and $O$. We know that the plan makespan is 22, but depending on the distribution of conditions, effects and durations, many configurations for actions a1,a2,a3 and a4 are possible.}
 \label{fig:exampleplantrace}
 \end{figure}
 
 
-Let us suppose the example of Fig.~\ref{fig:exampleplantrace}, with all the conditions, effects and start times of actions. Clearly, $a3$ needs $a1$ to have $r$ supported, which represents the causal link or dependency $\tup{a1,r,a3}$. Let us imagine that $r$ is in $\cond_s(a3)$. In such a case, if $r$ is in $\eff_s(a1)$, $\dur(a1)$ is irrelevant to $a3$, but if $r$ is in $\eff_e(a1)$, $\dur(a1)$ has to be lower or equal than 5 ($\start(a1)+\dur(a1) \leq \start(a3)$). On the contrary, if $r$ is in $\cond_e(a3)$, $\dur(a1)$ could be much longer. Therefore, the distribution of conditions and effects has a significant impact in the durations, and vice versa.
+Let us suppose the example of Fig.~\ref{fig:exampleplantrace} where all the conditions, effects (but not their distributions) and start times of actions (but not their durations) are known, plus the plan makespan that is 22 in this case. Clearly, $a3$ needs $a1$ to have $r$ supported, which represents the causal link or dependency $\tup{a1,r,a3}$. Let us imagine that $r$ is in $\cond_s(a3)$. In such a case, if $r$ is in $\eff_s(a1)$, $\dur(a1)$ is irrelevant to $a3$, but if $r$ is in $\eff_e(a1)$, $\dur(a1)$ has to be lower or equal than 5 ($\start(a1)+\dur(a1) \leq \start(a3)$). On the contrary, if $r$ is in $\cond_e(a3)$, $\dur(a1)$ could be much longer. This shows that the distribution of the conditions and effects is relevant to the durations, and vice versa.
 
 Action $a4$ needs $p$, which means two possible causal links ($\tup{a1,p,a4}$ or $\tup{a2,p,a4}$). The real causal link will be the last to happen, and this depends on the effects+durations of $a1$ and $a2$. Therefore, the causal links are unknown, not easy to detect and they affect the structure of the temporal plan. But $a4$ really needs both $a1$ and $a2$ to have $p,q,r$ supported. Let us imagine that $p,q,r$ are in $\cond_s(a4)$ and $p,q$ in $\eff_e(a2)$; then $\dur(a2) \leq 6$. Even if we knew for sure that $\dur(a2)=6$ and $r$ was in $\eff_e(a1)$, we could never estimate the exact value of $\dur(a1)$, as any value in $]0..8]$ would be valid. Intuitively, an action has to wait until the last of its supports, but we cannot grant when the other supports happen; those supporting times and respective durations can never be assured. Therefore, in some situations the precise duration cannot be found and we can only provide values that make the model consistent.
 
@@ -230,22 +220,22 @@ Second, why some effects are modeled as \emph{at start} and others as \emph{at e
 Third, what happens if one action requires/supports what it deletes (see $a4$ in Fig.~\ref{fig:exampleplantrace}, which might threat itself)? In such a case, the delete effect should happen later than its requirement/supporting.
 Four, what happens if all effects are \emph{at start}? This makes little sense, as the duration of the actions would be undetermined and could potentially exceed the known plan horizon or makespan no matter the problem goals. In Fig.~\ref{fig:exampleplantrace}, if the effects of $a1$ and $a2$ are \emph{at start}, is it sensible to allow their durations to pass the limit of 22? In other words, once all plan goals are achieved, can the actions be executed beyond the plan makespan or they need to be cut off to such a value? This could potentially lead to an infinite number of models and overlapping situations, so it is not commonly accepted.
 
-As can be noticed from above, learning a temporal action model is not simple, and many possible combinations are feasible provided they fit the constraints the model imposes.
+As can be noticed from above, learning a temporal action model is not straightforward, and many possible combinations are feasible provided they fit the constraints the model imposes.
 
 
 
-\section{A CP Formulation to Learn Temporal Planning Models}
+\section{A CP formulation for learning durative actions}
 \label{sec:CPformulation}
 
-Our approach is to create a single CSP that includes all the constraints the learning task requires. This includes: i) the observations on the start times; ii) the actions' conditions, effects and durations; and iii) the causal structure of the plan with the supports, to avoid threats and possible contradictory effects.
+Our approach is to create a single CSP that contains all the constraints imposed by the learning task. This includes: i) the observations on the start times; ii) the actions' conditions, effects and durations; and iii) the causal structure of the plan with the supports, to avoid threats and possible contradictory effects.
 
-This formulation is inspired by previous work for the synthesis of temporal plans with CP\cite{garrido2009constraint} and is solver-independent. This means that any off-the-shelf CSP solver that supports the expressiveness of our formulation, with binary and non-binary constraints, can be used.
+This formulation is inspired on previous work for the synthesis of temporal plans with CP\cite{garrido2009constraint}. The formulation is solver-independent which means that any off-the-shelf CSP solver that supports the expressiveness of our formulation, with binary and non-binary constraints, can be used.
 
 \subsection{The variables}
 For each action $a$ in $A[\cdot]$, we create the seven kinds of variables specified in Table~\ref{table:variables}. These variables indicate the time-stamps for actions, the causal links, the interval when conditions must hold and the time when the effects happen. For simplicity, and to deal with integer variables, we model time in $\mathbb{Z}^+$. To prevent time from exceeding the plan horizon, we bound all times to the makespan of the plan\footnote{We use the makespan, which can be also observed, to restrict the duration of the actions. However, it is dispensable if we consider a long enough domain for durations.}.
 
 
-This formulation is more expressive than PDDL2.1 (see more details in section~\ref{sec:PDDL21constraints} below) since it allows conditions and effects to be at any time, even outside the execution of the action. For instance, let us imagine a condition $p$ that only needs to be maintained for 5 time units before an action $a$ starts (e.g. warming-up a motor before driving): the expression $\reqe(p,a)=\start(a); \reqe(p,a) = \reqs(p,a)+5$ is possible in our formulation. Additionally, we can represent an effect $p$ that happens in the middle of action $a$: $\tim(p,a) = \start(a)+ (\dur(a) / 2)$ is also possible.
+This formulation is more expressive than PDDL2.1 (see more details in section~\ref{sec:PDDL21constraints} below) since it allows conditions and effects to be at any time, even outside the execution of the action. For instance, imagine a condition $p$ that only needs to be maintained for 5 time units before an action $a$ starts (e.g. warming-up a motor before driving): the expression $\reqe(p,a)=\start(a); \reqe(p,a) = \reqs(p,a)+5$ is possible in our formulation. Additionally, we can represent an effect $p$ that happens in the middle of action $a$: $\tim(p,a) = \start(a)+ (\dur(a) / 2)$ is also possible.
 
 
 \begin{table}
@@ -264,7 +254,7 @@ $\en(a)$ & \emph{derived value} & end time of $a$: $\en(a)=\start(a)+\dur(a)$ \\
 
 %\multicolumn{3}{l}{Vars. necessary for action conditions+effects} \\
 
-$\supp(p,a)$ & $\{b_i\}$ that \newline supports $p$ & symbolic variable for the set of potential supporters $b_i$ of condition $p$ of $a$ (causal link $\tup{b_i,p,a}$) \\
+$\supp(p,a)$ & $\{b_i\}$ that \newline supports $p$ & Boolean variable for the set of potential supporters $b_i$ of condition $p$ of $a$ (causal link $\tup{b_i,p,a}$) \\
 
 $\reqs(p,a)$, \\
 $\reqe(p,a)$ & $[0..makespan]$ & interval $[\reqs(p,a)..\reqe(p,a)]$ at which action $a$ requires $p$ \\
@@ -281,7 +271,7 @@ $\tim(p,a)$ & $[0..makespan]$ & time when effect $p$ of $a$ happens \\
 \end{table}
 
 
-Additionally, we create two dummy actions $\ini$ and $\goal$ for each planning problem $\tup{F,I,G,A[\cdot]}$. First, $\ini$ represents the initial state $I$ ($\start(\ini)=0$ and $\dur(\ini)=0$). $\ini$ has no variables $\supp, \reqs$ and $\reqe$ because it has no conditions. $\ini$ has as many $\tim(p_i,\ini)=0$ as $p_i$ in $I$. Second, $\goal$ represents $G$ ($\start(\goal)=makespan$ and $\dur(\goal)=0$). $\goal$ has as many $\supp(p_i,\goal)$ and $\reqs(p_i,\goal)=\reqe(p_i,\goal)=makespan$ as $p_i$ in $G$. $\goal$ has no variables $\tim$ as it has no effects.
+We create two dummy actions $\ini$ and $\goal$ for each planning problem $\tup{F,I,G,A[\cdot]}$. First, $\ini$ represents the initial state $I$ ($\start(\ini)=0$ and $\dur(\ini)=0$). Action $\ini$ has no variables $\supp, \reqs$ and $\reqe$ because it has no conditions. $\ini$ has as many $\tim(p_i,\ini)=0$ as $p_i$ in $I$. Second, $\goal$ represents $G$ ($\start(\goal)=makespan$ and $\dur(\goal)=0$). Action $\goal$ has as many $\supp(p_i,\goal)$ and $\reqs(p_i,\goal)=\reqe(p_i,\goal)=makespan$ as $p_i$ in $G$. $\goal$ has no variables $\tim$ as it has no effects.
 
 %This formulation allows us to model TILs and observations exactly like other actions. On the one hand, $\til(f,t)$ can be seen as a dummy action ($\start(\til(f,t))=t$ and $\dur(\til(f,t))=0$) with no conditions and only one effect $f$ that happens at time $t$ ($\tim(f,\til(f,t))=t$). A $\til$ is analogous to $\ini$, as they both represent information that is given at a particular time, but externally to the execution of the plan. On the other hand, $\obs(f,t)$ can be seen as another dummy action ($\start(\obs(f,t))=t$ and $\dur(\obs(f,t))=0$) with only one condition $f$, which is the value observed for fact $f$, and no effects at all. An $\obs$ is analogous to $\goal$, as they both represent conditions that must be satisfied in the execution of the plan at a particular time.
 
