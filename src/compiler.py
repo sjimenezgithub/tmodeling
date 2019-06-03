@@ -1,10 +1,14 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 import os, sys, itertools
 import pddl, pddl_parser
 import fdtask_to_pddl
 
+sys.path.insert(0, '/home/slimbook/research/tmodeling/src/meta-planning/src/')
+from meta_planning.parsers import parse_trajectory, parse_model
+from meta_planning.compilation import generate_model_representation_fluents
+
 class PlanStep:
-    def __init__(self, n, o, st, b, d, op, ap):
+    def __init__(self, n, o, st, b, d, op, ap, m):
         self.name = n
         self.operator = o
         self.stime = st
@@ -12,6 +16,36 @@ class PlanStep:
         self.durations = d
         self.oparams = op
         self.aparams = ap
+        self.model = model
+
+    def get_precs(self):        
+        possible_pres = set()
+
+        for scheme in self.model.schemata:
+            if scheme.name == self.operator.name:
+                aux_scheme = scheme
+        
+        for p in generate_model_representation_fluents(aux_scheme, self.model.predicates, self.model.types):
+            if "pre_"+self.operator.name+"_" in str(p):
+                possible_pres.add(str(p).replace("pre_"+self.operator.name+"_",""))
+
+        index=1
+        str_out=""
+        for p in possible_pres:
+            aux=p            
+            for i in range(len(self.oparams)):
+                aux=aux.replace("_var"+str(i+1),"_"+self.aparams[i])
+                aux=aux.replace(" ","")
+            if index==len(possible_pres):
+                str_out= str_out + str(index) + " " + aux 
+            else:
+                str_out= str_out + str(index) + " " + aux+ " & "
+            index = index + 1
+        return str_out
+    
+
+    def get_effs(self):
+        return self.get_precs()
 
     def __str__(self):
         str_out = ""
@@ -25,29 +59,12 @@ class PlanStep:
         str_out = str_out + str(self.durations).replace("[","").replace("]","").replace(",","") + "\n"
         
         str_out = str_out + "precs:\n"
-        str_precs = fdtask_to_pddl.format_condition(self.operator.precondition)
-        for i in range(len(self.oparams)):
-            str_precs = str_precs.replace(self.oparams[i]+" ",self.aparams[i]+" ")
-            str_precs = str_precs.replace(self.oparams[i]+")",self.aparams[i]+")")
-        str_out = str_out + format_string_literals(str_precs.replace("(and","").split(")("),1) + "\n"
+        str_precs = self.get_precs() + "\n"
+        str_out = str_out + str_precs
         
         str_out = str_out + "effs:\n"
-        str_effs = ""
-        for item in self.operator.effects:
-            str_effs = str_effs + fdtask_to_pddl.format_effect(item)
-
-        for i in range(len(self.oparams)):            
-            str_effs = str_effs.replace(self.oparams[i]+" ",self.aparams[i]+" ")
-            str_effs = str_effs.replace(self.oparams[i]+")",self.aparams[i]+")")
-
-        if isinstance(self.operator.precondition, pddl.conditions.Conjunction):
-            npres = len(self.operator.precondition.parts)
-        elif isinstance(self.operator.precondition, pddl.conditions.Atom):
-            npres = 1
-        else:
-            npres = 0
-            
-        str_out = str_out + format_string_literals(str_effs.split(")("), npres+1)            
+        str_effs = self.get_effs()
+        str_out = str_out + str_effs
             
         return str_out.lower()
 
@@ -89,11 +106,13 @@ try:
     output_filename = sys.argv[4]    
 
 except:
-    print "Usage:"
-    print sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line] <domain file name> <problem file name> <plan file name> <output file name>"
+    print ("Usage:")
+    print (sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line] <domain file name> <problem file name> <plan file name> <output file name>")
     sys.exit(-1)
 
 str_out = ""
+
+model = parse_model(domain_filename)
 
 # Creating a FD task with the domain and the problem files
 fd_domain = pddl_parser.pddl_file.parse_pddl_file("domain", domain_filename)
@@ -166,7 +185,7 @@ for line in plan_file:
         operator = [o for o in fd_task.actions if clean_aname==o.name.lower()][0]
         oparams = [str(p.name) for p in operator.parameters]
         
-        steps.append(PlanStep(aname,operator, start_time, -1, [] , oparams, aparams))
+        steps.append(PlanStep(aname,operator, start_time, -1, [] , oparams, aparams,model))
         makespan = max(makespan, int(start_time + duration))
 plan_file.close()
 
