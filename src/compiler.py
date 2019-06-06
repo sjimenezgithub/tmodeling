@@ -45,7 +45,32 @@ class PlanStep:
     
 
     def get_effs(self):
-        return self.get_precs()
+        possible_pres = set()
+
+        for scheme in self.model.schemata:
+            if scheme.name == self.operator.name:
+                aux_scheme = scheme
+        
+        for p in generate_model_representation_fluents(aux_scheme, self.model.predicates, self.model.types):
+            if "pre_"+self.operator.name+"_" in str(p):
+                possible_pres.add(str(p).replace("pre_"+self.operator.name+"_",""))
+        
+        index = len(self.get_precs().split("&")) + 1
+        str_out=""
+        for p in possible_pres:
+            aux=p            
+            for i in range(len(self.oparams)):
+                aux=aux.replace("_var"+str(i+1),"_"+self.aparams[i])
+                aux=aux.replace(" ","")
+            str_out= str_out + str(index) + " " + aux+ " & "
+            index = index + 1
+            if index==3*len(possible_pres):
+                str_out= str_out + str(index) + " " + "not-" + aux 
+            else:
+                str_out= str_out + str(index) + " " + "not-" + aux + " & "                
+            index = index + 1            
+        
+        return str_out
 
     def __str__(self):
         str_out = ""
@@ -112,6 +137,7 @@ except:
 
 str_out = ""
 
+# Creating a meta-planning model
 model = parse_model(domain_filename)
 
 # Creating a FD task with the domain and the problem files
@@ -140,7 +166,7 @@ if bneginit==True: # Completing initial state with negated literals
         candidate_objects = []
         for arg in p.arguments:
             candidate_pos=[]
-            for o in sorted(set(fd_task.objects)):
+            for o in set(fd_task.objects):
                 aux = [t for t in fd_task.types if t.name==o.type_name]
                 supernames = [str(t.name) for t in aux] + [str(t) for t in aux[0].supertype_names]
                 if arg.type_name in supernames:
