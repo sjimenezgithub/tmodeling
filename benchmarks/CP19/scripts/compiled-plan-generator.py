@@ -5,6 +5,7 @@ PLANS_FOLDER = "../plans/"
 DOMAINS_FOLDER = "/home/slimbook/research/tmodeling/benchmarks/CP19/domains/"
 COMPILED_PLANS_FOLDER = "../compiled-plans/"
 TRUNKED_COMPILED_PLANS_FOLDER = "../trunked-plans/"
+DOMAIN_PDDL_FILE = "domain-empty-constraints.pddl"
 
 
 # **************************************#
@@ -26,7 +27,7 @@ for p in plan_files:
 
     cwd = os.getcwd() + "/"
     output_name = cwd + COMPILED_PLANS_FOLDER + "compiled." + p
-    cmd = "cd ../../../src/; ./compiler.py -n " + DOMAINS_FOLDER + domain + "/domain-classical.pddl " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " "+output_name
+    cmd = "cd ../../../src/; ./compiler.py -n -d " + DOMAINS_FOLDER + domain + "/" + DOMAIN_PDDL_FILE + " " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " "+output_name
     print cmd
     os.system(cmd)
 
@@ -35,7 +36,7 @@ for p in plan_files:
 
     cwd = os.getcwd() + "/"
     output_name = cwd + TRUNKED_COMPILED_PLANS_FOLDER + "compiled." + p
-    cmd = "cd ../../../src/; ./compiler.py -n -e " + DOMAINS_FOLDER + domain + "/domain-classical.pddl " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " "+output_name
+    cmd = "cd ../../../src/; ./compiler.py -n -e -d " + DOMAINS_FOLDER + domain + "/" + DOMAIN_PDDL_FILE + " " + DOMAINS_FOLDER + "/" + domain + "/" + problem + " " + cwd + PLANS_FOLDER + p + " "+output_name
     print cmd
     os.system(cmd)
 
