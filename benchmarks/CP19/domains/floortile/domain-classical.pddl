@@ -54,7 +54,6 @@
   :precondition (and (robot-at ?r ?x) (tile-down ?y ?x) (clear ?y))
   :effect (and (robot-at ?r ?y) (not (robot-at ?r ?x))
                (clear ?x) (not (clear ?y))
-               (increase (total-cost) 1))
 )
 
 (:action right 
