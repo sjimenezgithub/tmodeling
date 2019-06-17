@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-import os, sys, itertools
+import os, sys, itertools, collections
 import pddl, pddl_parser
 import fdtask_to_pddl
 
@@ -106,6 +106,23 @@ def format_string_literals(str_literals, offset):
     return str_out.replace("))",")").replace("(not-(","not-(")
 
 
+def get_objects_by_type(typed_objects, types):
+    result = collections.defaultdict(list)
+    supertypes = {}
+    for type in types:
+        supertypes[type.name] = type.supertype_names
+    for obj in typed_objects:
+        result[obj.type_name].append(obj.name)
+        for type in supertypes[obj.type_name]:
+            result[type].append(obj.name)
+    return result
+
+
+def filter_mutex_string(str_in):
+    str_in = "(" + str_in.replace("NegatedAtom ","").replace(", ","_").replace("(","_")
+    return str_in
+
+
 
 # **************************************#
 # MAIN
@@ -123,7 +140,14 @@ try:
         sys.argv.pop(index)
         btrunk = True
     else:
-        btrunk = False         
+        btrunk = False
+
+    if "-d" in sys.argv:
+        index = sys.argv.index("-d")
+        sys.argv.pop(index)
+        bduration = True
+    else:
+        bduration = False                 
     
     domain_filename  = sys.argv[1]
     problem_filename = sys.argv[2]
@@ -132,7 +156,7 @@ try:
 
 except:
     print ("Usage:")
-    print (sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line] <domain file name> <problem file name> <plan file name> <output file name>")
+    print (sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line, -d actions duration is known] <domain file name> <problem file name> <plan file name> <output file name>")
     sys.exit(-1)
 
 str_out = ""
@@ -144,6 +168,7 @@ model = parse_model(domain_filename)
 fd_domain = pddl_parser.pddl_file.parse_pddl_file("domain", domain_filename)
 fd_problem = pddl_parser.pddl_file.parse_pddl_file("task", problem_filename)
 fd_task = pddl_parser.pddl_file.parsing_functions.parse_task(fd_domain, fd_problem)
+
 
 # Domain and problem name
 str_out = str_out + "domain:\n"
@@ -211,7 +236,7 @@ for line in plan_file:
         operator = [o for o in fd_task.actions if clean_aname==o.name.lower()][0]
         oparams = [str(p.name) for p in operator.parameters]
         
-        steps.append(PlanStep(aname,operator, start_time, -1, [] , oparams, aparams,model))
+        steps.append(PlanStep(aname,operator, start_time, -1, duration , oparams, aparams,model))
         makespan = max(makespan, int(start_time + duration))
 plan_file.close()
 
@@ -228,13 +253,55 @@ str_out = str_out + "\n"
 steps.sort(key=lambda x: x.stime)
 for s in steps:
     aux_timestamps = sorted(timestamps)
-    s.block = aux_timestamps.index(s.stime) + 1    
-    s.durations = [item - s.stime for item in aux_timestamps[aux_timestamps.index(s.stime)+1:]]
-    str_out = str_out + str(s)+ "\n"
-    str_out = str_out + "\n"
+    s.block = aux_timestamps.index(s.stime) + 1
+    if not bduration:
+        s.durations = [item - s.stime for item in aux_timestamps[aux_timestamps.index(s.stime)+1:]]
+    str_out = str_out + str(s)+ "\n\n"
+    
+
+# Instantiate Axioms
+for axiom in fd_task.axioms:
+    types_dic=get_objects_by_type(fd_task.objects, fd_task.types)
+    elements = []
+    for p in axiom.condition.parameters:
+        elements.append(types_dic[p.type_name])
+
+    str_predicate = ""
+    str_mutex = ""
+    for item in list(itertools.product(*elements)):
+        d = {}
+        for index in range(len(axiom.condition.parameters)):
+            d[axiom.condition.parameters[index].name]=item[index]
+
+        str_aux = filter_mutex_string(str(axiom.condition.parts[0].parts[0]))
+        for index in range(len(axiom.condition.parameters)):
+            str_aux=str_aux.replace(axiom.condition.parameters[index].name,d[axiom.condition.parameters[index].name])
+
+        if str_predicate != str_aux:
+            if  str_mutex != "":
+                str_out = str_out + "constraints:\n"
+                str_out = str_out + str_predicate    
+                str_out = str_out + "\nmutex predicate\n"
+                str_out = str_out + str_mutex + "\n\n"
+            str_predicate = str_aux            
+            str_mutex = ""                                
+              
+
+        if "=" in axiom.condition.parts[0].parts[-1].predicate:
+            ps = axiom.condition.parts[0].parts[0:-1]
+        else:
+            ps = axiom.condition.parts[0].parts
+            
+        for p in ps:
+            str_aux2 = filter_mutex_string(str(p))
+            for index in range(len(axiom.condition.parameters)):
+                str_aux2=str_aux2.replace(axiom.condition.parameters[index].name,d[axiom.condition.parameters[index].name])
+            if str_aux2!= str_predicate:
+                str_mutex=str_mutex + str_aux2+ " "                              
+   
 
 if not btrunk:    
-    str_out = str_out + "end:\n"
+    str_out = str_out + "\n\nend:\n"
 
 if nactions > 0:
     output_file = open(output_filename, 'w')
