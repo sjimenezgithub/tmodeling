@@ -41,7 +41,6 @@
                       (at ?s ?to)
                       (clear ?ppos)
                       (not (at-goal ?s))
-                      (increase (total-cost) 1)
                       )
    )
 
@@ -63,7 +62,6 @@
                       (at ?s ?to)
                       (clear ?ppos)
                       (at-goal ?s)
-                      (increase (total-cost) 1)
                       )
    )
 )
