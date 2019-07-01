@@ -26,7 +26,7 @@ class PlanStep:
                 aux_scheme = scheme
         
         for p in generate_model_representation_fluents(aux_scheme, self.model.predicates, self.model.types):
-            if "pre_"+self.operator.name+"_" in str(p):
+            if "pre_"+self.operator.name+"_" in str(p) and not "_=_" in str(p):
                 possible_pres.add(str(p).replace("pre_"+self.operator.name+"_",""))
 
         index=1
@@ -52,7 +52,7 @@ class PlanStep:
                 aux_scheme = scheme
         
         for p in generate_model_representation_fluents(aux_scheme, self.model.predicates, self.model.types):
-            if "pre_"+self.operator.name+"_" in str(p):
+            if "pre_"+self.operator.name+"_" in str(p) and not "_=_" in str(p):
                 possible_pres.add(str(p).replace("pre_"+self.operator.name+"_",""))
         
         index = len(self.get_precs().split("&")) + 1
@@ -71,6 +71,7 @@ class PlanStep:
             index = index + 1            
         
         return str_out
+    
 
     def __str__(self):
         str_out = ""
@@ -227,7 +228,7 @@ for line in plan_file:
         start_time = int(line.split(".")[0])
         timestamps.add(start_time)
         
-        duration = float(line.split("[")[1].replace("]",""))
+        duration = int(round(float(line.split("[")[1].replace("]",""))))
 
         aname = line.split(": ")[1].split(" [")[0].replace(" (","(").replace(") ",")").replace(" ","_").replace("_(","(")
         aparams = line.split("(")[1].split(")")[0].split(" ")[1:]
@@ -283,6 +284,13 @@ for axiom in fd_task.axioms:
                 str_out = str_out + str_predicate    
                 str_out = str_out + "\nmutex predicate\n"
                 str_out = str_out + str_mutex + "\n\n"
+
+                if not "=" in axiom.condition.parts[0].parts[-1].predicate:
+                    str_out = str_out + "constraints:\n"
+                    str_out = str_out + str_mutex    
+                    str_out = str_out + "\nmutex predicate\n"
+                    str_out = str_out + str_predicate + "\n\n"                    
+                
             str_predicate = str_aux            
             str_mutex = ""                                
               
