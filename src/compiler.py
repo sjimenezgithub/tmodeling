@@ -189,6 +189,8 @@ npositive =  len(formattedinit1.split(") ("))
 atoms = ""
 if bneginit==True: # Completing initial state with negated literals
     for p in fd_task.predicates:
+        if p.name == "=":
+            continue
         candidate_objects = []
         for arg in p.arguments:
             candidate_pos=[]
