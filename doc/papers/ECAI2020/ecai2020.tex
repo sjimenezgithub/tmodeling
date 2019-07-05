@@ -1,0 +1,33 @@
+\documentclass{ecai}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{latexsym}
+
+%%\ecaisubmission   % inserts page numbers. Use only for submission of paper.
+                  % Do NOT use for camera-ready version of paper.
+
+
+\begin{document}
+\title{One-Shot Learning of Temporal Action Models with Constraint Programming}
+\author{Antonio Garrido \and Sergio Jim\'enez}
+\institute{Universitat Polit\`ecnica de Val\`encia \\ Camino de Vera s/n. 46022 Valencia, Spain}
+ 
+\maketitle
+
+\begin{abstract}
+  This work presents a constraint programming (CP) formulation for the learning of temporal planning action models. This paper focus on the extreme scenario where just a single partial observation of the execution of a temporal plan is available (i.e. one-shot). Our CP formulation models time-stamps for actions, causal link relationships (conditions and effects), threats and effect interferences that appear in planning. It also accommodates a different range of expressiveness, subsuming the PDDL2.1 temporal semantics. Our CP formulation is solver-independent, meaning that an arbitrary CSP solver can be used for its resolution and is not only valid for learning, but also for plan validation. 
+\end{abstract}
+
+\section{Introduction}
+
+
+Contributions:
+\begin{enumerate}
+\item Our CP formluation allows that an arbitrary CSP solver can be used for the plan validation.  This validation capacity is beyond the functionality of VAL (the standard plan validation tool~\cite{howey2004val}) because we can address {\em plan validation} of a partial (or even an empty) action model with a partially observed plan trace (VAL requires a full plan and a full action model for plan validation).
+\end{enumerate}
+  
+
+\bibliographystyle{ecai}
+\bibliography{ecai}
+\end{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
