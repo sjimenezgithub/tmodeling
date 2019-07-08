@@ -51,7 +51,7 @@ As a motivating example, let us assume a {\em logistics scenario}. Learning the 
 
 
 \section{Background}
-This section formalizes the {\em temporal} planning model that we follow in this work and the hypothesis space for our learning target, action schemes for temporal planning.
+This section formalizes the {\em temporal} planning model that we follow in this work, the hypothesis space for our learning target, FOL schemes of {\em durative} actions, and the sampling space.
 
 \subsection{Temporal Planning}
 \label{sec:temporalplanning}
@@ -102,22 +102,21 @@ The semantics of a PDDL2.1 durative action $a$ can be defined in terms of two di
 
 PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f\in F$ that becomes true at a certain time $t$, independently of the actions in the plan. TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario ($\til(open,8)$ and $\til(\neg open,20)$).
 
+A temporal plan is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and a time-stamp $t_i=\start(a_i)$. The execution of a temporal plan starting from a given initial state $I$ induces a state sequence formed by the union of all states $\{s_{t_i}, s_{t_i+\dur(a_i)}\}$, where there exists a state $s_{0}=I$, and $G\subseteq s_{end}$, being $s_{end}$ the last state induced by the plan. Therefore sequential plans can be expressed a temporal plans but not the opposite. We say that a temporal plan is a {\em solution} to a given temporal planning problem when the plan execution, starting from the corresponding initial state, eventually reaches a state that met the goal conditions.
 
-A temporal plan is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and a time-stamp $t_i=\start(a_i)$. A temporal plan induces a state sequence formed by the union of all states $\{s_{t_i}, s_{t_i+\dur(a_i)}\}$, where there exists a state $s_{0}=I$, and $G\subseteq s_{end}$, being $s_{end}$ the last state induced by the plan. Therefore sequential plans can be expressed a temporal plans but not the opposite.
 
-
-\subsection{The space of {\em durative} actions}
+\subsection{The space of {\em durative} action models}
 \label{sec:action-space}
 
-We denote as ${\mathcal I}_{\xi,\Psi}$ the set of symbols (vocabulary) that can appear in the {\em conditions} and/or {\em effects} of a {\em durative} action schema $\xi$. Formally this set is defined as the FOL interpretations of $\Psi$ over the action parameters $pars(\xi)$.
+We denote as ${\mathcal I}_{\xi,\Psi}$ the {\em vocabulary} (set of symbols) that can appear in the {\em conditions} and {\em effects} of a given {\em durative} action schema $\xi$. Formally, this set is defined as the FOL interpretations of the set of predicates $\Psi$, over the action parameters $pars(\xi)$.
 
-For a {\em durative} action schema $\xi$ its space of possible action models is then $2^{5\times|{\mathcal I}_{\xi,\Psi}}|\times D$ where D is the number of different values for the durations of any action shaped by the $\xi$ schema. Note that this space is significantly larger than for learning STRIPS actions that is just $2^{2\times|{\mathcal I}_{\xi,\Psi}}|$~\cite{yang2007learning}.
+For a {\em durative} action schema $\xi$ its space of possible action models is then $D\times 2^{5\times|{\mathcal I}_{\xi,\Psi}}|$ where D is the number of different values for the durations of any action shaped by the $\xi$ schema. This space is significantly larger than for learning STRIPS actions~\cite{yang2007learning} where this number is just $2^{2\times|{\mathcal I}_{\xi,\Psi}}|$ since negative effects must also be preconditions of the same action and cannot be positive effects of that action.
 
-With this regard an action schema can be coded by 5 bit vector of length $|{\mathcal I}_{\xi,\Psi}|$ and the {\em Hamming distance} can be used straightforward to asses the similarity of two given models as well as to compute the {\em Precision and Recall} metrics as in Machine Learning. For instance for comparing a learned model with respect to a given reference model that serve as baseline.
+With this regard a schema of a {\em durative} action can be coded by 5 bit-vectors of length $|{\mathcal I}_{\xi,\Psi}|$ each. This also means that the {\em Hamming distance} can be used straightforward to asses the similarity of two given {\em durative} actions. For instance for comparing a learned model with respect to a given reference model that serve as baseline (similarly to the computation of {\em Precision and Recall} for evaluating models in Machine Learning).
 
 \subsection{The sampling space}
 \label{sec:sampling-space}
-
+This work focuses on the extreme learning scenario where just a single partial observation of the execution of a plan is available (i.e. one-shot). 
 
 
 
