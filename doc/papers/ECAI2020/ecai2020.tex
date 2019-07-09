@@ -239,126 +239,12 @@ $\tim(p,a_i) \neq \tim(not-p,a_j)$ &
 \label{table:constraints}
 \end{table}
 
-In addition we can add the input {\em state-constraint} (if available), like the ones pictured in Figure~\ref{fig:example-statecs}, to our CSP formulation to prune the space of possible action models.
+In addition to the constraints of Table~\ref{table:constraints} we can add input {\em state-constraint} (if available), like the ones pictured in Figure~\ref{fig:example-statecs}, to our CSP formulation to prune the space of possible action models.
 
 
-
-\subsection{Specific constraints for the PDDL2.1 action model}
-\label{sec:PDDL21constraints}
-This temporal model formulation is more expressive than PDDL2.1 (see more details in section~\ref{sec:PDDL21constraints}), and allows conditions and effects to be at any time, even outside the execution of the action. For instance, let us imagine a condition $p$ that only needs to be maintained for 5 time units before an action $a$ starts (e.g. warming-up a motor before driving): the expression $\reqe(p,a)=\start(a); \reqe(p,a) = \reqs(p,a)+5$ is possible in our formulation. Additionally, we can represent an effect $p$ that happens in the middle of action $a$: $\tim(p,a) = \start(a)+ (\dur(a) / 2)$ is also possible.
-
-We present now our formulation for PDDL2.1. As section~\ref{sec:temporalplanning} explains, PDDL2.1 restricts the expressiveness of temporal planning in terms of conditions, effects, durations and structure of the actions. Hence, our temporal formulation subsumes and is significantly richer than PDDL2.1; but adding constraints to make it fully PDDL2.1-compliant is straightforward.
-
-First, adding $((\reqs(p,a) = \start(a))$ OR ($\reqs(p,a) = \en(a)))$ AND $((\reqe(p,a) = \start(a))$ OR ($\reqe(p,a) = \en(a)))$ limits condition $p$ to be \emph{at start}, \emph{over all} or \emph{at end}, i.e. $p$ is in $\cond_s(a)$, $\cond_o(a)$ or $\cond_e(a)$, respectively.
-Further, if a condition is never deleted in a plan, it can be considered as an invariant condition for such a plan. In other words, it represents static information. This type of condition is commonly used in planning to ease the grounding process from the operators; e.g. to model that there is a link between two locations and, consequently, a driving is possible, or modeling a petrol station that allows a refuel action in a given location, etc. Therefore, the constraint to be added for an invariant condition $p$ is simply: $((\reqs(p,a) = \start(a))$ AND $(\reqe(p,a) = \en(a)))$, i.e. $p \in \cond_o(a)$.
-Surprisingly, invariant conditions are modeled differently depending on the human modeler. See, for instance, \texttt{(link ?from ?to)} of Fig.~\ref{fig:exampleactions2}, which is modeled as an \emph{at start} condition despite: i) the link should be necessary all over the driving, and ii) no action in this domain can be planned to delete that link.
-This also happens in the \emph{transport} domain of the IPC, where a refuel action requires to have a petrol station in a location only \emph{at start}, rather than \emph{over all} which makes more sense. This shows that modeling a planning domain is not easy and it highly depends on the human's decision. On the contrary, our formulation checks the invariant conditions and deals with them always in the same coherent way.
-
-
-Second, $((\tim(p,a) = \start(a))$ OR $(\tim(p,a) = \en(a)))$ makes an effect $p$ happen only \emph{at start} or \emph{at end} of action $a$, i.e. $p$ is in $\eff_s(a)$ or $\eff_e(a)$.
-Also, if all effects happen \emph{at start} the duration of the action would be irrelevant and could exceed the plan makespan. To avoid this, for any action $a$, at least one of its effects should happen \emph{at end}: $\sum_{i=1}^{n =|\eff(a)|} \tim(p_i,a) > n \cdot \start(a)$, which guarantees $\eff_e(a)$ is not empty.
-
-%\begin{displaymath}
-%\sum_{i=1}^{n = \textrm{number of effects of }a} \tim(p_i,a) > n \cdot \start(a)
-%\end{displaymath}
-
-
-Third, durations in PDDL2.1 can be defined in two different ways. On the one hand, durations can be equal for all grounded actions of the same operator. For instance, any instantiation of \texttt{board-truck} of Fig.~\ref{fig:exampleactions2} will last 2 time units no matter its parameters. Although this may seem a bit odd, it is not an uncommon practice to simplify the model. The constraint to model this is: $\forall a_i,a_j$ being instances of the same operator: $\dur(a_i) = \dur(a_j)$.
-On the other hand, although different instantiations of \texttt{drive-truck} will last different depending on the locations, different occurrences of the same instantiated action will last equal.
-In a PDDL2.1 temporal plan, multiple occurrences of \texttt{drive-truck(truck1,loc1,loc2,driver1)} will have the same duration no matter when they start. Intuitively, they are different occurrences of the same action, but in the real-world the durations would differ from driving at night or in peak times. Since PDDL2.1 makes no distinction among different occurrences, the constraint to add is: $\forall a_i,a_j$ being occurrences of the same durative action: $\dur(a_i) = \dur(a_j)$.
-Obviously, this second constraint is subsumed by the first one in the general case where all instances of the same operator have the same duration.
-
-Fourth, the structure of conditions and effects for all grounded actions of the same operator is constant in PDDL2.1. This means that if \texttt{(empty ?t)} is an \emph{at start} condition of \texttt{board-truck}, it will be \emph{at start} in any of its grounded actions.
-Let $\{p_i\}$ be the conditions of an operator and $\{a_j\}$ be the instances of a particular operator. The following constraints are necessary to guarantee a constant structure:
-
-$\forall p_i: (\forall a_j: \reqs(p_i,a_j) = \start(a_j))$ OR $(\forall a_j: \reqs(p_i,a_j) = \en(a_j))$
-
-$\forall p_i: (\forall a_j: \reqe(p_i,a_j) = \start(a_j))$ OR $(\forall a_j: \reqe(p_i,a_j) = \en(a_j))$
-
-And analogously for all effects $\{p_i\}$ and the instances $\{a_j\}$ of an operator:
-
-$\forall p_i: (\forall a_j: \tim(p_i,a_j) = \start(a_j))$ OR $(\forall a_j: \tim(p_i,a_j) = \en(a_j))$
-
-
-As a conclusion, in our formulation each action of $A?$ is modeled separately so it does not need to share the same structure or duration of other actions. Moreover, the time-stamps for conditions/effects can be arbitrarily placed inside or outside the execution of the action, which allows for a flexible and expressive temporal model. But, when necessary, we can simply include additional constraints to restrict the expressiveness of the model, such as the ones provided by PDDL2.1.
-
-
-\subsection{Example}
-\label{sec:example}
-
-We now show a fragment of the formulation for the example depicted in Fig.~\ref{fig:exampleplantrace}. For simplicity, we only show the variables and constraints for action $a3$, but the formulation is analogous for all other actions.
-
-The variables and domains are: $\start(a3)=7$; $\dur(a3) \in [1..15]$; $\en(a3)=\start(a3)+\dur(a3)$; $\supp(r,a3) \in \{a1\}$; $\reqs(r,a3),\reqe(r,a3) \in [0..22]$; and $\tim(not-p,a3) \in [0..22]$.
-On the other hand, the constraints are: $\en(a3) \leq \start(\goal)$; $\reqs(r,a3) \leq \reqe(r,a3)$; if $\supp(r,a3)=a1$ then $\tim(r,a1) < \reqs(r,a3)$; if $\supp(r,a3)=a1$ then $((\tim(not-r,a4) < \tim(r,a1))$ OR $(\tim(not-r,a4) > \reqe(r,a3)))$; $\tim(not-p,a3) \neq \tim(p,a1)$ and $\tim(not-p,a3) \neq \tim(p,a2)$.
-
-There are many consistent solutions for this simple example, mainly because there is a huge range of possible durations that make the learned model consistent with the partially specified model $A?$.
-Fig.~\ref{figure:solutionsExample} shows six arbitrary models as solutions. What is important to note is that the structure, i.e. distribution of conditions/effects, is similar in all the learned models. Actually, the distribution of the effects is identical (except for $q$ in model 2), and the distribution of conditions is very similar (e.g. $q$ is always in $\cond_o$ and $r$ in $a4$ is very often in $\cond_o$).
-This shows that the one-shot learning returns not only consistent models but also similar, which is very positive.
-The durations are, however, more different: $\dur(a1)$ ranges in these models from 7 to 19, whereas $\dur(a2)$ ranges from 5 to 18. As explained in section~\ref{sec:simpleTask}, learning the precise duration from just one sample may not be always possible, which is the main limitation of the one-shot learning task.
-%Clearly, the duration learned for only one sample of \texttt{drive-truck(truck1,loc1,loc2,driver1)} cannot be always generalized to any other driving between these two locations.
-In fact, the specific constraint of PDDL2.1, with regard to having multiple occurrences of the same action having the same duration, can significantly help us to learn the actions' duration in a more precise way as the learned duration must be consistent with all those occurrences.
-
-
-\begin{figure}
-\footnotesize
-\begin{tabular}{l}
-\hspace{-0.6cm}\begin{tabular}{lllllll}
-Action & $\dur$ & $\cond_s$ & $\cond_o$ & $\cond_e$ & $\eff_s$ & $\eff_e$ \\
-
-\hline
-
-\multicolumn{7}{l}{Learned model 1} \\
-$a1$ & 8 & & & & $r$ & $p$ \\
-$a2$ & 18 & & & & $q$ & $p$ \\
-$a3$ & 1 & & $r$ & & & $not-p$ \\
-$a4$ & 1 & & $q,r$ & $p$ & & $not-r$ \\
-
-\hline
-
-\multicolumn{7}{l}{Learned model 2} \\
-$a1$ & 19 & & & & $r$ & $p$ \\
-$a2$ & 5 & & & & & $p,q$ \\
-$a3$ & 1 & & & $r$ & & $not-p$ \\
-$a4$ & 1 & $r$ & $p,q$ & & & $not-r$ \\
-
-\hline
-
-\multicolumn{7}{l}{Learned model 3} \\
-$a1$ & 7 & & & & $r$ & $p$ \\
-$a2$ & 18 & & & & $q$ & $p$ \\
-$a3$ & 1 & & & $r$  & & $not-p$ \\
-$a4$ & 1 & & $p,q,r$ & & & $not-r$ \\
-\end{tabular} 
-
-
-
-\end{tabular}
-\normalsize
-
-\caption{\small Three learned models for the example of Fig.~\ref{fig:exampleplantrace}.}
-\label{figure:solutionsExample}
-\end{figure}
-
-
-%\subsection{Properties}
-
-%Soundness of our formulation is guaranteed by the definition of the constraints of Table~\ref{table:constraints}, where all the branching alternatives to solve causal links, threats and effect interferences are supported. Completeness is guaranteed by the complete exploration of the domain of each variable of Table~\ref{table:variables} which can return many learned models in the form of consistent alternative solutions.
-
-
-
-\subsection{Implementation. Use of Heuristics for Resolution}
+\subsection{The CSP heuristics}
 \label{sec:implementation}
-
-Our CSP formulation is automatically compiled from a partially specified action model, as defined in a classical planning problem, and the observations from a plan execution.
-The formulation has been implemented in \textsf{Choco}\footnote{\texttt{http://www.choco-solver.org}}, an open-source Java library for constraint programming that provides an object-oriented API to state the constraints to be satisfied.
-
-Our formulation is solver-independent, which means we do not use heuristics that may require changes in the implementation of the CSP engine.
-Although this reduces the solver performance, we are interested in using it as a blackbox that can be easily changed with no modification in our formulation. However, we can easily encode standard static heuristics for variable and value selection that help improve efficiency by following the next ordering, which has shown very efficient in our experiments:
-
-%%IMPORTANTE: ahorramos espacio juntando en la viñeta el orden de seleccion de variables y de valores
-
-%From the variable perspective, we have detected it is better to instantiate variables that first lead to failure: effects, conditions, supporters and durations. This implies this ordering: $\tim$, $\reqs$, $\reqe$, $\supp$ and $\dur$.
-%From the value perspective, we select first the values that lead to a more reasonable model of actions:
+The presented CSP formulation is built automatically compiling a {\em one-shot learning of temporal action models} task that is given as input. Our CSP formulation is solver-independent, which means we do not use heuristics that may require changes in the implementation of the CSP engine. Although this reduces the solver performance, we are interested in using it as a blackbox that can be easily changed with no modification in our formulation. However, we can easily encode standard static heuristics for variable and value selection that help improve efficiency by following the next ordering, which has shown very efficient in our experiments:
 
 \begin{enumerate}
   \item Effects ($\tim$). For negative effects, first the lower value and for positive effects, first the upper value. This gives priority to delete effects as $\eff_s(a)$ and positive effects as $\eff_e(a)$.
@@ -368,10 +254,7 @@ Although this reduces the solver performance, we are interested in using it as a
 \end{enumerate}
 
 
-%This simple collection of heuristics is very intuitive and has been used in \textsf{Choco} by simply overriding the default search strategy for the variable and value selectors. Although these heuristics have shown very efficient in our experiments, they cannot always guarantee the best performance.
-
-
-\subsection{Using the CP Formulation for Plan Validation}
+\subsection{A unified CP formulation for planning, validation and learning}
 \label{sec:usingCPValidation}
 The {\em one-shot learning of temporal action models} is related to plan {\em synthesis} and plan {\em valifation}: In the case of plan sythesis the intermediate observations in $O$ are empty while in the case of plan validation the actions in $A?$ are fully specified.
 
@@ -389,9 +272,33 @@ Hence, we have three options for validating a partial model \emph{w.r.t.}: i) a 
 The first and second option allows for some flexibility in the learning task because some variables remain open. On the contrary, the third option checks whether a learned model can fit the given constraints, thus reproducing a strict plan validation task equivalent to~\cite{howey2004val}.
 
 
+\subsection{Specific constraints for the PDDL2.1 model}
+\label{sec:PDDL21constraints}
+The defined CSP formulation deals with a model for {\em temporal planning} that is more expressive than PDDL2.1 (for instance, it allows conditions and effects to happen at any time, even outside the execution of the action). Imagine a condition $p$ that only needs to be maintained for 5 time units before an action $a$ starts (e.g. warming-up a motor before driving): the expression $\reqe(p,a)=\start(a); \reqe(p,a) = \reqs(p,a)+5$ is possible in our CSP formulation. Additionally, we can represent an effect $p$ that happens in the middle of action $a$: $\tim(p,a) = \start(a)+ (\dur(a) / 2)$. PDDL2.1 restricts the expressiveness of temporal planning in terms of conditions, effects, durations and structure of the actions so by adding extra constraints to our CSP formluatoin we can make it fully PDDL2.1-compliant.
+
+First, to limit conditions to only be \emph{at start}, \emph{over all} or \emph{at end} of an action execution we add the following constraint, $((\reqs(p,a) = \start(a))$ OR ($\reqs(p,a) = \en(a)))$ AND $((\reqe(p,a) = \start(a))$ OR ($\reqe(p,a) = \en(a)))$. Likewise, to make effects to exclusively happen either\emph{at start} or \emph{at end} of action executions we add the constraints $((\tim(p,a) = \start(a))$ OR $(\tim(p,a) = \en(a)))$. If all effects happen \emph{at start} the duration of the action would be irrelevant and could exceed the plan makespan. To avoid this, for any action $a$, at least one of its effects should happen \emph{at end}: $\sum_{i=1}^{n =|\eff(a)|} \tim(p_i,a) > n \cdot \start(a)$, which guarantees $\eff_e(a)$ is not empty.
+
+Note that if a condition is never deleted in a plan, it can be considered an {\em invariant} condition for such a plan that represents {\em static} knowledge; e.g. a link between two locations that makes driving possible, or modeling a petrol station that allows a refuel action in a given location, etc. The constraint to be added for {\em invariant conditions} $p \in \cond_o(a)$ is simply: $((\reqs(p,a) = \start(a))$ AND $(\reqe(p,a) = \en(a)))$, i.e. Surprisingly, invariant conditions are modeled differently depending on the human modeler. See, for instance, \texttt{(link ?from ?to)} of Fig.~\ref{fig:exampleactions2}, which is modeled as an \emph{at start} condition despite: i) the link should be necessary all over the driving, and ii) no action in this domain can be planned to delete that link.
+This also happens in the \emph{transport} domain of the IPC, where a refuel action requires to have a petrol station in a location only \emph{at start}, rather than \emph{over all} which makes more sense. This shows that modeling temporal planning tasks is not easy and it highly depends on the human's decision. On the contrary, our formulation checks the invariant conditions and deals with them always in the same coherent way.
+
+Second, durations in PDDL2.1 can be defined in two different ways. On the one hand, durations can be equal for all grounded actions of the same operator. For instance, any instantiation of \texttt{board-truck} of Fig.~\ref{fig:exampleactions2} will last 2 time units no matter its parameters. To model this we add the constraint: $\forall a_i,a_j$ being instances of the same operator: $\dur(a_i) = \dur(a_j)$. On the other hand, although different instantiations of \texttt{drive-truck} will last different depending on the locations, different occurrences of the same instantiated action will last equal. The constraint to add here is: $\forall a_i,a_j$ being occurrences of the same durative action: $\dur(a_i) = \dur(a_j)$ (this constraint is subsumed by the previous one in the general case where all instances of the same operator have the same duration).
+
+Third, the structure of conditions and effects for all grounded actions of the same operator is constant in PDDL2.1. This means that if \texttt{(empty ?t)} is an \emph{at start} condition of \texttt{board-truck}, it will be \emph{at start} in any of its grounded actions.
+Let $\{p_i\}$ be the conditions of an operator and $\{a_j\}$ be the instances of a particular operator. The following constraints are necessary to guarantee a constant structure:
+
+$\forall p_i: (\forall a_j: \reqs(p_i,a_j) = \start(a_j))$ OR $(\forall a_j: \reqs(p_i,a_j) = \en(a_j))$
+
+$\forall p_i: (\forall a_j: \reqe(p_i,a_j) = \start(a_j))$ OR $(\forall a_j: \reqe(p_i,a_j) = \en(a_j))$
+
+And analogously for all effects $\{p_i\}$ and the instances $\{a_j\}$ of an operator:
+
+$\forall p_i: (\forall a_j: \tim(p_i,a_j) = \start(a_j))$ OR $(\forall a_j: \tim(p_i,a_j) = \en(a_j))$
+
 
 \section{Evaluation}
 \label{sec:evaluation}
+The formulation has been implemented in \textsf{Choco}\footnote{\texttt{http://www.choco-solver.org}}, an open-source Java library for constraint programming that provides an object-oriented API to state the constraints to be satisfied.
+
 The empirical evaluation of a learning task can be addressed from two perspectives. From a pure syntactic perspective, learning can be considered as an automated design task to create a new model that is similar to a reference (or {\em ground truth}) model. Consequently, the success of learning is an accuracy measure of how similar these two models are, which usually counts the number of differences (in terms of incorrect durations or distribution of conditions/effects). Unfortunately, there is not a unique reference model when learning temporal models at real-world problems. Also, a pure syntax-based measure usually returns misleading and pessimistic results, as it may count as incorrect a different duration or a change in the distribution of conditions/effects that really represent equivalent reformulations of the reference model. For instance, given the example of Fig.~\ref{fig:exampleactions2}, the condition learned \texttt{(over all (link ?from ?to))} would be counted as a difference in action \texttt{drive-truck}, as it is \texttt{at start} in the reference model; but it is, semantically speaking, even more correct. Analogously, some durations may differ from the reference model but they should not be counted as incorrect. As seen in section~\ref{sec:simpleTask}, some learned durations cannot be granted, but the underlying model is still consistent. Therefore, performing a syntactic evaluation in learning is not always a good idea.
 
 From a semantic perspective, learning can be considered as a classification task where we first learn a model from a training dataset, then tune the model on a validation test and, finally, asses the model on a test dataset. Our approach represents a one-shot learning task because we only use one plan sample to learn the model and no validation step is required.
@@ -412,7 +319,7 @@ These results depend on the domain size (number of operators, which need to be g
 
 \begin{table}
 \begin{scriptsize}
-\begin{tabular}{p{2cm}lllrrr}
+\begin{tabular}{l|llrrr}
 & {\bf ops} & {\bf ins} & {\bf struct} & {\bf dur} & {\bf struct+dur}  \\\hline
 
 \emph{zenotravel} & 5 & 78 & 100\% & 68.83\% & 35.76\% \\
