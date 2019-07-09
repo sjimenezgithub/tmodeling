@@ -31,48 +31,48 @@
 \maketitle
 
 \begin{abstract}
-The paper presents a constraint programming (CP) formulation for the learning of temporal planning action models. Like existing formulations for the synthesis of temporal plans, our CP formulation models also time-stamps for actions, {\em causal link} relationships, {\em threats} and effect {\em interferences}. Further we show that it can accommodate a different range of expressiveness, subsuming the PDDL2.1 temporal semantics and that is solver-independent, meaning that an arbitrary CSP solver can be used for its resolution.  With the aim of understanding better the relations between the learning of planning action models, plan synthesis and plan validation, the paper focuses on the extreme learning scenario where just a single partial observation of the execution of a plan is available (i.e. one-shot). 
+  The paper presents a constraint programming (CP) formulation for the learning of models of {\em temporal planning} actions that can be executed in parallel and overlap. With the aim of understanding better the relations between the learning of action models, plan synthesis and plan validation, the paper focuses on the extreme learning scenario where just a single partial observation of the execution of a plan is available (i.e. one-shot). Like in existing CP formulations for temporal planning, our approach models time-stamps for actions, {\em causal link} relationships, {\em threats} and effect {\em interferences}. Further, we show that it can accommodate a different range of expressiveness, subsuming the PDDL2.1 temporal semantics, and that is solver-independent (i.e. off-the-shelf CSP solvers can be used for resolution).   
 \end{abstract}
 
 
 \section{Introduction}
-{\em Temporal planning} is an expressive planning model that relaxes the assumption of instantaneous actions of {\em classical planning}~\cite{geffner2013concise}. Actions in temporal planning are called {\em durative}, i.e. they have durations so conditions/effects may hold/happen at different times~\cite{fox2003pddl2}. This means that actions in the temporal planning model can be executed in parallel and overlap in several ways~\cite{cushing2007temporal} and that valid solutions for temporal planning instances indicate the precise time-stamp when actions start and end~\cite{howey2004val}.
+{\em Temporal planning} is an expressive planning model that relaxes the assumption of instantaneous actions of {\em classical planning}~\cite{geffner2013concise}. Actions in temporal planning are called {\em durative} (i.e. each action has an associated duration) and conditions/effects may hold/happen at different times~\cite{fox2003pddl2}. This means that actions in the temporal planning model can be executed in parallel and overlap in several ways~\cite{cushing2007temporal} and that valid solutions for temporal planning instances indicate the precise time-stamp when actions start and end~\cite{howey2004val}.
 
-Despite the potential of state-of-the-art planners, its applicability to the real world is still somewhat limited because of the difficulty of specifying correct and complete planning models~\cite{kambhampati2007model}. The more expressive the planning model is, the more evident becomes this {\em knowledge acquisition bottleneck} that jeopardizes the usability of AI planning technology. This has led to a growing interest in the planning community for the learning of action models. Most approaches for learning planning action models are purely inductive and often require large datasets of observations, e.g. thousands of plan observations to compute statistically significant models that minimizes some error metric over the observations~\cite{yang2007learning,MouraoZPS12,zhuo2013action,kuvcera2018louga}. However, when model learning is considered an optimization task over a set of observations, it does not guarantee that the learned action model may fail to explain input observations or that the states induced by the execution of the plan generated with the model are incorrect.
+Despite the potential of state-of-the-art planners, its applicability to the real world is still somewhat limited because of the difficulty of specifying correct and complete planning models~\cite{kambhampati2007model}. The more expressive the planning model is, the more evident becomes this {\em knowledge acquisition bottleneck} that jeopardizes the usability of AI planning technology. This has led to a growing interest in the planning community for the learning of action models. Most approaches for learning planning action models are purely inductive and require large datasets of observations, e.g. thousands of plan observations to compute statistically significant models that minimizes some error metric over the observations~\cite{yang2007learning,MouraoZPS12,zhuo2013action,kuvcera2018louga}. When model learning is considered an optimization task over a set of observations, it however does not guarantee that the learned action model may fail to explain a given input observation or that the states induced by the execution of plans generated with a learned model are incorrect.
 
-This paper analyzes the application of {\em Constraint Programming} for the {\em one-shot learning} of temporal action models, that is, the extreme scenario where action models are learned from a single observation of the execution of a temporal plan. The contributions of our CP formulation for the one-shot learning of temporal action models are two-fold:
+This paper follows a different approach and analyzes the application of {\em Constraint Programming} (CP) for the {\em one-shot learning} of temporal action models, that is, for the extreme scenario where action models are learned from a single observation of the execution of a temporal plan. The contributions of this work are two-fold:
 \begin{enumerate}  
-\item This is the first approach for learning action models for temporal planning where plan observations can refer to the execution of overlapping actions, this makes our approach appealing for learning in multi-agent environments. Learning classical action models from sequential plans has been previously addressed by a wide range of different approaches~\cite{arora2018review}. Since pioneering learning systems like ARMS~\cite{yang2007learning}, we have seen systems able to learn action models with quantifiers~\cite{AmirC08,ZhuoYHL10}, from noisy actions or states~\cite{MouraoZPS12,zhuo2013action}, from null state information~\cite{cresswell2013}, or from incomplete domain models~\cite{ZhuoK17,ZhuoNK13}. While learning an action model for classical planning means computing the actions' conditions and effects that are consistent with the input observations, learning temporal action models extends this task to: i) identifying how conditions and effects are temporally distributed in the action execution, and ii) estimate the action duration. 
-\item Our CP formulation evidences the relations of the {\em learning} of planning action models with the {\em synthesis} and the {\em validation} of plans. Further, we show that the plan validation capacity of our CP formulation is beyond the functionality of VAL (the standard plan validation tool~\cite{howey2004val}) since it can address {\em plan validation} of partial (or even an empty) action models and with partially observed plan traces (VAL requires a full plan and a full action model for plan validation). Further, our CP formulation allows that an arbitrary CSP solver can be used for the learning, planning and validation tasks.  
+\item This is the first approach for learning action models for temporal planning where plan observations can refer to the execution of paralel and overlapping actions. This feature makes our approach appealing for learning in multi-agent environments. Learning classical action models from sequential plans is a well-studied problem that has been previously addressed by a wide range of different approaches~\cite{arora2018review}. Since pioneering learning systems like ARMS~\cite{yang2007learning}, we have seen systems able to learn action models with quantifiers~\cite{AmirC08,ZhuoYHL10}, from noisy actions or states~\cite{MouraoZPS12,zhuo2013action}, from null state information~\cite{cresswell2013}, or from incomplete domain models~\cite{ZhuoK17,ZhuoNK13}. While learning an action model for classical planning means computing the actions' conditions and effects that are consistent with the input observations, learning {\em temporal action models} requires also: i) identifying how conditions and effects are temporally distributed in the action execution, and ii) estimate the action duration. 
+\item Our CP formulation relates the {\em learning} of planning action models with the {\em synthesis} and the {\em validation} of plans. Further, we show that the plan validation capacity of our CP formulation is beyond the functionality of VAL (the standard plan validation tool~\cite{howey2004val}) since it can address {\em plan validation} of partial (or even an empty) action models and with partially observed plan traces (VAL requires a full plan and a full action model for plan validation). Last but not least, our CP formulation allows that of-the-shelf CSP solvers can be used for the learning, planning and validation tasks.  
 \end{enumerate}
 
-As a motivating example, let us assume a {\em logistics scenario}. Learning the temporal planning model will allow us: i) to better understand the insights of the logistics in terms of what is possible (or not) and why, because the model is consistent with the observed data; ii) to suggest changes that can improve the model originally created by a human, e.g. re-distributing the actions' conditions, provided they still explain the observations; and iii) to automatically elaborate similar models for similar scenarios, such as public transit for commuters, tourists or people in general in metropolitan areas ---\emph{a.k.a.} smart urban mobility.
+As a motivating example, let us assume an observation of the executions of actions in a {\em logistics scenario}. Learning the temporal planning model will allow us: i) to better understand the insights of the logistics in terms of what is possible (or not) and why, because the model is consistent with the observed data; ii) to suggest changes that can improve the model originally created by a human, e.g. re-distributing the actions' conditions, provided they still explain the observations; and iii) to automatically elaborate similar models for similar scenarios, such as public transit for commuters, tourists or people in general in metropolitan areas ---\emph{a.k.a.} smart urban mobility.
 
 
 
 \section{Background}
-This section formalizes the {\em temporal} planning model that we follow in this work, the hypothesis space for our learning target, FOL schemes of {\em durative} actions, and the sampling space.
+This section formalizes the {\em temporal} planning model that we follow in this work, the hypothesis space for our learning target and the sampling space.
 
 \subsection{Temporal Planning}
 \label{sec:temporalplanning}
+We assume that states are factored into a set $F$ of Boolean variables. A state $s$ is a time-stamped full assignment of values to these variables. The initial state $I$, is a fully observed state (i.e. $|I|=|F|$) time-stamped with $t=0$. Last but not least let $G \subseteq F$ be a conjunction of goal conditions over $F$ that defines the set of goal states.
 
-We assume that states are factored into a set $F$ of Boolean variables. A state $s$ is then a time-stamped full assignment of values to these variables. The initial state $I$, is fully observed state (i.e. $|I|=|F|$) that is stamped with time $t=0$. Last but not least $G \subseteq F$ is a conjunction of goal conditions over $F$ that defines the set of goal states.
+A {\em temporal planning problem} is a tuple $\tup{F,I,G,A}$ where $A$ represents the set of {\em durative actions}. Durative actions have an associated duration and may have conditions/effects at different times, such as conditions that must hold some time before the action starts, effects that happen just when the action starts, in the middle of the action or some time after the action finishes~\cite{garrido2009constraint}.
 
-A {\em temporal planning problem} is a tuple $\tup{F,I,G,A}$ where $A$ represents the set of {\em durative actions}. There are several options that allow for a high expressiveness of durative actions. On the one hand, an action can have a fixed duration, a duration that ranges within an interval or a distribution of durations. On the other hand, actions may have conditions/effects at different times, such as conditions that must hold some time before the action starts, effects that happen just when the action starts, in the middle of the action or some time after the action finishes~\cite{garrido2009constraint}.
-
-We assume that actions are grounded from action schemes (also known as operators) to compactly represent {\em temporal planning problems}.  PDDL2.1 is a popular language for representing {\em temporal planning} problems and it is the input language for the temporal track of the international planning competition~\cite{fox2003pddl2,ghallab2004automated}. PDDL2.1 somewhat restricts temporal expressiveness since it defines a {\em durative action} $a$ with the following elements:
-
+In this work we assume that actions are grounded from {\em action schemes} (also known as {\em operators}) to compactly represent {\em temporal planning problems}. PDDL2.1 is a popular language for representing {\em temporal planning} problems and it is the input language for the temporal track of the International Planning Competition~\cite{fox2003pddl2,ghallab2004automated}. PDDL2.1 somewhat restricts temporal expressiveness since it defines a {\em durative action} $a$ with the following elements:
 \begin{enumerate}
-\item The action {\em duration}, $\dur(a)$, that is a positive value.
-\item The action {\em conditions}, $\cond_s(a), \cond_o(a), \cond_e(a) \subseteq F$. Unlike the \emph{pre}conditions of a classical action, action conditions in PDDL2.1 must hold: before $a$ ({\em at start}), during the entire execution of $a$ ({\em over all}) or when $a$ finishes ({\em at end}), respectively. In the simplest case, $\cond_s(a) \cup \cond_o(a) \cup \cond_e(a) = \pre(a).$\footnote{Note that in classical planning, $\pre(a)=\{p,not-p\}$ is contradictory. In temporal planning, $\cond_s(a)=\{p\}$ and $\cond_e(a)=\{not-p\}$ is a possible situation, though unusual}
-\item The action {\em effects}, $\eff_s(a)$ and $\eff_e(a)$. In PDDL2.1 effects can happen {\em at start} or {\em at end} of $a$, respectively, and can still be positive or negative. Again, in the simplest case $\eff_s(a) \cup \eff_e(a) = \eff(a)$.
-%Again, $\eff_s(a) \cup \eff_e(a) \subseteq \eff(a)$.
+\item $\dur(a)$, a positive value indicating the {\em duration} of the action.
+\item $\cond_s(a), \cond_o(a), \cond_e(a) \subseteq F$ representing the action {\em conditions}. Unlike the \emph{pre}conditions of classical actions, action conditions in PDDL2.1 must hold: before $a$ is executed ({\em at start}), during the entire execution of $a$ ({\em over all}) or when $a$ finishes ({\em at end}), respectively. In the simplest case, $\cond_s(a) \cup \cond_o(a) \cup \cond_e(a) = \pre(a).$\footnote{Note that in classical planning, $\pre(a)=\{p,not-p\}$ is contradictory. In temporal planning, $\cond_s(a)=\{p\}$ and $\cond_e(a)=\{not-p\}$ is a possible situation, though unusual}
+\item $\eff_s(a)$ and $\eff_e(a)$ represent the action {\em effects}. In PDDL2.1 effects can happen {\em at start} or {\em at end} of $a$, respectively, and can still be positive or negative. Again, in the simplest case $\eff_s(a) \cup \eff_e(a) = \eff(a)$.
 \end{enumerate}
 
+The semantics of a PDDL2.1 durative action $a$ can be defined in terms of two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$. This means that if action $a$ starts on state $s$ with time-stamp $\start(a)$, $\cond_s(a)$ must hold in $s$. Ending action $a$ in state $s'$, with time-stamp $\en(a)$, means $\cond_e(a)$ must hold in $s'$. {\em Over all} conditions must hold at any state between $s$ and $s'$ or, in other words, throughout interval $[\start(a)..\en(a)]$. Likewise, {\em at start} and {\em at end} effects are instantaneously applied at states $s$ and $s'$, respectively ---continuous effects are not considered. 
 
-%Despite durative actions are no longer instantaneous in PDDL2.1, {\em at start} and {\em at end} conditions are checked instantaneously.
+A temporal plan is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and a time-stamp $t_i=\start(a_i)$. The execution of a temporal plan starting from a given initial state $I$ induces a state sequence formed by the union of all states $\{s_{t_i}, s_{t_i+\dur(a_i)}\}$, where there exists a state $s_{0}=I$, and $G\subseteq s_{end}$, being $s_{end}$ the last state induced by the execution of the plan (therefore sequential plans can be expressed as temporal plans but not the opposite). We say that a temporal plan is a {\em solution} to a given temporal planning problem when the plan execution, starting from the corresponding initial state, eventually reaches a state $s_{end}$ that meets the goal conditions.
 
-The semantics of a PDDL2.1 durative action $a$ can be defined in terms of two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$. This means that if action $a$ starts on state $s$ with time-stamp $\start(a)$, $\cond_s(a)$ must hold in $s$; and ending $a$ in state $s'$, with time-stamp $\en(a)$, means $\cond_e(a)$ holds in $s'$. {\em Over all} conditions must hold at any state between $s$ and $s'$ or, in other words, throughout interval $[\start(a)..\en(a)]$. Analogously, {\em at start} and {\em at end} effects are instantaneously applied at states $s$ and $s'$, respectively ---continuous effects are not considered. Fig.~\ref{fig:exampleactions2} shows two scheme for durative actions taken from the {\em driverlog} domain. The schema \texttt{board-truck} has a fixed duration whereas in \texttt{drive-truck} duration depends on the driving time associated to the two locations.
+\subsection{The space of {\em durative} action models}
+\label{sec:action-space}
+In this work the learning target are FOL schemes of {\em durative} actions. Fig.~\ref{fig:exampleactions2} shows an example of two schemes for PDDL2.1 durative actions taken from the {\em driverlog} domain. The schema \texttt{board-truck} has a fixed duration while the duration of \texttt{drive-truck} depends on the driving time associated to the two given locations.
 
 \begin{figure}
   \begin{tabular}{p{\textwidth}}
@@ -86,50 +86,57 @@ The semantics of a PDDL2.1 durative action $a$ can be defined in terms of two di
   :effect (and (at start (not (at ?d ?l))) (at start (not (empty ?t)))
                (at end (driving ?d ?t))))
 
+
 (:durative-action drive-truck
-  :parameters (?t - truck ?from - location ?to - location ?d - driver)
-  :duration (= ?duration (driving-time ?from ?to))
-  :condition (and (at start (at ?t ?from)) (at start (link ?from ?to))
+  :parameters (?t - truck ?l1 - location ?l2 - location ?d - driver)
+  :duration (= ?duration (driving-time ?l1 ?l2))
+  :condition (and (at start (at ?t ?l1)) (at start (link ?l1 ?l2))
                   (over all (driving ?d ?t)))
-  :effect (and (at start (not (at ?t ?from))) 
-               (at end (at ?t ?to))))
+  :effect (and (at start (not (at ?t ?l1))) 
+               (at end (at ?t ?l2))))
 \end{verbatim}
 \end{tiny}    
 \end{tabular}
-\caption{\small Example of two PDDL2.1 action schemes.}
+\caption{\small Two action schemes for PDDL2.1 durative actions.}
 \label{fig:exampleactions2}
 \end{figure}
 
-PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f\in F$ that becomes true at a certain time $t$, independently of the actions in the plan. TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario ($\til(open,8)$ and $\til(\neg open,20)$).
+We assume that the set $F$ of Boolean state variables is defined by the instantiation of a given set of predicates $\Psi$. We denote as ${\mathcal I}_{\xi,\Psi}$ the {\em vocabulary} (set of symbols) that can appear in the {\em conditions} and {\em effects} of a given {\em durative} action schema $\xi$. This set is defined as the FOL interpretations of the set of predicates $\Psi$, over the action parameters $pars(\xi)$.
 
-A temporal plan is a set of pairs $\tup{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and a time-stamp $t_i=\start(a_i)$. The execution of a temporal plan starting from a given initial state $I$ induces a state sequence formed by the union of all states $\{s_{t_i}, s_{t_i+\dur(a_i)}\}$, where there exists a state $s_{0}=I$, and $G\subseteq s_{end}$, being $s_{end}$ the last state induced by the plan. Therefore sequential plans can be expressed a temporal plans but not the opposite. We say that a temporal plan is a {\em solution} to a given temporal planning problem when the plan execution, starting from the corresponding initial state, eventually reaches a state that met the goal conditions.
+For a {\em durative} action schema $\xi$, the size of its space of possible action models is then $D\times 2^{5\times|{\mathcal I}_{\xi,\Psi}}|$ where D is the number of different possible durations for any action shaped by the $\xi$ schema. This space is significantly larger than for learning STRIPS actions~\cite{yang2007learning} where this number is just $2^{2\times|{\mathcal I}_{\xi,\Psi}}|$ because negative effects must also be preconditions of the same action and cannot be positive effects of that action.
 
-
-\subsection{The space of {\em durative} action models}
-\label{sec:action-space}
-
-We denote as ${\mathcal I}_{\xi,\Psi}$ the {\em vocabulary} (set of symbols) that can appear in the {\em conditions} and {\em effects} of a given {\em durative} action schema $\xi$. This set is defined as the FOL interpretations of the set of predicates $\Psi$, over the action parameters $pars(\xi)$.
-
-For a {\em durative} action schema $\xi$ its space of possible action models is then $D\times 2^{5\times|{\mathcal I}_{\xi,\Psi}}|$ where D is the number of different possible values for the durations of any action shaped by the $\xi$ schema. This space is significantly larger than for learning STRIPS actions~\cite{yang2007learning} where this number is just $2^{2\times|{\mathcal I}_{\xi,\Psi}}|$ because negative effects must also be preconditions of the same action and cannot be positive effects of that action.
-
-The conditions and effects of the schema of a {\em durative} action can be coded by 5 bit-vectors, each of length $|{\mathcal I}_{\xi,\Psi}|$. This means that the {\em Hamming distance} can be used straightforward as a similarity metric for {\em durative} schemes. For instance for comparing the error in a learned action model with respect to a given reference model that serves as baseline. Note also that the Machine Learning metrics {\em precision and recall} can also be used straightforward over the 5 bit-vectors that defines the conditions and effect of the action schema of a {\em durative action}.
+The conditions and effects of the schema of a {\em durative} action can be coded by 5 bit-vectors, each of length $|{\mathcal I}_{\xi,\Psi}|$. This means that the {\em Hamming distance} can be used straightforward as a similarity metric for {\em durative} schemes. For instance, to compare a learned action model with respect to a given reference model that serves as baseline. Note also that the Machine Learning metrics {\em precision and recall} can be also straightforward computed over the 5 bit-vectors that define the conditions and effect of the action schema of a {\em durative action}.
 
 \subsection{The sampling space}
 \label{sec:sampling-space}
-This paper studies the extreme scenario where just a single learning example is available (i.e. one-shot). In this work the single example is the noiseless but partial observation of the execution of a temporal plan in a given initial state.
+This paper studies the extreme scenario where just a single learning example is available (i.e. one-shot). In this work the single example is the noiseless but partial observation of the execution of a temporal plan starting from a given initial state.
 
-This means that if the value of a fluent in $F$ is observed then its the actual value of the fluent but that not the value of all the fluents can be osbserved at any time. Just a subset of them can be observed because, for instance, there are associated sensors reporting their value. 
+This means that if the value of a fluent in $F$ is observed then, that is the actual value of the fluent but that not the value of all the fluents can be osbserved at any time. Just a subset of them can be observed because, for instance, there are associated sensors reporting their value.
+
+PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005} ($\til(f,t)$), as a way of defining a fact $f\in F$ that becomes true at a certain time $t$, independently of the actions in the plan. Traditionally TILs are useful to define exogenous happenings; for instance, a time window when a warehouse is open in a logistics scenario, $\til(open,8)$ and $\til(\neg open,20)$. In this work we show that are also suitable to specify observations.
+
+\begin{figure}
+  \begin{tabular}{p{\textwidth}}
+\begin{tiny}    
+\begin{verbatim}
+
+\end{verbatim}
+\end{tiny}    
+\end{tabular}
+\caption{\small Examples of PDDL2.2 TILs representing the obsevation of a plan execution.}
+\label{fig:exampletils}
+\end{figure}
 
 
 
-\section{Learning Concurrent Action Models with Constraint Programming}
-This section formalizes the learning task we address in this paper and our CP formulation for addressing it with off-the-shelf CSP solvers.
+\section{Learning Concurrent Action Models}
+This section formalizes the learning task we address in this paper and presents our CP formulation for addressing it with off-the-shelf CSP solvers.
 
 \subsection{One-shot learning of temporal action models}
 We define the task of the {\em one-shot learning of temporal action models} as the following tuple $\tup{F,I,G,A?,O,C}$, where:
 
 \begin{itemize}
-\item $\tup{F,I,G,A?}$ is a {\em temporal planning problem} in which actions in $A?$ are partially specified. They are partially specified because we do not know the exact structure in terms of distribution of conditions/effects nor the duration. In the worst case, we only know the vocabulary of the symbols that can appear in the {\em conditions} and/or {\em effects} of the actions but we can also assume that expert or prior knowledge is available bounding this vocabulary for a given action.
+\item $\tup{F,I,G,A?}$ is a {\em temporal planning problem} in which actions in $A?$ are partially specified (we do not know the exact structure in terms of distribution of conditions/effects nor the duration). In the worst case, we only know the vocabulary of the symbols that can appear in the {\em conditions} and/or {\em effects} of the actions but we can also assume that prior knowledge is available bounding this vocabulary for a given action schema.
 \item $O$ is the {\em observation} of a plan execution starting in the initial state $I$ and that contains the time when every action $a$ in $A?$ starts, i.e. all $\start(a)$ that have been observed (by a sensor or human observer). In addition it contains a full observation of the initial state (time-stamped with $t=0$) and a time stamped final observation that equals the goals of the {\em temporal planning problem} $\tup{F,I,G,A?}$.  
 \item $C$ is a set of {\em state-constraints} that reflects domain-specific expert knowledge to complete the input observation and prune the space of possible  {\em durative} action models.  
 \end{itemize}
