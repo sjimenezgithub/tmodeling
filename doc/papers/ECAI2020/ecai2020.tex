@@ -176,7 +176,6 @@ For each action $a$ in $A?$, we create the seven kinds of variables for the CSP 
 \begin{scriptsize}
 \begin{tabular}{lll}
 {\bf Variable} & {\bf Domain} & {\bf Description} \\\hline
-
 $\start(a)$ & \emph{Known/derived value} & start time for $a$  \\
 $\en(a)$ & \emph{Known/derived value} & end time for $a$ \\
 $\dur(a)$ & $[1..max(a)]$ & duration of $a$ where \\
@@ -199,11 +198,13 @@ Additionally we create two dummy actions: $\ini$ and $\goal$. First, $\ini$ repr
 This formulation allows also to model TILs like any other regular actions. A $\til(f,t)$ can be seen as a dummy action ($\start(\til(f,t))=t$ and $\dur(\til(f,t))=0$) with no conditions and the single effect $f$ that happens at time $t$ ($\tim(f,\til(f,t))=t$). A $\til$ is analogous to $\ini$, as they both represent information that is given at a particular time, but externally to the execution of the plan. 
 
 \subsubsection{The CSP Constraints}
-Now we present the CSP constrains. Table~\ref{table:constraints} shows the constraints defined among the CSP variables of Table~\ref{table:variables}. The first three constraints are explicit enough. The fourth constraint models {\em causal links}. Note that in a causal link $\tup{b,p,a}$, $\tim(p,b) < \reqs(p,a)$ and not $\leq$. This is because temporal planning assumes an $\epsilon > 0$ as a small tolerance between the time when a given effect $p$ is supported and when it is required~\cite{fox2003pddl2}. Since we model time in $\mathbb{Z}^+$, $\epsilon=1$ and $\leq$ becomes $<$.
+Table~\ref{table:constraints} shows the constraints defined among the CSP variables of Table~\ref{table:variables}. The first three constraints are explicit enough.
 
-The fifth constraint avoids any threat via promotion or demotion~\cite{ghallab2004automated}. The sixth constraint models the fact the same action requires and deletes $p$. Note the $\geq$ inequality here; this is possible because if one condition and one effect of $a$ happen at the same time, the underlying semantics in planning considers the condition is checked instantly before the effect~\cite{fox2003pddl2}.
+The fourth constraint models {\em causal links}. Note that in a causal link $\tup{b,p,a}$, $\tim(p,b) < \reqs(p,a)$ and not $\leq$. This is because temporal planning assumes an $\epsilon > 0$ as a small tolerance between the time when a given effect $p$ is supported and when it is required~\cite{fox2003pddl2}. Since we model time in $\mathbb{Z}^+$, $\epsilon=1$ and $\leq$ becomes $<$. The fifth constraint avoids any threat via promotion or demotion~\cite{ghallab2004automated}.
 
-The seventh constraint solves the fact that two (possibly equal) actions have contradictory effects. It is important to note that these constraints involve any type of action, including $\ini$ and $\goal$.
+The sixth constraint models the fact that when the same action requires and deletes $p$ then the effect cannot happen before the condition. Note the $\geq$ inequality here; this is possible because if one condition and one effect of $a$ happen at the same time, the underlying semantics in planning considers the condition is checked instantly before the effect~\cite{fox2003pddl2}.
+
+The seventh constraint deals with the fact that two (possibly equal) actions have contradictory effects. It is important to note that these constraints involve any type of action, including $\ini$ and $\goal$.
 
 \begin{table}
 \setlength\extrarowheight{2pt}    
@@ -211,48 +212,34 @@ The seventh constraint solves the fact that two (possibly equal) actions have co
 \begin{tabular}{ll}
 {\bf Constraint} & {\bf Description} \\\hline
 
-$\en(a)=\start(a)+\dur(a)$ & end time of $a$ \\
+$\en(a)=\start(a)+\dur(a)$ & End time of $a$. \\
 
-$\en(a) \leq \start(\goal)$ & $\goal$ is always the last action of the plan \\
-
+$\en(a) \leq \start(\goal)$ & Always $\goal$ is the last action of the plan. \\
 
 $\reqs(p,a) \leq \reqe(p,a)$ & [$\reqs(p,a)..\reqe(p,a)$]\\
-& must be a valid interval\\
+& must be a valid interval.\\
 
-
-if $\supp(p,a)=b$ then & modeling causal link $\tup{b,p,a}$: the time \\
+if $\supp(p,a)=b$ then & Modeling causal link $\tup{b,p,a}$: the time \\
 $\tim(p,b) < \reqs(p,a)$ & when $b$ supports $p$ must be before  \\
-& $a$ requires $p$ \\
+& $a$ requires $p$. \\
 
+$\forall c \neq a$ that deletes $p$ at time $t$: & Solving threat of $c$ to causal \\
+if $\supp(p,a)=b$ then & link $\tup{b,p,a}$ being $c \neq a$ \\
+$t < \tim(p,b)$ OR $t > \reqe(p,a)$ & by promotion or demotion.\\
 
-\begin{tabular}{l}
-$\forall b_j \neq a$ that deletes $p$ at time $\tau_j$: \\
-\hspace{0.2cm}if $\supp(p,a)=b_i$ then \\
-\hspace{0.4cm}$\tau_j < \tim(p,b_i)$ OR \\
-\hspace{0.4cm}$\tau_j > \reqe(p,a)$
-\end{tabular}
-& solving threat of $b_j$ to causal link $\tup{b_i,p,a}$ being $b_j \neq a$ (promotion OR demotion)\\
+if $a$ requires and deletes $p$: & When $a$ requires and deletes $p$, the effect \\
+$\tim(not-p,a) \geq \reqe(p,a)$ & cannot happen before the condition.\\
 
-\begin{tabular}{l}
-if $a$ requires and deletes $p$: \\
-\hspace{0.2cm}$\tim(not-p,a) \geq \reqe(p,a)$ \\
-\end{tabular}
-& when $a$ requires and deletes $p$, the effect cannot happen before the condition \\
-
-\begin{tabular}{l}
-$\forall a_i,a_j \mid a_i$ supports $p$ and \\
-\hspace{1.2cm}$a_j$ deletes $p$: \\
-\hspace{0.2cm}$\tim(p,a_i) \neq \tim(not-p,a_j)$ \\
-\end{tabular}
-& solving effect interference ($p$ and $not-p$): they cannot happen at the same time \\
-
+$\forall a_i,a_j \mid a_i$ supports $p$ and & Solving effect interference ($p$ and $not-p$):\\
+$a_j$ deletes $p$: & they cannot happen at the same time.\\
+$\tim(p,a_i) \neq \tim(not-p,a_j)$ &
 \end{tabular}
 \end{scriptsize}
 \caption{\small The CSP constraints.}
 \label{table:constraints}
 \end{table}
 
-In addition we can add the input {\em state-constraint} to our CSP formulation to prune the space of possible action models.
+In addition we can add the input {\em state-constraint} (if available), like the ones pictured in Figure~\ref{fig:example-statecs}, to our CSP formulation to prune the space of possible action models.
 
 
 
