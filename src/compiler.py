@@ -124,6 +124,27 @@ def filter_mutex_string(str_in):
     return str_in
 
 
+def format_set_of_mutex(set_of_mutex, formated_init):
+    list_of_mutex = list(set_of_mutex)
+    
+    ifound=-1
+    for i in range(len(list_of_mutex)):
+        if list_of_mutex[i] in formated_init:
+            ifound=i
+    if ifound==-1:
+        return ""
+    
+    str_out=""    
+    for i in range(len(list_of_mutex)):
+        str_out = str_out + "constraints:\n"
+        str_out = str_out + list_of_mutex[i]
+        str_out = str_out + "\nmutex predicate\n"
+        if i==0:
+            str_out = str_out + " ".join(list_of_mutex[1:]) + "\n\n"               
+        else:
+            str_out = str_out + " ".join(list_of_mutex[:i]) + " " + " ".join(list_of_mutex[i+1:]) + "\n\n"
+    return str_out
+
 
 # **************************************#
 # MAIN
@@ -259,56 +280,46 @@ for s in steps:
     s.block = aux_timestamps.index(s.stime) + 1
     if not bduration:
         s.durations = [item - s.stime for item in aux_timestamps[aux_timestamps.index(s.stime)+1:]]
-    str_out = str_out + str(s)+ "\n\n"
-    
+    str_out = str_out + str(s)+ "\n\n"  
 
+    
 # Instantiate Axioms
 for axiom in fd_task.axioms:
+
+    set_of_mutex = set()
+    param_names = [i.name for i in axiom.condition.parameters]
+    
     types_dic=get_objects_by_type(fd_task.objects, fd_task.types)
     elements = []
     for p in axiom.condition.parameters:
         elements.append(types_dic[p.type_name])
 
-    str_predicate = ""
-    str_mutex = ""
     for item in list(itertools.product(*elements)):
-        d = {}
-        for index in range(len(axiom.condition.parameters)):
-            d[axiom.condition.parameters[index].name]=item[index]
+        
+        str_constraint = "(" + str(axiom.condition.parts[0].parts[0].predicate)
+        for arg in axiom.condition.parts[0].parts[0].args:
+            str_constraint = str_constraint + "_"+item[param_names.index(arg)]
+        str_constraint = str_constraint + ")"
 
-        str_aux = filter_mutex_string(str(axiom.condition.parts[0].parts[0]))
-        for index in range(len(axiom.condition.parameters)):
-            str_aux=str_aux.replace(axiom.condition.parameters[index].name,d[axiom.condition.parameters[index].name])
+        str_mutex = "(" + str(axiom.condition.parts[0].parts[1].predicate)
+        for arg in axiom.condition.parts[0].parts[1].args:
+            str_mutex = str_mutex + "_"+item[param_names.index(arg)]
+        str_mutex = str_mutex + ")"
 
-        if str_predicate != str_aux:
-            if  str_mutex != "":
-                str_out = str_out + "constraints:\n"
-                str_out = str_out + str_predicate    
-                str_out = str_out + "\nmutex predicate\n"
-                str_out = str_out + str_mutex + "\n\n"
 
-                if not "=" in axiom.condition.parts[0].parts[-1].predicate:
-                    str_out = str_out + "constraints:\n"
-                    str_out = str_out + str_mutex    
-                    str_out = str_out + "\nmutex predicate\n"
-                    str_out = str_out + str_predicate + "\n\n"                    
-                
-            str_predicate = str_aux            
-            str_mutex = ""                                
-              
+        if len(set_of_mutex)==0 or (str_constraint in set_of_mutex) or (str_mutex in set_of_mutex):
+            set_of_mutex.add(str_mutex)
+            set_of_mutex.add(str_constraint)
+        elif len(set_of_mutex)!=0 and not (str_constraint in set_of_mutex) and not (str_mutex in set_of_mutex):
+            str_out = str_out + format_set_of_mutex(set_of_mutex,formattedinit2)               
+            set_of_mutex = set()
+            set_of_mutex.add(str_mutex)
+            set_of_mutex.add(str_constraint)            
 
-        if "=" in axiom.condition.parts[0].parts[-1].predicate:
-            ps = axiom.condition.parts[0].parts[0:-1]
-        else:
-            ps = axiom.condition.parts[0].parts
-            
-        for p in ps:
-            str_aux2 = filter_mutex_string(str(p))
-            for index in range(len(axiom.condition.parameters)):
-                str_aux2=str_aux2.replace(axiom.condition.parameters[index].name,d[axiom.condition.parameters[index].name])
-            if str_aux2!= str_predicate:
-                str_mutex=str_mutex + str_aux2+ " "                              
-   
+    str_out = str_out + format_set_of_mutex(set_of_mutex,formattedinit2)               
+    set_of_mutex = set()
+    
+
 
 if not btrunk:    
     str_out = str_out + "\n\nend:\n"
