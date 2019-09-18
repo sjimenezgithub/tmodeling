@@ -1,0 +1,109 @@
+=== Limited Instantiation with N=2 (Rintanen 2017)
+For type <object>: 0 objects
+For type <satellite>: 2 objects
+For type <direction>: 3 objects
+For type <instrument>: 2 objects
+For type <mode>: 2 objects
+=== PRS List ===
+PRS 1:
+	precs: 	pointing_1
+	del_precs: 	pointing_1
+	adds: 	pointing_1
+PRS 2:
+	precs: 	pointing_1
+	del_precs: 	
+	adds: 	
+PRS 3:
+	precs: 	
+	del_precs: 	
+	adds: 	pointing_2
+PRS 4:
+	precs: 	pointing_2
+	del_precs: 	pointing_2
+	adds: 	
+PRS 5:
+	precs: 	on_board_1
+	del_precs: 	calibrated_1
+	adds: 	power_on_1
+PRS 6:
+	precs: 	on_board_2, power_avail_1
+	del_precs: 	power_avail_1
+	adds: 	
+PRS 7:
+	precs: 	on_board_1, power_on_1
+	del_precs: 	power_on_1
+	adds: 	
+PRS 8:
+	precs: 	on_board_2
+	del_precs: 	
+	adds: 	power_avail_1
+PRS 9:
+	precs: 	on_board_2, pointing_1
+	del_precs: 	
+	adds: 	
+PRS 10:
+	precs: 	on_board_1, power_on_1, calibration_target_1
+	del_precs: 	
+	adds: 	calibrated_1
+PRS 11:
+	precs: 	pointing_2, calibration_target_2
+	del_precs: 	
+	adds: 	
+PRS 12:
+	precs: 	on_board_2, pointing_1
+	del_precs: 	
+	adds: 	
+PRS 13:
+	precs: 	pointing_2
+	del_precs: 	
+	adds: 	have_image_1
+PRS 14:
+	precs: 	on_board_1, supports_1, power_on_1power_on_1, calibrated_1
+	del_precs: 	
+	adds: 	
+PRS 15:
+	precs: 	supports_2
+	del_precs: 	
+	adds: 	have_image_2
+=== Transition rules ===
+TR 1:
+	null => pointing_1 -> pointing_1
+TR 2:
+	null => null -> pointing_2
+TR 3:
+	null => pointing_2 -> null
+TR 4:
+	on_board_1 => calibrated_1 -> power_on_1
+TR 5:
+	on_board_2 => power_avail_1 -> null
+TR 6:
+	on_board_1 => power_on_1 -> null
+TR 7:
+	on_board_2 => null -> power_avail_1
+TR 8:
+	on_board_1, power_on_1, calibration_target_1 => null -> calibrated_1
+TR 9:
+	pointing_2 => null -> have_image_1
+TR 10:
+	supports_2 => null -> have_image_2
+=== Property spaces ===
+PS 1:
+	{power_avail_1}	%%%	on_board_2 => power_avail_1 -> null | on_board_2 => null -> power_avail_1	%%%	satellite0	%%%	
+PS 2:
+	{pointing_2}	%%%	null => null -> pointing_2 | null => pointing_2 -> null	%%%	phenomenon6	%%%	
+PS 3:
+	{have_image_1}	%%%	pointing_2 => null -> have_image_1	%%%	phenomenon6	%%%	
+PS 4:
+	{have_image_2}	%%%	supports_2 => null -> have_image_2	%%%		%%%	
+PS 5:
+	{pointing_1}	%%%	null => pointing_1 -> pointing_1	%%%	satellite0	%%%	{pointing_1}
+PS 6:
+	{power_on_1, calibrated_1}	%%%	on_board_1 => calibrated_1 -> power_on_1 | on_board_1 => power_on_1 -> null | on_board_1, power_on_1, calibration_target_1 => null -> calibrated_1	%%%		%%%	
+=== Types ===
+Type 0: instrument0, image1, spectrograph2, thermograph0, star0, groundstation1, groundstation2, phenomenon3, phenomenon4, star5
+Type 1: satellite0
+Type 2: phenomenon6
+=== Invariants ===
+(:derived (invariant-1)
+	(forall(?x - satellite ?y1 - direction ?y2 - direction)
+		(not (and  (pointing ?x ?y1)  (pointing ?x ?y2) (not (= ?y1 ?y2)) ))))
