@@ -61,36 +61,36 @@ With the aim of understanding better the connection between the learning of dura
 
 \section{BACKGROUND}
 
-This section formalizes the {\em temporal planning} model that we follow in this work as well as the Constraint Satisfaction Problem.
+This section formalizes the {\em temporal planning} and {\em Constraint Satisfaction} models that we follow in this work.
 
 \subsection{Temporal Planning}
 \label{sec:temporalplanning}
 
-We assume that {\em states} are factored into a set $F$ of boolean variables. A state $s$ is a time-stamped assignment of values to all variables in $F$. 
-A {\em temporal planning problem} is a tuple $\tup{F,I,G,A}$ where the {\em initial state} $I$ is a fully observed state (i.e. $|I|=|F|$) that is time-stamped with $t=0$; $G \subseteq F$ is a conjunction of {\em goal conditions} over the variables in $F$ that defines the set of goal states; and $A$ represents the set of {\em durative actions}, which have an associated duration and may have conditions/effects on $F$ at different times~\cite{garrido2009constraint,vidal2006branching}.
-In this work we assume that durative actions in $A$ are fully grounded from {\em action schemes} (aka {\em operators}) to compactly represent temporal planning problems. 
+We assume that {\em states} are factored into a set $F$ of Boolean variables. A state $s$ is a time-stamped assignment of values to all the variables in $F$. A {\em temporal planning problem} is a tuple $P=\tup{F,I,G,A}$ where the {\em initial state} $I$ is a fully observed state (i.e. $|I|=|F|$) that is time-stamped with $t=0$; $G \subseteq F$ is a conjunction of {\em goal conditions} over the variables in $F$ that defines the set of goal states; and $A$ represents the set of {\em durative actions}. A {\em durative action} has an associated duration and may have conditions/effects on $F$ at different times~\cite{garrido2009constraint,vidal2006branching}. In this work we assume that durative actions in $A$ are fully grounded from {\em action schemes} (aka {\em operators}) to compactly represent temporal planning problems. 
 
-PDDL2.1 is the widely accepted language in the temporal track of the International Planning Competition (IPC)~\cite{fox2003pddl2,ghallab2004automated}. According to PDDL2.1, a durative action $a\in A$ is defined with the following elements:
+PDDL2.1 is the input language for the temporal track of the International Planning Competition (IPC)~\cite{fox2003pddl2,ghallab2004automated}. According to PDDL2.1, a durative action $a\in A$ is defined with the following elements:
 
 \begin{enumerate}
 \item $\dur(a)$, a positive value indicating the {\em duration} of the action.
 
 \item $\cond_s(a), \cond_o(a), \cond_e(a)$ representing the three types of action {\em conditions}. Unlike the \emph{pre}conditions of classical actions, action conditions in PDDL2.1 must hold: before $a$ is executed ({\em at start}), during the entire execution of $a$ ({\em over all}) or when $a$ finishes ({\em at end}), respectively. 
 
-\item $\eff_s(a)$ and $\eff_e(a)$ represent the two types of action effects. In PDDL2.1, effects can happen {\em at start} or {\em at end} of $a$, respectively, and can be either positive or negative, i.e. asserting or retracting variables. 
+\item $\eff_s(a)$ and $\eff_e(a)$ represent the two types of action effects. In PDDL2.1, effects can happen {\em at start} or {\em at end} of action $a$ respectively, and can be either positive or negative (i.e. asserting or retracting variables). 
 
 \end{enumerate}
 
-PDDL2.1 somewhat restricts the expressiveness of the temporal planning model since the semantics of a PDDL2.1 durative action $a$ can be defined in terms of just two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$. This means that if $a$ starts on state $s$ with time-stamp $\start(a)$, then $\cond_s(a)$ must hold in $s$. Ending action $a$ in state $s'$, with time-stamp $\en(a)$, means $\cond_e(a)$ must hold in $s'$. {\em Over all} conditions must hold at any state between $s$ and $s'$ or, in other words, throughout interval $[\start(a)..\en(a)]$. Likewise, {\em at start} and {\em at end} effects are instantaneously applied at states $s$ and $s'$, respectively (continuous effects are not considered in this work). 
+PDDL2.1 is a restricted temporal planning model since the semantics of a PDDL2.1 durative action $a$ can always be defined in terms of just two discrete events, $\start(a)$ and $\en(a)=\start(a)+\dur(a)$. This means that if $a$ starts on state $s$ with time-stamp $\start(a)$, then $\cond_s(a)$ must hold in $s$. Ending action $a$ in state $s'$, with time-stamp $\en(a)$, means $\cond_e(a)$ must hold in $s'$. {\em Over all} conditions must hold at any state between $s$ and $s'$ or, in other words, throughout the closed interval $[\start(a)..\en(a)]$. Likewise, {\em at start} and {\em at end} effects are instantaneously applied at states $s$ and $s'$, respectively (continuous effects are not considered in this work). 
 
-A {\em temporal plan} is a set of pairs $\{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)\}$. Each $(a_i,t_i)$ pair contains a durative action $a_i$ and a time-stamp $t_i=\start(a_i)$. The execution of a temporal plan starting from a given initial state $I$ induces a state sequence formed by the union of all states $\{s_{t_i}, s_{t_i+\dur(a_i)}\}$, where there exists an initial state $s_{0}=I$, and a state $s_{end}$ that is the last state induced by the execution of the plan. Note that sequential plans can be expressed as temporal plans but not the opposite. We say that a temporal plan is a solution to a given temporal planning problem when its execution, starting from the corresponding initial state, eventually reaches a state that meets the goal conditions, $G\subseteq s_{end}$.
+A {\em temporal plan} is a set of pairs $\pi=\{(a_1,t_1),(a_2,t_2)\ldots (a_n,t_n)\}$. Each pair $(a_i,t_i)$ contains a durative action $a_i$ and a time-stamp $t_i=\start(a_i)$. The execution of a temporal plan starting from a given initial state $I$ induces a state sequence formed by the union of all states $\{s_{t_i}, s_{t_i+\dur(a_i)}\}$, where there exists an initial state $s_{0}=I$, and a state $s_{end}$ that is the last state induced by the execution of the plan. Note then that sequential plans can be expressed as temporal plans but not the opposite. A {\em solution} to a given temporal planning problem $P$ is a temporal plan $\pi$ such that its execution, starting from the corresponding initial state, eventually reaches a state that meets the goal conditions, $G\subseteq s_{end}$.
 
-PDDL2.2 is an extension of PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005} representing $\til(f,t)$ that a variable $f\in F$ becomes true or false at a certain time $t>0$, independently of the actions in the plan~\cite{Edelkamp04}. Traditionally, TILs are useful to model {\em exogenous happenings}; for instance, a time window when a warehouse is open in a logistics scenario, $\til(open,8)$ and $\til($\textit{not-}$open,20)$.
+PDDL2.2 is an extension of the language PDDL2.1 that includes the notion of {\em Timed Initial Literal}~\cite{hoffmann2005}, denoted as $\til(f,t)$, and representing that a variable $f\in F$ becomes true (or false) at a certain time $t>0$, independently of the actions in the plan~\cite{Edelkamp04}. Traditionally, TILs are useful to model {\em exogenous happenings}; for instance, a time window when a warehouse is open in a logistics scenario, $\til(open,8)$ and $\til($\textit{not-}$open,20)$.
 
 \subsection{Constraint Satisfaction}
-A {\em Constraint Satisfaction Problem} (CSP) is a tuple $\tup{V,D,C}$, where $V$ is a set of finite variables, $D$ represents the domain for these variables and $C$ is a set of constraints among variables in $V$ that bound their possible values in $D$.
+A {\em Constraint Satisfaction Problem} (CSP) is a tuple $\tup{X,D,C}$, where $X$ is a set of finite variables, $D$ represents the finite domain for each of these variables and $C$ is a set of constraints among the variables in $X$ that bound their possible values in $D$.
 
-A solution to the CSP is an assignment of values to all variables in $V$ that satisfy all the constraints in $C$, that is, those values are consistent with all the constraints. It is important to note that we deal with a satisfaction problem and, consequently, there might be many solutions to the CSP.
+A solution to a CSP as an assignment of values to all variables in $X$ that satisfy all the constraints in $C$, that is, those values are {\em consistent} with all the constraints.
+
+Given a CSP there may be many different solutions to that problem. A {\em cost-function} can be defined to specify user preferences about the space of possible solutions. Given a CSP and cost-function, then an {\em optimal solution} is a total assignment of the variables that is consistent with the constraints of the CSP and minimizes the value of the input cost-function.
 
 
 
