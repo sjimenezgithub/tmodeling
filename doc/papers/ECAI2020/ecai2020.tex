@@ -479,7 +479,15 @@ Finally, the sixth constraint forces all actions to have at least one of its \te
 %Note that if a condition is never deleted in a plan, it can be considered an {\em invariant} condition for such a plan that represents {\em static} knowledge; e.g. a link between two locations that makes driving possible, or modeling a petrol station that allows a refuel action in a given location, etc. The constraint to be added for invariant conditions $f \in \cond_o(a)$ is simply: $((\reqs(f,a) = \start(a))$ AND $(\reqe(f,a) = \en(a)))$, i.e. Surprisingly, invariant conditions are modeled differently depending on the human modeler. See, for instance, \texttt{(link ?from ?to)} of Figure~\ref{fig:exampleactions2}, which is modeled as an \emph{at start} condition despite: i) the link should be necessary all over the driving, and ii) no action in this domain can be planned to delete that link.
 %This also happens in the \emph{transport} domain of the IPC, where a refuel action requires to have a petrol station in a location only \emph{at start}, rather than \emph{over all} which makes more sense. This shows that modeling temporal planning tasks depends on the human's common sense. On the contrary, our formulation checks the invariant conditions and deals with them always in a consistent way.
 
+\subsection{The CSP cost functions}
+We want to produce plans that are consist with the input knowledge but that as well provides an {\em explanation} of the observations that is as tight and lean as possible. To prefer this kind of {\em tight} and {\em lean} explanations we define the following two positive functions:
+\begin{enumerate}
+\item[$f_1$] {\em Causal-links}. This function counts the number of causal links that are created to support the provided observations.
+\item[$f_2$] {\em Side-effects}. This function counts the number of possitive effects that are added by the actions in a plan but that do not build any causal link.  
+\end{enumerate}
 
+Our aim is to compute solutions to the CSP that minimize function $f_1$ while function $f_2$. is maximized. To achieve this we ask the CSP solve to {\em pareto optimize} functions $f_2$ and -$f_1$(i.e. the negation of function 1). 
+  
 
 
 
@@ -506,6 +514,10 @@ To illustrate this, let us assume that the distribution of all (or just a few) c
 
 
 
+
+
+
+  
 \section{EVALUATION}
 \label{sec:evaluation}
 
