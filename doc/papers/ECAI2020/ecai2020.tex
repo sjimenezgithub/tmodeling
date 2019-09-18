@@ -95,17 +95,12 @@ Given a CSP there may be many different solutions to that problem. A {\em cost-f
 
 
 
-\section{LEARNING TEMPORAL ACTION MODELS}
+\section{One-Shot learning of temporal action models}
 \label{section:learningTemporalModels}
 
-This section formalizes the learning task we address in this paper and presents our formulation for addressing it with off-the-shelf CSP solvers.
+This section formalizes the learning task addressed in the paper. The aim of this learning task is to specify the set of {\em conditions} and {\em effects} that correspond to the action schemes of a given temporal planning domain represented in the PDDL2.1 language. As is common in previous approaches for learning planning action models we assume that the {\em headers} (the name and parameters) of each action schemes are known. 
 
-\subsection{The hypothesis space}
-\label{sec:action-space}
-
-[SUGERENCIA A VER QUE TE PARECE?? 1. LOS DOS PARRAFOS DE VOCABULARY. 2. SE INDICA QUE ES LO QUE TENEMOS COMO HIPOTESIS DE PARTIDA DONDE UNA ACCION TIENE UN CONJUNTO CANDIDATO (HABRIA QUE RECALCAR ESTO DE \textbf{CANDIDATE}) DE CONDS/EFFS (COMO LO QUE DEVUELVE EL COMPILER). 3. LO QUE SE DEBE CONSEGUIR QUE ES EL EJEMPLO DE LAS DOS ACCIONES. OTRA ALTERNATIVA SERIA HACER 1-3-2. AUNQUE NO TENGO CLARO SI LO DE CANDIDATE DEBERIA IR A 3.1]
-
-The target of the learning task addressed in this paper is to define the set of PDDL2.1 durative actions schemes. Figure~\ref{fig:exampleactions2} shows an example of two schemes for PDDL2.1 durative actions taken from the {\em driverlog} domain. The schema \texttt{board-truck} has a fixed duration while the duration of \texttt{drive-truck} depends on the driving time associated to the two given locations.
+Figure~\ref{fig:exampleactions2} shows an example of two schemes for PDDL2.1 durative actions taken from the {\em driverlog} domain. The schema \texttt{board-truck} has a fixed duration while the duration of \texttt{drive-truck} depends on the driving time associated to the two given locations.
 
 \begin{figure}
 %\begin{tabular}{p{\textwidth}}
@@ -137,13 +132,18 @@ The target of the learning task addressed in this paper is to define the set of 
 \label{fig:exampleactions2}
 \end{figure}
 
-Like in PDDL, we assume that the set $F$ of state variables is given by the instantiation of a given set of predicates $\Psi$. We denote as ${\mathcal I}_{\xi,\Psi}$ the {\em vocabulary} (set of symbols) that can appear in the conditions and effects of a given durative action schema $\xi$. This set is formally defined as the FOL interpretations of predicates $\Psi$, over the action parameters $pars(\xi)$. [NO SE PUEDE SIMPLIFCAR ESTO DE ALGUNA FORMA??? NO HEMOS DICHO QUE HAYA PARAMETROS!! NO LO PODEMOS PONER EN BASE A $F$ QUE INCLUYE A LOS PARAMS DE LA ACCION Y ASI QUEDA TODO MAS COMPACTO]
+\subsection{The hypothesis space}
+\label{sec:action-space}
 
-For a durative action schema $\xi$, the size of its space of possible action models is then $D\times 2^{5\times|{\mathcal I}_{\xi,\Psi}}|$ where D is the number of different possible durations for any action shaped by the $\xi$ schema. Note that this space is significantly larger than for learning STRIPS actions~\cite{yang2007learning}, where this number is $2^{2\times|{\mathcal I}_{\xi,\Psi}}|$ because negative effects must also be preconditions of the same action and cannot be positive effects of that action [PERO LO DE QUE "negative effects must also be preconditions of the same action and cannot be positive effects of that action" NO TIENE NADA QUE VER CON ESE ESPACIO DE POSSIBLE MODELS?? O YO NO LO ENTIENDO??? PORQUE SON $\mathcal {I}_{\xi,\Psi}$ COMO CONDS Y TAMBIEN COMO EFECTOS, BIEN POSITIVOS O NEGATIVOS. OTRA COSA ES QUE REALMENTE ESTO SEA LA COTA SUPERIOR PORQUE SE SABE QUE SI HAY UN EFECTO NEGATIVO TIENE QUE ESTAR COMO PRECONDICION, PERO EL ESPACIO ES ESE QUE SE HA DEFINIDO].
 
-With this vocabulary defined, then the conditions and effects of a durative action schema can be coded by 5 bit-vectors, each of length $|{\mathcal I}_{\xi,\Psi}|$. A 0-bit in the vector represents that the corresponding condition of effect is not part of the schema while a 1-bit represents that is part of the schema. This also means that the {\em Hamming distance} can be used straightforward as a similarity metric for durative schemes, For instance, to compare a learned action model with respect to a given reference model that serves as baseline. The number of wrong 1-bits in the learned schema provide us a measure of the incorrectness of the learned model and the number of wrong 0-bits in the learned schema provide us a measure of the incompleteness of that model. [ESTE PARRAFO ME GUSTA MUCHO, PERO YO LO MOVERIA A LA SECCION DE EXPERIMENTOS QUE AQUI QUEDA RARO]
 
-Available prior knowledge can be used to bound this vocabulary for certain action schemes. For instance in a given domain we may known in advance several preconditions and/effects of a particular action.
+Like in PDDL, we assume that the set $F$ of state variables is given by the instantiation of a given set of predicates $\Psi$. We denote as ${\mathcal I}_{\xi,\Psi}$ the {\em vocabulary} (set of symbols) that can appear in the conditions and effects of a given durative action schema $\xi$, with parameters $pars(\xi)$. This set is formally defined as the FOL interpretations of predicates $\Psi$, over the action parameters $pars(\xi)$. 
+
+For a durative action schema $\xi$, the size of its space of possible action models is then $\mathcal{D}\times 2^{5\times|{\mathcal I}_{\xi,\Psi}}|$ where $\mathcal{D}$ is the number of different possible durations for any action shaped by the $\xi$ schema. Note that this space is significantly larger than for learning classical STRIPS actions~\cite{yang2007learning}, where this number is bound to $2^{2\times|{\mathcal I}_{\xi,\Psi}}|$ forcing that negative effects must also be preconditions of the same action and cannot be positive effects of that action.
+
+Provided the vocabulary, then the {\em conditions} and {\em effects} of a given durative action schema can be compactly coded by 5 bit-vectors, each of length $|{\mathcal I}_{\xi,\Psi}|$. A 0-bit in the vector represents that the corresponding {\em condition}/{\em effect} is not part of the schema while a 1-bit represents that is part of the schema. This also means that the {\em Hamming distance} can be used straightforward as a sintactic similarity metric for durative schemes. For instance, we can use the {\em Hamming distance} to compare a learned action model with respect to a given reference model that serves as baseline. In this case, the number of wrong 1-bits in the learned schema provide us a measure of the {\em incorrectness} of the learned model (number of {\em conditions} and {\em effects} that should not be in the learned model) and the number of wrong 0-bits in the learned schema provide us a measure of the {\em incompleteness} of that model (number of {\em conditions} and {\em effects} that are missing in the learned model). 
+
+Available prior knowledge can be used to bound this vocabulary for certain action schemes. For instance in a given domain we may known in advance several preconditions and/effects of a particular action. In this case the value of the corresponding bits is a priori specified. The remaining bits are then regular Boolean Variables whose value will be specify solving a CSP.
 
 
 
@@ -228,25 +228,24 @@ For each action $a$ in $A?$ and candidate condition/effect $f$ of $a$, we create
 \caption{The CSP variables, domains and semantics.}
 %\setlength\extrarowheight{2pt}  
 \begin{scriptsize}
-%\begin{tabular}{lll}
-\begin{tabular}{llp{4.4cm}}
+\begin{tabular}{lllp{4.4cm}}
 \hline	
-{\bf Variable} & {\bf Domain} & {\bf Description} \\
+{\bf ID} & {\bf Variable} & {\bf Domain} & {\bf Description} \\
 \hline
-1. $\start(a)$ & $[0..t_{end}]$ & Start time of $a$ (observed or derived value) \\
-2. $\en(a)$ & $[0..t_{end}]$ & End time of $a$ (observed or derived value) \\
-3. $\dur(a)$ & $[0..t_{end}]$ & Duration of $a$ \\
+X1 &$\start(a)$ & $[0..t_{end}]$ & Start time of $a$ (observed or derived value) \\
+X2 &$\en(a)$ & $[0..t_{end}]$ & End time of $a$ (observed or derived value) \\
+X3 &$\dur(a)$ & $[0..t_{end}]$ & Duration of $a$ \\
 
-4. $\iscond(f,a)$ & \textit{\{0,1\}} & 1 if $f$ is a condition of $a$; 0 otherwise \\
-5. $\iseff(f,a)$ & \textit{\{0,1\}} & 1 if $f$ is an effect of $a$; 0 otherwise \\
+X4 &$\iscond(f,a)$ & \textit{\{0,1\}} & 1 if $f$ is a condition of $a$; 0 otherwise \\
+X5 &$\iseff(f,a)$ & \textit{\{0,1\}} & 1 if $f$ is an effect of $a$; 0 otherwise \\
 
-6.1. $\reqs(f,a)$, & $[0..t_{end}]$ & Interval when action $a$ requires $f$\\ 
-6.2. $\reqe(f,a)$  &  & \\
+X6.1 &$\reqs(f,a)$, & $[0..t_{end}]$ & Interval when action $a$ requires $f$\\ 
+X6.2 &$\reqe(f,a)$  &  & \\
 
-7. $\supp(f,a)$ & $\{b_i\} \cup \emptyset $&  Supporters for causal link $\tup{b_i,f,a}$ \\ %where $b_i$ is an action in the action space \\
+X7 &$\supp(f,a)$ & $\{b_i\} \cup \emptyset $&  Supporters for causal link $\tup{b_i,f,a}$ \\ %where $b_i$ is an action in the action space \\
 %There is a causal link $\tup{b_i,f,a}$ s.t.\\
 %&& $b_i$ is an action in the action space. 
-8. $\tim(f,a)$ & $[0..t_{end}]$ & Time when the effect $f$ of $a$ happens\\
+X8 &$\tim(f,a)$ & $[0..t_{end}]$ & Time when the effect $f$ of $a$ happens\\
 
 \end{tabular}
 \end{scriptsize}
@@ -305,32 +304,32 @@ For simplicity, the value of some unnecessary variables is not bounded in the ta
 \caption{The CSP constraints and semantics.}	
 %	\setlength\extrarowheight{2pt}    
 \begin{scriptsize}
-\begin{tabular}{p{10.4cm}p{6.6cm}} %7.9cm
+\begin{tabular}{lp{10.4cm}p{6.6cm}} %7.9cm
 %\begin{tabular}{ll}
 \hline
-{\bf Constraint}&{\bf Description}\\\hline
+{\bf ID}&{\bf Constraint}&{\bf Description}\\\hline
 			
-1. $\en(a)=\start(a)+\dur(a)$ & Relationship among start, end and duration of $a$ \\
+C1& $\en(a)=\start(a)+\dur(a)$ & Relationship among start, end and duration of $a$ \\
 
-2. $\en(a) \leq \start(\goal)$ & Always $\goal$ is the last action of the plan \\
+C2& $\en(a) \leq \start(\goal)$ & Always $\goal$ is the last action of the plan \\
 
-3. \textbf{iff} ($\iscond(f,a)$=\textit{false}) \textbf{then} $\supp(f,a) = \emptyset$ & $f$ is not a condition of $a \iff $ the supporter of $f$ in $a$ is $\emptyset$ \\
+C3& \textbf{iff} ($\iscond(f,a)$=\textit{false}) \textbf{then} $\supp(f,a) = \emptyset$ & $f$ is not a condition of $a \iff $ the supporter of $f$ in $a$ is $\emptyset$ \\
 
-4. \textbf{if} ($\iscond(f,a)$=\textit{true}) \textbf{then} $\reqs(f,a) \leq \reqe(f,a)$ & [$\reqs(f,a)..\reqe(f,a)$] is a valid interval\\
+C4& \textbf{if} ($\iscond(f,a)$=\textit{true}) \textbf{then} $\reqs(f,a) \leq \reqe(f,a)$ & [$\reqs(f,a)..\reqe(f,a)$] is a valid interval\\
 
-5. \textbf{if} ($\iseff(f,b)$=\textit{true}) \textbf{AND} ($\iscond(f,a)$=\textit{true}) \textbf{AND} ($\supp(f,a)=b$))  & Modeling the causal link $\tup{b,f,a}$: supporting $f$ before it is \\
-\hspace{0.5cm}\textbf{then} $\tim(f,b) < \reqs(f,a)$ & required (obviously $b \neq \emptyset$) \\
+C5& \textbf{if} ($\iseff(f,b)$=\textit{true}) \textbf{AND} ($\iscond(f,a)$=\textit{true}) \textbf{AND} ($\supp(f,a)=b$))  & Modeling the causal link $\tup{b,f,a}$: supporting $f$ before it is \\
+&\hspace{0.5cm}\textbf{then} $\tim(f,b) < \reqs(f,a)$ & required (obviously $b \neq \emptyset$) \\
 
-6. \textbf{if} ($\iseff(f,b)$=\textit{true}) \textbf{AND} ($\iscond(f,a)$=\textit{true}) \textbf{AND} ($\iseff($\textit{not-f}$,c)$=\textit{true}) \textbf{AND} ($\supp(f,a)=b$) & Solving threat of $c$ to causal link $\tup{b,f,a}$ by promotion or \\
-\hspace{0.5cm}\textbf{AND} ($c \neq a$) \textbf{then} ($\tim($\textit{not-f}$,c) < \tim(f,b)$) \textbf{OR} ($\tim($\textit{not-f}$,c) > \reqe(f,a)$) & demotion (obviously $b \neq \emptyset$) \\
+C6& \textbf{if} ($\iseff(f,b)$=\textit{true}) \textbf{AND} ($\iscond(f,a)$=\textit{true}) \textbf{AND} ($\iseff($\textit{not-f}$,c)$=\textit{true}) \textbf{AND} ($\supp(f,a)=b$) & Solving threat of $c$ to causal link $\tup{b,f,a}$ by promotion or \\
+&\hspace{0.5cm}\textbf{AND} ($c \neq a$) \textbf{then} ($\tim($\textit{not-f}$,c) < \tim(f,b)$) \textbf{OR} ($\tim($\textit{not-f}$,c) > \reqe(f,a)$) & demotion (obviously $b \neq \emptyset$) \\
 
-7. \textbf{if} ($\iseff(f,a)$=\textit{false}) \textbf{then} $\forall b$ that requires $f$: $\supp(f,b) \neq a$ & $a$ cannot be a supporter of $f$ for any other action $b$\\
+C7& \textbf{if} ($\iseff(f,a)$=\textit{false}) \textbf{then} $\forall b$ that requires $f$: $\supp(f,b) \neq a$ & $a$ cannot be a supporter of $f$ for any other action $b$\\
 
-8. \textbf{if} ($\iscond(f,a)$=\textit{true}) \textbf{AND} ($\iseff($\textit{not-f}$,a)$=\textit{true}) \textbf{then} $\tim($\textit{not-f}$,a) \geq \reqe(f,a)$ & $a$ requires and deletes $f$: the condition holds before the effect \\ 
+C8& \textbf{if} ($\iscond(f,a)$=\textit{true}) \textbf{AND} ($\iseff($\textit{not-f}$,a)$=\textit{true}) \textbf{then} $\tim($\textit{not-f}$,a) \geq \reqe(f,a)$ & $a$ requires and deletes $f$: the condition holds before the effect \\ 
 
-9. \textbf{if} ($\iseff(f,b)$=\textit{true}) \textbf{AND} ($\iseff($\textit{not-f}$,c)$=\textit{true}) \textbf{then} $\tim(f,b) \neq \tim($\textit{not-f}$,c)$ & Solving effect interference at the same time ($f$ and \textit{not-}$f$) \\
+C9& \textbf{if} ($\iseff(f,b)$=\textit{true}) \textbf{AND} ($\iseff($\textit{not-f}$,c)$=\textit{true}) \textbf{then} $\tim(f,b) \neq \tim($\textit{not-f}$,c)$ & Solving effect interference at the same time ($f$ and \textit{not-}$f$) \\
 
-10. $\sum \iscond(f_i,a) \geq 1$ \textbf{AND} $\sum \iseff(f_j,a) \geq 1$ \textbf{forall} condition $f_i$ and effect $f_j$ of $a$ & Every non-dummy action has at least one condition/effect \\
+C10& $\sum \iscond(f_i,a) \geq 1$ \textbf{AND} $\sum \iseff(f_j,a) \geq 1$ \textbf{forall} condition $f_i$ and effect $f_j$ of $a$ & Every non-dummy action has at least one condition/effect \\
 
 \end{tabular}
 \end{scriptsize}	
@@ -449,26 +448,26 @@ Finally, the sixth constraint forces all actions to have at least one of its \te
 \begin{center}   
 \caption{The simple constraints to fulfill a PDDL2.1 model of actions.}	
 \begin{scriptsize}
-\begin{tabular}{l}
+\begin{tabular}{ll}
 \hline	
-{\bf Constraint} \\ %& {\bf Description} \\
+{\bf ID} &{\bf Constraint} \\ %& {\bf Description} \\
 \hline
-1.1. ($\reqs(f,a) = \start(a)$) \textbf{OR} ($\reqs(f,a) = \en(a)$) \\% & Conditions at start\\
-1.2. ($\reqe(f,a) = \start(a)$) \textbf{OR} ($\reqe(f,a) = \en(a)$) \\% & Conditions at end\\
-2. ($\tim(f,a) = \start(a)$) \textbf{OR} ($\tim(f,a) = \en(a)$) \\ %& Effects at start or at end\\
-3. $\forall a_i,a_j$ occurrences of the same action: $\dur(a_i) = \dur(a_j)$ \\ %& Duration of the schema instantiations\\
+C11.1& ($\reqs(f,a) = \start(a)$) \textbf{OR} ($\reqs(f,a) = \en(a)$) \\% & Conditions at start\\
+C11.2& ($\reqe(f,a) = \start(a)$) \textbf{OR} ($\reqe(f,a) = \en(a)$) \\% & Conditions at end\\
+C12& ($\tim(f,a) = \start(a)$) \textbf{OR} ($\tim(f,a) = \en(a)$) \\ %& Effects at start or at end\\
+C13& $\forall a_i,a_j$ occurrences of the same action: $\dur(a_i) = \dur(a_j)$ \\ %& Duration of the schema instantiations\\
 
-4.1. $\forall f_i: (\forall a_j: \reqs(f_i,a_j) = \start(a_j))$ \textbf{OR} \\%& Conditions of the schema instantiations\\
-\hspace{1.1cm}$(\forall a_j: \reqs(f_i,a_j) = \en(a_j))$ \\
+C14.1& $\forall f_i: (\forall a_j: \reqs(f_i,a_j) = \start(a_j))$ \textbf{OR} \\%& Conditions of the schema instantiations\\
+&\hspace{1.1cm}$(\forall a_j: \reqs(f_i,a_j) = \en(a_j))$ \\
 
-4.2. $\forall f_i: (\forall a_j: \reqe(f_i,a_j) = \start(a_j))$ \textbf{OR} \\
-\hspace{1.1cm}$(\forall a_j: \reqe(f_i,a_j) = \en(a_j))$ \\
+C14.2& $\forall f_i: (\forall a_j: \reqe(f_i,a_j) = \start(a_j))$ \textbf{OR} \\
+&\hspace{1.1cm}$(\forall a_j: \reqe(f_i,a_j) = \en(a_j))$ \\
 
-5. $\forall f_i: (\forall a_j: \tim(f_i,a_j) = \start(a_j))$ \textbf{OR} \\%  & Effects of the schema instantiations\\
-\hspace{0.9cm}$(\forall a_j: \tim(f_i,a_j) = \en(a_j))$ \\
+C15& $\forall f_i: (\forall a_j: \tim(f_i,a_j) = \start(a_j))$ \textbf{OR} \\%  & Effects of the schema instantiations\\
+&\hspace{0.9cm}$(\forall a_j: \tim(f_i,a_j) = \en(a_j))$ \\
 
 
-6. $\sum_{i=1}^{n} \tim(f_i,a) > n \times \start(a)$ \\% & At least one end effect\\
+C16 &$\sum_{i=1}^{n} \tim(f_i,a) > n \times \start(a)$ 
 
 \end{tabular}
 \end{scriptsize}
