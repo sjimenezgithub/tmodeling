@@ -186,10 +186,6 @@ Given the one-shot learning task $\mathcal{L}$, defined in Section~\ref{section:
 %(this means that any off-the-shelf CSP solver that supports the expressiveness of our CP formulation can be used) 
 and it is inspired by previous work on temporal planning as CP~\cite{garrido2009constraint,vidal2006branching}\footnote{Contrarily to those works, we now address the inverse task: rather than deducing a plan from a fully known temporal action model, we want to learn a temporal action model from a partial action model and a set of observations.} .
 
-
-\subsection{The CSP variables}
-For each action $a$ in $A?$ and candidate condition/effect $f$ for an action $a$, we create the CSP variables described in Table~\ref{table:variables}. For simplicity, we model time in $\mathbb{Z}^+$ and bound all maximum times to the makespan $t_{end}$ observed in $O$. If the observation of $t_{end}$ is unavailable, we consider a large enough domain for time. Available prior knowledge can be used to bound the variables domain. For instance in a given domain we may known in advance several preconditions and/effects of a particular action. In this case the value of the corresponding variables is a priori specified while the remaining variables are then regular variables whose value will be determined solving the CSP.
-
 \begin{table}
 \begin{center}
 \caption{The CSP variables, domains and semantics.}
@@ -217,38 +213,14 @@ X8 &$\tim(f,a)$ & $[0..t_{end}]$ & Time when the effect $f$ of $a$ happens\\
 \end{center}
 \end{table}
 
+\subsection{The CSP variables}
+For each action $a$ in $A?$ and candidate condition/effect $f$ for an action $a$, we create the CSP variables described in Table~\ref{table:variables}. For simplicity, we model time in $\mathbb{Z}^+$ and bound all maximum times to the makespan $t_{end}$ observed in $O$. If the observation of $t_{end}$ is unavailable, we consider a large enough domain for time. Available prior knowledge can be used to bound the variables domain. For instance in a given domain we may known in advance several preconditions and/effects of a particular action. In this case the value of the corresponding variables is a priori specified while the remaining variables are then regular variables whose value will be determined solving the CSP.
+
 Variables X1 and X2 represent the times when a given action {\em starts} and {\em ends} while variable X3 represents the duration of this action. The value of these three variables is either observed in $O$ or derived by the expression $\en(a)=\start(a)+\dur(a)$. Variables X4 and X5 are Boolean variables: $\iscond(f,a)$ models whether $f$ is a condition of $a$, whereas $\iseff(f,a)$ models whether $f$ is an effect of $a$. Variables X6.1 and X6.2 model the $[\reqs(f,a)..\reqe(f,a)]$ interval throughout condition $f$ must hold, provided $\iscond(f,a)$=\textit{true}. Variable X7 represents the causal link relationship and models the actions $b$ that can support $f$ of $a$. If $f$ is not a condition of $a$ ($\iscond(f,a)$=\textit{false}) then $\supp(f,a)$=$\emptyset$, thus representing an empty supporter. Variable X8, $\tim(f,a)$, models when effect $f$ happens in $a$, provided $\iseff(f,a)$=\textit{true}.
 
 Note that this formulation is also able to model both TILs and {\em observations}. On the one hand $\til(f,t)$ are modeled as a {\em dummy} action ($\start(\til(f,t))=t$ and $\dur(\til(f,t))=0$) with no conditions and the single effect $f$ that happens at time $t$ ($\iseff(f,\til(f,t))$=\textit{true} and $\tim(f,\til(f,t))=t$). On the other hand, $\obs(f,t)$ is modeled as another {\em dummy} action ($\start(\obs(f,t))=t$ and $\dur(\obs(f,t))=0$) with only one condition $f$, which is the value observed for fact $f$ ($\iscond(f,\obs(f,t))$=\textit{true}, $\supp(f,\obs(f,t))\neq \emptyset$ and $\reqs(f,\obs(f,t))=\reqe(f,\obs(f,t))=t$), and no effects at all. Modeling a $\til$ is analogous to modeling the full observation of the initial state (both represent information that is given at a particular time but externally to the execution of the plan). Alternatively, $\obs$ is analogous to the modeling of the $\goal$ of the planning task, as they both represent conditions that must be satisfied in the execution of the plan at a particular time.
 
 Inaddition, this variable formulation accommodates a level of expressiveness beyond PDDL2.1 since it allows conditions/effects to be at any time, even outside the execution of the action. For example, we allow a condition $f$ to hold in $\start(a)\pm$2: $\reqs(f,a)=\start(a)-2$ and $\reqe(f,a)=\start(a)+2$. An effect $f$ might also happen after the action ends e.g., $\tim(f,a)=\en(a)+2$.
-
-
-
-
-
-\subsection{The CSP constraints}
-\label{section:CSPconstraints}
-
-
-Table~\ref{table:constraints} shows the constraints defined among the CSP variables of Table~\ref{table:variables}. The first two constraints are explicit enough. The third constraint is a double implication that means that when $\iscond(f,a)$=\textit{false} it will require no supporter (alternatively, $f$ in $a$ needs a valid supporter only when $\iscond(f,a)$=\textit{true}). Constraint four forces to have valid values for the $\reqs$ and $\reqe$ variables, i.e. the interval condition.
-The fifth constraint models the causal link $\tup{b,f,a}$. Intuitively, the time when $b$ supports $f$ must be before $a$ requires $f$. Note that in this causal link, $\tim(f,b) < \reqs(f,a)$ and not $\leq$ because, like in PDDL2.1~\cite{fox2003pddl2}, our temporal planning model assumes an $\epsilon > 0$. The value of $\epsilon$ denotes a small tolerance that implies no collision between the time when an effect $f$ is supported and when it is required. When time is modeled in 
-%$\mathbb{R}^+$, epsilon is usually 0.001 but when it is modeled in 
-$\mathbb{Z}^+$, $\epsilon=1$ and $\leq$ becomes $<$.
-Given a causal link $\tup{b,f,a}$, constraint six avoids the threat of action $c$, which deletes $f$. It is solved via {\em promotion} or {\em demotion}~\cite{ghallab2004automated}, which means bringing $\tim($\textit{not-}$f,c)$ backward or forward, respectively, in time.
-The seventh constraint avoids action $a$ from being a supporter of $f$ when $\iseff(f,a)$=\textit{false}.
-Constraint eight models the fact that the same action requires and deletes $f$; then the effect cannot happen before the condition. 
-Note the $\geq$ inequality here: if one condition and one effect of the same action happen at the same time, the underlying semantics in planning considers the condition is checked instantly before the effect~\cite{fox2003pddl2}.
-The ninth constraint solves the fact that two arbitrary actions have contradictory effects.
-These nine constraints apply to any type of action, including the dummy actions ($\ini$, $\goal$, $\til$ and $\obs$).
-The tenth constraint, however, only applies to non-dummy actions and forces any action to have at least one condition and one effect.
-We include this constraint to make the learning task more rational, as an action without conditions can be arbitrarily annotated at many times. Alternatively, an action without effects is unnecessary in any plan.
-
-As can be noticed, some conditions of Table~\ref{table:constraints} are redundant. See for instance constraints five and six: $\supp(f,a)=b$ means obligatorily $\iseff(f,b)=$ \textit{true}. 
-%if $\supp(f,a)=b$ then $\iseff(f,b)$=\textit{true} obligatorily. 
-We include them here to define an homogeneous formulation but they are not included in our implementation.
-For simplicity, the value of some unnecessary variables is not bounded in the table. For instance, if $\iscond(f,a)$=\textit{false}, variables $\reqs(f,a)$ and $\reqe(f,a)$ become useless.
-%and their values are indifferent.
 
 
 \begin{table*}
@@ -289,6 +261,30 @@ C10& $\sum \iscond(f_i,a) \geq 1$ \textbf{AND} $\sum \iseff(f_j,a) \geq 1$ \text
 \end{center}	
 \end{table*}
 
+\subsection{The CSP constraints}
+\label{section:CSPconstraints}
+Table~\ref{table:constraints} shows the constraints defined among the CSP variables of Table~\ref{table:variables}. The first two constraints are explicit enough. The third constraint is a double implication that means that when $\iscond(f,a)$=\textit{false} it will require no supporter (alternatively, $f$ in $a$ needs a valid supporter only when $\iscond(f,a)$=\textit{true}). Constraint four forces to have valid values for the $\reqs$ and $\reqe$ variables, i.e. the interval condition.
+The fifth constraint models the causal link $\tup{b,f,a}$. Intuitively, the time when $b$ supports $f$ must be before $a$ requires $f$. Note that in this causal link, $\tim(f,b) < \reqs(f,a)$ and not $\leq$ because, like in PDDL2.1~\cite{fox2003pddl2}, our temporal planning model assumes an $\epsilon > 0$. The value of $\epsilon$ denotes a small tolerance that implies no collision between the time when an effect $f$ is supported and when it is required. When time is modeled in 
+%$\mathbb{R}^+$, epsilon is usually 0.001 but when it is modeled in 
+$\mathbb{Z}^+$, $\epsilon=1$ and $\leq$ becomes $<$.
+Given a causal link $\tup{b,f,a}$, constraint six avoids the threat of action $c$, which deletes $f$. It is solved via {\em promotion} or {\em demotion}~\cite{ghallab2004automated}, which means bringing $\tim($\textit{not-}$f,c)$ backward or forward, respectively, in time.
+The seventh constraint avoids action $a$ from being a supporter of $f$ when $\iseff(f,a)$=\textit{false}.
+Constraint eight models the fact that the same action requires and deletes $f$; then the effect cannot happen before the condition. 
+Note the $\geq$ inequality here: if one condition and one effect of the same action happen at the same time, the underlying semantics in planning considers the condition is checked instantly before the effect~\cite{fox2003pddl2}.
+The ninth constraint solves the fact that two arbitrary actions have contradictory effects.
+These nine constraints apply to any type of action, including the dummy actions ($\ini$, $\goal$, $\til$ and $\obs$).
+The tenth constraint, however, only applies to non-dummy actions and forces any action to have at least one condition and one effect.
+We include this constraint to make the learning task more rational, as an action without conditions can be arbitrarily annotated at many times. Alternatively, an action without effects is unnecessary in any plan.
+
+As can be noticed, some conditions of Table~\ref{table:constraints} are redundant. See for instance constraints five and six: $\supp(f,a)=b$ means obligatorily $\iseff(f,b)=$ \textit{true}. 
+%if $\supp(f,a)=b$ then $\iseff(f,b)$=\textit{true} obligatorily. 
+We include them here to define an homogeneous formulation but they are not included in our implementation.
+For simplicity, the value of some unnecessary variables is not bounded in the table. For instance, if $\iscond(f,a)$=\textit{false}, variables $\reqs(f,a)$ and $\reqe(f,a)$ become useless.
+%and their values are indifferent.
+
+
+
+
 
 \subsubsection{Mutex constraints}
 The mutex relationships defined in $C$ for a learning task $\mathcal{L}$ allows us to infer new information in form of dynamic observations that improve the temporal action model.
@@ -326,61 +322,6 @@ Mutex information helps to fill this void by inferring the observation of negate
 
 
 
-% VERSION DE LA TABLA PARA FORMATO DE 2 COLUMNAS: QUEDA MUY DIFICIL DE LEER
-%\begin{table}
-%	\begin{center}
-%		\caption{The CSP constraints and their semantics.}	
-%		%	\setlength\extrarowheight{2pt}    
-%		\begin{scriptsize}
-%			\begin{tabular}{p{3.6cm}p{4.3cm}} %7.9cm
-%				%\begin{tabular}{ll}
-%				\hline
-%				{\bf Constraint}&{\bf Description}\\\hline
-%				
-%				$\en(a)=\start(a)+\dur(a)$ & End time of $a$ \\
-%				
-%				$\en(a) \leq \start(\goal)$ & Always $\goal$ is the last action of the plan \\
-%				
-%				iff $\iscond(f,a)$=\textit{false} then & If $f$ is condition of $a$, $f$ needs a supporter\\
-%				\hspace{0.2cm} $\supp(f,a) \neq \emptyset$ \\
-%				
-%				if $\iscond(f,a)$=\textit{true} then & [$\reqs(f,a)..\reqe(f,a)$] is a \\
-%				\hspace{0.2cm}$\reqs(f,a) \leq \reqe(f,a)$ & valid interval\\
-%				
-%				if $\iseff(f,b)$=\textit{true} AND & Modeling causal links $\tup{b,f,a}$ ($b \neq \emptyset$) \\
-%				\hspace{0.2cm}$\iscond(f,a)$=\textit{true} AND &  \\
-%				\hspace{0.2cm}$\supp(f,a)=b$ then & \\
-%				\hspace{0.4cm}$\tim(f,b) < \reqs(f,a)$ & \\								
-%				
-%				$\forall c \neq a$ that deletes $f$ at time $t$: & Solving threat of $c$ to causal link $\tup{b,f,a}$\\
-%				\hspace{0.2cm}if $\iseff(f,b)$=true AND & by promotion or demotion ($b \neq \emptyset$)\\
-%				\hspace{0.42cm}$\iscond(f,a)$=true AND \\
-%				\hspace{0.42cm}$\iseff($\textit{not-f}$,c)$=true AND \\ 
-%				\hspace{0.42cm}$\supp(f,a)=b$ then \\
-%				\hspace{0.6cm}$t < \tim(f,b)$ OR \\
-%				\hspace{0.6cm}$t > \reqe(f,a)$ \\
-%				
-%				if $\iseff(f,a)$=\textit{false} then & $a$ cannot be a supporter of $f$ for any other\\
-%				\hspace{0.2cm}$\forall b$ that requires $f$: & action $b$ \\
-%				\hspace{0.4cm}$\supp(f,b) \neq a$ \\
-%				
-%				
-%				if $a$ requires and deletes $f$: & When $a$ requires and deletes $f$, the effect \\
-%				\hspace{0.2cm}if $\iscond(f,a)$=true AND & cannot happen before the condition\\ 
-%				\hspace{0.42cm}$\iseff($\textit{not-f}$,a)$=true \\			
-%				\hspace{0.6cm}$\tim($\textit{not-f}$,a) \geq$ \\
-%				\hspace{0.8cm}$\reqe(f,a)$ & \\
-%				
-%				$\forall b,c \mid b$ supports $f$ and & Solving effect interference ($f$ and \textit{not-}$f$):\\
-%				\hspace{0.8cm}$c$ deletes $f$: & they cannot happen at the same time\\
-%				\hspace{0.2cm}if $\iseff(f,b)$=true AND \\
-%				\hspace{0.42cm}$\iseff($\textit{not-f}$,c)$=true then \\
-%				\hspace{0.6cm}$\tim(f,b) \neq \tim($\textit{not-f}$,c)$ &
-%			\end{tabular}
-%		\end{scriptsize}	
-%		\label{table:constraints}
-%	\end{center}	
-%\end{table}
 
 
 
@@ -438,7 +379,9 @@ For a durative action schema $\xi$, the size of its space of possible action mod
 Provided the vocabulary, then the {\em conditions} and {\em effects} of a given durative action schema can be compactly coded by 5 bit-vectors, each of length $|{\mathcal I}_{\xi,\Psi}|$. A 0-bit in the vector represents that the corresponding {\em condition}/{\em effect} is not part of the schema while a 1-bit represents that is part of the schema. This also means that the {\em Hamming distance} can be used straightforward as a sintactic similarity metric for durative schemes. For instance, we can use the {\em Hamming distance} to compare a learned action model with respect to a given reference model that serves as baseline. In this case, the number of wrong 1-bits in the learned schema provide us a measure of the {\em incorrectness} of the learned model (number of {\em conditions} and {\em effects} that should not be in the learned model) and the number of wrong 0-bits in the learned schema provide us a measure of the {\em incompleteness} of that model (number of {\em conditions} and {\em effects} that are missing in the learned model). 
 
 \subsection{The CSP cost functions}
-We want to produce plans that are consist with the input knowledge but that as well provides an {\em explanation} of the observations that is as tight and lean as possible. To prefer this kind of {\em tight} and {\em lean} explanations we define the following two positive functions:
+The previous CSP model provides no motivation for learning preconditions that are not deleteb by an action when explaining the observations. This is a problem when the precondition of actions incldue {\em static predicates} because there are not motivation for learning this kind of preconditions~\cite{gregory2015domain}. In this work we address this issue by producing plans that are consist with the input knowledge but preferring the ones that as well provides an {\em explanation} of the observations that is as {\em tight} as possible.
+
+To prefer this kind of {\em tight} explanations we define the following two positive functions:
 \begin{enumerate}
 \item[$f_1$] {\em Causal-links}. This function counts the number of causal links that are created to support the provided observations.
 \item[$f_2$] {\em Side-effects}. This function counts the number of possitive effects that are added by the actions in a plan but that do not build any causal link.  
