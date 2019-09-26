@@ -208,7 +208,8 @@ Given a one-shot learning task $\mathcal{L}$, as defined in Section~\ref{section
 \begin{center}
 \caption{The CSP variables, their domains and semantics.}
 \begin{scriptsize}
-\begin{tabular}{llll}
+%\begin{tabular}{llll}
+\begin{tabular}{p{0.3cm}p{1.3cm}p{1.5cm}p{3.8cm}}
 \hline	
 {\bf ID} & {\bf Variable} & {\bf Domain} & {\bf Description} \\
 \hline
@@ -216,11 +217,11 @@ X1 &$\start(a)$ & $[0..t_{end}]$ & {\em Start time} of action $a$ \\
 X2 &$\en(a)$ & $[0..t_{end}]$ & {\em End time} of action $a$ \\
 X3 &$\dur(a)$ & $[0..t_{end}]$ & {\em Duration} of action $a$ \\
 
-X4 &$\iscond(f,a)$ & $[0,1]$ & 1 if $f$ is a {\em condition} of $a$; 0 otherwise \\
-X5 &$\iseff(f,a)$ & $[0,1]$ & 1 if $f$ is an {\em effect} of $a$; 0 otherwise \\
+X4 &$\iscond(f,a)$ & $\{0,1\}$ & 1 if $f$ is a {\em condition} of $a$; 0 otherwise \\
+X5 &$\iseff(f,a)$ & $\{0,1\}$ & 1 if $f$ is an {\em effect} of $a$; 0 otherwise \\
 
-X6.1 &$\reqs(f,a)$, & $[0..t_{end}]$ & Interval when action $a$ requires $f$\\ 
-X6.2 &$\reqe(f,a)$  &  & \\
+X6.1 &$\reqs(f,a)$, &  & \\ 
+X6.2 &$\reqe(f,a)$  & $[0..t_{end}]$ & Interval when action $a$ requires $f$ \\
 
 X7 &$\supp(f,a)$ & $\{b\}_{b\in A?} \cup \emptyset $&  Supporters for causal link $\tup{b,f,a}$ \\ 
 X8 &$\tim(f,a)$ & $[0..t_{end}]$ & Time when the effect $f$ of $a$ happens\\
@@ -236,7 +237,7 @@ For each action $a\in A?$ and {\em candidate} $f$ to appear in the conditions/ef
 
 Variables X1 and X2 represent the times when a given action {\em starts} and {\em ends} while variable X3 represents the duration of that action. For simplicity, we model time in $\mathbb{Z}^+$ and bound all maximum times to the {\em makespan} of the observed plan ($t_{end}$ observed in $O$). If the observation of $t_{end}$ is unavailable, we consider a large enough domain for time. The value of these three variables (X1,X2 and X3) can be either observed in $O$ or derived from the expression $\en(a)=\start(a)+\dur(a)$. Variables X4 and X5 are Boolean variables modeling whether $f$ is actually a condition of $a$ and whether $f$ is an effect of $a$. Variables X6.1 and X6.2 model the closed interval throughout condition $f$ must hold, provided that $\iscond(f,a)$=\textit{true}. Variable X7 models {\em causal links} representing that actions $b$ support $f$ that is required by $a$. If $f$ is not a condition of $a$ ($\iscond(f,a)$=\textit{false}) then $\supp(f,a)$=$\emptyset$, thus representing an empty supporter. Last but not least variable X8 models the time-stamp when effect $f$ happens in $a$, provided $\iseff(f,a)$=\textit{true}.
 
-This formulation is able to model $\til$ and {\em observations}. The intuition is that modeling a $\til$ is analogous to modeling the full observation of the initial state (both represent information that is given at a particular time but externally to the execution of the plan). Likewise modeling an observation is analogous to the modeling of the $\goal$ of the planning task, as they both represent conditions that must be satisfied in the execution of the plan at a particular time. On the one hand $\til(f,t)$ are modeled as a {\em dummy} action that starts at time $t$ and has instantaneous duration ($\start(\til(f,t))=t$ and $\dur(\til(f,t))=0$) with no conditions and the single effect $f$ that happens at time $t$ ($\iseff(f,\til(f,t))$=\textit{true} and $\tim(f,\til(f,t))=t$). On the other hand, $\obs(f,t)$ is modeled as another {\em dummy} action that also starts at time $t$ and has instantaneous duration ($\start(\obs(f,t))=t$ and $\dur(\obs(f,t))=0$) but with only one condition $f$, which is the value observed for fact $f$ ($\iscond(f,\obs(f,t))$=\textit{true}, $\supp(f,\obs(f,t))\neq \emptyset$ and $\reqs(f,\obs(f,t))=\reqe(f,\obs(f,t))=t$), and no effects at all. 
+This formulation is able to model $\til$ and {\em observations}. The intuition is that modeling a $\til$ is analogous to modeling the full observation of the initial state (both represent information that is given at a particular time but externally to the execution of the plan). Likewise modeling an observation is analogous to the modeling of the $\goal$ of the planning task, as they both represent conditions that must be satisfied in the execution of the plan at a particular time. On the one hand, $\til(f,t)$ is modeled as a {\em dummy} action that starts at time $t$ and has instantaneous duration ($\start(\til(f,t))=t$ and $\dur(\til(f,t))=0$) with no conditions and the single effect $f$ that happens at time $t$ ($\iseff(f,\til(f,t))$=\textit{true} and $\tim(f,\til(f,t))=t$). On the other hand, $\obs(f,t)$ is modeled as another {\em dummy} action that also starts at time $t$ and has instantaneous duration ($\start(\obs(f,t))=t$ and $\dur(\obs(f,t))=0$) but with only one condition $f$, which is the value observed for fact $f$ ($\iscond(f,\obs(f,t))$=\textit{true}, $\supp(f,\obs(f,t))\neq \emptyset$ and $\reqs(f,\obs(f,t))=\reqe(f,\obs(f,t))=t$), and no effects at all. 
 
 Our variable formulation is accommodating a level of expressiveness beyond PDDL2.1 since it allows conditions/effects to be at any time, even outside the execution of the action. For example, we allow a condition $f$ to hold in $\start(a)\pm$2: $\reqs(f,a)=\start(a)-2$ and $\reqe(f,a)=\start(a)+2$. An effect $f$ might also happen after the action ends e.g., $\tim(f,a)=\en(a)+2$. 
 
@@ -244,7 +245,8 @@ Our variable formulation is accommodating a level of expressiveness beyond PDDL2
 \begin{center}
 \caption{The CSP constraints and a brief description.}	
 \begin{scriptsize}
-\begin{tabular}{lp{10.4cm}p{6.6cm}}
+%\begin{tabular}{lp{10.2cm}p{6.4cm}}
+\begin{tabular}{p{0.1cm}p{10.2cm}p{6.4cm}}
 \hline
 {\bf ID}&{\bf Constraint}&{\bf Description}\\\hline
 			
@@ -257,18 +259,18 @@ C3& \textbf{iff} ($\iscond(f,a)$=\textit{false}) \textbf{then} $\supp(f,a) = \em
 C4& \textbf{if} ($\iscond(f,a)$=\textit{true}) \textbf{then} $\reqs(f,a) \leq \reqe(f,a)$ & [$\reqs(f,a)..\reqe(f,a)$] is a valid interval\\
 
 C5& \textbf{if} ($\iseff(f,b)$=\textit{true}) \textbf{AND} ($\iscond(f,a)$=\textit{true}) \textbf{AND} ($\supp(f,a)=b$))  & Modeling the causal link $\tup{b,f,a}$: supporting $f$ before it is \\
-&\hspace{0.5cm}\textbf{then} $\tim(f,b) < \reqs(f,a)$ & required (obviously $b \neq \emptyset$) \\
+&\hspace{0.2cm}\textbf{then} $\tim(f,b) < \reqs(f,a)$ & required (obviously $b \neq \emptyset$) \\
 
 C6& \textbf{if} ($\iseff(f,b)$=\textit{true}) \textbf{AND} ($\iscond(f,a)$=\textit{true}) \textbf{AND} ($\iseff($\textit{not-f}$,c)$=\textit{true}) \textbf{AND} ($\supp(f,a)=b$) & Solving threat of $c$ to causal link $\tup{b,f,a}$ by promotion or \\
-&\hspace{0.5cm}\textbf{AND} ($c \neq a$) \textbf{then} ($\tim($\textit{not-f}$,c) < \tim(f,b)$) \textbf{OR} ($\tim($\textit{not-f}$,c) > \reqe(f,a)$) & demotion (obviously $b \neq \emptyset$) \\
+&\hspace{0.2cm}\textbf{AND} ($c \neq a$) \textbf{then} ($\tim($\textit{not-f}$,c) < \tim(f,b)$) \textbf{OR} ($\tim($\textit{not-f}$,c) > \reqe(f,a)$) & demotion (obviously $b \neq \emptyset$) \\
 
-C7& \textbf{if} ($\iseff(f,a)$=\textit{false}) \textbf{then} $\forall b$ that requires $f$: $\supp(f,b) \neq a$ & $a$ cannot be a supporter of $f$ for any other action $b$\\
+C7& \textbf{if} ($\iseff(f,a)$=\textit{false}) \textbf{then forall} $b$ that requires $f$: $\supp(f,b) \neq a$ & $a$ cannot be a supporter of $f$ for any other action $b$\\
 
 C8& \textbf{if} ($\iscond(f,a)$=\textit{true}) \textbf{AND} ($\iseff($\textit{not-f}$,a)$=\textit{true}) \textbf{then} $\tim($\textit{not-f}$,a) \geq \reqe(f,a)$ & $a$ requires and deletes $f$: the condition holds before the effect \\ 
 
 C9& \textbf{if} ($\iseff(f,b)$=\textit{true}) \textbf{AND} ($\iseff($\textit{not-f}$,c)$=\textit{true}) \textbf{then} $\tim(f,b) \neq \tim($\textit{not-f}$,c)$ & Solving effect interference at the same time ($f$ and \textit{not-}$f$) \\
 
-C10& $\sum \iscond(f_i,a) \geq 1$ \textbf{AND} $\sum \iseff(f_j,a) \geq 1$ \textbf{forall} condition $f_i$ and effect $f_j$ of $a$ & Every non-dummy action has at least one condition/effect \\
+C10& \textbf{forall} condition $f_i$ and effect $f_j$ of $a$: $\sum \iscond(f_i,a) \geq 1$ \textbf{AND} $\sum \iseff(f_j,a) \geq 1$ & Every non-dummy action has at least one condition/effect \\
 
 \end{tabular}
 \end{scriptsize}	
@@ -288,7 +290,8 @@ Some conditions of Table~\ref{table:constraints} are redundant. For instance C5 
 \begin{center}   
 \caption{Constraints to learn PDDL2.1-compliant action models.}	
 \begin{scriptsize}
-\begin{tabular}{ll}
+%\begin{tabular}{ll}
+\begin{tabular}{p{0.4cm}p{7cm}}
 \hline	
 {\bf ID} &{\bf Constraint} \\ %& {\bf Description} \\
 \hline
@@ -296,11 +299,11 @@ C11.1& ($\reqs(f,a) = \start(a)$) \textbf{OR} ($\reqs(f,a) = \en(a)$) \\% & Cond
 C11.2& ($\reqe(f,a) = \start(a)$) \textbf{OR} ($\reqe(f,a) = \en(a)$) \\% & Conditions at end\\
 C12& ($\tim(f,a) = \start(a)$) \textbf{OR} ($\tim(f,a) = \en(a)$) \\ %& Effects at start or at end\\
 C13.1& $\forall f_i: (\forall a_j: \reqs(f_i,a_j) = \start(a_j))$ \textbf{OR} \\%& Conditions of the schema instantiations\\
-&\hspace{1.1cm}$(\forall a_j: \reqs(f_i,a_j) = \en(a_j))$ \\
+&\hspace{0.65cm}$(\forall a_j: \reqs(f_i,a_j) = \en(a_j))$ \\
 C13.2& $\forall f_i: (\forall a_j: \reqe(f_i,a_j) = \start(a_j))$ \textbf{OR} \\
-&\hspace{1.1cm}$(\forall a_j: \reqe(f_i,a_j) = \en(a_j))$ \\
+&\hspace{0.65cm}$(\forall a_j: \reqe(f_i,a_j) = \en(a_j))$ \\
 C14& $\forall f_i: (\forall a_j: \tim(f_i,a_j) = \start(a_j))$ \textbf{OR} \\%  & Effects of the schema instantiations\\
-&\hspace{0.9cm}$(\forall a_j: \tim(f_i,a_j) = \en(a_j))$ \\
+&\hspace{0.65cm}$(\forall a_j: \tim(f_i,a_j) = \en(a_j))$ \\
 C15& $\forall a_i,a_j$ occurrences of the same action: $\dur(a_i) = \dur(a_j)$ \\ %& Duration of the schema instantiations\\
 C16 &$\sum_{i=1}^{n} \tim(f_i,a) > n \times \start(a)$ 
 
