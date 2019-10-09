@@ -1,7 +1,7 @@
 #! /usr/bin/env python3
 import os, sys, itertools, collections
 import pddl, pddl_parser
-import fdtask_to_pddl
+import fdtask_to_pddl, planning
 
 sys.path.insert(0, '/home/slimbook/research/tmodeling/src/meta-planning/src/')
 from meta_planning.parsers import parse_trajectory, parse_model
@@ -138,12 +138,35 @@ def format_set_of_mutex(set_of_mutex, formated_init):
     for i in range(len(list_of_mutex)):
         str_out = str_out + "constraints:\n"
         str_out = str_out + list_of_mutex[i]
-        str_out = str_out + "\nmutex predicate\n"
+        str_out = str_out + "\nmutex-predicate\n"
         if i==0:
             str_out = str_out + " ".join(list_of_mutex[1:]) + "\n\n"               
         else:
             str_out = str_out + " ".join(list_of_mutex[:i]) + " " + " ".join(list_of_mutex[i+1:]) + "\n\n"
     return str_out
+
+def compute_negated_atoms(predicates,objects,types,str_state,npositive):
+    neg_atoms = ""
+    for p in predicates:
+        if p.name == "=":
+            continue
+        candidate_objects = []
+        for arg in p.arguments:
+            candidate_pos=[]
+            for o in set(objects):
+                aux = [t for t in types if t.name==o.type_name]
+                supernames = [str(t.name) for t in aux] + [str(t) for t in aux[0].supertype_names]
+                if arg.type_name in supernames:
+                    candidate_pos = candidate_pos + [str(o.name)]
+            candidate_objects.append(candidate_pos)
+
+        combinations = list(itertools.product(*candidate_objects))
+        for item in combinations:
+            atom = "(" + p.name + "_" + "_".join(map(str,item)) + ")"
+            if not atom in str_state:
+                npositive = npositive + 1
+                neg_atoms = neg_atoms + " & " + str(npositive) + str(" not-(" + p.name + "_" + "_".join(map(str,item)) + ")")
+    return neg_atoms
 
 
 # **************************************#
@@ -153,9 +176,9 @@ try:
     if "-n" in sys.argv:
         index = sys.argv.index("-n")
         sys.argv.pop(index)
-        bneginit = True
+        bneg = True
     else:
-        bneginit = False
+        bneg = False
 
     if "-e" in sys.argv:
         index = sys.argv.index("-e")
@@ -180,6 +203,7 @@ except:
     print ("Usage:")
     print (sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line, -d actions duration is known] <domain file name> <problem file name> <plan file name> <output file name>")
     sys.exit(-1)
+  
 
 str_out = ""
 
@@ -207,34 +231,24 @@ formattedinit1 = fdtask_to_pddl.format_condition([i for i in fd_task.init if i.p
 formattedinit2 = format_string_literals(formattedinit1.split(") ("),1).replace(")_)",")")
 npositive =  len(formattedinit1.split(") (")) 
 
-atoms = ""
-if bneginit==True: # Completing initial state with negated literals
-    for p in fd_task.predicates:
-        if p.name == "=":
-            continue
-        candidate_objects = []
-        for arg in p.arguments:
-            candidate_pos=[]
-            for o in set(fd_task.objects):
-                aux = [t for t in fd_task.types if t.name==o.type_name]
-                supernames = [str(t.name) for t in aux] + [str(t) for t in aux[0].supertype_names]
-                if arg.type_name in supernames:
-                    candidate_pos = candidate_pos + [str(o.name)]
-            candidate_objects.append(candidate_pos)
-
-        combinations = list(itertools.product(*candidate_objects))
-        for item in combinations:
-            atom = "(" + p.name + "_" + "_".join(map(str,item)) + ")"
-            if not atom in formattedinit2:
-                npositive = npositive + 1
-                atoms = atoms + " & " + str(npositive) + str(" not-(" + p.name + "_" + "_".join(map(str,item)) + ")")            
-    
-str_out = str_out + formattedinit2 + atoms + "\n"
+if bneg==True: # Completing initial state with negated literals
+    neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedinit2,npositive) 
+    str_out = str_out + formattedinit2 + neg_atoms + "\n"
+else:
+    str_out = str_out + formattedinit2 + "\n"       
 str_out = str_out + "\n"
 
+
 str_out = str_out + "goals:\n"
-formattedgoal = fdtask_to_pddl.format_condition(fd_task.goal)
-str_out = str_out + format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1)+ "\n"
+states=planning.VAL_computation_state_trajectory(domain_filename, problem_filename, plan_filename)
+formattedgoal = format_string_literals(str(states[-1]).split(") ("),1)
+
+if bneg==True: # Completing goals with negated literals
+    neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedgoal,npositive) 
+    str_out = str_out + formattedgoal + neg_atoms + "\n"
+
+else:
+    str_out = str_out + formattedgoal + "\n"
 
 
 # Reading plan
