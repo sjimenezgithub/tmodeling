@@ -1,0 +1,27 @@
+0.002: (calibrate rover1 camera1 objective1 waypoint0) [50.000]
+0.002: (sample-rock rover0 rover0store waypoint0) [80.000]
+50.010: (take-image rover1 waypoint0 objective0 camera1 colour) [70.000]
+80.010: (communicate-rock-data rover0 general waypoint0 waypoint0 waypoint3) [100.000]
+80.010: (drop rover0 rover0store) [10.000]
+180.020: (navigate rover0 waypoint0 waypoint1) [50.000]
+230.030: (calibrate rover0 camera2 objective1 waypoint1) [50.000]
+230.030: (sample-rock rover0 rover0store waypoint1) [80.000]
+280.040: (take-image rover0 waypoint1 objective0 camera2 high_res) [70.000]
+310.040: (communicate-rock-data rover0 general waypoint1 waypoint1 waypoint3) [100.000]
+410.050: (communicate-image-data rover1 general objective0 colour waypoint0 waypoint3) [150.000]
+560.060: (navigate rover1 waypoint0 waypoint1) [50.000]
+560.060: (communicate-image-data rover0 general objective0 high_res waypoint1 waypoint3) [150.000]
+610.070: (sample-soil rover1 rover1store waypoint1) [100.000]
+710.080: (navigate rover1 waypoint1 waypoint2) [50.000]
+710.080: (drop rover1 rover1store) [10.000]
+760.090: (sample-soil rover1 rover1store waypoint2) [100.000]
+760.090: (calibrate rover1 camera0 objective1 waypoint2) [50.000]
+760.090: (communicate-soil-data rover1 general waypoint1 waypoint2 waypoint3) [100.000]
+810.100: (take-image rover1 waypoint2 objective2 camera0 high_res) [70.000]
+860.100: (communicate-soil-data rover1 general waypoint2 waypoint2 waypoint3) [100.000]
+960.110: (communicate-image-data rover1 general objective2 high_res waypoint2 waypoint3) [150.000]
+;Makespan: 1110
+;Actions:  22
+;Planning time: 6.073
+;Total time: 6.076
+;8382 expanded nodes
