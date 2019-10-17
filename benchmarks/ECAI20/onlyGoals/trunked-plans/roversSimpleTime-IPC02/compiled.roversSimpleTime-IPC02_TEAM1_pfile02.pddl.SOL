@@ -1,0 +1,168 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/ECAI20/domains/roversSimpleTime-IPC02/domain-empty-constraints.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/ECAI20/domains//roversSimpleTime-IPC02/pfile02.pddl
+
+init:
+1 (can_traverse_rover0_waypoint2_waypoint0) & 2 (available_rover0) & 3 (calibration_target_camera0_objective0) & 4 (visible_waypoint1_waypoint3) & 5 (visible_waypoint3_waypoint2) & 6 (can_traverse_rover0_waypoint0_waypoint1) & 7 (supports_camera1_high_res) & 8 (visible_from_objective1_waypoint1) & 9 (at_rover0_waypoint0) & 10 (supports_camera0_colour) & 11 (supports_camera0_low_res) & 12 (at_soil_sample_waypoint0) & 13 (supports_camera0_high_res) & 14 (on_board_camera0_rover0) & 15 (visible_waypoint3_waypoint0) & 16 (visible_waypoint1_waypoint2) & 17 (visible_waypoint2_waypoint3) & 18 (equipped_for_imaging_rover0) & 19 (visible_from_objective0_waypoint0) & 20 (visible_waypoint0_waypoint1) & 21 (can_traverse_rover0_waypoint0_waypoint3) & 22 (calibration_target_camera1_objective1) & 23 (visible_from_objective1_waypoint0) & 24 (visible_waypoint0_waypoint2) & 25 (empty_rover0store) & 26 (on_board_camera1_rover0) & 27 (at_rock_sample_waypoint0) & 28 (equipped_for_soil_analysis_rover0) & 29 (can_traverse_rover0_waypoint0_waypoint2) & 30 (can_traverse_rover0_waypoint1_waypoint0) & 31 (visible_waypoint1_waypoint0) & 32 (visible_waypoint2_waypoint0) & 33 (visible_waypoint2_waypoint1) & 34 (store_of_rover0store_rover0) & 35 (visible_from_objective1_waypoint2) & 36 (channel_free_general) & 37 (can_traverse_rover0_waypoint3_waypoint0) & 38 (visible_waypoint0_waypoint3) & 39 (equipped_for_rock_analysis_rover0) & 40 (visible_waypoint3_waypoint1) & 41 (at_lander_general_waypoint1) & 42 not-(at_rover0_waypoint2) & 43 not-(at_rover0_waypoint3) & 44 not-(at_rover0_waypoint1) & 45 not-(at_lander_general_waypoint2) & 46 not-(at_lander_general_waypoint3) & 47 not-(at_lander_general_waypoint0) & 48 not-(can_traverse_rover0_waypoint2_waypoint2) & 49 not-(can_traverse_rover0_waypoint2_waypoint3) & 50 not-(can_traverse_rover0_waypoint2_waypoint1) & 51 not-(can_traverse_rover0_waypoint3_waypoint2) & 52 not-(can_traverse_rover0_waypoint3_waypoint3) & 53 not-(can_traverse_rover0_waypoint3_waypoint1) & 54 not-(can_traverse_rover0_waypoint1_waypoint2) & 55 not-(can_traverse_rover0_waypoint1_waypoint3) & 56 not-(can_traverse_rover0_waypoint1_waypoint1) & 57 not-(can_traverse_rover0_waypoint0_waypoint0) & 58 not-(have_rock_analysis_rover0_waypoint2) & 59 not-(have_rock_analysis_rover0_waypoint3) & 60 not-(have_rock_analysis_rover0_waypoint1) & 61 not-(have_rock_analysis_rover0_waypoint0) & 62 not-(have_soil_analysis_rover0_waypoint2) & 63 not-(have_soil_analysis_rover0_waypoint3) & 64 not-(have_soil_analysis_rover0_waypoint1) & 65 not-(have_soil_analysis_rover0_waypoint0) & 66 not-(full_rover0store) & 67 not-(calibrated_camera1_rover0) & 68 not-(calibrated_camera0_rover0) & 69 not-(supports_camera1_low_res) & 70 not-(supports_camera1_colour) & 71 not-(visible_waypoint2_waypoint2) & 72 not-(visible_waypoint3_waypoint3) & 73 not-(visible_waypoint1_waypoint1) & 74 not-(visible_waypoint0_waypoint0) & 75 not-(have_image_rover0_objective0_low_res) & 76 not-(have_image_rover0_objective0_high_res) & 77 not-(have_image_rover0_objective0_colour) & 78 not-(have_image_rover0_objective1_low_res) & 79 not-(have_image_rover0_objective1_high_res) & 80 not-(have_image_rover0_objective1_colour) & 81 not-(communicated_soil_data_waypoint2) & 82 not-(communicated_soil_data_waypoint3) & 83 not-(communicated_soil_data_waypoint1) & 84 not-(communicated_soil_data_waypoint0) & 85 not-(communicated_rock_data_waypoint2) & 86 not-(communicated_rock_data_waypoint3) & 87 not-(communicated_rock_data_waypoint1) & 88 not-(communicated_rock_data_waypoint0) & 89 not-(communicated_image_data_objective0_low_res) & 90 not-(communicated_image_data_objective0_high_res) & 91 not-(communicated_image_data_objective0_colour) & 92 not-(communicated_image_data_objective1_low_res) & 93 not-(communicated_image_data_objective1_high_res) & 94 not-(communicated_image_data_objective1_colour) & 95 not-(at_soil_sample_waypoint2) & 96 not-(at_soil_sample_waypoint3) & 97 not-(at_soil_sample_waypoint1) & 98 not-(at_rock_sample_waypoint2) & 99 not-(at_rock_sample_waypoint3) & 100 not-(at_rock_sample_waypoint1) & 101 not-(visible_from_objective0_waypoint2) & 102 not-(visible_from_objective0_waypoint3) & 103 not-(visible_from_objective0_waypoint1) & 104 not-(visible_from_objective1_waypoint3) & 105 not-(calibration_target_camera1_objective0) & 106 not-(calibration_target_camera0_objective1)
+
+goals:
+1 (communicated_soil_data_waypoint0) & 2 (communicated_rock_data_waypoint0) & 3 (communicated_image_data_objective1_low_res)
+makespan:
+478
+
+action:
+(calibrate_rover0_camera0_objective0_waypoint0)
+operator:
+calibrate
+start_time:
+1
+durations:
+50
+precs:
+1 (at_soil_sample_waypoint0) & 2 (equipped_for_soil_analysis_rover0) & 3 (have_rock_analysis_rover0_waypoint0) & 4 (communicated_rock_data_waypoint0) & 5 (equipped_for_rock_analysis_rover0) & 6 (equipped_for_imaging_rover0) & 7 (communicated_soil_data_waypoint0) & 8 (available_rover0) & 9 (at_rock_sample_waypoint0) & 10 (visible_from_objective0_waypoint0) & 11 (visible_waypoint0_waypoint0) & 12 (calibration_target_camera0_objective0) & 13 (on_board_camera0_rover0) & 14 (calibrated_camera0_rover0) & 15 (at_rover0_waypoint0) & 16 (can_traverse_rover0_waypoint0_waypoint0) & 17 (have_soil_analysis_rover0_waypoint0)
+effs:
+18 (at_soil_sample_waypoint0) & 19 not-(at_soil_sample_waypoint0) & 20 (equipped_for_soil_analysis_rover0) & 21 not-(equipped_for_soil_analysis_rover0) & 22 (have_rock_analysis_rover0_waypoint0) & 23 not-(have_rock_analysis_rover0_waypoint0) & 24 (communicated_rock_data_waypoint0) & 25 not-(communicated_rock_data_waypoint0) & 26 (equipped_for_rock_analysis_rover0) & 27 not-(equipped_for_rock_analysis_rover0) & 28 (equipped_for_imaging_rover0) & 29 not-(equipped_for_imaging_rover0) & 30 (communicated_soil_data_waypoint0) & 31 not-(communicated_soil_data_waypoint0) & 32 (available_rover0) & 33 not-(available_rover0) & 34 (at_rock_sample_waypoint0) & 35 not-(at_rock_sample_waypoint0) & 36 (visible_from_objective0_waypoint0) & 37 not-(visible_from_objective0_waypoint0) & 38 (visible_waypoint0_waypoint0) & 39 not-(visible_waypoint0_waypoint0) & 40 (calibration_target_camera0_objective0) & 41 not-(calibration_target_camera0_objective0) & 42 (on_board_camera0_rover0) & 43 not-(on_board_camera0_rover0) & 44 (calibrated_camera0_rover0) & 45 not-(calibrated_camera0_rover0) & 46 (at_rover0_waypoint0) & 47 not-(at_rover0_waypoint0) & 48 (can_traverse_rover0_waypoint0_waypoint0) & 49 not-(can_traverse_rover0_waypoint0_waypoint0) & 50 (have_soil_analysis_rover0_waypoint0) & 51 not-(have_soil_analysis_rover0_waypoint0)
+
+action:
+(sample-rock_rover0_rover0store_waypoint0)
+operator:
+sample-rock
+start_time:
+1
+durations:
+80
+precs:
+1 (communicated_rock_data_waypoint0) & 2 (at_rover0_waypoint0) & 3 (equipped_for_soil_analysis_rover0) & 4 (empty_rover0store) & 5 (at_rock_sample_waypoint0) & 6 (can_traverse_rover0_waypoint0_waypoint0) & 7 (store_of_rover0store_rover0) & 8 (have_soil_analysis_rover0_waypoint0) & 9 (equipped_for_rock_analysis_rover0) & 10 (equipped_for_imaging_rover0) & 11 (available_rover0) & 12 (full_rover0store) & 13 (at_soil_sample_waypoint0) & 14 (visible_waypoint0_waypoint0) & 15 (communicated_soil_data_waypoint0) & 16 (have_rock_analysis_rover0_waypoint0)
+effs:
+17 (communicated_rock_data_waypoint0) & 18 not-(communicated_rock_data_waypoint0) & 19 (at_rover0_waypoint0) & 20 not-(at_rover0_waypoint0) & 21 (equipped_for_soil_analysis_rover0) & 22 not-(equipped_for_soil_analysis_rover0) & 23 (empty_rover0store) & 24 not-(empty_rover0store) & 25 (at_rock_sample_waypoint0) & 26 not-(at_rock_sample_waypoint0) & 27 (can_traverse_rover0_waypoint0_waypoint0) & 28 not-(can_traverse_rover0_waypoint0_waypoint0) & 29 (store_of_rover0store_rover0) & 30 not-(store_of_rover0store_rover0) & 31 (have_soil_analysis_rover0_waypoint0) & 32 not-(have_soil_analysis_rover0_waypoint0) & 33 (equipped_for_rock_analysis_rover0) & 34 not-(equipped_for_rock_analysis_rover0) & 35 (equipped_for_imaging_rover0) & 36 not-(equipped_for_imaging_rover0) & 37 (available_rover0) & 38 not-(available_rover0) & 39 (full_rover0store) & 40 not-(full_rover0store) & 41 (at_soil_sample_waypoint0) & 42 not-(at_soil_sample_waypoint0) & 43 (visible_waypoint0_waypoint0) & 44 not-(visible_waypoint0_waypoint0) & 45 (communicated_soil_data_waypoint0) & 46 not-(communicated_soil_data_waypoint0) & 47 (have_rock_analysis_rover0_waypoint0) & 48 not-(have_rock_analysis_rover0_waypoint0)
+
+action:
+(take-image_rover0_waypoint0_objective1_camera0_low_res)
+operator:
+take-image
+start_time:
+52
+durations:
+70
+precs:
+1 (communicated_rock_data_waypoint0) & 2 (equipped_for_soil_analysis_rover0) & 3 (visible_waypoint0_waypoint0) & 4 (on_board_camera0_rover0) & 5 (visible_from_objective1_waypoint0) & 6 (calibration_target_camera0_objective1) & 7 (equipped_for_rock_analysis_rover0) & 8 (can_traverse_rover0_waypoint0_waypoint0) & 9 (equipped_for_imaging_rover0) & 10 (calibrated_camera0_rover0) & 11 (available_rover0) & 12 (have_image_rover0_objective1_low_res) & 13 (at_rock_sample_waypoint0) & 14 (have_rock_analysis_rover0_waypoint0) & 15 (have_soil_analysis_rover0_waypoint0) & 16 (communicated_soil_data_waypoint0) & 17 (supports_camera0_low_res) & 18 (at_rover0_waypoint0) & 19 (at_soil_sample_waypoint0) & 20 (communicated_image_data_objective1_low_res)
+effs:
+21 (communicated_rock_data_waypoint0) & 22 not-(communicated_rock_data_waypoint0) & 23 (equipped_for_soil_analysis_rover0) & 24 not-(equipped_for_soil_analysis_rover0) & 25 (visible_waypoint0_waypoint0) & 26 not-(visible_waypoint0_waypoint0) & 27 (on_board_camera0_rover0) & 28 not-(on_board_camera0_rover0) & 29 (visible_from_objective1_waypoint0) & 30 not-(visible_from_objective1_waypoint0) & 31 (calibration_target_camera0_objective1) & 32 not-(calibration_target_camera0_objective1) & 33 (equipped_for_rock_analysis_rover0) & 34 not-(equipped_for_rock_analysis_rover0) & 35 (can_traverse_rover0_waypoint0_waypoint0) & 36 not-(can_traverse_rover0_waypoint0_waypoint0) & 37 (equipped_for_imaging_rover0) & 38 not-(equipped_for_imaging_rover0) & 39 (calibrated_camera0_rover0) & 40 not-(calibrated_camera0_rover0) & 41 (available_rover0) & 42 not-(available_rover0) & 43 (have_image_rover0_objective1_low_res) & 44 not-(have_image_rover0_objective1_low_res) & 45 (at_rock_sample_waypoint0) & 46 not-(at_rock_sample_waypoint0) & 47 (have_rock_analysis_rover0_waypoint0) & 48 not-(have_rock_analysis_rover0_waypoint0) & 49 (have_soil_analysis_rover0_waypoint0) & 50 not-(have_soil_analysis_rover0_waypoint0) & 51 (communicated_soil_data_waypoint0) & 52 not-(communicated_soil_data_waypoint0) & 53 (supports_camera0_low_res) & 54 not-(supports_camera0_low_res) & 55 (at_rover0_waypoint0) & 56 not-(at_rover0_waypoint0) & 57 (at_soil_sample_waypoint0) & 58 not-(at_soil_sample_waypoint0) & 59 (communicated_image_data_objective1_low_res) & 60 not-(communicated_image_data_objective1_low_res)
+
+action:
+(drop_rover0_rover0store)
+operator:
+drop
+start_time:
+83
+durations:
+10
+precs:
+1 (store_of_rover0store_rover0) & 2 (equipped_for_soil_analysis_rover0) & 3 (empty_rover0store) & 4 (equipped_for_rock_analysis_rover0) & 5 (equipped_for_imaging_rover0) & 6 (available_rover0) & 7 (full_rover0store)
+effs:
+8 (store_of_rover0store_rover0) & 9 not-(store_of_rover0store_rover0) & 10 (equipped_for_soil_analysis_rover0) & 11 not-(equipped_for_soil_analysis_rover0) & 12 (empty_rover0store) & 13 not-(empty_rover0store) & 14 (equipped_for_rock_analysis_rover0) & 15 not-(equipped_for_rock_analysis_rover0) & 16 (equipped_for_imaging_rover0) & 17 not-(equipped_for_imaging_rover0) & 18 (available_rover0) & 19 not-(available_rover0) & 20 (full_rover0store) & 21 not-(full_rover0store)
+
+action:
+(sample-soil_rover0_rover0store_waypoint0)
+operator:
+sample-soil
+start_time:
+94
+durations:
+100
+precs:
+1 (communicated_rock_data_waypoint0) & 2 (at_rover0_waypoint0) & 3 (equipped_for_soil_analysis_rover0) & 4 (empty_rover0store) & 5 (at_rock_sample_waypoint0) & 6 (can_traverse_rover0_waypoint0_waypoint0) & 7 (store_of_rover0store_rover0) & 8 (have_soil_analysis_rover0_waypoint0) & 9 (equipped_for_rock_analysis_rover0) & 10 (equipped_for_imaging_rover0) & 11 (available_rover0) & 12 (full_rover0store) & 13 (at_soil_sample_waypoint0) & 14 (visible_waypoint0_waypoint0) & 15 (communicated_soil_data_waypoint0) & 16 (have_rock_analysis_rover0_waypoint0)
+effs:
+17 (communicated_rock_data_waypoint0) & 18 not-(communicated_rock_data_waypoint0) & 19 (at_rover0_waypoint0) & 20 not-(at_rover0_waypoint0) & 21 (equipped_for_soil_analysis_rover0) & 22 not-(equipped_for_soil_analysis_rover0) & 23 (empty_rover0store) & 24 not-(empty_rover0store) & 25 (at_rock_sample_waypoint0) & 26 not-(at_rock_sample_waypoint0) & 27 (can_traverse_rover0_waypoint0_waypoint0) & 28 not-(can_traverse_rover0_waypoint0_waypoint0) & 29 (store_of_rover0store_rover0) & 30 not-(store_of_rover0store_rover0) & 31 (have_soil_analysis_rover0_waypoint0) & 32 not-(have_soil_analysis_rover0_waypoint0) & 33 (equipped_for_rock_analysis_rover0) & 34 not-(equipped_for_rock_analysis_rover0) & 35 (equipped_for_imaging_rover0) & 36 not-(equipped_for_imaging_rover0) & 37 (available_rover0) & 38 not-(available_rover0) & 39 (full_rover0store) & 40 not-(full_rover0store) & 41 (at_soil_sample_waypoint0) & 42 not-(at_soil_sample_waypoint0) & 43 (visible_waypoint0_waypoint0) & 44 not-(visible_waypoint0_waypoint0) & 45 (communicated_soil_data_waypoint0) & 46 not-(communicated_soil_data_waypoint0) & 47 (have_rock_analysis_rover0_waypoint0) & 48 not-(have_rock_analysis_rover0_waypoint0)
+
+action:
+(communicate-image-data_rover0_general_objective1_low_res_waypoint0_waypoint1)
+operator:
+communicate-image-data
+start_time:
+125
+durations:
+150
+precs:
+1 (communicated_image_data_objective1_low_res) & 2 (at_soil_sample_waypoint1) & 3 (can_traverse_rover0_waypoint0_waypoint0) & 4 (at_rock_sample_waypoint1) & 5 (at_rover0_waypoint1) & 6 (at_lander_general_waypoint0) & 7 (at_rock_sample_waypoint0) & 8 (visible_waypoint0_waypoint1) & 9 (visible_waypoint1_waypoint0) & 10 (equipped_for_soil_analysis_rover0) & 11 (at_lander_general_waypoint1) & 12 (equipped_for_imaging_rover0) & 13 (have_soil_analysis_rover0_waypoint1) & 14 (available_rover0) & 15 (communicated_rock_data_waypoint1) & 16 (visible_from_objective1_waypoint1) & 17 (can_traverse_rover0_waypoint0_waypoint1) & 18 (have_image_rover0_objective1_low_res) & 19 (at_rover0_waypoint0) & 20 (can_traverse_rover0_waypoint1_waypoint0) & 21 (communicated_rock_data_waypoint0) & 22 (have_rock_analysis_rover0_waypoint1) & 23 (have_soil_analysis_rover0_waypoint0) & 24 (visible_waypoint0_waypoint0) & 25 (visible_waypoint1_waypoint1) & 26 (communicated_soil_data_waypoint1) & 27 (communicated_soil_data_waypoint0) & 28 (at_soil_sample_waypoint0) & 29 (have_rock_analysis_rover0_waypoint0) & 30 (equipped_for_rock_analysis_rover0) & 31 (channel_free_general) & 32 (can_traverse_rover0_waypoint1_waypoint1) & 33 (visible_from_objective1_waypoint0)
+effs:
+34 (communicated_image_data_objective1_low_res) & 35 not-(communicated_image_data_objective1_low_res) & 36 (at_soil_sample_waypoint1) & 37 not-(at_soil_sample_waypoint1) & 38 (can_traverse_rover0_waypoint0_waypoint0) & 39 not-(can_traverse_rover0_waypoint0_waypoint0) & 40 (at_rock_sample_waypoint1) & 41 not-(at_rock_sample_waypoint1) & 42 (at_rover0_waypoint1) & 43 not-(at_rover0_waypoint1) & 44 (at_lander_general_waypoint0) & 45 not-(at_lander_general_waypoint0) & 46 (at_rock_sample_waypoint0) & 47 not-(at_rock_sample_waypoint0) & 48 (visible_waypoint0_waypoint1) & 49 not-(visible_waypoint0_waypoint1) & 50 (visible_waypoint1_waypoint0) & 51 not-(visible_waypoint1_waypoint0) & 52 (equipped_for_soil_analysis_rover0) & 53 not-(equipped_for_soil_analysis_rover0) & 54 (at_lander_general_waypoint1) & 55 not-(at_lander_general_waypoint1) & 56 (equipped_for_imaging_rover0) & 57 not-(equipped_for_imaging_rover0) & 58 (have_soil_analysis_rover0_waypoint1) & 59 not-(have_soil_analysis_rover0_waypoint1) & 60 (available_rover0) & 61 not-(available_rover0) & 62 (communicated_rock_data_waypoint1) & 63 not-(communicated_rock_data_waypoint1) & 64 (visible_from_objective1_waypoint1) & 65 not-(visible_from_objective1_waypoint1) & 66 (can_traverse_rover0_waypoint0_waypoint1) & 67 not-(can_traverse_rover0_waypoint0_waypoint1) & 68 (have_image_rover0_objective1_low_res) & 69 not-(have_image_rover0_objective1_low_res) & 70 (at_rover0_waypoint0) & 71 not-(at_rover0_waypoint0) & 72 (can_traverse_rover0_waypoint1_waypoint0) & 73 not-(can_traverse_rover0_waypoint1_waypoint0) & 74 (communicated_rock_data_waypoint0) & 75 not-(communicated_rock_data_waypoint0) & 76 (have_rock_analysis_rover0_waypoint1) & 77 not-(have_rock_analysis_rover0_waypoint1) & 78 (have_soil_analysis_rover0_waypoint0) & 79 not-(have_soil_analysis_rover0_waypoint0) & 80 (visible_waypoint0_waypoint0) & 81 not-(visible_waypoint0_waypoint0) & 82 (visible_waypoint1_waypoint1) & 83 not-(visible_waypoint1_waypoint1) & 84 (communicated_soil_data_waypoint1) & 85 not-(communicated_soil_data_waypoint1) & 86 (communicated_soil_data_waypoint0) & 87 not-(communicated_soil_data_waypoint0) & 88 (at_soil_sample_waypoint0) & 89 not-(at_soil_sample_waypoint0) & 90 (have_rock_analysis_rover0_waypoint0) & 91 not-(have_rock_analysis_rover0_waypoint0) & 92 (equipped_for_rock_analysis_rover0) & 93 not-(equipped_for_rock_analysis_rover0) & 94 (channel_free_general) & 95 not-(channel_free_general) & 96 (can_traverse_rover0_waypoint1_waypoint1) & 97 not-(can_traverse_rover0_waypoint1_waypoint1) & 98 (visible_from_objective1_waypoint0) & 99 not-(visible_from_objective1_waypoint0)
+
+action:
+(communicate-rock-data_rover0_general_waypoint0_waypoint0_waypoint1)
+operator:
+communicate-rock-data
+start_time:
+276
+durations:
+100
+precs:
+1 (at_soil_sample_waypoint0) & 2 (at_rock_sample_waypoint0) & 3 (communicated_rock_data_waypoint0) & 4 (visible_waypoint1_waypoint0) & 5 (can_traverse_rover0_waypoint1_waypoint1) & 6 (visible_waypoint0_waypoint0) & 7 (at_rover0_waypoint0) & 8 (at_lander_general_waypoint1) & 9 (visible_waypoint0_waypoint1) & 10 (at_rock_sample_waypoint1) & 11 (can_traverse_rover0_waypoint0_waypoint1) & 12 (at_rover0_waypoint0) & 13 (equipped_for_soil_analysis_rover0) & 14 (at_lander_general_waypoint0) & 15 (can_traverse_rover0_waypoint0_waypoint0) & 16 (have_rock_analysis_rover0_waypoint0) & 17 (equipped_for_imaging_rover0) & 18 (can_traverse_rover0_waypoint0_waypoint1) & 19 (available_rover0) & 20 (can_traverse_rover0_waypoint1_waypoint0) & 21 (at_rover0_waypoint1) & 22 (have_rock_analysis_rover0_waypoint0) & 23 (can_traverse_rover0_waypoint1_waypoint0) & 24 (communicated_rock_data_waypoint1) & 25 (communicated_rock_data_waypoint0) & 26 (visible_waypoint0_waypoint0) & 27 (can_traverse_rover0_waypoint0_waypoint0) & 28 (visible_waypoint0_waypoint0) & 29 (have_soil_analysis_rover0_waypoint1) & 30 (communicated_soil_data_waypoint0) & 31 (at_rock_sample_waypoint0) & 32 (visible_waypoint1_waypoint1) & 33 (at_soil_sample_waypoint0) & 34 (visible_waypoint0_waypoint0) & 35 (visible_waypoint0_waypoint1) & 36 (can_traverse_rover0_waypoint0_waypoint0) & 37 (communicated_soil_data_waypoint1) & 38 (at_soil_sample_waypoint1) & 39 (have_soil_analysis_rover0_waypoint0) & 40 (have_rock_analysis_rover0_waypoint1) & 41 (equipped_for_rock_analysis_rover0) & 42 (can_traverse_rover0_waypoint0_waypoint0) & 43 (channel_free_general) & 44 (visible_waypoint1_waypoint0) & 45 (communicated_soil_data_waypoint0) & 46 (have_soil_analysis_rover0_waypoint0) & 47 (at_lander_general_waypoint0)
+effs:
+48 (at_soil_sample_waypoint0) & 49 not-(at_soil_sample_waypoint0) & 50 (at_rock_sample_waypoint0) & 51 not-(at_rock_sample_waypoint0) & 52 (communicated_rock_data_waypoint0) & 53 not-(communicated_rock_data_waypoint0) & 54 (visible_waypoint1_waypoint0) & 55 not-(visible_waypoint1_waypoint0) & 56 (can_traverse_rover0_waypoint1_waypoint1) & 57 not-(can_traverse_rover0_waypoint1_waypoint1) & 58 (visible_waypoint0_waypoint0) & 59 not-(visible_waypoint0_waypoint0) & 60 (at_rover0_waypoint0) & 61 not-(at_rover0_waypoint0) & 62 (at_lander_general_waypoint1) & 63 not-(at_lander_general_waypoint1) & 64 (visible_waypoint0_waypoint1) & 65 not-(visible_waypoint0_waypoint1) & 66 (at_rock_sample_waypoint1) & 67 not-(at_rock_sample_waypoint1) & 68 (can_traverse_rover0_waypoint0_waypoint1) & 69 not-(can_traverse_rover0_waypoint0_waypoint1) & 70 (at_rover0_waypoint0) & 71 not-(at_rover0_waypoint0) & 72 (equipped_for_soil_analysis_rover0) & 73 not-(equipped_for_soil_analysis_rover0) & 74 (at_lander_general_waypoint0) & 75 not-(at_lander_general_waypoint0) & 76 (can_traverse_rover0_waypoint0_waypoint0) & 77 not-(can_traverse_rover0_waypoint0_waypoint0) & 78 (have_rock_analysis_rover0_waypoint0) & 79 not-(have_rock_analysis_rover0_waypoint0) & 80 (equipped_for_imaging_rover0) & 81 not-(equipped_for_imaging_rover0) & 82 (can_traverse_rover0_waypoint0_waypoint1) & 83 not-(can_traverse_rover0_waypoint0_waypoint1) & 84 (available_rover0) & 85 not-(available_rover0) & 86 (can_traverse_rover0_waypoint1_waypoint0) & 87 not-(can_traverse_rover0_waypoint1_waypoint0) & 88 (at_rover0_waypoint1) & 89 not-(at_rover0_waypoint1) & 90 (have_rock_analysis_rover0_waypoint0) & 91 not-(have_rock_analysis_rover0_waypoint0) & 92 (can_traverse_rover0_waypoint1_waypoint0) & 93 not-(can_traverse_rover0_waypoint1_waypoint0) & 94 (communicated_rock_data_waypoint1) & 95 not-(communicated_rock_data_waypoint1) & 96 (communicated_rock_data_waypoint0) & 97 not-(communicated_rock_data_waypoint0) & 98 (visible_waypoint0_waypoint0) & 99 not-(visible_waypoint0_waypoint0) & 100 (can_traverse_rover0_waypoint0_waypoint0) & 101 not-(can_traverse_rover0_waypoint0_waypoint0) & 102 (visible_waypoint0_waypoint0) & 103 not-(visible_waypoint0_waypoint0) & 104 (have_soil_analysis_rover0_waypoint1) & 105 not-(have_soil_analysis_rover0_waypoint1) & 106 (communicated_soil_data_waypoint0) & 107 not-(communicated_soil_data_waypoint0) & 108 (at_rock_sample_waypoint0) & 109 not-(at_rock_sample_waypoint0) & 110 (visible_waypoint1_waypoint1) & 111 not-(visible_waypoint1_waypoint1) & 112 (at_soil_sample_waypoint0) & 113 not-(at_soil_sample_waypoint0) & 114 (visible_waypoint0_waypoint0) & 115 not-(visible_waypoint0_waypoint0) & 116 (visible_waypoint0_waypoint1) & 117 not-(visible_waypoint0_waypoint1) & 118 (can_traverse_rover0_waypoint0_waypoint0) & 119 not-(can_traverse_rover0_waypoint0_waypoint0) & 120 (communicated_soil_data_waypoint1) & 121 not-(communicated_soil_data_waypoint1) & 122 (at_soil_sample_waypoint1) & 123 not-(at_soil_sample_waypoint1) & 124 (have_soil_analysis_rover0_waypoint0) & 125 not-(have_soil_analysis_rover0_waypoint0) & 126 (have_rock_analysis_rover0_waypoint1) & 127 not-(have_rock_analysis_rover0_waypoint1) & 128 (equipped_for_rock_analysis_rover0) & 129 not-(equipped_for_rock_analysis_rover0) & 130 (can_traverse_rover0_waypoint0_waypoint0) & 131 not-(can_traverse_rover0_waypoint0_waypoint0) & 132 (channel_free_general) & 133 not-(channel_free_general) & 134 (visible_waypoint1_waypoint0) & 135 not-(visible_waypoint1_waypoint0) & 136 (communicated_soil_data_waypoint0) & 137 not-(communicated_soil_data_waypoint0) & 138 (have_soil_analysis_rover0_waypoint0) & 139 not-(have_soil_analysis_rover0_waypoint0) & 140 (at_lander_general_waypoint0) & 141 not-(at_lander_general_waypoint0)
+
+action:
+(communicate-soil-data_rover0_general_waypoint0_waypoint0_waypoint1)
+operator:
+communicate-soil-data
+start_time:
+377
+durations:
+100
+precs:
+1 (at_soil_sample_waypoint0) & 2 (at_rock_sample_waypoint0) & 3 (communicated_rock_data_waypoint0) & 4 (visible_waypoint1_waypoint0) & 5 (can_traverse_rover0_waypoint1_waypoint1) & 6 (visible_waypoint0_waypoint0) & 7 (at_rover0_waypoint0) & 8 (at_lander_general_waypoint1) & 9 (visible_waypoint0_waypoint1) & 10 (at_rock_sample_waypoint1) & 11 (can_traverse_rover0_waypoint0_waypoint1) & 12 (at_rover0_waypoint0) & 13 (equipped_for_soil_analysis_rover0) & 14 (at_lander_general_waypoint0) & 15 (can_traverse_rover0_waypoint0_waypoint0) & 16 (have_rock_analysis_rover0_waypoint0) & 17 (equipped_for_imaging_rover0) & 18 (can_traverse_rover0_waypoint0_waypoint1) & 19 (available_rover0) & 20 (can_traverse_rover0_waypoint1_waypoint0) & 21 (at_rover0_waypoint1) & 22 (have_rock_analysis_rover0_waypoint0) & 23 (can_traverse_rover0_waypoint1_waypoint0) & 24 (communicated_rock_data_waypoint1) & 25 (communicated_rock_data_waypoint0) & 26 (visible_waypoint0_waypoint0) & 27 (can_traverse_rover0_waypoint0_waypoint0) & 28 (visible_waypoint0_waypoint0) & 29 (have_soil_analysis_rover0_waypoint1) & 30 (communicated_soil_data_waypoint0) & 31 (at_rock_sample_waypoint0) & 32 (visible_waypoint1_waypoint1) & 33 (at_soil_sample_waypoint0) & 34 (visible_waypoint0_waypoint0) & 35 (visible_waypoint0_waypoint1) & 36 (can_traverse_rover0_waypoint0_waypoint0) & 37 (communicated_soil_data_waypoint1) & 38 (at_soil_sample_waypoint1) & 39 (have_soil_analysis_rover0_waypoint0) & 40 (have_rock_analysis_rover0_waypoint1) & 41 (equipped_for_rock_analysis_rover0) & 42 (can_traverse_rover0_waypoint0_waypoint0) & 43 (channel_free_general) & 44 (visible_waypoint1_waypoint0) & 45 (communicated_soil_data_waypoint0) & 46 (have_soil_analysis_rover0_waypoint0) & 47 (at_lander_general_waypoint0)
+effs:
+48 (at_soil_sample_waypoint0) & 49 not-(at_soil_sample_waypoint0) & 50 (at_rock_sample_waypoint0) & 51 not-(at_rock_sample_waypoint0) & 52 (communicated_rock_data_waypoint0) & 53 not-(communicated_rock_data_waypoint0) & 54 (visible_waypoint1_waypoint0) & 55 not-(visible_waypoint1_waypoint0) & 56 (can_traverse_rover0_waypoint1_waypoint1) & 57 not-(can_traverse_rover0_waypoint1_waypoint1) & 58 (visible_waypoint0_waypoint0) & 59 not-(visible_waypoint0_waypoint0) & 60 (at_rover0_waypoint0) & 61 not-(at_rover0_waypoint0) & 62 (at_lander_general_waypoint1) & 63 not-(at_lander_general_waypoint1) & 64 (visible_waypoint0_waypoint1) & 65 not-(visible_waypoint0_waypoint1) & 66 (at_rock_sample_waypoint1) & 67 not-(at_rock_sample_waypoint1) & 68 (can_traverse_rover0_waypoint0_waypoint1) & 69 not-(can_traverse_rover0_waypoint0_waypoint1) & 70 (at_rover0_waypoint0) & 71 not-(at_rover0_waypoint0) & 72 (equipped_for_soil_analysis_rover0) & 73 not-(equipped_for_soil_analysis_rover0) & 74 (at_lander_general_waypoint0) & 75 not-(at_lander_general_waypoint0) & 76 (can_traverse_rover0_waypoint0_waypoint0) & 77 not-(can_traverse_rover0_waypoint0_waypoint0) & 78 (have_rock_analysis_rover0_waypoint0) & 79 not-(have_rock_analysis_rover0_waypoint0) & 80 (equipped_for_imaging_rover0) & 81 not-(equipped_for_imaging_rover0) & 82 (can_traverse_rover0_waypoint0_waypoint1) & 83 not-(can_traverse_rover0_waypoint0_waypoint1) & 84 (available_rover0) & 85 not-(available_rover0) & 86 (can_traverse_rover0_waypoint1_waypoint0) & 87 not-(can_traverse_rover0_waypoint1_waypoint0) & 88 (at_rover0_waypoint1) & 89 not-(at_rover0_waypoint1) & 90 (have_rock_analysis_rover0_waypoint0) & 91 not-(have_rock_analysis_rover0_waypoint0) & 92 (can_traverse_rover0_waypoint1_waypoint0) & 93 not-(can_traverse_rover0_waypoint1_waypoint0) & 94 (communicated_rock_data_waypoint1) & 95 not-(communicated_rock_data_waypoint1) & 96 (communicated_rock_data_waypoint0) & 97 not-(communicated_rock_data_waypoint0) & 98 (visible_waypoint0_waypoint0) & 99 not-(visible_waypoint0_waypoint0) & 100 (can_traverse_rover0_waypoint0_waypoint0) & 101 not-(can_traverse_rover0_waypoint0_waypoint0) & 102 (visible_waypoint0_waypoint0) & 103 not-(visible_waypoint0_waypoint0) & 104 (have_soil_analysis_rover0_waypoint1) & 105 not-(have_soil_analysis_rover0_waypoint1) & 106 (communicated_soil_data_waypoint0) & 107 not-(communicated_soil_data_waypoint0) & 108 (at_rock_sample_waypoint0) & 109 not-(at_rock_sample_waypoint0) & 110 (visible_waypoint1_waypoint1) & 111 not-(visible_waypoint1_waypoint1) & 112 (at_soil_sample_waypoint0) & 113 not-(at_soil_sample_waypoint0) & 114 (visible_waypoint0_waypoint0) & 115 not-(visible_waypoint0_waypoint0) & 116 (visible_waypoint0_waypoint1) & 117 not-(visible_waypoint0_waypoint1) & 118 (can_traverse_rover0_waypoint0_waypoint0) & 119 not-(can_traverse_rover0_waypoint0_waypoint0) & 120 (communicated_soil_data_waypoint1) & 121 not-(communicated_soil_data_waypoint1) & 122 (at_soil_sample_waypoint1) & 123 not-(at_soil_sample_waypoint1) & 124 (have_soil_analysis_rover0_waypoint0) & 125 not-(have_soil_analysis_rover0_waypoint0) & 126 (have_rock_analysis_rover0_waypoint1) & 127 not-(have_rock_analysis_rover0_waypoint1) & 128 (equipped_for_rock_analysis_rover0) & 129 not-(equipped_for_rock_analysis_rover0) & 130 (can_traverse_rover0_waypoint0_waypoint0) & 131 not-(can_traverse_rover0_waypoint0_waypoint0) & 132 (channel_free_general) & 133 not-(channel_free_general) & 134 (visible_waypoint1_waypoint0) & 135 not-(visible_waypoint1_waypoint0) & 136 (communicated_soil_data_waypoint0) & 137 not-(communicated_soil_data_waypoint0) & 138 (have_soil_analysis_rover0_waypoint0) & 139 not-(have_soil_analysis_rover0_waypoint0) & 140 (at_lander_general_waypoint0) & 141 not-(at_lander_general_waypoint0)
+
+constraints:
+(full_rover0store)
+mutex-predicate
+(empty_rover0store)
+
+constraints:
+(empty_rover0store)
+mutex-predicate
+(full_rover0store) 
+
+constraints:
+(at_rover0_waypoint2)
+mutex-predicate
+(at_rover0_waypoint0) (at_rover0_waypoint1) (at_rover0_waypoint3)
+
+constraints:
+(at_rover0_waypoint0)
+mutex-predicate
+(at_rover0_waypoint2) (at_rover0_waypoint1) (at_rover0_waypoint3)
+
+constraints:
+(at_rover0_waypoint1)
+mutex-predicate
+(at_rover0_waypoint2) (at_rover0_waypoint0) (at_rover0_waypoint3)
+
+constraints:
+(at_rover0_waypoint3)
+mutex-predicate
+(at_rover0_waypoint2) (at_rover0_waypoint0) (at_rover0_waypoint1) 
+
+constraints:
+(at_rock_sample_waypoint0)
+mutex-predicate
+(have_rock_analysis_rover0_waypoint0)
+
+constraints:
+(have_rock_analysis_rover0_waypoint0)
+mutex-predicate
+(at_rock_sample_waypoint0) 
+
+constraints:
+(at_soil_sample_waypoint0)
+mutex-predicate
+(have_soil_analysis_rover0_waypoint0)
+
+constraints:
+(have_soil_analysis_rover0_waypoint0)
+mutex-predicate
+(at_soil_sample_waypoint0) 
+

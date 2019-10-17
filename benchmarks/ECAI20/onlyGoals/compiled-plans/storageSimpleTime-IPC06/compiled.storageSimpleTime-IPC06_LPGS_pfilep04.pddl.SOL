@@ -1,0 +1,134 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/ECAI20/domains/storageSimpleTime-IPC06/domain-empty-constraints.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/ECAI20/domains//storageSimpleTime-IPC06/pfilep04.pddl
+
+init:
+1 (on_crate1_container-0-1) & 2 (connected_depot0-2-1_depot0-1-1) & 3 (in_crate1_container0) & 4 (connected_depot0-2-1_depot0-2-2) & 5 (connected_depot0-2-2_depot0-2-1) & 6 (in_depot0-2-2_depot0) & 7 (connected_loadarea_container-0-1) & 8 (connected_loadarea_depot0-2-1) & 9 (in_crate0_container0) & 10 (available_hoist0) & 11 (clear_depot0-1-2) & 12 (connected_depot0-1-1_depot0-1-2) & 13 (in_depot0-1-2_depot0) & 14 (connected_depot0-1-1_depot0-2-1) & 15 (clear_depot0-2-1) & 16 (in_container-0-1_container0) & 17 (on_crate0_container-0-0) & 18 (connected_depot0-2-1_loadarea) & 19 (connected_depot0-1-2_depot0-2-2) & 20 (in_depot0-1-1_depot0) & 21 (connected_loadarea_container-0-0) & 22 (connected_container-0-1_loadarea) & 23 (in_depot0-2-1_depot0) & 24 (in_container-0-0_container0) & 25 (clear_depot0-2-2) & 26 (connected_depot0-1-2_depot0-1-1) & 27 (connected_depot0-2-2_depot0-1-2) & 28 (at_hoist0_depot0-1-1) & 29 (connected_container-0-0_loadarea) & 30 not-(clear_container-0-1) & 31 not-(clear_depot0-1-1) & 32 not-(clear_container-0-0) & 33 not-(in_depot0-2-2_container0) & 34 not-(in_container0_container0) & 35 not-(in_container0_depot0) & 36 not-(in_hoist0_container0) & 37 not-(in_hoist0_depot0) & 38 not-(in_loadarea_container0) & 39 not-(in_loadarea_depot0) & 40 not-(in_crate1_depot0) & 41 not-(in_depot0-2-1_container0) & 42 not-(in_crate0_depot0) & 43 not-(in_depot0_container0) & 44 not-(in_depot0_depot0) & 45 not-(in_container-0-1_depot0) & 46 not-(in_depot0-1-1_container0) & 47 not-(in_depot0-1-2_container0) & 48 not-(in_container-0-0_depot0) & 49 not-(lifting_hoist0_crate1) & 50 not-(lifting_hoist0_crate0) & 51 not-(at_hoist0_depot0-2-2) & 52 not-(at_hoist0_loadarea) & 53 not-(at_hoist0_depot0-2-1) & 54 not-(at_hoist0_container-0-1) & 55 not-(at_hoist0_depot0-1-2) & 56 not-(at_hoist0_container-0-0) & 57 not-(on_crate1_depot0-2-2) & 58 not-(on_crate1_depot0-2-1) & 59 not-(on_crate1_depot0-1-1) & 60 not-(on_crate1_depot0-1-2) & 61 not-(on_crate1_container-0-0) & 62 not-(on_crate0_depot0-2-2) & 63 not-(on_crate0_depot0-2-1) & 64 not-(on_crate0_container-0-1) & 65 not-(on_crate0_depot0-1-1) & 66 not-(on_crate0_depot0-1-2) & 67 not-(connected_depot0-2-2_depot0-2-2) & 68 not-(connected_depot0-2-2_loadarea) & 69 not-(connected_depot0-2-2_container-0-1) & 70 not-(connected_depot0-2-2_depot0-1-1) & 71 not-(connected_depot0-2-2_container-0-0) & 72 not-(connected_loadarea_depot0-2-2) & 73 not-(connected_loadarea_loadarea) & 74 not-(connected_loadarea_depot0-1-1) & 75 not-(connected_loadarea_depot0-1-2) & 76 not-(connected_depot0-2-1_depot0-2-1) & 77 not-(connected_depot0-2-1_container-0-1) & 78 not-(connected_depot0-2-1_depot0-1-2) & 79 not-(connected_depot0-2-1_container-0-0) & 80 not-(connected_container-0-1_depot0-2-2) & 81 not-(connected_container-0-1_depot0-2-1) & 82 not-(connected_container-0-1_container-0-1) & 83 not-(connected_container-0-1_depot0-1-1) & 84 not-(connected_container-0-1_depot0-1-2) & 85 not-(connected_container-0-1_container-0-0) & 86 not-(connected_depot0-1-1_depot0-2-2) & 87 not-(connected_depot0-1-1_loadarea) & 88 not-(connected_depot0-1-1_container-0-1) & 89 not-(connected_depot0-1-1_depot0-1-1) & 90 not-(connected_depot0-1-1_container-0-0) & 91 not-(connected_depot0-1-2_loadarea) & 92 not-(connected_depot0-1-2_depot0-2-1) & 93 not-(connected_depot0-1-2_container-0-1) & 94 not-(connected_depot0-1-2_depot0-1-2) & 95 not-(connected_depot0-1-2_container-0-0) & 96 not-(connected_container-0-0_depot0-2-2) & 97 not-(connected_container-0-0_depot0-2-1) & 98 not-(connected_container-0-0_container-0-1) & 99 not-(connected_container-0-0_depot0-1-1) & 100 not-(connected_container-0-0_depot0-1-2) & 101 not-(connected_container-0-0_container-0-0)
+
+goals:
+1 (in_crate0_depot0) & 2 (in_crate1_depot0)
+makespan:
+140
+
+action:
+(move_hoist0_depot0-1-1_depot0-2-1)
+operator:
+move
+start_time:
+1
+durations:
+10
+precs:
+1 (connected_depot0-2-1_depot0-2-1) & 2 (connected_depot0-2-1_depot0-1-1) & 3 (clear_depot0-2-1) & 4 (connected_depot0-1-1_depot0-2-1) & 5 (connected_depot0-1-1_depot0-1-1) & 6 (at_hoist0_depot0-2-1) & 7 (at_hoist0_depot0-1-1) & 8 (available_hoist0) & 9 (clear_depot0-1-1)
+effs:
+10 (connected_depot0-2-1_depot0-2-1) & 11 not-(connected_depot0-2-1_depot0-2-1) & 12 (connected_depot0-2-1_depot0-1-1) & 13 not-(connected_depot0-2-1_depot0-1-1) & 14 (clear_depot0-2-1) & 15 not-(clear_depot0-2-1) & 16 (connected_depot0-1-1_depot0-2-1) & 17 not-(connected_depot0-1-1_depot0-2-1) & 18 (connected_depot0-1-1_depot0-1-1) & 19 not-(connected_depot0-1-1_depot0-1-1) & 20 (at_hoist0_depot0-2-1) & 21 not-(at_hoist0_depot0-2-1) & 22 (at_hoist0_depot0-1-1) & 23 not-(at_hoist0_depot0-1-1) & 24 (available_hoist0) & 25 not-(available_hoist0) & 26 (clear_depot0-1-1) & 27 not-(clear_depot0-1-1)
+
+action:
+(go-out_hoist0_depot0-2-1_loadarea)
+operator:
+go-out
+start_time:
+12
+durations:
+10
+precs:
+1 (connected_loadarea_loadarea) & 2 (connected_loadarea_depot0-2-1) & 3 (connected_depot0-2-1_loadarea) & 4 (connected_depot0-2-1_depot0-2-1) & 5 (at_hoist0_loadarea) & 6 (at_hoist0_depot0-2-1) & 7 (available_hoist0) & 8 (clear_depot0-2-1)
+effs:
+9 (connected_loadarea_loadarea) & 10 not-(connected_loadarea_loadarea) & 11 (connected_loadarea_depot0-2-1) & 12 not-(connected_loadarea_depot0-2-1) & 13 (connected_depot0-2-1_loadarea) & 14 not-(connected_depot0-2-1_loadarea) & 15 (connected_depot0-2-1_depot0-2-1) & 16 not-(connected_depot0-2-1_depot0-2-1) & 17 (at_hoist0_loadarea) & 18 not-(at_hoist0_loadarea) & 19 (at_hoist0_depot0-2-1) & 20 not-(at_hoist0_depot0-2-1) & 21 (available_hoist0) & 22 not-(available_hoist0) & 23 (clear_depot0-2-1) & 24 not-(clear_depot0-2-1)
+
+action:
+(lift_hoist0_crate0_container-0-0_loadarea_container0)
+operator:
+lift
+start_time:
+23
+durations:
+20
+precs:
+1 (in_loadarea_container0) & 2 (connected_loadarea_loadarea) & 3 (at_hoist0_loadarea) & 4 (connected_container-0-0_container-0-0) & 5 (clear_container-0-0) & 6 (lifting_hoist0_crate0) & 7 (in_container0_container0) & 8 (at_hoist0_container-0-0) & 9 (on_crate0_container-0-0) & 10 (connected_loadarea_container-0-0) & 11 (available_hoist0) & 12 (in_hoist0_container0) & 13 (connected_container-0-0_loadarea)
+effs:
+14 (in_loadarea_container0) & 15 not-(in_loadarea_container0) & 16 (connected_loadarea_loadarea) & 17 not-(connected_loadarea_loadarea) & 18 (at_hoist0_loadarea) & 19 not-(at_hoist0_loadarea) & 20 (connected_container-0-0_container-0-0) & 21 not-(connected_container-0-0_container-0-0) & 22 (clear_container-0-0) & 23 not-(clear_container-0-0) & 24 (lifting_hoist0_crate0) & 25 not-(lifting_hoist0_crate0) & 26 (in_container0_container0) & 27 not-(in_container0_container0) & 28 (at_hoist0_container-0-0) & 29 not-(at_hoist0_container-0-0) & 30 (on_crate0_container-0-0) & 31 not-(on_crate0_container-0-0) & 32 (connected_loadarea_container-0-0) & 33 not-(connected_loadarea_container-0-0) & 34 (available_hoist0) & 35 not-(available_hoist0) & 36 (in_hoist0_container0) & 37 not-(in_hoist0_container0) & 38 (connected_container-0-0_loadarea) & 39 not-(connected_container-0-0_loadarea)
+
+action:
+(go-in_hoist0_loadarea_depot0-2-1)
+operator:
+go-in
+start_time:
+44
+durations:
+10
+precs:
+1 (connected_depot0-2-1_depot0-2-1) & 2 (connected_depot0-2-1_loadarea) & 3 (clear_depot0-2-1) & 4 (connected_loadarea_depot0-2-1) & 5 (connected_loadarea_loadarea) & 6 (at_hoist0_depot0-2-1) & 7 (at_hoist0_loadarea) & 8 (available_hoist0)
+effs:
+9 (connected_depot0-2-1_depot0-2-1) & 10 not-(connected_depot0-2-1_depot0-2-1) & 11 (connected_depot0-2-1_loadarea) & 12 not-(connected_depot0-2-1_loadarea) & 13 (clear_depot0-2-1) & 14 not-(clear_depot0-2-1) & 15 (connected_loadarea_depot0-2-1) & 16 not-(connected_loadarea_depot0-2-1) & 17 (connected_loadarea_loadarea) & 18 not-(connected_loadarea_loadarea) & 19 (at_hoist0_depot0-2-1) & 20 not-(at_hoist0_depot0-2-1) & 21 (at_hoist0_loadarea) & 22 not-(at_hoist0_loadarea) & 23 (available_hoist0) & 24 not-(available_hoist0)
+
+action:
+(drop_hoist0_crate0_depot0-1-1_depot0-2-1_depot0)
+operator:
+drop
+start_time:
+55
+durations:
+20
+precs:
+1 (in_depot0-2-1_depot0) & 2 (connected_depot0-2-1_depot0-2-1) & 3 (at_hoist0_depot0-2-1) & 4 (connected_depot0-1-1_depot0-1-1) & 5 (clear_depot0-1-1) & 6 (lifting_hoist0_crate0) & 7 (in_depot0_depot0) & 8 (at_hoist0_depot0-1-1) & 9 (on_crate0_depot0-1-1) & 10 (connected_depot0-2-1_depot0-1-1) & 11 (available_hoist0) & 12 (in_hoist0_depot0) & 13 (connected_depot0-1-1_depot0-2-1)
+effs:
+14 (in_depot0-2-1_depot0) & 15 not-(in_depot0-2-1_depot0) & 16 (connected_depot0-2-1_depot0-2-1) & 17 not-(connected_depot0-2-1_depot0-2-1) & 18 (at_hoist0_depot0-2-1) & 19 not-(at_hoist0_depot0-2-1) & 20 (connected_depot0-1-1_depot0-1-1) & 21 not-(connected_depot0-1-1_depot0-1-1) & 22 (clear_depot0-1-1) & 23 not-(clear_depot0-1-1) & 24 (lifting_hoist0_crate0) & 25 not-(lifting_hoist0_crate0) & 26 (in_depot0_depot0) & 27 not-(in_depot0_depot0) & 28 (at_hoist0_depot0-1-1) & 29 not-(at_hoist0_depot0-1-1) & 30 (on_crate0_depot0-1-1) & 31 not-(on_crate0_depot0-1-1) & 32 (connected_depot0-2-1_depot0-1-1) & 33 not-(connected_depot0-2-1_depot0-1-1) & 34 (available_hoist0) & 35 not-(available_hoist0) & 36 (in_hoist0_depot0) & 37 not-(in_hoist0_depot0) & 38 (connected_depot0-1-1_depot0-2-1) & 39 not-(connected_depot0-1-1_depot0-2-1)
+
+action:
+(go-out_hoist0_depot0-2-1_loadarea)
+operator:
+go-out
+start_time:
+76
+durations:
+10
+precs:
+1 (connected_loadarea_loadarea) & 2 (connected_loadarea_depot0-2-1) & 3 (connected_depot0-2-1_loadarea) & 4 (connected_depot0-2-1_depot0-2-1) & 5 (at_hoist0_loadarea) & 6 (at_hoist0_depot0-2-1) & 7 (available_hoist0) & 8 (clear_depot0-2-1)
+effs:
+9 (connected_loadarea_loadarea) & 10 not-(connected_loadarea_loadarea) & 11 (connected_loadarea_depot0-2-1) & 12 not-(connected_loadarea_depot0-2-1) & 13 (connected_depot0-2-1_loadarea) & 14 not-(connected_depot0-2-1_loadarea) & 15 (connected_depot0-2-1_depot0-2-1) & 16 not-(connected_depot0-2-1_depot0-2-1) & 17 (at_hoist0_loadarea) & 18 not-(at_hoist0_loadarea) & 19 (at_hoist0_depot0-2-1) & 20 not-(at_hoist0_depot0-2-1) & 21 (available_hoist0) & 22 not-(available_hoist0) & 23 (clear_depot0-2-1) & 24 not-(clear_depot0-2-1)
+
+action:
+(lift_hoist0_crate1_container-0-1_loadarea_container0)
+operator:
+lift
+start_time:
+87
+durations:
+20
+precs:
+1 (in_loadarea_container0) & 2 (connected_loadarea_loadarea) & 3 (at_hoist0_loadarea) & 4 (connected_container-0-1_container-0-1) & 5 (clear_container-0-1) & 6 (lifting_hoist0_crate1) & 7 (in_container0_container0) & 8 (at_hoist0_container-0-1) & 9 (on_crate1_container-0-1) & 10 (connected_loadarea_container-0-1) & 11 (available_hoist0) & 12 (in_hoist0_container0) & 13 (connected_container-0-1_loadarea)
+effs:
+14 (in_loadarea_container0) & 15 not-(in_loadarea_container0) & 16 (connected_loadarea_loadarea) & 17 not-(connected_loadarea_loadarea) & 18 (at_hoist0_loadarea) & 19 not-(at_hoist0_loadarea) & 20 (connected_container-0-1_container-0-1) & 21 not-(connected_container-0-1_container-0-1) & 22 (clear_container-0-1) & 23 not-(clear_container-0-1) & 24 (lifting_hoist0_crate1) & 25 not-(lifting_hoist0_crate1) & 26 (in_container0_container0) & 27 not-(in_container0_container0) & 28 (at_hoist0_container-0-1) & 29 not-(at_hoist0_container-0-1) & 30 (on_crate1_container-0-1) & 31 not-(on_crate1_container-0-1) & 32 (connected_loadarea_container-0-1) & 33 not-(connected_loadarea_container-0-1) & 34 (available_hoist0) & 35 not-(available_hoist0) & 36 (in_hoist0_container0) & 37 not-(in_hoist0_container0) & 38 (connected_container-0-1_loadarea) & 39 not-(connected_container-0-1_loadarea)
+
+action:
+(go-in_hoist0_loadarea_depot0-2-1)
+operator:
+go-in
+start_time:
+108
+durations:
+10
+precs:
+1 (connected_depot0-2-1_depot0-2-1) & 2 (connected_depot0-2-1_loadarea) & 3 (clear_depot0-2-1) & 4 (connected_loadarea_depot0-2-1) & 5 (connected_loadarea_loadarea) & 6 (at_hoist0_depot0-2-1) & 7 (at_hoist0_loadarea) & 8 (available_hoist0)
+effs:
+9 (connected_depot0-2-1_depot0-2-1) & 10 not-(connected_depot0-2-1_depot0-2-1) & 11 (connected_depot0-2-1_loadarea) & 12 not-(connected_depot0-2-1_loadarea) & 13 (clear_depot0-2-1) & 14 not-(clear_depot0-2-1) & 15 (connected_loadarea_depot0-2-1) & 16 not-(connected_loadarea_depot0-2-1) & 17 (connected_loadarea_loadarea) & 18 not-(connected_loadarea_loadarea) & 19 (at_hoist0_depot0-2-1) & 20 not-(at_hoist0_depot0-2-1) & 21 (at_hoist0_loadarea) & 22 not-(at_hoist0_loadarea) & 23 (available_hoist0) & 24 not-(available_hoist0)
+
+action:
+(drop_hoist0_crate1_depot0-2-2_depot0-2-1_depot0)
+operator:
+drop
+start_time:
+119
+durations:
+20
+precs:
+1 (in_depot0-2-1_depot0) & 2 (connected_depot0-2-1_depot0-2-1) & 3 (at_hoist0_depot0-2-1) & 4 (connected_depot0-2-2_depot0-2-2) & 5 (clear_depot0-2-2) & 6 (lifting_hoist0_crate1) & 7 (in_depot0_depot0) & 8 (at_hoist0_depot0-2-2) & 9 (on_crate1_depot0-2-2) & 10 (connected_depot0-2-1_depot0-2-2) & 11 (available_hoist0) & 12 (in_hoist0_depot0) & 13 (connected_depot0-2-2_depot0-2-1)
+effs:
+14 (in_depot0-2-1_depot0) & 15 not-(in_depot0-2-1_depot0) & 16 (connected_depot0-2-1_depot0-2-1) & 17 not-(connected_depot0-2-1_depot0-2-1) & 18 (at_hoist0_depot0-2-1) & 19 not-(at_hoist0_depot0-2-1) & 20 (connected_depot0-2-2_depot0-2-2) & 21 not-(connected_depot0-2-2_depot0-2-2) & 22 (clear_depot0-2-2) & 23 not-(clear_depot0-2-2) & 24 (lifting_hoist0_crate1) & 25 not-(lifting_hoist0_crate1) & 26 (in_depot0_depot0) & 27 not-(in_depot0_depot0) & 28 (at_hoist0_depot0-2-2) & 29 not-(at_hoist0_depot0-2-2) & 30 (on_crate1_depot0-2-2) & 31 not-(on_crate1_depot0-2-2) & 32 (connected_depot0-2-1_depot0-2-2) & 33 not-(connected_depot0-2-1_depot0-2-2) & 34 (available_hoist0) & 35 not-(available_hoist0) & 36 (in_hoist0_depot0) & 37 not-(in_hoist0_depot0) & 38 (connected_depot0-2-2_depot0-2-1) & 39 not-(connected_depot0-2-2_depot0-2-1)
+
+
+
+end:
