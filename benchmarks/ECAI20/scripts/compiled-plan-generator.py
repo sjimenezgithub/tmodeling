@@ -2,7 +2,7 @@
 import os, sys
 
 PLANS_FOLDER = "../plans/"
-DOMAINS_FOLDER = "/home/slimbook/research/tmodeling/benchmarks/CP19/domains/"
+DOMAINS_FOLDER = "/home/slimbook/research/tmodeling/benchmarks/ECAI20/domains/"
 COMPILED_PLANS_FOLDER = "../compiled-plans/"
 TRUNKED_COMPILED_PLANS_FOLDER = "../trunked-plans/"
 DOMAIN_PDDL_FILE = "domain-empty-constraints.pddl"

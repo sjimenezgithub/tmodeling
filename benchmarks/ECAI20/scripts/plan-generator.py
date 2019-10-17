@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 import os, sys
 
-TIME_LIMIT_SECS = 100
-PLANNERS = ["LPGS", "LPGQ","TFD", "TFLAP", "TEAM1"]
+TIME_LIMIT_SECS = 250
+PLANNERS = ["LPGS", "LPGQ", "TFD", "TFLAP", "TEAM1"]
 DOMAINS = ["zenoSimpleTime-IPC02", "depotsSimpleTime-IPC02", "driverlogSimpleTime-IPC02", "roversSimpleTime-IPC02", "satelliteSimpleTime-IPC02", "storageSimpleTime-IPC06", "floortile", "parking", "sokoban"]
 NPROBLEMS = -1
 DOMAINS_FOLDER = "../domains/"
@@ -44,7 +44,7 @@ for d in DOMAINS:
                 
             if p=="TFLAP":
                 cmd = "ulimit -t " + str(TIME_LIMIT_SECS) + "; "
-                cmd = cmd + PLANNERS_FOLDER +"/tflap/tflap " + DOMAINS_FOLDER + d + "/domain.pddl " + DOMAINS_FOLDER + d + "/"+ pfile  + " " + output_name
+                cmd = cmd + PLANNERS_FOLDER +"/tflap/tflap " + DOMAINS_FOLDER + d + "/domain.pddl " + DOMAINS_FOLDER + d + "/alternativeSet/"+ pfile  + " " + output_name
                 print cmd
                 os.system(cmd)
                 
@@ -63,7 +63,7 @@ for d in DOMAINS:
                 cwd = os.getcwd()+"/"
                 cmd = "cd " + PLANNERS_FOLDER +"/team1/src/temporal-planning/bin/ ;"
                 cmd = cmd + "ulimit -t " + str(TIME_LIMIT_SECS) + " ; "
-                cmd = cmd + "./plan_portfolio.py " + " --plan-file " + cwd + output_name + " " + cwd+DOMAINS_FOLDER + d + "/domain.pddl " + cwd+DOMAINS_FOLDER + d + "/"+ pfile 
+                cmd = cmd + "./plan_portfolio.py " + " --plan-file " + cwd + output_name + " " + cwd+DOMAINS_FOLDER + d + "/domain.pddl " + cwd+DOMAINS_FOLDER + d + "/alternativeSet/"+ pfile 
                 print cmd
                 os.system(cmd)
                 cmd = "cd "+ cwd
