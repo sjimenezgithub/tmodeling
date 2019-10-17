@@ -1,5 +1,5 @@
 #! /usr/bin/env python3
-import os, sys, itertools, collections
+import os, sys, itertools, collections, random
 import pddl, pddl_parser
 import fdtask_to_pddl, planning
 
@@ -100,10 +100,19 @@ def filter_literal_string(str_in):
     return str_in
     
 
-def format_string_literals(str_literals, offset):
-    str_out = str(offset) +" "+ filter_literal_string(str_literals[0]) + ")"
-    for i in range(1,len(str_literals)):
-        str_out = str_out + " & " + str(offset+i) + " (" + filter_literal_string(str_literals[i]) + ")"
+def format_string_literals(str_literals, offset, observability):
+    
+    index = offset
+    for i in range(0,len(str_literals)):
+        if random.uniform(0,1) < observability:        
+            if index==offset and i==0:
+                str_out = str(offset) +" "+ filter_literal_string(str_literals[0]) + ")"
+            elif index==offset and i!=0:
+                str_out = str(offset) +" ("+ filter_literal_string(str_literals[i]) + ")"                
+            else:        
+                str_out = str_out + " & " + str(index) + " (" + filter_literal_string(str_literals[i]) + ")"
+            index = index + 1
+            
     return str_out.replace("))",")").replace("(not-(","not-(")
 
 
@@ -145,7 +154,7 @@ def format_set_of_mutex(set_of_mutex, formated_init):
             str_out = str_out + " ".join(list_of_mutex[:i]) + " " + " ".join(list_of_mutex[i+1:]) + "\n\n"
     return str_out
 
-def compute_negated_atoms(predicates,objects,types,str_state,npositive):
+def compute_negated_atoms(predicates,objects,types,str_state,npositive,observability):
     neg_atoms = ""
     for p in predicates:
         if p.name == "=":
@@ -163,7 +172,7 @@ def compute_negated_atoms(predicates,objects,types,str_state,npositive):
         combinations = list(itertools.product(*candidate_objects))
         for item in combinations:
             atom = "(" + p.name + "_" + "_".join(map(str,item)) + ")"
-            if not atom in str_state:
+            if not atom in str_state and random.uniform(0,1) < observability:
                 npositive = npositive + 1
                 neg_atoms = neg_atoms + " & " + str(npositive) + str(" not-(" + p.name + "_" + "_".join(map(str,item)) + ")")
     return neg_atoms
@@ -192,7 +201,16 @@ try:
         sys.argv.pop(index)
         bduration = True
     else:
-        bduration = False                 
+        bduration = False
+
+
+    if "-o" in sys.argv:
+        index = sys.argv.index("-o")
+        sys.argv.pop(index)
+        observability = float(sys.argv[index])
+        sys.argv.pop(index)
+    else:
+        observability = 0                         
     
     domain_filename  = sys.argv[1]
     problem_filename = sys.argv[2]
@@ -201,9 +219,8 @@ try:
 
 except:
     print ("Usage:")
-    print (sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line, -d actions duration is known] <domain file name> <problem file name> <plan file name> <output file name>")
-    sys.exit(-1)
-  
+    print (sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line, -d actions duration is known -o observability of last state [0,1]] <domain file name> <problem file name> <plan file name> <output file name>")
+    sys.exit(-1)   
 
 str_out = ""
 
@@ -211,6 +228,7 @@ str_out = ""
 model = parse_model(domain_filename)
 
 # Creating a FD task with the domain and the problem files
+print(domain_filename)
 fd_domain = pddl_parser.pddl_file.parse_pddl_file("domain", domain_filename)
 fd_problem = pddl_parser.pddl_file.parse_pddl_file("task", problem_filename)
 fd_task = pddl_parser.pddl_file.parsing_functions.parse_task(fd_domain, fd_problem)
@@ -228,11 +246,11 @@ str_out = str_out + "\n"
 # Init and goals
 str_out = str_out + "init:\n"
 formattedinit1 = fdtask_to_pddl.format_condition([i for i in fd_task.init if i.predicate!="="])
-formattedinit2 = format_string_literals(formattedinit1.split(") ("),1).replace(")_)",")")
+formattedinit2 = format_string_literals(formattedinit1.split(") ("),1,1).replace(")_)",")")
 npositive =  len(formattedinit1.split(") (")) 
 
 if bneg==True: # Completing initial state with negated literals
-    neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedinit2,npositive) 
+    neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedinit2,npositive,1) 
     str_out = str_out + formattedinit2 + neg_atoms + "\n"
 else:
     str_out = str_out + formattedinit2 + "\n"       
@@ -240,16 +258,20 @@ str_out = str_out + "\n"
 
 
 str_out = str_out + "goals:\n"
-states=planning.VAL_computation_state_trajectory(domain_filename, problem_filename, plan_filename)
-formattedgoal = format_string_literals(str(states[-1]).split(") ("),1)
+if observability > 0:
+    states=planning.VAL_computation_state_trajectory(domain_filename, problem_filename, plan_filename)
+    formattedgoal = format_string_literals(str(states[-1]).split(") ("),1,observability)
+    npositive=len(formattedgoal.split("&"))
 
-if bneg==True: # Completing goals with negated literals
-    neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedgoal,npositive) 
-    str_out = str_out + formattedgoal + neg_atoms + "\n"
-
+    if bneg==True: # Completing goals with negated literals
+        neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedgoal,npositive,observability) 
+        str_out = str_out + formattedgoal + neg_atoms + "\n"
+    else:
+        str_out = str_out + formattedgoal + "\n"
 else:
-    str_out = str_out + formattedgoal + "\n"
-
+    formattedgoal = fdtask_to_pddl.format_condition(fd_task.goal)
+    str_out = str_out + format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1,1)+ "\n"
+    
 
 # Reading plan
 steps = []
