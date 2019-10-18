@@ -8,7 +8,7 @@ from meta_planning.parsers import parse_trajectory, parse_model
 from meta_planning.compilation import generate_model_representation_fluents
 
 class PlanStep:
-    def __init__(self, n, o, st, b, d, op, ap, m):
+    def __init__(self, n, o, st, b, d, op, ap, m, sps):
         self.name = n
         self.operator = o
         self.stime = st
@@ -17,6 +17,7 @@ class PlanStep:
         self.oparams = op
         self.aparams = ap
         self.model = model
+        self.static_predicates = sps
 
     def get_precs(self):        
         possible_pres = set()
@@ -58,17 +59,23 @@ class PlanStep:
         index = len(self.get_precs().split("&")) + 1
         str_out=""
         for p in possible_pres:
-            aux=p            
-            for i in range(len(self.oparams)):
-                aux=aux.replace("_var"+str(i+1),"_"+self.aparams[i])
-                aux=aux.replace(" ","")
-            str_out= str_out + str(index) + " " + aux+ " & "
-            index = index + 1
-            if index==3*len(possible_pres):
-                str_out= str_out + str(index) + " " + "not-" + aux 
-            else:
-                str_out= str_out + str(index) + " " + "not-" + aux + " & "                
-            index = index + 1            
+            is_static=False
+            for sp in self.static_predicates:
+                if p.replace("_",")")[1:].split(")")[0]==sp:
+                    is_static=True
+
+            if not is_static:                                     
+                aux=p            
+                for i in range(len(self.oparams)):
+                    aux=aux.replace("_var"+str(i+1),"_"+self.aparams[i])
+                    aux=aux.replace(" ","")
+                str_out= str_out + str(index) + " " + aux+ " & "
+                index = index + 1
+                if index==3*len(possible_pres):
+                    str_out= str_out + str(index) + " " + "not-" + aux 
+                else:
+                    str_out= str_out + str(index) + " " + "not-" + aux + " & "                
+                index = index + 1            
         
         return str_out
     
@@ -100,11 +107,17 @@ def filter_literal_string(str_in):
     return str_in
     
 
-def format_string_literals(str_literals, offset, observability):
+def format_string_literals(str_literals, offset, observability, static_predicates):
     
     index = offset
     for i in range(0,len(str_literals)):
-        if random.uniform(0,1) < observability:        
+
+        is_static = False
+        for sp in static_predicates:
+            if str_literals[i].replace("(","").split(" ")[0]==sp:
+                is_static=True
+        
+        if random.uniform(0,1) < observability and not is_static:        
             if index==offset and i==0:
                 str_out = str(offset) +" "+ filter_literal_string(str_literals[0]) + ")"
             elif index==offset and i!=0:
@@ -154,7 +167,8 @@ def format_set_of_mutex(set_of_mutex, formated_init):
             str_out = str_out + " ".join(list_of_mutex[:i]) + " " + " ".join(list_of_mutex[i+1:]) + "\n\n"
     return str_out
 
-def compute_negated_atoms(predicates,objects,types,str_state,npositive,observability):
+
+def compute_negated_atoms(predicates,objects,types,str_state,npositive,observability,static_predicates):
     neg_atoms = ""
     for p in predicates:
         if p.name == "=":
@@ -172,7 +186,13 @@ def compute_negated_atoms(predicates,objects,types,str_state,npositive,observabi
         combinations = list(itertools.product(*candidate_objects))
         for item in combinations:
             atom = "(" + p.name + "_" + "_".join(map(str,item)) + ")"
-            if not atom in str_state and random.uniform(0,1) < observability:
+
+            is_static=False
+            for sp in static_predicates:
+                if p.name==sp:
+                    is_static=True
+            
+            if not atom in str_state and random.uniform(0,1) < observability and not is_static:
                 npositive = npositive + 1
                 neg_atoms = neg_atoms + " & " + str(npositive) + str(" not-(" + p.name + "_" + "_".join(map(str,item)) + ")")
     return neg_atoms
@@ -182,12 +202,12 @@ def compute_negated_atoms(predicates,objects,types,str_state,npositive,observabi
 # MAIN
 # **************************************#
 try:
-    if "-n" in sys.argv:
-        index = sys.argv.index("-n")
+    if "-d" in sys.argv:
+        index = sys.argv.index("-d")
         sys.argv.pop(index)
-        bneg = True
+        bduration = True
     else:
-        bneg = False
+        bduration = False
 
     if "-e" in sys.argv:
         index = sys.argv.index("-e")
@@ -196,13 +216,12 @@ try:
     else:
         btrunk = False
 
-    if "-d" in sys.argv:
-        index = sys.argv.index("-d")
+    if "-n" in sys.argv:
+        index = sys.argv.index("-n")
         sys.argv.pop(index)
-        bduration = True
+        bneg = True
     else:
-        bduration = False
-
+        bneg = False        
 
     if "-o" in sys.argv:
         index = sys.argv.index("-o")
@@ -210,7 +229,15 @@ try:
         observability = float(sys.argv[index])
         sys.argv.pop(index)
     else:
-        observability = 0                         
+        observability = 0
+
+    if "-s" in sys.argv:
+        index = sys.argv.index("-s")
+        sys.argv.pop(index)
+        bstatic = True
+    else:
+        bstatic = False
+        
     
     domain_filename  = sys.argv[1]
     problem_filename = sys.argv[2]
@@ -219,7 +246,7 @@ try:
 
 except:
     print ("Usage:")
-    print (sys.argv[0] + " [-n negative facts at initial state, -e trunk the last end line, -d actions duration is known -o observability of last state [0,1]] <domain file name> <problem file name> <plan file name> <output file name>")
+    print (sys.argv[0] + " [-d actions duration is known, -e trunk the last end line, -n negative facts at initial state, -o observability of last state [0,1], -s filter candidates with static predicates] <domain file name> <problem file name> <plan file name> <output file name>")
     sys.exit(-1)   
 
 str_out = ""
@@ -234,6 +261,16 @@ fd_problem = pddl_parser.pddl_file.parse_pddl_file("task", problem_filename)
 fd_task = pddl_parser.pddl_file.parsing_functions.parse_task(fd_domain, fd_problem)
 
 
+# Reading the static predicates
+static_predicates = []
+if bstatic:
+    static_filename = domain_filename.replace("domain-empty-constraints.pddl","static-predicate-names.txt")
+    if os.path.exists(static_filename):
+        with open(static_filename) as fp:
+            line = fp.readline().replace("\n","")
+            static_predicates = static_predicates+line.split(" ")
+        
+
 # Domain and problem name
 str_out = str_out + "domain:\n"
 str_out = str_out + domain_filename + "\n"
@@ -243,34 +280,35 @@ str_out = str_out + "problem:\n"
 str_out = str_out + problem_filename + "\n"
 str_out = str_out + "\n"
 
-# Init and goals
+# Init
 str_out = str_out + "init:\n"
 formattedinit1 = fdtask_to_pddl.format_condition([i for i in fd_task.init if i.predicate!="="])
-formattedinit2 = format_string_literals(formattedinit1.split(") ("),1,1).replace(")_)",")")
+formattedinit2 = format_string_literals(formattedinit1.split(") ("),1,1,[]).replace(")_)",")")
 npositive =  len(formattedinit1.split(") (")) 
 
 if bneg==True: # Completing initial state with negated literals
-    neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedinit2,npositive,1) 
+    neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedinit2,npositive,1,[]) 
     str_out = str_out + formattedinit2 + neg_atoms + "\n"
 else:
     str_out = str_out + formattedinit2 + "\n"       
 str_out = str_out + "\n"
 
 
+# Goals
 str_out = str_out + "goals:\n"
 if observability > 0:
     states=planning.VAL_computation_state_trajectory(domain_filename, problem_filename, plan_filename)
-    formattedgoal = format_string_literals(str(states[-1]).split(") ("),1,observability)
+    formattedgoal = format_string_literals(str(states[-1]).split(") ("),1,observability,static_predicates)
     npositive=len(formattedgoal.split("&"))
 
     if bneg==True: # Completing goals with negated literals
-        neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedgoal,npositive,observability) 
+        neg_atoms = compute_negated_atoms(fd_task.predicates,fd_task.objects,fd_task.types,formattedgoal,npositive,observability,static_predicates) 
         str_out = str_out + formattedgoal + neg_atoms + "\n"
     else:
         str_out = str_out + formattedgoal + "\n"
 else:
     formattedgoal = fdtask_to_pddl.format_condition(fd_task.goal)
-    str_out = str_out + format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1,1)+ "\n"
+    str_out = str_out + format_string_literals(formattedgoal.replace("(and ","")[:-1].split(")("),1,1,[]) + "\n"
     
 
 # Reading plan
@@ -296,7 +334,7 @@ for line in plan_file:
         operator = [o for o in fd_task.actions if clean_aname==o.name.lower()][0]
         oparams = [str(p.name) for p in operator.parameters]
         
-        steps.append(PlanStep(aname,operator, start_time, -1, duration , oparams, aparams,model))
+        steps.append(PlanStep(aname,operator, start_time, -1, duration , oparams, aparams,model,static_predicates))
         makespan = max(makespan, int(start_time + duration))
 plan_file.close()
 

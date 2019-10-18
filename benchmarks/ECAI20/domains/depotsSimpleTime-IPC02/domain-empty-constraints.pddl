@@ -10,7 +10,8 @@
              (in ?x - crate ?y - truck)
              (lifting ?x - hoist ?y - crate)
              (available ?x - hoist)
-             (clear ?x - surface)(= ?o1 ?o2 - object))
+             (clear ?x - surface)
+	     (= ?o1 ?o2 - object))
 	
 (:action Drive
 :parameters (?x - truck ?y - place ?z - place) 

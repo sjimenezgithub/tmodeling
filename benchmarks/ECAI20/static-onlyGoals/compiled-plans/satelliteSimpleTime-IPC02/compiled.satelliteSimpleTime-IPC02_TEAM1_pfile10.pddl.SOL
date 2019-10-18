@@ -1,0 +1,884 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/ECAI20/domains/satelliteSimpleTime-IPC02/domain-empty-constraints.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/ECAI20/domains//satelliteSimpleTime-IPC02/pfile10.pddl
+
+init:
+1 (supports_instrument1_spectrograph1) & 2 (calibration_target_instrument5_star0) & 3 (power_avail_satellite0) & 4 (on_board_instrument4_satellite2) & 5 (supports_instrument3_infrared0) & 6 (calibration_target_instrument8_star4) & 7 (pointing_satellite4_planet10) & 8 (pointing_satellite0_star0) & 9 (calibration_target_instrument7_star4) & 10 (supports_instrument7_spectrograph1) & 11 (supports_instrument4_infrared0) & 12 (on_board_instrument8_satellite4) & 13 (supports_instrument0_image4) & 14 (on_board_instrument2_satellite1) & 15 (on_board_instrument7_satellite3) & 16 (on_board_instrument10_satellite4) & 17 (on_board_instrument3_satellite1) & 18 (supports_instrument4_image4) & 19 (calibration_target_instrument4_star2) & 20 (supports_instrument7_image4) & 21 (calibration_target_instrument9_star2) & 22 (supports_instrument10_image4) & 23 (supports_instrument4_spectrograph1) & 24 (supports_instrument5_image2) & 25 (supports_instrument5_infrared3) & 26 (power_avail_satellite3) & 27 (calibration_target_instrument1_groundstation3) & 28 (on_board_instrument0_satellite0) & 29 (pointing_satellite2_star1) & 30 (supports_instrument6_infrared3) & 31 (supports_instrument8_spectrograph1) & 32 (on_board_instrument9_satellite4) & 33 (supports_instrument3_infrared3) & 34 (power_avail_satellite1) & 35 (supports_instrument7_infrared3) & 36 (supports_instrument2_image2) & 37 (on_board_instrument5_satellite2) & 38 (on_board_instrument6_satellite3) & 39 (pointing_satellite3_groundstation3) & 40 (supports_instrument10_image2) & 41 (power_avail_satellite2) & 42 (calibration_target_instrument0_star1) & 43 (supports_instrument1_infrared0) & 44 (on_board_instrument1_satellite0) & 45 (power_avail_satellite4) & 46 (calibration_target_instrument3_star4) & 47 (supports_instrument6_infrared0) & 48 (calibration_target_instrument6_groundstation3) & 49 (supports_instrument2_infrared0) & 50 (calibration_target_instrument2_groundstation3) & 51 (pointing_satellite1_star4) & 52 (supports_instrument8_image4) & 53 (supports_instrument5_infrared0) & 54 (calibration_target_instrument10_star0) & 55 (supports_instrument9_infrared3) & 56 not-(on_board_instrument4_satellite3) & 57 not-(on_board_instrument4_satellite0) & 58 not-(on_board_instrument4_satellite1) & 59 not-(on_board_instrument4_satellite4) & 60 not-(on_board_instrument2_satellite3) & 61 not-(on_board_instrument2_satellite0) & 62 not-(on_board_instrument2_satellite2) & 63 not-(on_board_instrument2_satellite4) & 64 not-(on_board_instrument8_satellite3) & 65 not-(on_board_instrument8_satellite0) & 66 not-(on_board_instrument8_satellite1) & 67 not-(on_board_instrument8_satellite2) & 68 not-(on_board_instrument5_satellite3) & 69 not-(on_board_instrument5_satellite0) & 70 not-(on_board_instrument5_satellite1) & 71 not-(on_board_instrument5_satellite4) & 72 not-(on_board_instrument0_satellite3) & 73 not-(on_board_instrument0_satellite1) & 74 not-(on_board_instrument0_satellite2) & 75 not-(on_board_instrument0_satellite4) & 76 not-(on_board_instrument10_satellite3) & 77 not-(on_board_instrument10_satellite0) & 78 not-(on_board_instrument10_satellite1) & 79 not-(on_board_instrument10_satellite2) & 80 not-(on_board_instrument3_satellite3) & 81 not-(on_board_instrument3_satellite0) & 82 not-(on_board_instrument3_satellite2) & 83 not-(on_board_instrument3_satellite4) & 84 not-(on_board_instrument1_satellite3) & 85 not-(on_board_instrument1_satellite1) & 86 not-(on_board_instrument1_satellite2) & 87 not-(on_board_instrument1_satellite4) & 88 not-(on_board_instrument9_satellite3) & 89 not-(on_board_instrument9_satellite0) & 90 not-(on_board_instrument9_satellite1) & 91 not-(on_board_instrument9_satellite2) & 92 not-(on_board_instrument6_satellite0) & 93 not-(on_board_instrument6_satellite1) & 94 not-(on_board_instrument6_satellite2) & 95 not-(on_board_instrument6_satellite4) & 96 not-(on_board_instrument7_satellite0) & 97 not-(on_board_instrument7_satellite1) & 98 not-(on_board_instrument7_satellite2) & 99 not-(on_board_instrument7_satellite4) & 100 not-(supports_instrument4_infrared3) & 101 not-(supports_instrument4_image2) & 102 not-(supports_instrument2_infrared3) & 103 not-(supports_instrument2_image4) & 104 not-(supports_instrument2_spectrograph1) & 105 not-(supports_instrument8_infrared0) & 106 not-(supports_instrument8_infrared3) & 107 not-(supports_instrument8_image2) & 108 not-(supports_instrument5_image4) & 109 not-(supports_instrument5_spectrograph1) & 110 not-(supports_instrument0_infrared0) & 111 not-(supports_instrument0_infrared3) & 112 not-(supports_instrument0_image2) & 113 not-(supports_instrument0_spectrograph1) & 114 not-(supports_instrument10_infrared0) & 115 not-(supports_instrument10_infrared3) & 116 not-(supports_instrument10_spectrograph1) & 117 not-(supports_instrument3_image2) & 118 not-(supports_instrument3_image4) & 119 not-(supports_instrument3_spectrograph1) & 120 not-(supports_instrument1_infrared3) & 121 not-(supports_instrument1_image2) & 122 not-(supports_instrument1_image4) & 123 not-(supports_instrument9_infrared0) & 124 not-(supports_instrument9_image2) & 125 not-(supports_instrument9_image4) & 126 not-(supports_instrument9_spectrograph1) & 127 not-(supports_instrument6_image2) & 128 not-(supports_instrument6_image4) & 129 not-(supports_instrument6_spectrograph1) & 130 not-(supports_instrument7_infrared0) & 131 not-(supports_instrument7_image2) & 132 not-(pointing_satellite3_star4) & 133 not-(pointing_satellite3_planet10) & 134 not-(pointing_satellite3_phenomenon14) & 135 not-(pointing_satellite3_star11) & 136 not-(pointing_satellite3_star16) & 137 not-(pointing_satellite3_planet5) & 138 not-(pointing_satellite3_star15) & 139 not-(pointing_satellite3_star6) & 140 not-(pointing_satellite3_star1) & 141 not-(pointing_satellite3_star0) & 142 not-(pointing_satellite3_star7) & 143 not-(pointing_satellite3_phenomenon8) & 144 not-(pointing_satellite3_phenomenon13) & 145 not-(pointing_satellite3_star2) & 146 not-(pointing_satellite3_planet9) & 147 not-(pointing_satellite3_star12) & 148 not-(pointing_satellite0_star4) & 149 not-(pointing_satellite0_planet10) & 150 not-(pointing_satellite0_phenomenon14) & 151 not-(pointing_satellite0_star11) & 152 not-(pointing_satellite0_star16) & 153 not-(pointing_satellite0_planet5) & 154 not-(pointing_satellite0_star15) & 155 not-(pointing_satellite0_star6) & 156 not-(pointing_satellite0_star1) & 157 not-(pointing_satellite0_star7) & 158 not-(pointing_satellite0_phenomenon8) & 159 not-(pointing_satellite0_phenomenon13) & 160 not-(pointing_satellite0_star2) & 161 not-(pointing_satellite0_planet9) & 162 not-(pointing_satellite0_groundstation3) & 163 not-(pointing_satellite0_star12) & 164 not-(pointing_satellite1_planet10) & 165 not-(pointing_satellite1_phenomenon14) & 166 not-(pointing_satellite1_star11) & 167 not-(pointing_satellite1_star16) & 168 not-(pointing_satellite1_planet5) & 169 not-(pointing_satellite1_star15) & 170 not-(pointing_satellite1_star6) & 171 not-(pointing_satellite1_star1) & 172 not-(pointing_satellite1_star0) & 173 not-(pointing_satellite1_star7) & 174 not-(pointing_satellite1_phenomenon8) & 175 not-(pointing_satellite1_phenomenon13) & 176 not-(pointing_satellite1_star2) & 177 not-(pointing_satellite1_planet9) & 178 not-(pointing_satellite1_groundstation3) & 179 not-(pointing_satellite1_star12) & 180 not-(pointing_satellite2_star4) & 181 not-(pointing_satellite2_planet10) & 182 not-(pointing_satellite2_phenomenon14) & 183 not-(pointing_satellite2_star11) & 184 not-(pointing_satellite2_star16) & 185 not-(pointing_satellite2_planet5) & 186 not-(pointing_satellite2_star15) & 187 not-(pointing_satellite2_star6) & 188 not-(pointing_satellite2_star0) & 189 not-(pointing_satellite2_star7) & 190 not-(pointing_satellite2_phenomenon8) & 191 not-(pointing_satellite2_phenomenon13) & 192 not-(pointing_satellite2_star2) & 193 not-(pointing_satellite2_planet9) & 194 not-(pointing_satellite2_groundstation3) & 195 not-(pointing_satellite2_star12) & 196 not-(pointing_satellite4_star4) & 197 not-(pointing_satellite4_phenomenon14) & 198 not-(pointing_satellite4_star11) & 199 not-(pointing_satellite4_star16) & 200 not-(pointing_satellite4_planet5) & 201 not-(pointing_satellite4_star15) & 202 not-(pointing_satellite4_star6) & 203 not-(pointing_satellite4_star1) & 204 not-(pointing_satellite4_star0) & 205 not-(pointing_satellite4_star7) & 206 not-(pointing_satellite4_phenomenon8) & 207 not-(pointing_satellite4_phenomenon13) & 208 not-(pointing_satellite4_star2) & 209 not-(pointing_satellite4_planet9) & 210 not-(pointing_satellite4_groundstation3) & 211 not-(pointing_satellite4_star12) & 212 not-(power_on_instrument4) & 213 not-(power_on_instrument2) & 214 not-(power_on_instrument8) & 215 not-(power_on_instrument5) & 216 not-(power_on_instrument0) & 217 not-(power_on_instrument10) & 218 not-(power_on_instrument3) & 219 not-(power_on_instrument1) & 220 not-(power_on_instrument9) & 221 not-(power_on_instrument6) & 222 not-(power_on_instrument7) & 223 not-(calibrated_instrument4) & 224 not-(calibrated_instrument2) & 225 not-(calibrated_instrument8) & 226 not-(calibrated_instrument5) & 227 not-(calibrated_instrument0) & 228 not-(calibrated_instrument10) & 229 not-(calibrated_instrument3) & 230 not-(calibrated_instrument1) & 231 not-(calibrated_instrument9) & 232 not-(calibrated_instrument6) & 233 not-(calibrated_instrument7) & 234 not-(have_image_star4_infrared0) & 235 not-(have_image_star4_infrared3) & 236 not-(have_image_star4_image2) & 237 not-(have_image_star4_image4) & 238 not-(have_image_star4_spectrograph1) & 239 not-(have_image_planet10_infrared0) & 240 not-(have_image_planet10_infrared3) & 241 not-(have_image_planet10_image2) & 242 not-(have_image_planet10_image4) & 243 not-(have_image_planet10_spectrograph1) & 244 not-(have_image_phenomenon14_infrared0) & 245 not-(have_image_phenomenon14_infrared3) & 246 not-(have_image_phenomenon14_image2) & 247 not-(have_image_phenomenon14_image4) & 248 not-(have_image_phenomenon14_spectrograph1) & 249 not-(have_image_star11_infrared0) & 250 not-(have_image_star11_infrared3) & 251 not-(have_image_star11_image2) & 252 not-(have_image_star11_image4) & 253 not-(have_image_star11_spectrograph1) & 254 not-(have_image_star16_infrared0) & 255 not-(have_image_star16_infrared3) & 256 not-(have_image_star16_image2) & 257 not-(have_image_star16_image4) & 258 not-(have_image_star16_spectrograph1) & 259 not-(have_image_planet5_infrared0) & 260 not-(have_image_planet5_infrared3) & 261 not-(have_image_planet5_image2) & 262 not-(have_image_planet5_image4) & 263 not-(have_image_planet5_spectrograph1) & 264 not-(have_image_star15_infrared0) & 265 not-(have_image_star15_infrared3) & 266 not-(have_image_star15_image2) & 267 not-(have_image_star15_image4) & 268 not-(have_image_star15_spectrograph1) & 269 not-(have_image_star6_infrared0) & 270 not-(have_image_star6_infrared3) & 271 not-(have_image_star6_image2) & 272 not-(have_image_star6_image4) & 273 not-(have_image_star6_spectrograph1) & 274 not-(have_image_star1_infrared0) & 275 not-(have_image_star1_infrared3) & 276 not-(have_image_star1_image2) & 277 not-(have_image_star1_image4) & 278 not-(have_image_star1_spectrograph1) & 279 not-(have_image_star0_infrared0) & 280 not-(have_image_star0_infrared3) & 281 not-(have_image_star0_image2) & 282 not-(have_image_star0_image4) & 283 not-(have_image_star0_spectrograph1) & 284 not-(have_image_star7_infrared0) & 285 not-(have_image_star7_infrared3) & 286 not-(have_image_star7_image2) & 287 not-(have_image_star7_image4) & 288 not-(have_image_star7_spectrograph1) & 289 not-(have_image_phenomenon8_infrared0) & 290 not-(have_image_phenomenon8_infrared3) & 291 not-(have_image_phenomenon8_image2) & 292 not-(have_image_phenomenon8_image4) & 293 not-(have_image_phenomenon8_spectrograph1) & 294 not-(have_image_phenomenon13_infrared0) & 295 not-(have_image_phenomenon13_infrared3) & 296 not-(have_image_phenomenon13_image2) & 297 not-(have_image_phenomenon13_image4) & 298 not-(have_image_phenomenon13_spectrograph1) & 299 not-(have_image_star2_infrared0) & 300 not-(have_image_star2_infrared3) & 301 not-(have_image_star2_image2) & 302 not-(have_image_star2_image4) & 303 not-(have_image_star2_spectrograph1) & 304 not-(have_image_planet9_infrared0) & 305 not-(have_image_planet9_infrared3) & 306 not-(have_image_planet9_image2) & 307 not-(have_image_planet9_image4) & 308 not-(have_image_planet9_spectrograph1) & 309 not-(have_image_groundstation3_infrared0) & 310 not-(have_image_groundstation3_infrared3) & 311 not-(have_image_groundstation3_image2) & 312 not-(have_image_groundstation3_image4) & 313 not-(have_image_groundstation3_spectrograph1) & 314 not-(have_image_star12_infrared0) & 315 not-(have_image_star12_infrared3) & 316 not-(have_image_star12_image2) & 317 not-(have_image_star12_image4) & 318 not-(have_image_star12_spectrograph1) & 319 not-(calibration_target_instrument4_star4) & 320 not-(calibration_target_instrument4_planet10) & 321 not-(calibration_target_instrument4_phenomenon14) & 322 not-(calibration_target_instrument4_star11) & 323 not-(calibration_target_instrument4_star16) & 324 not-(calibration_target_instrument4_planet5) & 325 not-(calibration_target_instrument4_star15) & 326 not-(calibration_target_instrument4_star6) & 327 not-(calibration_target_instrument4_star1) & 328 not-(calibration_target_instrument4_star0) & 329 not-(calibration_target_instrument4_star7) & 330 not-(calibration_target_instrument4_phenomenon8) & 331 not-(calibration_target_instrument4_phenomenon13) & 332 not-(calibration_target_instrument4_planet9) & 333 not-(calibration_target_instrument4_groundstation3) & 334 not-(calibration_target_instrument4_star12) & 335 not-(calibration_target_instrument2_star4) & 336 not-(calibration_target_instrument2_planet10) & 337 not-(calibration_target_instrument2_phenomenon14) & 338 not-(calibration_target_instrument2_star11) & 339 not-(calibration_target_instrument2_star16) & 340 not-(calibration_target_instrument2_planet5) & 341 not-(calibration_target_instrument2_star15) & 342 not-(calibration_target_instrument2_star6) & 343 not-(calibration_target_instrument2_star1) & 344 not-(calibration_target_instrument2_star0) & 345 not-(calibration_target_instrument2_star7) & 346 not-(calibration_target_instrument2_phenomenon8) & 347 not-(calibration_target_instrument2_phenomenon13) & 348 not-(calibration_target_instrument2_star2) & 349 not-(calibration_target_instrument2_planet9) & 350 not-(calibration_target_instrument2_star12) & 351 not-(calibration_target_instrument8_planet10) & 352 not-(calibration_target_instrument8_phenomenon14) & 353 not-(calibration_target_instrument8_star11) & 354 not-(calibration_target_instrument8_star16) & 355 not-(calibration_target_instrument8_planet5) & 356 not-(calibration_target_instrument8_star15) & 357 not-(calibration_target_instrument8_star6) & 358 not-(calibration_target_instrument8_star1) & 359 not-(calibration_target_instrument8_star0) & 360 not-(calibration_target_instrument8_star7) & 361 not-(calibration_target_instrument8_phenomenon8) & 362 not-(calibration_target_instrument8_phenomenon13) & 363 not-(calibration_target_instrument8_star2) & 364 not-(calibration_target_instrument8_planet9) & 365 not-(calibration_target_instrument8_groundstation3) & 366 not-(calibration_target_instrument8_star12) & 367 not-(calibration_target_instrument5_star4) & 368 not-(calibration_target_instrument5_planet10) & 369 not-(calibration_target_instrument5_phenomenon14) & 370 not-(calibration_target_instrument5_star11) & 371 not-(calibration_target_instrument5_star16) & 372 not-(calibration_target_instrument5_planet5) & 373 not-(calibration_target_instrument5_star15) & 374 not-(calibration_target_instrument5_star6) & 375 not-(calibration_target_instrument5_star1) & 376 not-(calibration_target_instrument5_star7) & 377 not-(calibration_target_instrument5_phenomenon8) & 378 not-(calibration_target_instrument5_phenomenon13) & 379 not-(calibration_target_instrument5_star2) & 380 not-(calibration_target_instrument5_planet9) & 381 not-(calibration_target_instrument5_groundstation3) & 382 not-(calibration_target_instrument5_star12) & 383 not-(calibration_target_instrument0_star4) & 384 not-(calibration_target_instrument0_planet10) & 385 not-(calibration_target_instrument0_phenomenon14) & 386 not-(calibration_target_instrument0_star11) & 387 not-(calibration_target_instrument0_star16) & 388 not-(calibration_target_instrument0_planet5) & 389 not-(calibration_target_instrument0_star15) & 390 not-(calibration_target_instrument0_star6) & 391 not-(calibration_target_instrument0_star0) & 392 not-(calibration_target_instrument0_star7) & 393 not-(calibration_target_instrument0_phenomenon8) & 394 not-(calibration_target_instrument0_phenomenon13) & 395 not-(calibration_target_instrument0_star2) & 396 not-(calibration_target_instrument0_planet9) & 397 not-(calibration_target_instrument0_groundstation3) & 398 not-(calibration_target_instrument0_star12) & 399 not-(calibration_target_instrument10_star4) & 400 not-(calibration_target_instrument10_planet10) & 401 not-(calibration_target_instrument10_phenomenon14) & 402 not-(calibration_target_instrument10_star11) & 403 not-(calibration_target_instrument10_star16) & 404 not-(calibration_target_instrument10_planet5) & 405 not-(calibration_target_instrument10_star15) & 406 not-(calibration_target_instrument10_star6) & 407 not-(calibration_target_instrument10_star1) & 408 not-(calibration_target_instrument10_star7) & 409 not-(calibration_target_instrument10_phenomenon8) & 410 not-(calibration_target_instrument10_phenomenon13) & 411 not-(calibration_target_instrument10_star2) & 412 not-(calibration_target_instrument10_planet9) & 413 not-(calibration_target_instrument10_groundstation3) & 414 not-(calibration_target_instrument10_star12) & 415 not-(calibration_target_instrument3_planet10) & 416 not-(calibration_target_instrument3_phenomenon14) & 417 not-(calibration_target_instrument3_star11) & 418 not-(calibration_target_instrument3_star16) & 419 not-(calibration_target_instrument3_planet5) & 420 not-(calibration_target_instrument3_star15) & 421 not-(calibration_target_instrument3_star6) & 422 not-(calibration_target_instrument3_star1) & 423 not-(calibration_target_instrument3_star0) & 424 not-(calibration_target_instrument3_star7) & 425 not-(calibration_target_instrument3_phenomenon8) & 426 not-(calibration_target_instrument3_phenomenon13) & 427 not-(calibration_target_instrument3_star2) & 428 not-(calibration_target_instrument3_planet9) & 429 not-(calibration_target_instrument3_groundstation3) & 430 not-(calibration_target_instrument3_star12) & 431 not-(calibration_target_instrument1_star4) & 432 not-(calibration_target_instrument1_planet10) & 433 not-(calibration_target_instrument1_phenomenon14) & 434 not-(calibration_target_instrument1_star11) & 435 not-(calibration_target_instrument1_star16) & 436 not-(calibration_target_instrument1_planet5) & 437 not-(calibration_target_instrument1_star15) & 438 not-(calibration_target_instrument1_star6) & 439 not-(calibration_target_instrument1_star1) & 440 not-(calibration_target_instrument1_star0) & 441 not-(calibration_target_instrument1_star7) & 442 not-(calibration_target_instrument1_phenomenon8) & 443 not-(calibration_target_instrument1_phenomenon13) & 444 not-(calibration_target_instrument1_star2) & 445 not-(calibration_target_instrument1_planet9) & 446 not-(calibration_target_instrument1_star12) & 447 not-(calibration_target_instrument9_star4) & 448 not-(calibration_target_instrument9_planet10) & 449 not-(calibration_target_instrument9_phenomenon14) & 450 not-(calibration_target_instrument9_star11) & 451 not-(calibration_target_instrument9_star16) & 452 not-(calibration_target_instrument9_planet5) & 453 not-(calibration_target_instrument9_star15) & 454 not-(calibration_target_instrument9_star6) & 455 not-(calibration_target_instrument9_star1) & 456 not-(calibration_target_instrument9_star0) & 457 not-(calibration_target_instrument9_star7) & 458 not-(calibration_target_instrument9_phenomenon8) & 459 not-(calibration_target_instrument9_phenomenon13) & 460 not-(calibration_target_instrument9_planet9) & 461 not-(calibration_target_instrument9_groundstation3) & 462 not-(calibration_target_instrument9_star12) & 463 not-(calibration_target_instrument6_star4) & 464 not-(calibration_target_instrument6_planet10) & 465 not-(calibration_target_instrument6_phenomenon14) & 466 not-(calibration_target_instrument6_star11) & 467 not-(calibration_target_instrument6_star16) & 468 not-(calibration_target_instrument6_planet5) & 469 not-(calibration_target_instrument6_star15) & 470 not-(calibration_target_instrument6_star6) & 471 not-(calibration_target_instrument6_star1) & 472 not-(calibration_target_instrument6_star0) & 473 not-(calibration_target_instrument6_star7) & 474 not-(calibration_target_instrument6_phenomenon8) & 475 not-(calibration_target_instrument6_phenomenon13) & 476 not-(calibration_target_instrument6_star2) & 477 not-(calibration_target_instrument6_planet9) & 478 not-(calibration_target_instrument6_star12) & 479 not-(calibration_target_instrument7_planet10) & 480 not-(calibration_target_instrument7_phenomenon14) & 481 not-(calibration_target_instrument7_star11) & 482 not-(calibration_target_instrument7_star16) & 483 not-(calibration_target_instrument7_planet5) & 484 not-(calibration_target_instrument7_star15) & 485 not-(calibration_target_instrument7_star6) & 486 not-(calibration_target_instrument7_star1) & 487 not-(calibration_target_instrument7_star0) & 488 not-(calibration_target_instrument7_star7) & 489 not-(calibration_target_instrument7_phenomenon8) & 490 not-(calibration_target_instrument7_phenomenon13) & 491 not-(calibration_target_instrument7_star2) & 492 not-(calibration_target_instrument7_planet9) & 493 not-(calibration_target_instrument7_groundstation3) & 494 not-(calibration_target_instrument7_star12)
+
+goals:
+1 (pointing_satellite4_planet9) & 2 (have_image_planet5_image4) & 3 (have_image_star6_infrared3) & 4 (have_image_star7_image4) & 5 (have_image_phenomenon8_image4) & 6 (have_image_planet9_infrared0) & 7 (have_image_planet10_infrared3) & 8 (have_image_star12_image4) & 9 (have_image_phenomenon13_image4) & 10 (have_image_phenomenon14_spectrograph1) & 11 (have_image_star15_spectrograph1) & 12 (have_image_star16_image2)
+makespan:
+1016
+
+action:
+(switch-on_instrument10_satellite4)
+operator:
+switch-on
+start_time:
+1
+durations:
+20
+precs:
+1 (on_board_instrument10_satellite4) & 2 (power_avail_satellite4) & 3 (calibrated_instrument10) & 4 (power_on_instrument10)
+effs:
+5 (on_board_instrument10_satellite4) & 6 not-(on_board_instrument10_satellite4) & 7 (power_avail_satellite4) & 8 not-(power_avail_satellite4) & 9 (calibrated_instrument10) & 10 not-(calibrated_instrument10) & 11 (power_on_instrument10) & 12 not-(power_on_instrument10)
+
+action:
+(turn-to_satellite4_planet9_planet10)
+operator:
+turn-to
+start_time:
+1
+durations:
+50
+precs:
+1 (pointing_satellite4_planet9) & 2 (pointing_satellite4_planet10) & 3 (power_avail_satellite4)
+effs:
+4 (pointing_satellite4_planet9) & 5 not-(pointing_satellite4_planet9) & 6 (pointing_satellite4_planet10) & 7 not-(pointing_satellite4_planet10) & 8 (power_avail_satellite4) & 9 not-(power_avail_satellite4)
+
+action:
+(switch-on_instrument7_satellite3)
+operator:
+switch-on
+start_time:
+1
+durations:
+20
+precs:
+1 (on_board_instrument7_satellite3) & 2 (power_avail_satellite3) & 3 (calibrated_instrument7) & 4 (power_on_instrument7)
+effs:
+5 (on_board_instrument7_satellite3) & 6 not-(on_board_instrument7_satellite3) & 7 (power_avail_satellite3) & 8 not-(power_avail_satellite3) & 9 (calibrated_instrument7) & 10 not-(calibrated_instrument7) & 11 (power_on_instrument7) & 12 not-(power_on_instrument7)
+
+action:
+(switch-on_instrument3_satellite1)
+operator:
+switch-on
+start_time:
+1
+durations:
+20
+precs:
+1 (on_board_instrument3_satellite1) & 2 (power_avail_satellite1) & 3 (calibrated_instrument3) & 4 (power_on_instrument3)
+effs:
+5 (on_board_instrument3_satellite1) & 6 not-(on_board_instrument3_satellite1) & 7 (power_avail_satellite1) & 8 not-(power_avail_satellite1) & 9 (calibrated_instrument3) & 10 not-(calibrated_instrument3) & 11 (power_on_instrument3) & 12 not-(power_on_instrument3)
+
+action:
+(turn-to_satellite3_phenomenon13_groundstation3)
+operator:
+turn-to
+start_time:
+1
+durations:
+50
+precs:
+1 (pointing_satellite3_phenomenon13) & 2 (pointing_satellite3_groundstation3) & 3 (power_avail_satellite3)
+effs:
+4 (pointing_satellite3_phenomenon13) & 5 not-(pointing_satellite3_phenomenon13) & 6 (pointing_satellite3_groundstation3) & 7 not-(pointing_satellite3_groundstation3) & 8 (power_avail_satellite3) & 9 not-(power_avail_satellite3)
+
+action:
+(calibrate_satellite1_instrument3_star4)
+operator:
+calibrate
+start_time:
+22
+durations:
+50
+precs:
+1 (calibrated_instrument3) & 2 (pointing_satellite1_star4) & 3 (power_on_instrument3) & 4 (power_avail_satellite1) & 5 (calibration_target_instrument3_star4) & 6 (on_board_instrument3_satellite1)
+effs:
+7 (calibrated_instrument3) & 8 not-(calibrated_instrument3) & 9 (pointing_satellite1_star4) & 10 not-(pointing_satellite1_star4) & 11 (power_on_instrument3) & 12 not-(power_on_instrument3) & 13 (power_avail_satellite1) & 14 not-(power_avail_satellite1) & 15 (calibration_target_instrument3_star4) & 16 not-(calibration_target_instrument3_star4) & 17 (on_board_instrument3_satellite1) & 18 not-(on_board_instrument3_satellite1)
+
+action:
+(turn-to_satellite3_star4_phenomenon13)
+operator:
+turn-to
+start_time:
+53
+durations:
+50
+precs:
+1 (pointing_satellite3_star4) & 2 (pointing_satellite3_phenomenon13) & 3 (power_avail_satellite3)
+effs:
+4 (pointing_satellite3_star4) & 5 not-(pointing_satellite3_star4) & 6 (pointing_satellite3_phenomenon13) & 7 not-(pointing_satellite3_phenomenon13) & 8 (power_avail_satellite3) & 9 not-(power_avail_satellite3)
+
+action:
+(turn-to_satellite4_star0_planet9)
+operator:
+turn-to
+start_time:
+53
+durations:
+50
+precs:
+1 (pointing_satellite4_star0) & 2 (pointing_satellite4_planet9) & 3 (power_avail_satellite4)
+effs:
+4 (pointing_satellite4_star0) & 5 not-(pointing_satellite4_star0) & 6 (pointing_satellite4_planet9) & 7 not-(pointing_satellite4_planet9) & 8 (power_avail_satellite4) & 9 not-(power_avail_satellite4)
+
+action:
+(turn-to_satellite1_planet10_star4)
+operator:
+turn-to
+start_time:
+74
+durations:
+50
+precs:
+1 (pointing_satellite1_planet10) & 2 (pointing_satellite1_star4) & 3 (power_avail_satellite1)
+effs:
+4 (pointing_satellite1_planet10) & 5 not-(pointing_satellite1_planet10) & 6 (pointing_satellite1_star4) & 7 not-(pointing_satellite1_star4) & 8 (power_avail_satellite1) & 9 not-(power_avail_satellite1)
+
+action:
+(calibrate_satellite3_instrument7_star4)
+operator:
+calibrate
+start_time:
+105
+durations:
+50
+precs:
+1 (calibrated_instrument7) & 2 (pointing_satellite3_star4) & 3 (power_on_instrument7) & 4 (power_avail_satellite3) & 5 (calibration_target_instrument7_star4) & 6 (on_board_instrument7_satellite3)
+effs:
+7 (calibrated_instrument7) & 8 not-(calibrated_instrument7) & 9 (pointing_satellite3_star4) & 10 not-(pointing_satellite3_star4) & 11 (power_on_instrument7) & 12 not-(power_on_instrument7) & 13 (power_avail_satellite3) & 14 not-(power_avail_satellite3) & 15 (calibration_target_instrument7_star4) & 16 not-(calibration_target_instrument7_star4) & 17 (on_board_instrument7_satellite3) & 18 not-(on_board_instrument7_satellite3)
+
+action:
+(calibrate_satellite4_instrument10_star0)
+operator:
+calibrate
+start_time:
+105
+durations:
+50
+precs:
+1 (calibrated_instrument10) & 2 (pointing_satellite4_star0) & 3 (power_on_instrument10) & 4 (power_avail_satellite4) & 5 (calibration_target_instrument10_star0) & 6 (on_board_instrument10_satellite4)
+effs:
+7 (calibrated_instrument10) & 8 not-(calibrated_instrument10) & 9 (pointing_satellite4_star0) & 10 not-(pointing_satellite4_star0) & 11 (power_on_instrument10) & 12 not-(power_on_instrument10) & 13 (power_avail_satellite4) & 14 not-(power_avail_satellite4) & 15 (calibration_target_instrument10_star0) & 16 not-(calibration_target_instrument10_star0) & 17 (on_board_instrument10_satellite4) & 18 not-(on_board_instrument10_satellite4)
+
+action:
+(take-image_satellite1_planet10_instrument3_infrared3)
+operator:
+take-image
+start_time:
+126
+durations:
+70
+precs:
+1 (have_image_planet10_infrared3) & 2 (calibrated_instrument3) & 3 (on_board_instrument3_satellite1) & 4 (power_on_instrument3) & 5 (calibration_target_instrument3_planet10) & 6 (power_avail_satellite1) & 7 (supports_instrument3_infrared3) & 8 (pointing_satellite1_planet10)
+effs:
+9 (have_image_planet10_infrared3) & 10 not-(have_image_planet10_infrared3) & 11 (calibrated_instrument3) & 12 not-(calibrated_instrument3) & 13 (on_board_instrument3_satellite1) & 14 not-(on_board_instrument3_satellite1) & 15 (power_on_instrument3) & 16 not-(power_on_instrument3) & 17 (calibration_target_instrument3_planet10) & 18 not-(calibration_target_instrument3_planet10) & 19 (power_avail_satellite1) & 20 not-(power_avail_satellite1) & 21 (pointing_satellite1_planet10) & 22 not-(pointing_satellite1_planet10) & 
+
+action:
+(turn-to_satellite3_phenomenon13_star4)
+operator:
+turn-to
+start_time:
+157
+durations:
+50
+precs:
+1 (pointing_satellite3_phenomenon13) & 2 (pointing_satellite3_star4) & 3 (power_avail_satellite3)
+effs:
+4 (pointing_satellite3_phenomenon13) & 5 not-(pointing_satellite3_phenomenon13) & 6 (pointing_satellite3_star4) & 7 not-(pointing_satellite3_star4) & 8 (power_avail_satellite3) & 9 not-(power_avail_satellite3)
+
+action:
+(turn-to_satellite4_planet9_star0)
+operator:
+turn-to
+start_time:
+157
+durations:
+50
+precs:
+1 (pointing_satellite4_planet9) & 2 (pointing_satellite4_star0) & 3 (power_avail_satellite4)
+effs:
+4 (pointing_satellite4_planet9) & 5 not-(pointing_satellite4_planet9) & 6 (pointing_satellite4_star0) & 7 not-(pointing_satellite4_star0) & 8 (power_avail_satellite4) & 9 not-(power_avail_satellite4)
+
+action:
+(turn-to_satellite1_planet9_planet10)
+operator:
+turn-to
+start_time:
+198
+durations:
+50
+precs:
+1 (pointing_satellite1_planet9) & 2 (pointing_satellite1_planet10) & 3 (power_avail_satellite1)
+effs:
+4 (pointing_satellite1_planet9) & 5 not-(pointing_satellite1_planet9) & 6 (pointing_satellite1_planet10) & 7 not-(pointing_satellite1_planet10) & 8 (power_avail_satellite1) & 9 not-(power_avail_satellite1)
+
+action:
+(take-image_satellite3_phenomenon13_instrument7_image4)
+operator:
+take-image
+start_time:
+209
+durations:
+70
+precs:
+1 (have_image_phenomenon13_image4) & 2 (calibrated_instrument7) & 3 (on_board_instrument7_satellite3) & 4 (power_on_instrument7) & 5 (calibration_target_instrument7_phenomenon13) & 6 (power_avail_satellite3) & 7 (supports_instrument7_image4) & 8 (pointing_satellite3_phenomenon13)
+effs:
+9 (have_image_phenomenon13_image4) & 10 not-(have_image_phenomenon13_image4) & 11 (calibrated_instrument7) & 12 not-(calibrated_instrument7) & 13 (on_board_instrument7_satellite3) & 14 not-(on_board_instrument7_satellite3) & 15 (power_on_instrument7) & 16 not-(power_on_instrument7) & 17 (calibration_target_instrument7_phenomenon13) & 18 not-(calibration_target_instrument7_phenomenon13) & 19 (power_avail_satellite3) & 20 not-(power_avail_satellite3) & 21 (pointing_satellite3_phenomenon13) & 22 not-(pointing_satellite3_phenomenon13) & 
+
+action:
+(turn-to_satellite4_star16_planet9)
+operator:
+turn-to
+start_time:
+209
+durations:
+50
+precs:
+1 (pointing_satellite4_star16) & 2 (pointing_satellite4_planet9) & 3 (power_avail_satellite4)
+effs:
+4 (pointing_satellite4_star16) & 5 not-(pointing_satellite4_star16) & 6 (pointing_satellite4_planet9) & 7 not-(pointing_satellite4_planet9) & 8 (power_avail_satellite4) & 9 not-(power_avail_satellite4)
+
+action:
+(take-image_satellite1_planet9_instrument3_infrared0)
+operator:
+take-image
+start_time:
+250
+durations:
+70
+precs:
+1 (have_image_planet9_infrared0) & 2 (calibrated_instrument3) & 3 (on_board_instrument3_satellite1) & 4 (power_on_instrument3) & 5 (calibration_target_instrument3_planet9) & 6 (power_avail_satellite1) & 7 (supports_instrument3_infrared0) & 8 (pointing_satellite1_planet9)
+effs:
+9 (have_image_planet9_infrared0) & 10 not-(have_image_planet9_infrared0) & 11 (calibrated_instrument3) & 12 not-(calibrated_instrument3) & 13 (on_board_instrument3_satellite1) & 14 not-(on_board_instrument3_satellite1) & 15 (power_on_instrument3) & 16 not-(power_on_instrument3) & 17 (calibration_target_instrument3_planet9) & 18 not-(calibration_target_instrument3_planet9) & 19 (power_avail_satellite1) & 20 not-(power_avail_satellite1) & 21 (pointing_satellite1_planet9) & 22 not-(pointing_satellite1_planet9) & 
+
+action:
+(take-image_satellite4_star16_instrument10_image2)
+operator:
+take-image
+start_time:
+261
+durations:
+70
+precs:
+1 (have_image_star16_image2) & 2 (calibrated_instrument10) & 3 (on_board_instrument10_satellite4) & 4 (power_on_instrument10) & 5 (calibration_target_instrument10_star16) & 6 (power_avail_satellite4) & 7 (supports_instrument10_image2) & 8 (pointing_satellite4_star16)
+effs:
+9 (have_image_star16_image2) & 10 not-(have_image_star16_image2) & 11 (calibrated_instrument10) & 12 not-(calibrated_instrument10) & 13 (on_board_instrument10_satellite4) & 14 not-(on_board_instrument10_satellite4) & 15 (power_on_instrument10) & 16 not-(power_on_instrument10) & 17 (calibration_target_instrument10_star16) & 18 not-(calibration_target_instrument10_star16) & 19 (power_avail_satellite4) & 20 not-(power_avail_satellite4) & 21 (pointing_satellite4_star16) & 22 not-(pointing_satellite4_star16) & 
+
+action:
+(turn-to_satellite3_phenomenon14_phenomenon13)
+operator:
+turn-to
+start_time:
+282
+durations:
+50
+precs:
+1 (pointing_satellite3_phenomenon14) & 2 (pointing_satellite3_phenomenon13) & 3 (power_avail_satellite3)
+effs:
+4 (pointing_satellite3_phenomenon14) & 5 not-(pointing_satellite3_phenomenon14) & 6 (pointing_satellite3_phenomenon13) & 7 not-(pointing_satellite3_phenomenon13) & 8 (power_avail_satellite3) & 9 not-(power_avail_satellite3)
+
+action:
+(turn-to_satellite1_star6_planet9)
+operator:
+turn-to
+start_time:
+323
+durations:
+50
+precs:
+1 (pointing_satellite1_star6) & 2 (pointing_satellite1_planet9) & 3 (power_avail_satellite1)
+effs:
+4 (pointing_satellite1_star6) & 5 not-(pointing_satellite1_star6) & 6 (pointing_satellite1_planet9) & 7 not-(pointing_satellite1_planet9) & 8 (power_avail_satellite1) & 9 not-(power_avail_satellite1)
+
+action:
+(take-image_satellite3_phenomenon14_instrument7_spectrograph1)
+operator:
+take-image
+start_time:
+334
+durations:
+70
+precs:
+1 (have_image_phenomenon14_spectrograph1) & 2 (calibrated_instrument7) & 3 (on_board_instrument7_satellite3) & 4 (power_on_instrument7) & 5 (calibration_target_instrument7_phenomenon14) & 6 (power_avail_satellite3) & 7 (supports_instrument7_spectrograph1) & 8 (pointing_satellite3_phenomenon14)
+effs:
+9 (have_image_phenomenon14_spectrograph1) & 10 not-(have_image_phenomenon14_spectrograph1) & 11 (calibrated_instrument7) & 12 not-(calibrated_instrument7) & 13 (on_board_instrument7_satellite3) & 14 not-(on_board_instrument7_satellite3) & 15 (power_on_instrument7) & 16 not-(power_on_instrument7) & 17 (calibration_target_instrument7_phenomenon14) & 18 not-(calibration_target_instrument7_phenomenon14) & 19 (power_avail_satellite3) & 20 not-(power_avail_satellite3) & 21 (pointing_satellite3_phenomenon14) & 22 not-(pointing_satellite3_phenomenon14) & 
+
+action:
+(turn-to_satellite4_planet9_star16)
+operator:
+turn-to
+start_time:
+334
+durations:
+50
+precs:
+1 (pointing_satellite4_planet9) & 2 (pointing_satellite4_star16) & 3 (power_avail_satellite4)
+effs:
+4 (pointing_satellite4_planet9) & 5 not-(pointing_satellite4_planet9) & 6 (pointing_satellite4_star16) & 7 not-(pointing_satellite4_star16) & 8 (power_avail_satellite4) & 9 not-(power_avail_satellite4)
+
+action:
+(take-image_satellite1_star6_instrument3_infrared3)
+operator:
+take-image
+start_time:
+375
+durations:
+70
+precs:
+1 (have_image_star6_infrared3) & 2 (calibrated_instrument3) & 3 (on_board_instrument3_satellite1) & 4 (power_on_instrument3) & 5 (calibration_target_instrument3_star6) & 6 (power_avail_satellite1) & 7 (supports_instrument3_infrared3) & 8 (pointing_satellite1_star6)
+effs:
+9 (have_image_star6_infrared3) & 10 not-(have_image_star6_infrared3) & 11 (calibrated_instrument3) & 12 not-(calibrated_instrument3) & 13 (on_board_instrument3_satellite1) & 14 not-(on_board_instrument3_satellite1) & 15 (power_on_instrument3) & 16 not-(power_on_instrument3) & 17 (calibration_target_instrument3_star6) & 18 not-(calibration_target_instrument3_star6) & 19 (power_avail_satellite1) & 20 not-(power_avail_satellite1) & 21 (pointing_satellite1_star6) & 22 not-(pointing_satellite1_star6) & 
+
+action:
+(turn-to_satellite3_phenomenon8_phenomenon14)
+operator:
+turn-to
+start_time:
+406
+durations:
+50
+precs:
+1 (pointing_satellite3_phenomenon8) & 2 (pointing_satellite3_phenomenon14) & 3 (power_avail_satellite3)
+effs:
+4 (pointing_satellite3_phenomenon8) & 5 not-(pointing_satellite3_phenomenon8) & 6 (pointing_satellite3_phenomenon14) & 7 not-(pointing_satellite3_phenomenon14) & 8 (power_avail_satellite3) & 9 not-(power_avail_satellite3)
+
+action:
+(take-image_satellite3_phenomenon8_instrument7_image4)
+operator:
+take-image
+start_time:
+457
+durations:
+70
+precs:
+1 (have_image_phenomenon8_image4) & 2 (calibrated_instrument7) & 3 (on_board_instrument7_satellite3) & 4 (power_on_instrument7) & 5 (calibration_target_instrument7_phenomenon8) & 6 (power_avail_satellite3) & 7 (supports_instrument7_image4) & 8 (pointing_satellite3_phenomenon8)
+effs:
+9 (have_image_phenomenon8_image4) & 10 not-(have_image_phenomenon8_image4) & 11 (calibrated_instrument7) & 12 not-(calibrated_instrument7) & 13 (on_board_instrument7_satellite3) & 14 not-(on_board_instrument7_satellite3) & 15 (power_on_instrument7) & 16 not-(power_on_instrument7) & 17 (calibration_target_instrument7_phenomenon8) & 18 not-(calibration_target_instrument7_phenomenon8) & 19 (power_avail_satellite3) & 20 not-(power_avail_satellite3) & 21 (pointing_satellite3_phenomenon8) & 22 not-(pointing_satellite3_phenomenon8) & 
+
+action:
+(turn-to_satellite3_planet5_phenomenon8)
+operator:
+turn-to
+start_time:
+528
+durations:
+50
+precs:
+1 (pointing_satellite3_planet5) & 2 (pointing_satellite3_phenomenon8) & 3 (power_avail_satellite3)
+effs:
+4 (pointing_satellite3_planet5) & 5 not-(pointing_satellite3_planet5) & 6 (pointing_satellite3_phenomenon8) & 7 not-(pointing_satellite3_phenomenon8) & 8 (power_avail_satellite3) & 9 not-(power_avail_satellite3)
+
+action:
+(take-image_satellite3_planet5_instrument7_image4)
+operator:
+take-image
+start_time:
+579
+durations:
+70
+precs:
+1 (have_image_planet5_image4) & 2 (calibrated_instrument7) & 3 (on_board_instrument7_satellite3) & 4 (power_on_instrument7) & 5 (calibration_target_instrument7_planet5) & 6 (power_avail_satellite3) & 7 (supports_instrument7_image4) & 8 (pointing_satellite3_planet5)
+effs:
+9 (have_image_planet5_image4) & 10 not-(have_image_planet5_image4) & 11 (calibrated_instrument7) & 12 not-(calibrated_instrument7) & 13 (on_board_instrument7_satellite3) & 14 not-(on_board_instrument7_satellite3) & 15 (power_on_instrument7) & 16 not-(power_on_instrument7) & 17 (calibration_target_instrument7_planet5) & 18 not-(calibration_target_instrument7_planet5) & 19 (power_avail_satellite3) & 20 not-(power_avail_satellite3) & 21 (pointing_satellite3_planet5) & 22 not-(pointing_satellite3_planet5) & 
+
+action:
+(turn-to_satellite3_star12_planet5)
+operator:
+turn-to
+start_time:
+650
+durations:
+50
+precs:
+1 (pointing_satellite3_star12) & 2 (pointing_satellite3_planet5) & 3 (power_avail_satellite3)
+effs:
+4 (pointing_satellite3_star12) & 5 not-(pointing_satellite3_star12) & 6 (pointing_satellite3_planet5) & 7 not-(pointing_satellite3_planet5) & 8 (power_avail_satellite3) & 9 not-(power_avail_satellite3)
+
+action:
+(take-image_satellite3_star12_instrument7_image4)
+operator:
+take-image
+start_time:
+701
+durations:
+70
+precs:
+1 (have_image_star12_image4) & 2 (calibrated_instrument7) & 3 (on_board_instrument7_satellite3) & 4 (power_on_instrument7) & 5 (calibration_target_instrument7_star12) & 6 (power_avail_satellite3) & 7 (supports_instrument7_image4) & 8 (pointing_satellite3_star12)
+effs:
+9 (have_image_star12_image4) & 10 not-(have_image_star12_image4) & 11 (calibrated_instrument7) & 12 not-(calibrated_instrument7) & 13 (on_board_instrument7_satellite3) & 14 not-(on_board_instrument7_satellite3) & 15 (power_on_instrument7) & 16 not-(power_on_instrument7) & 17 (calibration_target_instrument7_star12) & 18 not-(calibration_target_instrument7_star12) & 19 (power_avail_satellite3) & 20 not-(power_avail_satellite3) & 21 (pointing_satellite3_star12) & 22 not-(pointing_satellite3_star12) & 
+
+action:
+(turn-to_satellite3_star15_star12)
+operator:
+turn-to
+start_time:
+772
+durations:
+50
+precs:
+1 (pointing_satellite3_star15) & 2 (pointing_satellite3_star12) & 3 (power_avail_satellite3)
+effs:
+4 (pointing_satellite3_star15) & 5 not-(pointing_satellite3_star15) & 6 (pointing_satellite3_star12) & 7 not-(pointing_satellite3_star12) & 8 (power_avail_satellite3) & 9 not-(power_avail_satellite3)
+
+action:
+(take-image_satellite3_star15_instrument7_spectrograph1)
+operator:
+take-image
+start_time:
+823
+durations:
+70
+precs:
+1 (have_image_star15_spectrograph1) & 2 (calibrated_instrument7) & 3 (on_board_instrument7_satellite3) & 4 (power_on_instrument7) & 5 (calibration_target_instrument7_star15) & 6 (power_avail_satellite3) & 7 (supports_instrument7_spectrograph1) & 8 (pointing_satellite3_star15)
+effs:
+9 (have_image_star15_spectrograph1) & 10 not-(have_image_star15_spectrograph1) & 11 (calibrated_instrument7) & 12 not-(calibrated_instrument7) & 13 (on_board_instrument7_satellite3) & 14 not-(on_board_instrument7_satellite3) & 15 (power_on_instrument7) & 16 not-(power_on_instrument7) & 17 (calibration_target_instrument7_star15) & 18 not-(calibration_target_instrument7_star15) & 19 (power_avail_satellite3) & 20 not-(power_avail_satellite3) & 21 (pointing_satellite3_star15) & 22 not-(pointing_satellite3_star15) & 
+
+action:
+(turn-to_satellite3_star7_star15)
+operator:
+turn-to
+start_time:
+894
+durations:
+50
+precs:
+1 (pointing_satellite3_star7) & 2 (pointing_satellite3_star15) & 3 (power_avail_satellite3)
+effs:
+4 (pointing_satellite3_star7) & 5 not-(pointing_satellite3_star7) & 6 (pointing_satellite3_star15) & 7 not-(pointing_satellite3_star15) & 8 (power_avail_satellite3) & 9 not-(power_avail_satellite3)
+
+action:
+(take-image_satellite3_star7_instrument7_image4)
+operator:
+take-image
+start_time:
+945
+durations:
+70
+precs:
+1 (have_image_star7_image4) & 2 (calibrated_instrument7) & 3 (on_board_instrument7_satellite3) & 4 (power_on_instrument7) & 5 (calibration_target_instrument7_star7) & 6 (power_avail_satellite3) & 7 (supports_instrument7_image4) & 8 (pointing_satellite3_star7)
+effs:
+9 (have_image_star7_image4) & 10 not-(have_image_star7_image4) & 11 (calibrated_instrument7) & 12 not-(calibrated_instrument7) & 13 (on_board_instrument7_satellite3) & 14 not-(on_board_instrument7_satellite3) & 15 (power_on_instrument7) & 16 not-(power_on_instrument7) & 17 (calibration_target_instrument7_star7) & 18 not-(calibration_target_instrument7_star7) & 19 (power_avail_satellite3) & 20 not-(power_avail_satellite3) & 21 (pointing_satellite3_star7) & 22 not-(pointing_satellite3_star7) & 
+
+constraints:
+(pointing_satellite0_phenomenon14)
+mutex-predicate
+(pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star15)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_phenomenon13)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star11)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star6)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_planet5)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star2)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_groundstation3)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star7)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_phenomenon8)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star1)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_planet9)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_planet10)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star12)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star16) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star16)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star0) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star0)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star4)
+
+constraints:
+(pointing_satellite0_star4)
+mutex-predicate
+(pointing_satellite0_phenomenon14) (pointing_satellite0_star15) (pointing_satellite0_phenomenon13) (pointing_satellite0_star11) (pointing_satellite0_star6) (pointing_satellite0_planet5) (pointing_satellite0_star2) (pointing_satellite0_groundstation3) (pointing_satellite0_star7) (pointing_satellite0_phenomenon8) (pointing_satellite0_star1) (pointing_satellite0_planet9) (pointing_satellite0_planet10) (pointing_satellite0_star12) (pointing_satellite0_star16) (pointing_satellite0_star0) 
+
+constraints:
+(pointing_satellite1_star12)
+mutex-predicate
+(pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_star1)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_groundstation3)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_star6)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_phenomenon13)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_phenomenon14)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_star2)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_star15)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_planet9)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_star16)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_planet5)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_star0)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_phenomenon8)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_star11)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_planet10) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_planet10)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_star7) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_star7)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star4)
+
+constraints:
+(pointing_satellite1_star4)
+mutex-predicate
+(pointing_satellite1_star12) (pointing_satellite1_star1) (pointing_satellite1_groundstation3) (pointing_satellite1_star6) (pointing_satellite1_phenomenon13) (pointing_satellite1_phenomenon14) (pointing_satellite1_star2) (pointing_satellite1_star15) (pointing_satellite1_planet9) (pointing_satellite1_star16) (pointing_satellite1_planet5) (pointing_satellite1_star0) (pointing_satellite1_phenomenon8) (pointing_satellite1_star11) (pointing_satellite1_planet10) (pointing_satellite1_star7) 
+
+constraints:
+(pointing_satellite2_star15)
+mutex-predicate
+(pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_star0)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_star7)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_planet10)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_star11)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_phenomenon13)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_phenomenon14)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_planet9)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_star1)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_star2)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_planet5)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_groundstation3)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_phenomenon8)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_star6)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star4) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_star4)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star12) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_star12)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star16)
+
+constraints:
+(pointing_satellite2_star16)
+mutex-predicate
+(pointing_satellite2_star15) (pointing_satellite2_star0) (pointing_satellite2_star7) (pointing_satellite2_planet10) (pointing_satellite2_star11) (pointing_satellite2_phenomenon13) (pointing_satellite2_phenomenon14) (pointing_satellite2_planet9) (pointing_satellite2_star1) (pointing_satellite2_star2) (pointing_satellite2_planet5) (pointing_satellite2_groundstation3) (pointing_satellite2_phenomenon8) (pointing_satellite2_star6) (pointing_satellite2_star4) (pointing_satellite2_star12) 
+
+constraints:
+(pointing_satellite3_groundstation3)
+mutex-predicate
+(pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_planet5)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star11)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_planet10)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star0)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star6)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star4)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star7)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_phenomenon8)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star1)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star12)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_phenomenon13)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star16)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star2)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star15) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_star15)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_planet9) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_planet9)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_phenomenon14)
+
+constraints:
+(pointing_satellite3_phenomenon14)
+mutex-predicate
+(pointing_satellite3_groundstation3) (pointing_satellite3_planet5) (pointing_satellite3_star11) (pointing_satellite3_planet10) (pointing_satellite3_star0) (pointing_satellite3_star6) (pointing_satellite3_star4) (pointing_satellite3_star7) (pointing_satellite3_phenomenon8) (pointing_satellite3_star1) (pointing_satellite3_star12) (pointing_satellite3_phenomenon13) (pointing_satellite3_star16) (pointing_satellite3_star2) (pointing_satellite3_star15) (pointing_satellite3_planet9) 
+
+constraints:
+(pointing_satellite4_planet5)
+mutex-predicate
+(pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star4)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_phenomenon14)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star11)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star0)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star15)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_phenomenon8)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star1)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_planet10)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star6)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star12)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_planet9)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star16)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_phenomenon13)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_star2) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star2)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star7) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_star7)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_groundstation3)
+
+constraints:
+(pointing_satellite4_groundstation3)
+mutex-predicate
+(pointing_satellite4_planet5) (pointing_satellite4_star4) (pointing_satellite4_phenomenon14) (pointing_satellite4_star11) (pointing_satellite4_star0) (pointing_satellite4_star15) (pointing_satellite4_phenomenon8) (pointing_satellite4_star1) (pointing_satellite4_planet10) (pointing_satellite4_star6) (pointing_satellite4_star12) (pointing_satellite4_planet9) (pointing_satellite4_star16) (pointing_satellite4_phenomenon13) (pointing_satellite4_star2) (pointing_satellite4_star7) 
+
+
+
+end:
