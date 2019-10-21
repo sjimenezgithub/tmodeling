@@ -1,0 +1,3456 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/ECAI20/domains/depotsSimpleTime-IPC02/domain-empty-constraints.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/ECAI20/domains//depotsSimpleTime-IPC02/pfile07.pddl
+
+init:
+1 (at_crate5_depot0) & 2 (clear_pallet3) & 3 (at_pallet2_distributor1) & 4 (at_crate0_distributor0) & 5 (at_pallet0_depot0) & 6 (clear_pallet1) & 7 (on_crate0_pallet4) & 8 (on_crate3_crate2) & 9 (at_crate4_distributor0) & 10 (at_hoist2_distributor1) & 11 (at_pallet4_distributor0) & 12 (at_pallet5_distributor1) & 13 (available_hoist0) & 14 (at_pallet1_distributor0) & 15 (at_truck0_distributor1) & 16 (at_hoist1_distributor0) & 17 (at_crate1_distributor1) & 18 (clear_crate1) & 19 (on_crate2_pallet2) & 20 (available_hoist2) & 21 (at_crate2_distributor1) & 22 (on_crate1_pallet5) & 23 (clear_crate3) & 24 (clear_crate5) & 25 (at_truck1_depot0) & 26 (at_pallet3_distributor0) & 27 (available_hoist1) & 28 (at_hoist0_depot0) & 29 (clear_crate4) & 30 (on_crate5_pallet0) & 31 (at_crate3_distributor1) & 32 (on_crate4_crate0) & 33 not-(at_crate5_distributor0) & 34 not-(at_crate5_distributor1) & 35 not-(at_truck1_distributor0) & 36 not-(at_truck1_distributor1) & 37 not-(at_pallet3_depot0) & 38 not-(at_pallet3_distributor1) & 39 not-(at_hoist0_distributor0) & 40 not-(at_hoist0_distributor1) & 41 not-(at_pallet5_depot0) & 42 not-(at_pallet5_distributor0) & 43 not-(at_crate4_depot0) & 44 not-(at_crate4_distributor1) & 45 not-(at_hoist2_depot0) & 46 not-(at_hoist2_distributor0) & 47 not-(at_crate1_depot0) & 48 not-(at_crate1_distributor0) & 49 not-(at_pallet2_depot0) & 50 not-(at_pallet2_distributor0) & 51 not-(at_pallet0_distributor0) & 52 not-(at_pallet0_distributor1) & 53 not-(at_pallet1_depot0) & 54 not-(at_pallet1_distributor1) & 55 not-(at_hoist1_depot0) & 56 not-(at_hoist1_distributor1) & 57 not-(at_crate0_depot0) & 58 not-(at_crate0_distributor1) & 59 not-(at_crate2_depot0) & 60 not-(at_crate2_distributor0) & 61 not-(at_pallet4_depot0) & 62 not-(at_pallet4_distributor1) & 63 not-(at_crate3_depot0) & 64 not-(at_crate3_distributor0) & 65 not-(at_truck0_depot0) & 66 not-(at_truck0_distributor0) & 67 not-(on_crate5_crate5) & 68 not-(on_crate5_pallet3) & 69 not-(on_crate5_pallet5) & 70 not-(on_crate5_crate4) & 71 not-(on_crate5_crate1) & 72 not-(on_crate5_pallet2) & 73 not-(on_crate5_pallet1) & 74 not-(on_crate5_crate0) & 75 not-(on_crate5_crate2) & 76 not-(on_crate5_pallet4) & 77 not-(on_crate5_crate3) & 78 not-(on_crate4_crate5) & 79 not-(on_crate4_pallet3) & 80 not-(on_crate4_pallet5) & 81 not-(on_crate4_crate4) & 82 not-(on_crate4_crate1) & 83 not-(on_crate4_pallet2) & 84 not-(on_crate4_pallet0) & 85 not-(on_crate4_pallet1) & 86 not-(on_crate4_crate2) & 87 not-(on_crate4_pallet4) & 88 not-(on_crate4_crate3) & 89 not-(on_crate1_crate5) & 90 not-(on_crate1_pallet3) & 91 not-(on_crate1_crate4) & 92 not-(on_crate1_crate1) & 93 not-(on_crate1_pallet2) & 94 not-(on_crate1_pallet0) & 95 not-(on_crate1_pallet1) & 96 not-(on_crate1_crate0) & 97 not-(on_crate1_crate2) & 98 not-(on_crate1_pallet4) & 99 not-(on_crate1_crate3) & 100 not-(on_crate0_crate5) & 101 not-(on_crate0_pallet3) & 102 not-(on_crate0_pallet5) & 103 not-(on_crate0_crate4) & 104 not-(on_crate0_crate1) & 105 not-(on_crate0_pallet2) & 106 not-(on_crate0_pallet0) & 107 not-(on_crate0_pallet1) & 108 not-(on_crate0_crate0) & 109 not-(on_crate0_crate2) & 110 not-(on_crate0_crate3) & 111 not-(on_crate2_crate5) & 112 not-(on_crate2_pallet3) & 113 not-(on_crate2_pallet5) & 114 not-(on_crate2_crate4) & 115 not-(on_crate2_crate1) & 116 not-(on_crate2_pallet0) & 117 not-(on_crate2_pallet1) & 118 not-(on_crate2_crate0) & 119 not-(on_crate2_crate2) & 120 not-(on_crate2_pallet4) & 121 not-(on_crate2_crate3) & 122 not-(on_crate3_crate5) & 123 not-(on_crate3_pallet3) & 124 not-(on_crate3_pallet5) & 125 not-(on_crate3_crate4) & 126 not-(on_crate3_crate1) & 127 not-(on_crate3_pallet2) & 128 not-(on_crate3_pallet0) & 129 not-(on_crate3_pallet1) & 130 not-(on_crate3_crate0) & 131 not-(on_crate3_pallet4) & 132 not-(on_crate3_crate3) & 133 not-(in_crate5_truck1) & 134 not-(in_crate5_truck0) & 135 not-(in_crate4_truck1) & 136 not-(in_crate4_truck0) & 137 not-(in_crate1_truck1) & 138 not-(in_crate1_truck0) & 139 not-(in_crate0_truck1) & 140 not-(in_crate0_truck0) & 141 not-(in_crate2_truck1) & 142 not-(in_crate2_truck0) & 143 not-(in_crate3_truck1) & 144 not-(in_crate3_truck0) & 145 not-(lifting_hoist0_crate5) & 146 not-(lifting_hoist0_crate4) & 147 not-(lifting_hoist0_crate1) & 148 not-(lifting_hoist0_crate0) & 149 not-(lifting_hoist0_crate2) & 150 not-(lifting_hoist0_crate3) & 151 not-(lifting_hoist2_crate5) & 152 not-(lifting_hoist2_crate4) & 153 not-(lifting_hoist2_crate1) & 154 not-(lifting_hoist2_crate0) & 155 not-(lifting_hoist2_crate2) & 156 not-(lifting_hoist2_crate3) & 157 not-(lifting_hoist1_crate5) & 158 not-(lifting_hoist1_crate4) & 159 not-(lifting_hoist1_crate1) & 160 not-(lifting_hoist1_crate0) & 161 not-(lifting_hoist1_crate2) & 162 not-(lifting_hoist1_crate3) & 163 not-(clear_pallet5) & 164 not-(clear_pallet2) & 165 not-(clear_pallet0) & 166 not-(clear_crate0) & 167 not-(clear_crate2) & 168 not-(clear_pallet4)
+
+goals:
+1 (at_pallet2_distributor1) & 2 (at_pallet0_depot0) & 3 (at_hoist2_distributor1) & 4 (at_pallet4_distributor0) & 5 (at_pallet5_distributor1) & 6 (at_pallet1_distributor0) & 7 (at_hoist1_distributor0) & 8 (on_crate2_pallet2) & 9 (at_crate2_distributor1) & 10 (at_pallet3_distributor0) & 11 (at_hoist0_depot0) & 12 (clear_crate2) & 13 (clear_pallet0) & 14 (clear_pallet4) & 15 (at_crate0_distributor0) & 16 (clear_crate0) & 17 (on_crate0_pallet3) & 18 (available_hoist0) & 19 (at_truck1_distributor1) & 20 (available_hoist1) & 21 (at_crate3_distributor0) & 22 (clear_crate3) & 23 (on_crate3_pallet1) & 24 (at_truck0_distributor1) & 25 (at_crate4_distributor1) & 26 (on_crate4_pallet5) & 27 (at_crate1_distributor1) & 28 (on_crate1_crate4) & 29 (available_hoist2) & 30 (at_crate5_distributor1) & 31 (clear_crate5) & 32 (on_crate5_crate1) & 33 not-(at_crate5_depot0) & 34 not-(at_crate5_distributor0) & 35 not-(at_truck1_depot0) & 36 not-(at_truck1_distributor0) & 37 not-(at_pallet3_depot0) & 38 not-(at_pallet3_distributor1) & 39 not-(at_hoist0_distributor0) & 40 not-(at_hoist0_distributor1) & 41 not-(at_pallet5_depot0) & 42 not-(at_pallet5_distributor0) & 43 not-(at_crate4_depot0) & 44 not-(at_crate4_distributor0) & 45 not-(at_hoist2_depot0) & 46 not-(at_hoist2_distributor0) & 47 not-(at_crate1_depot0) & 48 not-(at_crate1_distributor0) & 49 not-(at_pallet2_depot0) & 50 not-(at_pallet2_distributor0) & 51 not-(at_pallet0_distributor0) & 52 not-(at_pallet0_distributor1) & 53 not-(at_pallet1_depot0) & 54 not-(at_pallet1_distributor1) & 55 not-(at_hoist1_depot0) & 56 not-(at_hoist1_distributor1) & 57 not-(at_crate0_depot0) & 58 not-(at_crate0_distributor1) & 59 not-(at_crate2_depot0) & 60 not-(at_crate2_distributor0) & 61 not-(at_pallet4_depot0) & 62 not-(at_pallet4_distributor1) & 63 not-(at_crate3_depot0) & 64 not-(at_crate3_distributor1) & 65 not-(at_truck0_depot0) & 66 not-(at_truck0_distributor0) & 67 not-(on_crate5_crate5) & 68 not-(on_crate5_pallet3) & 69 not-(on_crate5_pallet5) & 70 not-(on_crate5_crate4) & 71 not-(on_crate5_pallet2) & 72 not-(on_crate5_pallet0) & 73 not-(on_crate5_pallet1) & 74 not-(on_crate5_crate0) & 75 not-(on_crate5_crate2) & 76 not-(on_crate5_pallet4) & 77 not-(on_crate5_crate3) & 78 not-(on_crate4_crate5) & 79 not-(on_crate4_pallet3) & 80 not-(on_crate4_crate4) & 81 not-(on_crate4_crate1) & 82 not-(on_crate4_pallet2) & 83 not-(on_crate4_pallet0) & 84 not-(on_crate4_pallet1) & 85 not-(on_crate4_crate0) & 86 not-(on_crate4_crate2) & 87 not-(on_crate4_pallet4) & 88 not-(on_crate4_crate3) & 89 not-(on_crate1_crate5) & 90 not-(on_crate1_pallet3) & 91 not-(on_crate1_pallet5) & 92 not-(on_crate1_crate1) & 93 not-(on_crate1_pallet2) & 94 not-(on_crate1_pallet0) & 95 not-(on_crate1_pallet1) & 96 not-(on_crate1_crate0) & 97 not-(on_crate1_crate2) & 98 not-(on_crate1_pallet4) & 99 not-(on_crate1_crate3) & 100 not-(on_crate0_crate5) & 101 not-(on_crate0_pallet5) & 102 not-(on_crate0_crate4) & 103 not-(on_crate0_crate1) & 104 not-(on_crate0_pallet2) & 105 not-(on_crate0_pallet0) & 106 not-(on_crate0_pallet1) & 107 not-(on_crate0_crate0) & 108 not-(on_crate0_crate2) & 109 not-(on_crate0_pallet4) & 110 not-(on_crate0_crate3) & 111 not-(on_crate2_crate5) & 112 not-(on_crate2_pallet3) & 113 not-(on_crate2_pallet5) & 114 not-(on_crate2_crate4) & 115 not-(on_crate2_crate1) & 116 not-(on_crate2_pallet0) & 117 not-(on_crate2_pallet1) & 118 not-(on_crate2_crate0) & 119 not-(on_crate2_crate2) & 120 not-(on_crate2_pallet4) & 121 not-(on_crate2_crate3) & 122 not-(on_crate3_crate5) & 123 not-(on_crate3_pallet3) & 124 not-(on_crate3_pallet5) & 125 not-(on_crate3_crate4) & 126 not-(on_crate3_crate1) & 127 not-(on_crate3_pallet2) & 128 not-(on_crate3_pallet0) & 129 not-(on_crate3_crate0) & 130 not-(on_crate3_crate2) & 131 not-(on_crate3_pallet4) & 132 not-(on_crate3_crate3) & 133 not-(in_crate5_truck1) & 134 not-(in_crate5_truck0) & 135 not-(in_crate4_truck1) & 136 not-(in_crate4_truck0) & 137 not-(in_crate1_truck1) & 138 not-(in_crate1_truck0) & 139 not-(in_crate0_truck1) & 140 not-(in_crate0_truck0) & 141 not-(in_crate2_truck1) & 142 not-(in_crate2_truck0) & 143 not-(in_crate3_truck1) & 144 not-(in_crate3_truck0) & 145 not-(lifting_hoist0_crate5) & 146 not-(lifting_hoist0_crate4) & 147 not-(lifting_hoist0_crate1) & 148 not-(lifting_hoist0_crate0) & 149 not-(lifting_hoist0_crate2) & 150 not-(lifting_hoist0_crate3) & 151 not-(lifting_hoist2_crate5) & 152 not-(lifting_hoist2_crate4) & 153 not-(lifting_hoist2_crate1) & 154 not-(lifting_hoist2_crate0) & 155 not-(lifting_hoist2_crate2) & 156 not-(lifting_hoist2_crate3) & 157 not-(lifting_hoist1_crate5) & 158 not-(lifting_hoist1_crate4) & 159 not-(lifting_hoist1_crate1) & 160 not-(lifting_hoist1_crate0) & 161 not-(lifting_hoist1_crate2) & 162 not-(lifting_hoist1_crate3) & 163 not-(clear_pallet3) & 164 not-(clear_pallet5) & 165 not-(clear_crate4) & 166 not-(clear_crate1) & 167 not-(clear_pallet2) & 168 not-(clear_pallet1)
+makespan:
+402
+
+action:
+(lift_hoist1_crate4_crate0_distributor0)
+operator:
+lift
+start_time:
+1
+durations:
+10
+precs:
+1 (on_crate4_crate0) & 2 (on_crate4_crate4) & 3 (available_hoist1) & 4 (clear_crate4) & 5 (at_crate0_distributor0) & 6 (at_hoist1_distributor0) & 7 (clear_crate0) & 8 (lifting_hoist1_crate4)
+effs:
+9 (on_crate4_crate0) & 10 not-(on_crate4_crate0) & 11 (on_crate4_crate4) & 12 not-(on_crate4_crate4) & 13 (available_hoist1) & 14 not-(available_hoist1) & 15 (clear_crate4) & 16 not-(clear_crate4) & 17 (at_crate0_distributor0) & 18 not-(at_crate0_distributor0) & 19 (at_hoist1_distributor0) & 20 not-(at_hoist1_distributor0) & 21 (clear_crate0) & 22 not-(clear_crate0) & 23 (lifting_hoist1_crate4) & 24 not-(lifting_hoist1_crate4)
+
+action:
+(drop_hoist1_crate4_pallet1_distributor0)
+operator:
+drop
+start_time:
+1
+durations:
+10
+precs:
+1 (on_crate4_pallet1) & 2 (on_crate4_crate4) & 3 (available_hoist1) & 4 (clear_crate4) & 5 (at_pallet1_distributor0) & 6 (at_hoist1_distributor0) & 7 (clear_pallet1) & 8 (lifting_hoist1_crate4)
+effs:
+9 (on_crate4_pallet1) & 10 not-(on_crate4_pallet1) & 11 (on_crate4_crate4) & 12 not-(on_crate4_crate4) & 13 (available_hoist1) & 14 not-(available_hoist1) & 15 (clear_crate4) & 16 not-(clear_crate4) & 17 (at_pallet1_distributor0) & 18 not-(at_pallet1_distributor0) & 19 (at_hoist1_distributor0) & 20 not-(at_hoist1_distributor0) & 21 (clear_pallet1) & 22 not-(clear_pallet1) & 23 (lifting_hoist1_crate4) & 24 not-(lifting_hoist1_crate4)
+
+action:
+(lift_hoist2_crate3_crate2_distributor1)
+operator:
+lift
+start_time:
+1
+durations:
+10
+precs:
+1 (on_crate3_crate2) & 2 (on_crate3_crate3) & 3 (available_hoist2) & 4 (clear_crate3) & 5 (at_crate2_distributor1) & 6 (at_hoist2_distributor1) & 7 (clear_crate2) & 8 (lifting_hoist2_crate3)
+effs:
+9 (on_crate3_crate2) & 10 not-(on_crate3_crate2) & 11 (on_crate3_crate3) & 12 not-(on_crate3_crate3) & 13 (available_hoist2) & 14 not-(available_hoist2) & 15 (clear_crate3) & 16 not-(clear_crate3) & 17 (at_crate2_distributor1) & 18 not-(at_crate2_distributor1) & 19 (at_hoist2_distributor1) & 20 not-(at_hoist2_distributor1) & 21 (clear_crate2) & 22 not-(clear_crate2) & 23 (lifting_hoist2_crate3) & 24 not-(lifting_hoist2_crate3)
+
+action:
+(load_hoist2_crate3_truck0_distributor1)
+operator:
+load
+start_time:
+1
+durations:
+30
+precs:
+1 (on_crate3_crate3) & 2 (available_hoist2) & 3 (clear_crate3) & 4 (in_crate3_truck0) & 5 (at_truck0_distributor1) & 6 (at_hoist2_distributor1) & 7 (lifting_hoist2_crate3)
+effs:
+8 (on_crate3_crate3) & 9 not-(on_crate3_crate3) & 10 (available_hoist2) & 11 not-(available_hoist2) & 12 (clear_crate3) & 13 not-(clear_crate3) & 14 (in_crate3_truck0) & 15 not-(in_crate3_truck0) & 16 (at_truck0_distributor1) & 17 not-(at_truck0_distributor1) & 18 (at_hoist2_distributor1) & 19 not-(at_hoist2_distributor1) & 20 (lifting_hoist2_crate3) & 21 not-(lifting_hoist2_crate3)
+
+action:
+(lift_hoist0_crate5_pallet0_depot0)
+operator:
+lift
+start_time:
+1
+durations:
+10
+precs:
+1 (on_crate5_pallet0) & 2 (on_crate5_crate5) & 3 (available_hoist0) & 4 (clear_crate5) & 5 (at_pallet0_depot0) & 6 (at_hoist0_depot0) & 7 (clear_pallet0) & 8 (lifting_hoist0_crate5)
+effs:
+9 (on_crate5_pallet0) & 10 not-(on_crate5_pallet0) & 11 (on_crate5_crate5) & 12 not-(on_crate5_crate5) & 13 (available_hoist0) & 14 not-(available_hoist0) & 15 (clear_crate5) & 16 not-(clear_crate5) & 17 (at_pallet0_depot0) & 18 not-(at_pallet0_depot0) & 19 (at_hoist0_depot0) & 20 not-(at_hoist0_depot0) & 21 (clear_pallet0) & 22 not-(clear_pallet0) & 23 (lifting_hoist0_crate5) & 24 not-(lifting_hoist0_crate5)
+
+action:
+(load_hoist0_crate5_truck1_depot0)
+operator:
+load
+start_time:
+1
+durations:
+30
+precs:
+1 (on_crate5_crate5) & 2 (available_hoist0) & 3 (clear_crate5) & 4 (in_crate5_truck1) & 5 (at_truck1_depot0) & 6 (at_hoist0_depot0) & 7 (lifting_hoist0_crate5)
+effs:
+8 (on_crate5_crate5) & 9 not-(on_crate5_crate5) & 10 (available_hoist0) & 11 not-(available_hoist0) & 12 (clear_crate5) & 13 not-(clear_crate5) & 14 (in_crate5_truck1) & 15 not-(in_crate5_truck1) & 16 (at_truck1_depot0) & 17 not-(at_truck1_depot0) & 18 (at_hoist0_depot0) & 19 not-(at_hoist0_depot0) & 20 (lifting_hoist0_crate5) & 21 not-(lifting_hoist0_crate5)
+
+action:
+(lift_hoist1_crate0_pallet4_distributor0)
+operator:
+lift
+start_time:
+12
+durations:
+10
+precs:
+1 (on_crate0_pallet4) & 2 (on_crate0_crate0) & 3 (available_hoist1) & 4 (clear_crate0) & 5 (at_pallet4_distributor0) & 6 (at_hoist1_distributor0) & 7 (clear_pallet4) & 8 (lifting_hoist1_crate0)
+effs:
+9 (on_crate0_pallet4) & 10 not-(on_crate0_pallet4) & 11 (on_crate0_crate0) & 12 not-(on_crate0_crate0) & 13 (available_hoist1) & 14 not-(available_hoist1) & 15 (clear_crate0) & 16 not-(clear_crate0) & 17 (at_pallet4_distributor0) & 18 not-(at_pallet4_distributor0) & 19 (at_hoist1_distributor0) & 20 not-(at_hoist1_distributor0) & 21 (clear_pallet4) & 22 not-(clear_pallet4) & 23 (lifting_hoist1_crate0) & 24 not-(lifting_hoist1_crate0)
+
+action:
+(drop_hoist1_crate0_pallet3_distributor0)
+operator:
+drop
+start_time:
+12
+durations:
+10
+precs:
+1 (on_crate0_pallet3) & 2 (on_crate0_crate0) & 3 (available_hoist1) & 4 (clear_crate0) & 5 (at_pallet3_distributor0) & 6 (at_hoist1_distributor0) & 7 (clear_pallet3) & 8 (lifting_hoist1_crate0)
+effs:
+9 (on_crate0_pallet3) & 10 not-(on_crate0_pallet3) & 11 (on_crate0_crate0) & 12 not-(on_crate0_crate0) & 13 (available_hoist1) & 14 not-(available_hoist1) & 15 (clear_crate0) & 16 not-(clear_crate0) & 17 (at_pallet3_distributor0) & 18 not-(at_pallet3_distributor0) & 19 (at_hoist1_distributor0) & 20 not-(at_hoist1_distributor0) & 21 (clear_pallet3) & 22 not-(clear_pallet3) & 23 (lifting_hoist1_crate0) & 24 not-(lifting_hoist1_crate0)
+
+action:
+(lift_hoist1_crate4_pallet1_distributor0)
+operator:
+lift
+start_time:
+23
+durations:
+10
+precs:
+1 (on_crate4_pallet1) & 2 (on_crate4_crate4) & 3 (available_hoist1) & 4 (clear_crate4) & 5 (at_pallet1_distributor0) & 6 (at_hoist1_distributor0) & 7 (clear_pallet1) & 8 (lifting_hoist1_crate4)
+effs:
+9 (on_crate4_pallet1) & 10 not-(on_crate4_pallet1) & 11 (on_crate4_crate4) & 12 not-(on_crate4_crate4) & 13 (available_hoist1) & 14 not-(available_hoist1) & 15 (clear_crate4) & 16 not-(clear_crate4) & 17 (at_pallet1_distributor0) & 18 not-(at_pallet1_distributor0) & 19 (at_hoist1_distributor0) & 20 not-(at_hoist1_distributor0) & 21 (clear_pallet1) & 22 not-(clear_pallet1) & 23 (lifting_hoist1_crate4) & 24 not-(lifting_hoist1_crate4)
+
+action:
+(drive_truck0_distributor1_distributor0)
+operator:
+drive
+start_time:
+34
+durations:
+100
+precs:
+1 (at_truck0_distributor1) & 2 (at_truck0_distributor0)
+effs:
+3 (at_truck0_distributor1) & 4 not-(at_truck0_distributor1) & 5 (at_truck0_distributor0) & 6 not-(at_truck0_distributor0)
+
+action:
+(lift_hoist2_crate1_pallet5_distributor1)
+operator:
+lift
+start_time:
+34
+durations:
+10
+precs:
+1 (on_crate1_pallet5) & 2 (on_crate1_crate1) & 3 (available_hoist2) & 4 (clear_crate1) & 5 (at_pallet5_distributor1) & 6 (at_hoist2_distributor1) & 7 (clear_pallet5) & 8 (lifting_hoist2_crate1)
+effs:
+9 (on_crate1_pallet5) & 10 not-(on_crate1_pallet5) & 11 (on_crate1_crate1) & 12 not-(on_crate1_crate1) & 13 (available_hoist2) & 14 not-(available_hoist2) & 15 (clear_crate1) & 16 not-(clear_crate1) & 17 (at_pallet5_distributor1) & 18 not-(at_pallet5_distributor1) & 19 (at_hoist2_distributor1) & 20 not-(at_hoist2_distributor1) & 21 (clear_pallet5) & 22 not-(clear_pallet5) & 23 (lifting_hoist2_crate1) & 24 not-(lifting_hoist2_crate1)
+
+action:
+(drive_truck1_depot0_distributor1)
+operator:
+drive
+start_time:
+34
+durations:
+100
+precs:
+1 (at_truck1_depot0) & 2 (at_truck1_distributor1)
+effs:
+3 (at_truck1_depot0) & 4 not-(at_truck1_depot0) & 5 (at_truck1_distributor1) & 6 not-(at_truck1_distributor1)
+
+action:
+(load_hoist1_crate4_truck0_distributor0)
+operator:
+load
+start_time:
+135
+durations:
+30
+precs:
+1 (on_crate4_crate4) & 2 (available_hoist1) & 3 (clear_crate4) & 4 (in_crate4_truck0) & 5 (at_truck0_distributor0) & 6 (at_hoist1_distributor0) & 7 (lifting_hoist1_crate4)
+effs:
+8 (on_crate4_crate4) & 9 not-(on_crate4_crate4) & 10 (available_hoist1) & 11 not-(available_hoist1) & 12 (clear_crate4) & 13 not-(clear_crate4) & 14 (in_crate4_truck0) & 15 not-(in_crate4_truck0) & 16 (at_truck0_distributor0) & 17 not-(at_truck0_distributor0) & 18 (at_hoist1_distributor0) & 19 not-(at_hoist1_distributor0) & 20 (lifting_hoist1_crate4) & 21 not-(lifting_hoist1_crate4)
+
+action:
+(unload_hoist1_crate3_truck0_distributor0)
+operator:
+unload
+start_time:
+166
+durations:
+40
+precs:
+1 (on_crate3_crate3) & 2 (available_hoist1) & 3 (clear_crate3) & 4 (in_crate3_truck0) & 5 (at_truck0_distributor0) & 6 (at_hoist1_distributor0) & 7 (lifting_hoist1_crate3)
+effs:
+8 (on_crate3_crate3) & 9 not-(on_crate3_crate3) & 10 (available_hoist1) & 11 not-(available_hoist1) & 12 (clear_crate3) & 13 not-(clear_crate3) & 14 (in_crate3_truck0) & 15 not-(in_crate3_truck0) & 16 (at_truck0_distributor0) & 17 not-(at_truck0_distributor0) & 18 (at_hoist1_distributor0) & 19 not-(at_hoist1_distributor0) & 20 (lifting_hoist1_crate3) & 21 not-(lifting_hoist1_crate3)
+
+action:
+(drop_hoist1_crate3_pallet1_distributor0)
+operator:
+drop
+start_time:
+166
+durations:
+10
+precs:
+1 (on_crate3_pallet1) & 2 (on_crate3_crate3) & 3 (available_hoist1) & 4 (clear_crate3) & 5 (at_pallet1_distributor0) & 6 (at_hoist1_distributor0) & 7 (clear_pallet1) & 8 (lifting_hoist1_crate3)
+effs:
+9 (on_crate3_pallet1) & 10 not-(on_crate3_pallet1) & 11 (on_crate3_crate3) & 12 not-(on_crate3_crate3) & 13 (available_hoist1) & 14 not-(available_hoist1) & 15 (clear_crate3) & 16 not-(clear_crate3) & 17 (at_pallet1_distributor0) & 18 not-(at_pallet1_distributor0) & 19 (at_hoist1_distributor0) & 20 not-(at_hoist1_distributor0) & 21 (clear_pallet1) & 22 not-(clear_pallet1) & 23 (lifting_hoist1_crate3) & 24 not-(lifting_hoist1_crate3)
+
+action:
+(drive_truck0_distributor0_distributor1)
+operator:
+drive
+start_time:
+207
+durations:
+100
+precs:
+1 (at_truck0_distributor0) & 2 (at_truck0_distributor1)
+effs:
+3 (at_truck0_distributor0) & 4 not-(at_truck0_distributor0) & 5 (at_truck0_distributor1) & 6 not-(at_truck0_distributor1)
+
+action:
+(load_hoist2_crate1_truck0_distributor1)
+operator:
+load
+start_time:
+308
+durations:
+30
+precs:
+1 (on_crate1_crate1) & 2 (available_hoist2) & 3 (clear_crate1) & 4 (in_crate1_truck0) & 5 (at_truck0_distributor1) & 6 (at_hoist2_distributor1) & 7 (lifting_hoist2_crate1)
+effs:
+8 (on_crate1_crate1) & 9 not-(on_crate1_crate1) & 10 (available_hoist2) & 11 not-(available_hoist2) & 12 (clear_crate1) & 13 not-(clear_crate1) & 14 (in_crate1_truck0) & 15 not-(in_crate1_truck0) & 16 (at_truck0_distributor1) & 17 not-(at_truck0_distributor1) & 18 (at_hoist2_distributor1) & 19 not-(at_hoist2_distributor1) & 20 (lifting_hoist2_crate1) & 21 not-(lifting_hoist2_crate1)
+
+action:
+(unload_hoist2_crate4_truck0_distributor1)
+operator:
+unload
+start_time:
+339
+durations:
+40
+precs:
+1 (on_crate4_crate4) & 2 (available_hoist2) & 3 (clear_crate4) & 4 (in_crate4_truck0) & 5 (at_truck0_distributor1) & 6 (at_hoist2_distributor1) & 7 (lifting_hoist2_crate4)
+effs:
+8 (on_crate4_crate4) & 9 not-(on_crate4_crate4) & 10 (available_hoist2) & 11 not-(available_hoist2) & 12 (clear_crate4) & 13 not-(clear_crate4) & 14 (in_crate4_truck0) & 15 not-(in_crate4_truck0) & 16 (at_truck0_distributor1) & 17 not-(at_truck0_distributor1) & 18 (at_hoist2_distributor1) & 19 not-(at_hoist2_distributor1) & 20 (lifting_hoist2_crate4) & 21 not-(lifting_hoist2_crate4)
+
+action:
+(drop_hoist2_crate4_pallet5_distributor1)
+operator:
+drop
+start_time:
+339
+durations:
+10
+precs:
+1 (on_crate4_pallet5) & 2 (on_crate4_crate4) & 3 (available_hoist2) & 4 (clear_crate4) & 5 (at_pallet5_distributor1) & 6 (at_hoist2_distributor1) & 7 (clear_pallet5) & 8 (lifting_hoist2_crate4)
+effs:
+9 (on_crate4_pallet5) & 10 not-(on_crate4_pallet5) & 11 (on_crate4_crate4) & 12 not-(on_crate4_crate4) & 13 (available_hoist2) & 14 not-(available_hoist2) & 15 (clear_crate4) & 16 not-(clear_crate4) & 17 (at_pallet5_distributor1) & 18 not-(at_pallet5_distributor1) & 19 (at_hoist2_distributor1) & 20 not-(at_hoist2_distributor1) & 21 (clear_pallet5) & 22 not-(clear_pallet5) & 23 (lifting_hoist2_crate4) & 24 not-(lifting_hoist2_crate4)
+
+action:
+(unload_hoist2_crate1_truck0_distributor1)
+operator:
+unload
+start_time:
+350
+durations:
+40
+precs:
+1 (on_crate1_crate1) & 2 (available_hoist2) & 3 (clear_crate1) & 4 (in_crate1_truck0) & 5 (at_truck0_distributor1) & 6 (at_hoist2_distributor1) & 7 (lifting_hoist2_crate1)
+effs:
+8 (on_crate1_crate1) & 9 not-(on_crate1_crate1) & 10 (available_hoist2) & 11 not-(available_hoist2) & 12 (clear_crate1) & 13 not-(clear_crate1) & 14 (in_crate1_truck0) & 15 not-(in_crate1_truck0) & 16 (at_truck0_distributor1) & 17 not-(at_truck0_distributor1) & 18 (at_hoist2_distributor1) & 19 not-(at_hoist2_distributor1) & 20 (lifting_hoist2_crate1) & 21 not-(lifting_hoist2_crate1)
+
+action:
+(drop_hoist2_crate1_crate4_distributor1)
+operator:
+drop
+start_time:
+350
+durations:
+10
+precs:
+1 (on_crate1_crate4) & 2 (on_crate1_crate1) & 3 (available_hoist2) & 4 (clear_crate1) & 5 (at_crate4_distributor1) & 6 (at_hoist2_distributor1) & 7 (clear_crate4) & 8 (lifting_hoist2_crate1)
+effs:
+9 (on_crate1_crate4) & 10 not-(on_crate1_crate4) & 11 (on_crate1_crate1) & 12 not-(on_crate1_crate1) & 13 (available_hoist2) & 14 not-(available_hoist2) & 15 (clear_crate1) & 16 not-(clear_crate1) & 17 (at_crate4_distributor1) & 18 not-(at_crate4_distributor1) & 19 (at_hoist2_distributor1) & 20 not-(at_hoist2_distributor1) & 21 (clear_crate4) & 22 not-(clear_crate4) & 23 (lifting_hoist2_crate1) & 24 not-(lifting_hoist2_crate1)
+
+action:
+(unload_hoist2_crate5_truck1_distributor1)
+operator:
+unload
+start_time:
+361
+durations:
+40
+precs:
+1 (on_crate5_crate5) & 2 (available_hoist2) & 3 (clear_crate5) & 4 (in_crate5_truck1) & 5 (at_truck1_distributor1) & 6 (at_hoist2_distributor1) & 7 (lifting_hoist2_crate5)
+effs:
+8 (on_crate5_crate5) & 9 not-(on_crate5_crate5) & 10 (available_hoist2) & 11 not-(available_hoist2) & 12 (clear_crate5) & 13 not-(clear_crate5) & 14 (in_crate5_truck1) & 15 not-(in_crate5_truck1) & 16 (at_truck1_distributor1) & 17 not-(at_truck1_distributor1) & 18 (at_hoist2_distributor1) & 19 not-(at_hoist2_distributor1) & 20 (lifting_hoist2_crate5) & 21 not-(lifting_hoist2_crate5)
+
+action:
+(drop_hoist2_crate5_crate1_distributor1)
+operator:
+drop
+start_time:
+361
+durations:
+10
+precs:
+1 (on_crate5_crate1) & 2 (on_crate5_crate5) & 3 (available_hoist2) & 4 (clear_crate5) & 5 (at_crate1_distributor1) & 6 (at_hoist2_distributor1) & 7 (clear_crate1) & 8 (lifting_hoist2_crate5)
+effs:
+9 (on_crate5_crate1) & 10 not-(on_crate5_crate1) & 11 (on_crate5_crate5) & 12 not-(on_crate5_crate5) & 13 (available_hoist2) & 14 not-(available_hoist2) & 15 (clear_crate5) & 16 not-(clear_crate5) & 17 (at_crate1_distributor1) & 18 not-(at_crate1_distributor1) & 19 (at_hoist2_distributor1) & 20 not-(at_hoist2_distributor1) & 21 (clear_crate1) & 22 not-(clear_crate1) & 23 (lifting_hoist2_crate5) & 24 not-(lifting_hoist2_crate5)
+
+constraints:
+(at_truck0_depot0)
+mutex-predicate
+(at_truck0_distributor0) (at_truck0_distributor1)
+
+constraints:
+(at_truck0_distributor0)
+mutex-predicate
+(at_truck0_depot0) (at_truck0_distributor1)
+
+constraints:
+(at_truck0_distributor1)
+mutex-predicate
+(at_truck0_depot0) (at_truck0_distributor0) 
+
+constraints:
+(at_truck1_depot0)
+mutex-predicate
+(at_truck1_distributor0) (at_truck1_distributor1)
+
+constraints:
+(at_truck1_distributor0)
+mutex-predicate
+(at_truck1_depot0) (at_truck1_distributor1)
+
+constraints:
+(at_truck1_distributor1)
+mutex-predicate
+(at_truck1_depot0) (at_truck1_distributor0) 
+
+constraints:
+(at_pallet0_distributor0)
+mutex-predicate
+(at_pallet0_distributor1) (at_pallet0_depot0)
+
+constraints:
+(at_pallet0_distributor1)
+mutex-predicate
+(at_pallet0_distributor0) (at_pallet0_depot0)
+
+constraints:
+(at_pallet0_depot0)
+mutex-predicate
+(at_pallet0_distributor0) (at_pallet0_distributor1) 
+
+constraints:
+(at_pallet1_depot0)
+mutex-predicate
+(at_pallet1_distributor0) (at_pallet1_distributor1)
+
+constraints:
+(at_pallet1_distributor0)
+mutex-predicate
+(at_pallet1_depot0) (at_pallet1_distributor1)
+
+constraints:
+(at_pallet1_distributor1)
+mutex-predicate
+(at_pallet1_depot0) (at_pallet1_distributor0) 
+
+constraints:
+(at_pallet2_distributor0)
+mutex-predicate
+(at_pallet2_depot0) (at_pallet2_distributor1)
+
+constraints:
+(at_pallet2_depot0)
+mutex-predicate
+(at_pallet2_distributor0) (at_pallet2_distributor1)
+
+constraints:
+(at_pallet2_distributor1)
+mutex-predicate
+(at_pallet2_distributor0) (at_pallet2_depot0) 
+
+constraints:
+(at_pallet3_distributor1)
+mutex-predicate
+(at_pallet3_depot0) (at_pallet3_distributor0)
+
+constraints:
+(at_pallet3_depot0)
+mutex-predicate
+(at_pallet3_distributor1) (at_pallet3_distributor0)
+
+constraints:
+(at_pallet3_distributor0)
+mutex-predicate
+(at_pallet3_distributor1) (at_pallet3_depot0) 
+
+constraints:
+(at_pallet4_distributor0)
+mutex-predicate
+(at_pallet4_distributor1) (at_pallet4_depot0)
+
+constraints:
+(at_pallet4_distributor1)
+mutex-predicate
+(at_pallet4_distributor0) (at_pallet4_depot0)
+
+constraints:
+(at_pallet4_depot0)
+mutex-predicate
+(at_pallet4_distributor0) (at_pallet4_distributor1) 
+
+constraints:
+(at_pallet5_distributor1)
+mutex-predicate
+(at_pallet5_depot0) (at_pallet5_distributor0)
+
+constraints:
+(at_pallet5_depot0)
+mutex-predicate
+(at_pallet5_distributor1) (at_pallet5_distributor0)
+
+constraints:
+(at_pallet5_distributor0)
+mutex-predicate
+(at_pallet5_distributor1) (at_pallet5_depot0) 
+
+constraints:
+(at_crate0_distributor1)
+mutex-predicate
+(at_crate0_distributor0) (at_crate0_depot0)
+
+constraints:
+(at_crate0_distributor0)
+mutex-predicate
+(at_crate0_distributor1) (at_crate0_depot0)
+
+constraints:
+(at_crate0_depot0)
+mutex-predicate
+(at_crate0_distributor1) (at_crate0_distributor0) 
+
+constraints:
+(at_crate1_distributor0)
+mutex-predicate
+(at_crate1_distributor1) (at_crate1_depot0)
+
+constraints:
+(at_crate1_distributor1)
+mutex-predicate
+(at_crate1_distributor0) (at_crate1_depot0)
+
+constraints:
+(at_crate1_depot0)
+mutex-predicate
+(at_crate1_distributor0) (at_crate1_distributor1) 
+
+constraints:
+(at_crate2_distributor1)
+mutex-predicate
+(at_crate2_depot0) (at_crate2_distributor0)
+
+constraints:
+(at_crate2_depot0)
+mutex-predicate
+(at_crate2_distributor1) (at_crate2_distributor0)
+
+constraints:
+(at_crate2_distributor0)
+mutex-predicate
+(at_crate2_distributor1) (at_crate2_depot0) 
+
+constraints:
+(at_crate3_distributor0)
+mutex-predicate
+(at_crate3_depot0) (at_crate3_distributor1)
+
+constraints:
+(at_crate3_depot0)
+mutex-predicate
+(at_crate3_distributor0) (at_crate3_distributor1)
+
+constraints:
+(at_crate3_distributor1)
+mutex-predicate
+(at_crate3_distributor0) (at_crate3_depot0) 
+
+constraints:
+(at_crate4_depot0)
+mutex-predicate
+(at_crate4_distributor1) (at_crate4_distributor0)
+
+constraints:
+(at_crate4_distributor1)
+mutex-predicate
+(at_crate4_depot0) (at_crate4_distributor0)
+
+constraints:
+(at_crate4_distributor0)
+mutex-predicate
+(at_crate4_depot0) (at_crate4_distributor1) 
+
+constraints:
+(at_crate5_depot0)
+mutex-predicate
+(at_crate5_distributor1) (at_crate5_distributor0)
+
+constraints:
+(at_crate5_distributor1)
+mutex-predicate
+(at_crate5_depot0) (at_crate5_distributor0)
+
+constraints:
+(at_crate5_distributor0)
+mutex-predicate
+(at_crate5_depot0) (at_crate5_distributor1) 
+
+constraints:
+(at_hoist0_distributor0)
+mutex-predicate
+(at_hoist0_depot0) (at_hoist0_distributor1)
+
+constraints:
+(at_hoist0_depot0)
+mutex-predicate
+(at_hoist0_distributor0) (at_hoist0_distributor1)
+
+constraints:
+(at_hoist0_distributor1)
+mutex-predicate
+(at_hoist0_distributor0) (at_hoist0_depot0) 
+
+constraints:
+(at_hoist1_distributor0)
+mutex-predicate
+(at_hoist1_distributor1) (at_hoist1_depot0)
+
+constraints:
+(at_hoist1_distributor1)
+mutex-predicate
+(at_hoist1_distributor0) (at_hoist1_depot0)
+
+constraints:
+(at_hoist1_depot0)
+mutex-predicate
+(at_hoist1_distributor0) (at_hoist1_distributor1) 
+
+constraints:
+(at_hoist2_distributor1)
+mutex-predicate
+(at_hoist2_distributor0) (at_hoist2_depot0)
+
+constraints:
+(at_hoist2_distributor0)
+mutex-predicate
+(at_hoist2_distributor1) (at_hoist2_depot0)
+
+constraints:
+(at_hoist2_depot0)
+mutex-predicate
+(at_hoist2_distributor1) (at_hoist2_distributor0) 
+
+constraints:
+(on_crate0_crate5)
+mutex-predicate
+(on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate0)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet3)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate4)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet1)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet5)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet0)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate1)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet2)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate3)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate2)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet4)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) 
+
+constraints:
+(on_crate1_crate4)
+mutex-predicate
+(on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet5)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet2)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate0)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet3)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate2)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet0)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate3)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate5)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet4)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) 
+
+constraints:
+(on_crate2_crate2)
+mutex-predicate
+(on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet2)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate1)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate5)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate4)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate3)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate0)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet5)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet4)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet0)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet1)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet3)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet4) (on_crate2_pallet0) (on_crate2_pallet1) 
+
+constraints:
+(on_crate3_pallet3)
+mutex-predicate
+(on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet2)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate4)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet0)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet1)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet5)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate0)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet4)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate1)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate2)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate3)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate5)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) 
+
+constraints:
+(on_crate4_pallet5)
+mutex-predicate
+(on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet2)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet3)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate1)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate2)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate3)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet0)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate4)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet4)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate0)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet1)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) 
+
+constraints:
+(on_crate5_crate4)
+mutex-predicate
+(on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet0)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet2)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate3)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet4)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet3)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate1)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet1)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate0)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate2)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) 
+
+constraints:
+(on_crate3_pallet0)
+mutex-predicate
+(on_crate5_pallet0) (on_crate1_pallet0) (on_crate0_pallet0) (on_crate4_pallet0) (on_crate2_pallet0)
+
+constraints:
+(on_crate5_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate1_pallet0) (on_crate0_pallet0) (on_crate4_pallet0) (on_crate2_pallet0)
+
+constraints:
+(on_crate1_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate5_pallet0) (on_crate0_pallet0) (on_crate4_pallet0) (on_crate2_pallet0)
+
+constraints:
+(on_crate0_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate5_pallet0) (on_crate1_pallet0) (on_crate4_pallet0) (on_crate2_pallet0)
+
+constraints:
+(on_crate4_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate5_pallet0) (on_crate1_pallet0) (on_crate0_pallet0) (on_crate2_pallet0)
+
+constraints:
+(on_crate2_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate5_pallet0) (on_crate1_pallet0) (on_crate0_pallet0) (on_crate4_pallet0) 
+
+constraints:
+(on_crate4_pallet2)
+mutex-predicate
+(on_crate1_pallet2) (on_crate2_pallet2) (on_crate3_pallet2) (on_crate5_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate1_pallet2)
+mutex-predicate
+(on_crate4_pallet2) (on_crate2_pallet2) (on_crate3_pallet2) (on_crate5_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate2_pallet2)
+mutex-predicate
+(on_crate4_pallet2) (on_crate1_pallet2) (on_crate3_pallet2) (on_crate5_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate3_pallet2)
+mutex-predicate
+(on_crate4_pallet2) (on_crate1_pallet2) (on_crate2_pallet2) (on_crate5_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate5_pallet2)
+mutex-predicate
+(on_crate4_pallet2) (on_crate1_pallet2) (on_crate2_pallet2) (on_crate3_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate0_pallet2)
+mutex-predicate
+(on_crate4_pallet2) (on_crate1_pallet2) (on_crate2_pallet2) (on_crate3_pallet2) (on_crate5_pallet2) 
+
+constraints:
+(on_crate5_pallet4)
+mutex-predicate
+(on_crate3_pallet4) (on_crate2_pallet4) (on_crate4_pallet4) (on_crate1_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate3_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate2_pallet4) (on_crate4_pallet4) (on_crate1_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate2_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate3_pallet4) (on_crate4_pallet4) (on_crate1_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate4_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate3_pallet4) (on_crate2_pallet4) (on_crate1_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate1_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate3_pallet4) (on_crate2_pallet4) (on_crate4_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate3_pallet4) (on_crate2_pallet4) (on_crate4_pallet4) (on_crate1_pallet4) 
+
+constraints:
+(on_crate4_pallet5)
+mutex-predicate
+(on_crate1_pallet5) (on_crate0_pallet5) (on_crate3_pallet5) (on_crate2_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate1_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate0_pallet5) (on_crate3_pallet5) (on_crate2_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate0_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate1_pallet5) (on_crate3_pallet5) (on_crate2_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate3_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate1_pallet5) (on_crate0_pallet5) (on_crate2_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate2_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate1_pallet5) (on_crate0_pallet5) (on_crate3_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate5_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate1_pallet5) (on_crate0_pallet5) (on_crate3_pallet5) (on_crate2_pallet5) 
+
+constraints:
+(on_crate0_crate0)
+mutex-predicate
+(on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate1_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate3_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate2_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate5_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate4_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) 
+
+constraints:
+(on_crate2_crate2)
+mutex-predicate
+(on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate1_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate4_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate3_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate5_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate0_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) 
+
+constraints:
+(lifting_hoist0_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate0_crate0)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate1_crate0)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate3_crate0)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate1_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate2_crate0)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate5_crate0)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate4_crate0)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) 
+
+constraints:
+(on_crate2_crate2)
+mutex-predicate
+(on_crate1_crate2) (lifting_hoist0_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate1_crate2)
+mutex-predicate
+(on_crate2_crate2) (lifting_hoist0_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(lifting_hoist0_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate4_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (lifting_hoist0_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate3_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (lifting_hoist0_crate2) (on_crate4_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate5_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (lifting_hoist0_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate0_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (lifting_hoist0_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) 
+
+constraints:
+(on_crate0_crate0)
+mutex-predicate
+(lifting_hoist1_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(lifting_hoist1_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate1_crate0)
+mutex-predicate
+(on_crate0_crate0) (lifting_hoist1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate3_crate0)
+mutex-predicate
+(on_crate0_crate0) (lifting_hoist1_crate0) (on_crate1_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate2_crate0)
+mutex-predicate
+(on_crate0_crate0) (lifting_hoist1_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate5_crate0)
+mutex-predicate
+(on_crate0_crate0) (lifting_hoist1_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate4_crate0)
+mutex-predicate
+(on_crate0_crate0) (lifting_hoist1_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) 
+
+constraints:
+(on_crate2_crate2)
+mutex-predicate
+(on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (lifting_hoist1_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate1_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate4_crate2) (on_crate3_crate2) (lifting_hoist1_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate4_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate3_crate2) (lifting_hoist1_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate3_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (lifting_hoist1_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(lifting_hoist1_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate5_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (lifting_hoist1_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate0_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (lifting_hoist1_crate2) (on_crate5_crate2) 
+
+constraints:
+(on_crate0_crate0)
+mutex-predicate
+(on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (lifting_hoist2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate1_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate3_crate0) (on_crate2_crate0) (lifting_hoist2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate3_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate2_crate0) (lifting_hoist2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate2_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (lifting_hoist2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(lifting_hoist2_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate5_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (lifting_hoist2_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate4_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (lifting_hoist2_crate0) (on_crate5_crate0) 
+
+constraints:
+(on_crate2_crate2)
+mutex-predicate
+(on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate1_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate4_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate3_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate5_crate2) (on_crate0_crate2) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate5_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate0_crate2) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate0_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (lifting_hoist2_crate2)
+
+constraints:
+(lifting_hoist2_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2) 
+
+constraints:
+(at_crate0_distributor1)
+mutex-predicate
+(at_crate0_distributor0) (lifting_hoist0_crate0) (at_crate0_depot0)
+
+constraints:
+(at_crate0_distributor0)
+mutex-predicate
+(at_crate0_distributor1) (lifting_hoist0_crate0) (at_crate0_depot0)
+
+constraints:
+(lifting_hoist0_crate0)
+mutex-predicate
+(at_crate0_distributor1) (at_crate0_distributor0) (at_crate0_depot0)
+
+constraints:
+(at_crate0_depot0)
+mutex-predicate
+(at_crate0_distributor1) (at_crate0_distributor0) (lifting_hoist0_crate0) 
+
+constraints:
+(at_crate1_distributor0)
+mutex-predicate
+(lifting_hoist0_crate1) (at_crate1_distributor1) (at_crate1_depot0)
+
+constraints:
+(lifting_hoist0_crate1)
+mutex-predicate
+(at_crate1_distributor0) (at_crate1_distributor1) (at_crate1_depot0)
+
+constraints:
+(at_crate1_distributor1)
+mutex-predicate
+(at_crate1_distributor0) (lifting_hoist0_crate1) (at_crate1_depot0)
+
+constraints:
+(at_crate1_depot0)
+mutex-predicate
+(at_crate1_distributor0) (lifting_hoist0_crate1) (at_crate1_distributor1) 
+
+constraints:
+(at_crate2_distributor1)
+mutex-predicate
+(lifting_hoist0_crate2) (at_crate2_depot0) (at_crate2_distributor0)
+
+constraints:
+(lifting_hoist0_crate2)
+mutex-predicate
+(at_crate2_distributor1) (at_crate2_depot0) (at_crate2_distributor0)
+
+constraints:
+(at_crate2_depot0)
+mutex-predicate
+(at_crate2_distributor1) (lifting_hoist0_crate2) (at_crate2_distributor0)
+
+constraints:
+(at_crate2_distributor0)
+mutex-predicate
+(at_crate2_distributor1) (lifting_hoist0_crate2) (at_crate2_depot0) 
+
+constraints:
+(lifting_hoist0_crate3)
+mutex-predicate
+(at_crate3_distributor0) (at_crate3_depot0) (at_crate3_distributor1)
+
+constraints:
+(at_crate3_distributor0)
+mutex-predicate
+(lifting_hoist0_crate3) (at_crate3_depot0) (at_crate3_distributor1)
+
+constraints:
+(at_crate3_depot0)
+mutex-predicate
+(lifting_hoist0_crate3) (at_crate3_distributor0) (at_crate3_distributor1)
+
+constraints:
+(at_crate3_distributor1)
+mutex-predicate
+(lifting_hoist0_crate3) (at_crate3_distributor0) (at_crate3_depot0) 
+
+constraints:
+(at_crate4_depot0)
+mutex-predicate
+(lifting_hoist0_crate4) (at_crate4_distributor1) (at_crate4_distributor0)
+
+constraints:
+(lifting_hoist0_crate4)
+mutex-predicate
+(at_crate4_depot0) (at_crate4_distributor1) (at_crate4_distributor0)
+
+constraints:
+(at_crate4_distributor1)
+mutex-predicate
+(at_crate4_depot0) (lifting_hoist0_crate4) (at_crate4_distributor0)
+
+constraints:
+(at_crate4_distributor0)
+mutex-predicate
+(at_crate4_depot0) (lifting_hoist0_crate4) (at_crate4_distributor1) 
+
+constraints:
+(at_crate5_distributor1)
+mutex-predicate
+(at_crate5_depot0) (lifting_hoist0_crate5) (at_crate5_distributor0)
+
+constraints:
+(at_crate5_depot0)
+mutex-predicate
+(at_crate5_distributor1) (lifting_hoist0_crate5) (at_crate5_distributor0)
+
+constraints:
+(lifting_hoist0_crate5)
+mutex-predicate
+(at_crate5_distributor1) (at_crate5_depot0) (at_crate5_distributor0)
+
+constraints:
+(at_crate5_distributor0)
+mutex-predicate
+(at_crate5_distributor1) (at_crate5_depot0) (lifting_hoist0_crate5) 
+
+constraints:
+(at_crate0_distributor1)
+mutex-predicate
+(at_crate0_distributor0) (lifting_hoist1_crate0) (at_crate0_depot0)
+
+constraints:
+(at_crate0_distributor0)
+mutex-predicate
+(at_crate0_distributor1) (lifting_hoist1_crate0) (at_crate0_depot0)
+
+constraints:
+(lifting_hoist1_crate0)
+mutex-predicate
+(at_crate0_distributor1) (at_crate0_distributor0) (at_crate0_depot0)
+
+constraints:
+(at_crate0_depot0)
+mutex-predicate
+(at_crate0_distributor1) (at_crate0_distributor0) (lifting_hoist1_crate0) 
+
+constraints:
+(at_crate1_distributor1)
+mutex-predicate
+(at_crate1_distributor0) (lifting_hoist1_crate1) (at_crate1_depot0)
+
+constraints:
+(at_crate1_distributor0)
+mutex-predicate
+(at_crate1_distributor1) (lifting_hoist1_crate1) (at_crate1_depot0)
+
+constraints:
+(lifting_hoist1_crate1)
+mutex-predicate
+(at_crate1_distributor1) (at_crate1_distributor0) (at_crate1_depot0)
+
+constraints:
+(at_crate1_depot0)
+mutex-predicate
+(at_crate1_distributor1) (at_crate1_distributor0) (lifting_hoist1_crate1) 
+
+constraints:
+(at_crate2_distributor1)
+mutex-predicate
+(lifting_hoist1_crate2) (at_crate2_depot0) (at_crate2_distributor0)
+
+constraints:
+(lifting_hoist1_crate2)
+mutex-predicate
+(at_crate2_distributor1) (at_crate2_depot0) (at_crate2_distributor0)
+
+constraints:
+(at_crate2_depot0)
+mutex-predicate
+(at_crate2_distributor1) (lifting_hoist1_crate2) (at_crate2_distributor0)
+
+constraints:
+(at_crate2_distributor0)
+mutex-predicate
+(at_crate2_distributor1) (lifting_hoist1_crate2) (at_crate2_depot0) 
+
+constraints:
+(at_crate3_distributor0)
+mutex-predicate
+(at_crate3_depot0) (at_crate3_distributor1) (lifting_hoist1_crate3)
+
+constraints:
+(at_crate3_depot0)
+mutex-predicate
+(at_crate3_distributor0) (at_crate3_distributor1) (lifting_hoist1_crate3)
+
+constraints:
+(at_crate3_distributor1)
+mutex-predicate
+(at_crate3_distributor0) (at_crate3_depot0) (lifting_hoist1_crate3)
+
+constraints:
+(lifting_hoist1_crate3)
+mutex-predicate
+(at_crate3_distributor0) (at_crate3_depot0) (at_crate3_distributor1) 
+
+constraints:
+(at_crate4_depot0)
+mutex-predicate
+(at_crate4_distributor1) (lifting_hoist1_crate4) (at_crate4_distributor0)
+
+constraints:
+(at_crate4_distributor1)
+mutex-predicate
+(at_crate4_depot0) (lifting_hoist1_crate4) (at_crate4_distributor0)
+
+constraints:
+(lifting_hoist1_crate4)
+mutex-predicate
+(at_crate4_depot0) (at_crate4_distributor1) (at_crate4_distributor0)
+
+constraints:
+(at_crate4_distributor0)
+mutex-predicate
+(at_crate4_depot0) (at_crate4_distributor1) (lifting_hoist1_crate4) 
+
+constraints:
+(lifting_hoist1_crate5)
+mutex-predicate
+(at_crate5_depot0) (at_crate5_distributor1) (at_crate5_distributor0)
+
+constraints:
+(at_crate5_depot0)
+mutex-predicate
+(lifting_hoist1_crate5) (at_crate5_distributor1) (at_crate5_distributor0)
+
+constraints:
+(at_crate5_distributor1)
+mutex-predicate
+(lifting_hoist1_crate5) (at_crate5_depot0) (at_crate5_distributor0)
+
+constraints:
+(at_crate5_distributor0)
+mutex-predicate
+(lifting_hoist1_crate5) (at_crate5_depot0) (at_crate5_distributor1) 
+
+constraints:
+(at_crate0_distributor1)
+mutex-predicate
+(at_crate0_distributor0) (at_crate0_depot0) (lifting_hoist2_crate0)
+
+constraints:
+(at_crate0_distributor0)
+mutex-predicate
+(at_crate0_distributor1) (at_crate0_depot0) (lifting_hoist2_crate0)
+
+constraints:
+(at_crate0_depot0)
+mutex-predicate
+(at_crate0_distributor1) (at_crate0_distributor0) (lifting_hoist2_crate0)
+
+constraints:
+(lifting_hoist2_crate0)
+mutex-predicate
+(at_crate0_distributor1) (at_crate0_distributor0) (at_crate0_depot0) 
+
+constraints:
+(at_crate1_distributor0)
+mutex-predicate
+(lifting_hoist2_crate1) (at_crate1_distributor1) (at_crate1_depot0)
+
+constraints:
+(lifting_hoist2_crate1)
+mutex-predicate
+(at_crate1_distributor0) (at_crate1_distributor1) (at_crate1_depot0)
+
+constraints:
+(at_crate1_distributor1)
+mutex-predicate
+(at_crate1_distributor0) (lifting_hoist2_crate1) (at_crate1_depot0)
+
+constraints:
+(at_crate1_depot0)
+mutex-predicate
+(at_crate1_distributor0) (lifting_hoist2_crate1) (at_crate1_distributor1) 
+
+constraints:
+(at_crate2_distributor1)
+mutex-predicate
+(at_crate2_depot0) (at_crate2_distributor0) (lifting_hoist2_crate2)
+
+constraints:
+(at_crate2_depot0)
+mutex-predicate
+(at_crate2_distributor1) (at_crate2_distributor0) (lifting_hoist2_crate2)
+
+constraints:
+(at_crate2_distributor0)
+mutex-predicate
+(at_crate2_distributor1) (at_crate2_depot0) (lifting_hoist2_crate2)
+
+constraints:
+(lifting_hoist2_crate2)
+mutex-predicate
+(at_crate2_distributor1) (at_crate2_depot0) (at_crate2_distributor0) 
+
+constraints:
+(at_crate3_distributor0)
+mutex-predicate
+(at_crate3_depot0) (at_crate3_distributor1) (lifting_hoist2_crate3)
+
+constraints:
+(at_crate3_depot0)
+mutex-predicate
+(at_crate3_distributor0) (at_crate3_distributor1) (lifting_hoist2_crate3)
+
+constraints:
+(at_crate3_distributor1)
+mutex-predicate
+(at_crate3_distributor0) (at_crate3_depot0) (lifting_hoist2_crate3)
+
+constraints:
+(lifting_hoist2_crate3)
+mutex-predicate
+(at_crate3_distributor0) (at_crate3_depot0) (at_crate3_distributor1) 
+
+constraints:
+(at_crate4_depot0)
+mutex-predicate
+(at_crate4_distributor1) (lifting_hoist2_crate4) (at_crate4_distributor0)
+
+constraints:
+(at_crate4_distributor1)
+mutex-predicate
+(at_crate4_depot0) (lifting_hoist2_crate4) (at_crate4_distributor0)
+
+constraints:
+(lifting_hoist2_crate4)
+mutex-predicate
+(at_crate4_depot0) (at_crate4_distributor1) (at_crate4_distributor0)
+
+constraints:
+(at_crate4_distributor0)
+mutex-predicate
+(at_crate4_depot0) (at_crate4_distributor1) (lifting_hoist2_crate4) 
+
+constraints:
+(at_crate5_distributor1)
+mutex-predicate
+(at_crate5_depot0) (lifting_hoist2_crate5) (at_crate5_distributor0)
+
+constraints:
+(at_crate5_depot0)
+mutex-predicate
+(at_crate5_distributor1) (lifting_hoist2_crate5) (at_crate5_distributor0)
+
+constraints:
+(lifting_hoist2_crate5)
+mutex-predicate
+(at_crate5_distributor1) (at_crate5_depot0) (at_crate5_distributor0)
+
+constraints:
+(at_crate5_distributor0)
+mutex-predicate
+(at_crate5_distributor1) (at_crate5_depot0) (lifting_hoist2_crate5) 
+
+constraints:
+(lifting_hoist0_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate0)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate5)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet3)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate4)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet1)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet5)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet0)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate1)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet2)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate3)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate2)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet4)
+mutex-predicate
+(lifting_hoist0_crate0) (on_crate0_crate0) (on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) 
+
+constraints:
+(on_crate1_crate4)
+mutex-predicate
+(on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet5)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet2)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(lifting_hoist0_crate1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate0)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet3)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate2)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet0)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate3)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate5)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet4)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (lifting_hoist0_crate1) (on_crate1_pallet1) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) 
+
+constraints:
+(on_crate2_crate2)
+mutex-predicate
+(on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet2)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate1)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate5)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate4)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate3)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(lifting_hoist0_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate0)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet5)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet0)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet1)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet4)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet3)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (lifting_hoist0_crate2) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) 
+
+constraints:
+(on_crate3_pallet3)
+mutex-predicate
+(on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet2)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate4)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet0)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet1)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet5)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate0)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet4)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate1)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate2)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate3) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate3)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (lifting_hoist0_crate3) (on_crate3_crate5)
+
+constraints:
+(lifting_hoist0_crate3)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate5)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (lifting_hoist0_crate3) 
+
+constraints:
+(on_crate4_pallet5)
+mutex-predicate
+(on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet2)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet3)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate1)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(lifting_hoist0_crate4)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate2)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet0)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate3)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate4)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet4)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate0)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet1)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (lifting_hoist0_crate4) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) 
+
+constraints:
+(on_crate5_crate4)
+mutex-predicate
+(on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet2)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet0)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate3)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet4)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet3)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate1)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet1)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(lifting_hoist0_crate5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate0)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate2)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist0_crate5) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) 
+
+constraints:
+(on_crate0_crate5)
+mutex-predicate
+(lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(lifting_hoist1_crate0)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate0)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet3)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate4)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet1)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet5)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet0)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate1)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet2)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate3)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate2)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet4)
+mutex-predicate
+(on_crate0_crate5) (lifting_hoist1_crate0) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) 
+
+constraints:
+(on_crate1_crate4)
+mutex-predicate
+(on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet5)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet2)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate0)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet3)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate2)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(lifting_hoist1_crate1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet0)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate3)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate5)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet4)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist1_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) 
+
+constraints:
+(on_crate2_crate2)
+mutex-predicate
+(on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet2)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate1)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate5)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate4)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate3)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_crate0)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet5)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet0)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet1)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet4) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet4)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (lifting_hoist1_crate2) (on_crate2_pallet3)
+
+constraints:
+(lifting_hoist1_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet3)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist1_crate2) 
+
+constraints:
+(on_crate3_pallet3)
+mutex-predicate
+(lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(lifting_hoist1_crate3)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet2)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate4)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet0)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet1)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet5)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate0)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet4)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate1)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate2)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate3)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate5)
+mutex-predicate
+(on_crate3_pallet3) (lifting_hoist1_crate3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) 
+
+constraints:
+(lifting_hoist1_crate4)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet5)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet2)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet3)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate1)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate2)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate3)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet0)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate4)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet4)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate0)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate5)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet1)
+mutex-predicate
+(lifting_hoist1_crate4) (on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) 
+
+constraints:
+(on_crate5_crate4)
+mutex-predicate
+(on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet0)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet2)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate3)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet4)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet3)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate1)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet1)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(lifting_hoist1_crate5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate2) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate2)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate0) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate0)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (lifting_hoist1_crate5) (on_crate5_crate2) (on_crate5_crate0) 
+
+constraints:
+(on_crate0_crate5)
+mutex-predicate
+(on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate0)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet3)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate4)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet1)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet5)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet0)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate1)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet2)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(lifting_hoist2_crate0)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (on_crate0_crate3) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate3)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate2) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_crate2)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet4)
+mutex-predicate
+(on_crate0_crate5) (on_crate0_crate0) (on_crate0_pallet3) (on_crate0_crate4) (on_crate0_pallet1) (on_crate0_pallet5) (on_crate0_pallet0) (on_crate0_crate1) (on_crate0_pallet2) (lifting_hoist2_crate0) (on_crate0_crate3) (on_crate0_crate2) 
+
+constraints:
+(on_crate1_crate4)
+mutex-predicate
+(on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet5)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet2)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate0)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet3)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate2)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(lifting_hoist2_crate1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet0)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate1)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate3) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate3)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate5) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_crate5)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_pallet4)
+
+constraints:
+(on_crate1_pallet4)
+mutex-predicate
+(on_crate1_crate4) (on_crate1_pallet5) (on_crate1_pallet2) (on_crate1_crate0) (on_crate1_pallet1) (on_crate1_pallet3) (on_crate1_crate2) (lifting_hoist2_crate1) (on_crate1_pallet0) (on_crate1_crate1) (on_crate1_crate3) (on_crate1_crate5) 
+
+constraints:
+(on_crate2_crate2)
+mutex-predicate
+(on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_pallet2)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_crate1)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_crate5)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_crate4)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_crate3)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_crate0)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_pallet5)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_pallet0)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_pallet1)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet4) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_pallet4)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet3) (lifting_hoist2_crate2)
+
+constraints:
+(on_crate2_pallet3)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (lifting_hoist2_crate2)
+
+constraints:
+(lifting_hoist2_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate2_pallet2) (on_crate2_crate1) (on_crate2_crate5) (on_crate2_crate4) (on_crate2_crate3) (on_crate2_crate0) (on_crate2_pallet5) (on_crate2_pallet0) (on_crate2_pallet1) (on_crate2_pallet4) (on_crate2_pallet3) 
+
+constraints:
+(on_crate3_pallet3)
+mutex-predicate
+(on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet2)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate4)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet0)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet1)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(lifting_hoist2_crate3)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet5)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_pallet4)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate0)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate1)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate2) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate2)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate3) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate3)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate5)
+
+constraints:
+(on_crate3_crate5)
+mutex-predicate
+(on_crate3_pallet3) (on_crate3_pallet2) (on_crate3_crate4) (on_crate3_pallet0) (on_crate3_pallet1) (lifting_hoist2_crate3) (on_crate3_pallet5) (on_crate3_pallet4) (on_crate3_crate0) (on_crate3_crate1) (on_crate3_crate2) (on_crate3_crate3) 
+
+constraints:
+(on_crate4_pallet5)
+mutex-predicate
+(on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet2)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet3)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate1)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate2)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate3)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet0)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate4)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(lifting_hoist2_crate4)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet4)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_crate0) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate0)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate5) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_crate5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet1)
+mutex-predicate
+(on_crate4_pallet5) (on_crate4_pallet2) (on_crate4_pallet3) (on_crate4_crate1) (on_crate4_crate2) (on_crate4_crate3) (on_crate4_pallet0) (on_crate4_crate4) (lifting_hoist2_crate4) (on_crate4_pallet4) (on_crate4_crate0) (on_crate4_crate5) 
+
+constraints:
+(on_crate5_crate4)
+mutex-predicate
+(on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet2)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet0)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate3)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet4)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet3)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate1)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet1)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_pallet5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate0)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate2) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate2)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (lifting_hoist2_crate5) (on_crate5_crate5)
+
+constraints:
+(lifting_hoist2_crate5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (on_crate5_crate5)
+
+constraints:
+(on_crate5_crate5)
+mutex-predicate
+(on_crate5_crate4) (on_crate5_pallet2) (on_crate5_pallet0) (on_crate5_crate3) (on_crate5_pallet4) (on_crate5_pallet3) (on_crate5_crate1) (on_crate5_pallet1) (on_crate5_pallet5) (on_crate5_crate0) (on_crate5_crate2) (lifting_hoist2_crate5) 
+
+constraints:
+(lifting_hoist2_crate1)
+mutex-predicate
+(lifting_hoist1_crate1) (lifting_hoist0_crate1) (clear_crate1)
+
+constraints:
+(lifting_hoist1_crate1)
+mutex-predicate
+(lifting_hoist2_crate1) (lifting_hoist0_crate1) (clear_crate1)
+
+constraints:
+(lifting_hoist0_crate1)
+mutex-predicate
+(lifting_hoist2_crate1) (lifting_hoist1_crate1) (clear_crate1)
+
+constraints:
+(clear_crate1)
+mutex-predicate
+(lifting_hoist2_crate1) (lifting_hoist1_crate1) (lifting_hoist0_crate1) 
+
+constraints:
+(lifting_hoist0_crate3)
+mutex-predicate
+(clear_crate3) (lifting_hoist1_crate3) (lifting_hoist2_crate3)
+
+constraints:
+(clear_crate3)
+mutex-predicate
+(lifting_hoist0_crate3) (lifting_hoist1_crate3) (lifting_hoist2_crate3)
+
+constraints:
+(lifting_hoist1_crate3)
+mutex-predicate
+(lifting_hoist0_crate3) (clear_crate3) (lifting_hoist2_crate3)
+
+constraints:
+(lifting_hoist2_crate3)
+mutex-predicate
+(lifting_hoist0_crate3) (clear_crate3) (lifting_hoist1_crate3) 
+
+constraints:
+(lifting_hoist0_crate4)
+mutex-predicate
+(clear_crate4) (lifting_hoist1_crate4) (lifting_hoist2_crate4)
+
+constraints:
+(clear_crate4)
+mutex-predicate
+(lifting_hoist0_crate4) (lifting_hoist1_crate4) (lifting_hoist2_crate4)
+
+constraints:
+(lifting_hoist1_crate4)
+mutex-predicate
+(lifting_hoist0_crate4) (clear_crate4) (lifting_hoist2_crate4)
+
+constraints:
+(lifting_hoist2_crate4)
+mutex-predicate
+(lifting_hoist0_crate4) (clear_crate4) (lifting_hoist1_crate4) 
+
+constraints:
+(clear_crate5)
+mutex-predicate
+(lifting_hoist1_crate5) (lifting_hoist2_crate5) (lifting_hoist0_crate5)
+
+constraints:
+(lifting_hoist1_crate5)
+mutex-predicate
+(clear_crate5) (lifting_hoist2_crate5) (lifting_hoist0_crate5)
+
+constraints:
+(lifting_hoist2_crate5)
+mutex-predicate
+(clear_crate5) (lifting_hoist1_crate5) (lifting_hoist0_crate5)
+
+constraints:
+(lifting_hoist0_crate5)
+mutex-predicate
+(clear_crate5) (lifting_hoist1_crate5) (lifting_hoist2_crate5) 
+
+constraints:
+(on_crate3_pallet0)
+mutex-predicate
+(on_crate5_pallet0) (on_crate1_pallet0) (on_crate0_pallet0) (on_crate4_pallet0) (on_crate2_pallet0) (clear_pallet0)
+
+constraints:
+(on_crate5_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate1_pallet0) (on_crate0_pallet0) (on_crate4_pallet0) (on_crate2_pallet0) (clear_pallet0)
+
+constraints:
+(on_crate1_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate5_pallet0) (on_crate0_pallet0) (on_crate4_pallet0) (on_crate2_pallet0) (clear_pallet0)
+
+constraints:
+(on_crate0_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate5_pallet0) (on_crate1_pallet0) (on_crate4_pallet0) (on_crate2_pallet0) (clear_pallet0)
+
+constraints:
+(on_crate4_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate5_pallet0) (on_crate1_pallet0) (on_crate0_pallet0) (on_crate2_pallet0) (clear_pallet0)
+
+constraints:
+(on_crate2_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate5_pallet0) (on_crate1_pallet0) (on_crate0_pallet0) (on_crate4_pallet0) (clear_pallet0)
+
+constraints:
+(clear_pallet0)
+mutex-predicate
+(on_crate3_pallet0) (on_crate5_pallet0) (on_crate1_pallet0) (on_crate0_pallet0) (on_crate4_pallet0) (on_crate2_pallet0) 
+
+constraints:
+(on_crate1_pallet1)
+mutex-predicate
+(on_crate3_pallet1) (on_crate0_pallet1) (on_crate2_pallet1) (clear_pallet1) (on_crate5_pallet1) (on_crate4_pallet1)
+
+constraints:
+(on_crate3_pallet1)
+mutex-predicate
+(on_crate1_pallet1) (on_crate0_pallet1) (on_crate2_pallet1) (clear_pallet1) (on_crate5_pallet1) (on_crate4_pallet1)
+
+constraints:
+(on_crate0_pallet1)
+mutex-predicate
+(on_crate1_pallet1) (on_crate3_pallet1) (on_crate2_pallet1) (clear_pallet1) (on_crate5_pallet1) (on_crate4_pallet1)
+
+constraints:
+(on_crate2_pallet1)
+mutex-predicate
+(on_crate1_pallet1) (on_crate3_pallet1) (on_crate0_pallet1) (clear_pallet1) (on_crate5_pallet1) (on_crate4_pallet1)
+
+constraints:
+(clear_pallet1)
+mutex-predicate
+(on_crate1_pallet1) (on_crate3_pallet1) (on_crate0_pallet1) (on_crate2_pallet1) (on_crate5_pallet1) (on_crate4_pallet1)
+
+constraints:
+(on_crate5_pallet1)
+mutex-predicate
+(on_crate1_pallet1) (on_crate3_pallet1) (on_crate0_pallet1) (on_crate2_pallet1) (clear_pallet1) (on_crate4_pallet1)
+
+constraints:
+(on_crate4_pallet1)
+mutex-predicate
+(on_crate1_pallet1) (on_crate3_pallet1) (on_crate0_pallet1) (on_crate2_pallet1) (clear_pallet1) (on_crate5_pallet1) 
+
+constraints:
+(on_crate1_pallet2)
+mutex-predicate
+(on_crate2_pallet2) (on_crate4_pallet2) (clear_pallet2) (on_crate3_pallet2) (on_crate5_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate2_pallet2)
+mutex-predicate
+(on_crate1_pallet2) (on_crate4_pallet2) (clear_pallet2) (on_crate3_pallet2) (on_crate5_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate4_pallet2)
+mutex-predicate
+(on_crate1_pallet2) (on_crate2_pallet2) (clear_pallet2) (on_crate3_pallet2) (on_crate5_pallet2) (on_crate0_pallet2)
+
+constraints:
+(clear_pallet2)
+mutex-predicate
+(on_crate1_pallet2) (on_crate2_pallet2) (on_crate4_pallet2) (on_crate3_pallet2) (on_crate5_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate3_pallet2)
+mutex-predicate
+(on_crate1_pallet2) (on_crate2_pallet2) (on_crate4_pallet2) (clear_pallet2) (on_crate5_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate5_pallet2)
+mutex-predicate
+(on_crate1_pallet2) (on_crate2_pallet2) (on_crate4_pallet2) (clear_pallet2) (on_crate3_pallet2) (on_crate0_pallet2)
+
+constraints:
+(on_crate0_pallet2)
+mutex-predicate
+(on_crate1_pallet2) (on_crate2_pallet2) (on_crate4_pallet2) (clear_pallet2) (on_crate3_pallet2) (on_crate5_pallet2) 
+
+constraints:
+(on_crate3_pallet3)
+mutex-predicate
+(clear_pallet3) (on_crate0_pallet3) (on_crate1_pallet3) (on_crate4_pallet3) (on_crate5_pallet3) (on_crate2_pallet3)
+
+constraints:
+(clear_pallet3)
+mutex-predicate
+(on_crate3_pallet3) (on_crate0_pallet3) (on_crate1_pallet3) (on_crate4_pallet3) (on_crate5_pallet3) (on_crate2_pallet3)
+
+constraints:
+(on_crate0_pallet3)
+mutex-predicate
+(on_crate3_pallet3) (clear_pallet3) (on_crate1_pallet3) (on_crate4_pallet3) (on_crate5_pallet3) (on_crate2_pallet3)
+
+constraints:
+(on_crate1_pallet3)
+mutex-predicate
+(on_crate3_pallet3) (clear_pallet3) (on_crate0_pallet3) (on_crate4_pallet3) (on_crate5_pallet3) (on_crate2_pallet3)
+
+constraints:
+(on_crate4_pallet3)
+mutex-predicate
+(on_crate3_pallet3) (clear_pallet3) (on_crate0_pallet3) (on_crate1_pallet3) (on_crate5_pallet3) (on_crate2_pallet3)
+
+constraints:
+(on_crate5_pallet3)
+mutex-predicate
+(on_crate3_pallet3) (clear_pallet3) (on_crate0_pallet3) (on_crate1_pallet3) (on_crate4_pallet3) (on_crate2_pallet3)
+
+constraints:
+(on_crate2_pallet3)
+mutex-predicate
+(on_crate3_pallet3) (clear_pallet3) (on_crate0_pallet3) (on_crate1_pallet3) (on_crate4_pallet3) (on_crate5_pallet3) 
+
+constraints:
+(on_crate5_pallet4)
+mutex-predicate
+(on_crate3_pallet4) (on_crate4_pallet4) (on_crate2_pallet4) (clear_pallet4) (on_crate1_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate3_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate4_pallet4) (on_crate2_pallet4) (clear_pallet4) (on_crate1_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate4_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate3_pallet4) (on_crate2_pallet4) (clear_pallet4) (on_crate1_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate2_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate3_pallet4) (on_crate4_pallet4) (clear_pallet4) (on_crate1_pallet4) (on_crate0_pallet4)
+
+constraints:
+(clear_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate3_pallet4) (on_crate4_pallet4) (on_crate2_pallet4) (on_crate1_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate1_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate3_pallet4) (on_crate4_pallet4) (on_crate2_pallet4) (clear_pallet4) (on_crate0_pallet4)
+
+constraints:
+(on_crate0_pallet4)
+mutex-predicate
+(on_crate5_pallet4) (on_crate3_pallet4) (on_crate4_pallet4) (on_crate2_pallet4) (clear_pallet4) (on_crate1_pallet4) 
+
+constraints:
+(on_crate4_pallet5)
+mutex-predicate
+(on_crate1_pallet5) (clear_pallet5) (on_crate0_pallet5) (on_crate3_pallet5) (on_crate2_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate1_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (clear_pallet5) (on_crate0_pallet5) (on_crate3_pallet5) (on_crate2_pallet5) (on_crate5_pallet5)
+
+constraints:
+(clear_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate1_pallet5) (on_crate0_pallet5) (on_crate3_pallet5) (on_crate2_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate0_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate1_pallet5) (clear_pallet5) (on_crate3_pallet5) (on_crate2_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate3_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate1_pallet5) (clear_pallet5) (on_crate0_pallet5) (on_crate2_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate2_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate1_pallet5) (clear_pallet5) (on_crate0_pallet5) (on_crate3_pallet5) (on_crate5_pallet5)
+
+constraints:
+(on_crate5_pallet5)
+mutex-predicate
+(on_crate4_pallet5) (on_crate1_pallet5) (clear_pallet5) (on_crate0_pallet5) (on_crate3_pallet5) (on_crate2_pallet5) 
+
+constraints:
+(on_crate0_crate0)
+mutex-predicate
+(on_crate1_crate0) (on_crate3_crate0) (clear_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate1_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate3_crate0) (clear_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate3_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (clear_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(clear_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (on_crate2_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate2_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (clear_crate0) (on_crate5_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate5_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (clear_crate0) (on_crate2_crate0) (on_crate4_crate0)
+
+constraints:
+(on_crate4_crate0)
+mutex-predicate
+(on_crate0_crate0) (on_crate1_crate0) (on_crate3_crate0) (clear_crate0) (on_crate2_crate0) (on_crate5_crate0) 
+
+constraints:
+(on_crate2_crate1)
+mutex-predicate
+(on_crate1_crate1) (on_crate3_crate1) (on_crate4_crate1) (on_crate0_crate1) (on_crate5_crate1) (clear_crate1)
+
+constraints:
+(on_crate1_crate1)
+mutex-predicate
+(on_crate2_crate1) (on_crate3_crate1) (on_crate4_crate1) (on_crate0_crate1) (on_crate5_crate1) (clear_crate1)
+
+constraints:
+(on_crate3_crate1)
+mutex-predicate
+(on_crate2_crate1) (on_crate1_crate1) (on_crate4_crate1) (on_crate0_crate1) (on_crate5_crate1) (clear_crate1)
+
+constraints:
+(on_crate4_crate1)
+mutex-predicate
+(on_crate2_crate1) (on_crate1_crate1) (on_crate3_crate1) (on_crate0_crate1) (on_crate5_crate1) (clear_crate1)
+
+constraints:
+(on_crate0_crate1)
+mutex-predicate
+(on_crate2_crate1) (on_crate1_crate1) (on_crate3_crate1) (on_crate4_crate1) (on_crate5_crate1) (clear_crate1)
+
+constraints:
+(on_crate5_crate1)
+mutex-predicate
+(on_crate2_crate1) (on_crate1_crate1) (on_crate3_crate1) (on_crate4_crate1) (on_crate0_crate1) (clear_crate1)
+
+constraints:
+(clear_crate1)
+mutex-predicate
+(on_crate2_crate1) (on_crate1_crate1) (on_crate3_crate1) (on_crate4_crate1) (on_crate0_crate1) (on_crate5_crate1) 
+
+constraints:
+(on_crate2_crate2)
+mutex-predicate
+(clear_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(clear_crate2)
+mutex-predicate
+(on_crate2_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate1_crate2)
+mutex-predicate
+(on_crate2_crate2) (clear_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate4_crate2)
+mutex-predicate
+(on_crate2_crate2) (clear_crate2) (on_crate1_crate2) (on_crate3_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate3_crate2)
+mutex-predicate
+(on_crate2_crate2) (clear_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate5_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate5_crate2)
+mutex-predicate
+(on_crate2_crate2) (clear_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate0_crate2)
+
+constraints:
+(on_crate0_crate2)
+mutex-predicate
+(on_crate2_crate2) (clear_crate2) (on_crate1_crate2) (on_crate4_crate2) (on_crate3_crate2) (on_crate5_crate2) 
+
+constraints:
+(on_crate2_crate3)
+mutex-predicate
+(clear_crate3) (on_crate5_crate3) (on_crate1_crate3) (on_crate3_crate3) (on_crate0_crate3) (on_crate4_crate3)
+
+constraints:
+(clear_crate3)
+mutex-predicate
+(on_crate2_crate3) (on_crate5_crate3) (on_crate1_crate3) (on_crate3_crate3) (on_crate0_crate3) (on_crate4_crate3)
+
+constraints:
+(on_crate5_crate3)
+mutex-predicate
+(on_crate2_crate3) (clear_crate3) (on_crate1_crate3) (on_crate3_crate3) (on_crate0_crate3) (on_crate4_crate3)
+
+constraints:
+(on_crate1_crate3)
+mutex-predicate
+(on_crate2_crate3) (clear_crate3) (on_crate5_crate3) (on_crate3_crate3) (on_crate0_crate3) (on_crate4_crate3)
+
+constraints:
+(on_crate3_crate3)
+mutex-predicate
+(on_crate2_crate3) (clear_crate3) (on_crate5_crate3) (on_crate1_crate3) (on_crate0_crate3) (on_crate4_crate3)
+
+constraints:
+(on_crate0_crate3)
+mutex-predicate
+(on_crate2_crate3) (clear_crate3) (on_crate5_crate3) (on_crate1_crate3) (on_crate3_crate3) (on_crate4_crate3)
+
+constraints:
+(on_crate4_crate3)
+mutex-predicate
+(on_crate2_crate3) (clear_crate3) (on_crate5_crate3) (on_crate1_crate3) (on_crate3_crate3) (on_crate0_crate3) 
+
+constraints:
+(on_crate1_crate4)
+mutex-predicate
+(clear_crate4) (on_crate5_crate4) (on_crate2_crate4) (on_crate0_crate4) (on_crate3_crate4) (on_crate4_crate4)
+
+constraints:
+(clear_crate4)
+mutex-predicate
+(on_crate1_crate4) (on_crate5_crate4) (on_crate2_crate4) (on_crate0_crate4) (on_crate3_crate4) (on_crate4_crate4)
+
+constraints:
+(on_crate5_crate4)
+mutex-predicate
+(on_crate1_crate4) (clear_crate4) (on_crate2_crate4) (on_crate0_crate4) (on_crate3_crate4) (on_crate4_crate4)
+
+constraints:
+(on_crate2_crate4)
+mutex-predicate
+(on_crate1_crate4) (clear_crate4) (on_crate5_crate4) (on_crate0_crate4) (on_crate3_crate4) (on_crate4_crate4)
+
+constraints:
+(on_crate0_crate4)
+mutex-predicate
+(on_crate1_crate4) (clear_crate4) (on_crate5_crate4) (on_crate2_crate4) (on_crate3_crate4) (on_crate4_crate4)
+
+constraints:
+(on_crate3_crate4)
+mutex-predicate
+(on_crate1_crate4) (clear_crate4) (on_crate5_crate4) (on_crate2_crate4) (on_crate0_crate4) (on_crate4_crate4)
+
+constraints:
+(on_crate4_crate4)
+mutex-predicate
+(on_crate1_crate4) (clear_crate4) (on_crate5_crate4) (on_crate2_crate4) (on_crate0_crate4) (on_crate3_crate4) 
+
+constraints:
+(clear_crate5)
+mutex-predicate
+(on_crate0_crate5) (on_crate2_crate5) (on_crate5_crate5) (on_crate1_crate5) (on_crate3_crate5) (on_crate4_crate5)
+
+constraints:
+(on_crate0_crate5)
+mutex-predicate
+(clear_crate5) (on_crate2_crate5) (on_crate5_crate5) (on_crate1_crate5) (on_crate3_crate5) (on_crate4_crate5)
+
+constraints:
+(on_crate2_crate5)
+mutex-predicate
+(clear_crate5) (on_crate0_crate5) (on_crate5_crate5) (on_crate1_crate5) (on_crate3_crate5) (on_crate4_crate5)
+
+constraints:
+(on_crate5_crate5)
+mutex-predicate
+(clear_crate5) (on_crate0_crate5) (on_crate2_crate5) (on_crate1_crate5) (on_crate3_crate5) (on_crate4_crate5)
+
+constraints:
+(on_crate1_crate5)
+mutex-predicate
+(clear_crate5) (on_crate0_crate5) (on_crate2_crate5) (on_crate5_crate5) (on_crate3_crate5) (on_crate4_crate5)
+
+constraints:
+(on_crate3_crate5)
+mutex-predicate
+(clear_crate5) (on_crate0_crate5) (on_crate2_crate5) (on_crate5_crate5) (on_crate1_crate5) (on_crate4_crate5)
+
+constraints:
+(on_crate4_crate5)
+mutex-predicate
+(clear_crate5) (on_crate0_crate5) (on_crate2_crate5) (on_crate5_crate5) (on_crate1_crate5) (on_crate3_crate5) 
+
+constraints:
+(lifting_hoist0_crate0)
+mutex-predicate
+(lifting_hoist0_crate1) (lifting_hoist0_crate2) (lifting_hoist0_crate4) (available_hoist0) (lifting_hoist0_crate5) (lifting_hoist0_crate3)
+
+constraints:
+(lifting_hoist0_crate1)
+mutex-predicate
+(lifting_hoist0_crate0) (lifting_hoist0_crate2) (lifting_hoist0_crate4) (available_hoist0) (lifting_hoist0_crate5) (lifting_hoist0_crate3)
+
+constraints:
+(lifting_hoist0_crate2)
+mutex-predicate
+(lifting_hoist0_crate0) (lifting_hoist0_crate1) (lifting_hoist0_crate4) (available_hoist0) (lifting_hoist0_crate5) (lifting_hoist0_crate3)
+
+constraints:
+(lifting_hoist0_crate4)
+mutex-predicate
+(lifting_hoist0_crate0) (lifting_hoist0_crate1) (lifting_hoist0_crate2) (available_hoist0) (lifting_hoist0_crate5) (lifting_hoist0_crate3)
+
+constraints:
+(available_hoist0)
+mutex-predicate
+(lifting_hoist0_crate0) (lifting_hoist0_crate1) (lifting_hoist0_crate2) (lifting_hoist0_crate4) (lifting_hoist0_crate5) (lifting_hoist0_crate3)
+
+constraints:
+(lifting_hoist0_crate5)
+mutex-predicate
+(lifting_hoist0_crate0) (lifting_hoist0_crate1) (lifting_hoist0_crate2) (lifting_hoist0_crate4) (available_hoist0) (lifting_hoist0_crate3)
+
+constraints:
+(lifting_hoist0_crate3)
+mutex-predicate
+(lifting_hoist0_crate0) (lifting_hoist0_crate1) (lifting_hoist0_crate2) (lifting_hoist0_crate4) (available_hoist0) (lifting_hoist0_crate5) 
+
+constraints:
+(lifting_hoist1_crate4)
+mutex-predicate
+(lifting_hoist1_crate0) (lifting_hoist1_crate3) (available_hoist1) (lifting_hoist1_crate1) (lifting_hoist1_crate2) (lifting_hoist1_crate5)
+
+constraints:
+(lifting_hoist1_crate0)
+mutex-predicate
+(lifting_hoist1_crate4) (lifting_hoist1_crate3) (available_hoist1) (lifting_hoist1_crate1) (lifting_hoist1_crate2) (lifting_hoist1_crate5)
+
+constraints:
+(lifting_hoist1_crate3)
+mutex-predicate
+(lifting_hoist1_crate4) (lifting_hoist1_crate0) (available_hoist1) (lifting_hoist1_crate1) (lifting_hoist1_crate2) (lifting_hoist1_crate5)
+
+constraints:
+(available_hoist1)
+mutex-predicate
+(lifting_hoist1_crate4) (lifting_hoist1_crate0) (lifting_hoist1_crate3) (lifting_hoist1_crate1) (lifting_hoist1_crate2) (lifting_hoist1_crate5)
+
+constraints:
+(lifting_hoist1_crate1)
+mutex-predicate
+(lifting_hoist1_crate4) (lifting_hoist1_crate0) (lifting_hoist1_crate3) (available_hoist1) (lifting_hoist1_crate2) (lifting_hoist1_crate5)
+
+constraints:
+(lifting_hoist1_crate2)
+mutex-predicate
+(lifting_hoist1_crate4) (lifting_hoist1_crate0) (lifting_hoist1_crate3) (available_hoist1) (lifting_hoist1_crate1) (lifting_hoist1_crate5)
+
+constraints:
+(lifting_hoist1_crate5)
+mutex-predicate
+(lifting_hoist1_crate4) (lifting_hoist1_crate0) (lifting_hoist1_crate3) (available_hoist1) (lifting_hoist1_crate1) (lifting_hoist1_crate2) 
+
+constraints:
+(lifting_hoist2_crate1)
+mutex-predicate
+(lifting_hoist2_crate3) (lifting_hoist2_crate0) (available_hoist2) (lifting_hoist2_crate4) (lifting_hoist2_crate5) (lifting_hoist2_crate2)
+
+constraints:
+(lifting_hoist2_crate3)
+mutex-predicate
+(lifting_hoist2_crate1) (lifting_hoist2_crate0) (available_hoist2) (lifting_hoist2_crate4) (lifting_hoist2_crate5) (lifting_hoist2_crate2)
+
+constraints:
+(lifting_hoist2_crate0)
+mutex-predicate
+(lifting_hoist2_crate1) (lifting_hoist2_crate3) (available_hoist2) (lifting_hoist2_crate4) (lifting_hoist2_crate5) (lifting_hoist2_crate2)
+
+constraints:
+(available_hoist2)
+mutex-predicate
+(lifting_hoist2_crate1) (lifting_hoist2_crate3) (lifting_hoist2_crate0) (lifting_hoist2_crate4) (lifting_hoist2_crate5) (lifting_hoist2_crate2)
+
+constraints:
+(lifting_hoist2_crate4)
+mutex-predicate
+(lifting_hoist2_crate1) (lifting_hoist2_crate3) (lifting_hoist2_crate0) (available_hoist2) (lifting_hoist2_crate5) (lifting_hoist2_crate2)
+
+constraints:
+(lifting_hoist2_crate5)
+mutex-predicate
+(lifting_hoist2_crate1) (lifting_hoist2_crate3) (lifting_hoist2_crate0) (available_hoist2) (lifting_hoist2_crate4) (lifting_hoist2_crate2)
+
+constraints:
+(lifting_hoist2_crate2)
+mutex-predicate
+(lifting_hoist2_crate1) (lifting_hoist2_crate3) (lifting_hoist2_crate0) (available_hoist2) (lifting_hoist2_crate4) (lifting_hoist2_crate5) 
+
+
+
+end:
