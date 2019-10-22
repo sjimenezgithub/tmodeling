@@ -1,0 +1,168 @@
+=== Limited Instantiation with N=2 (Rintanen 2017)
+For type <object>: 0 objects
+For type <location>: 4 objects
+For type <locatable>: 2 objects
+For type <driver>: 2 objects
+For type <truck>: 2 objects
+For type <obj>: 2 objects
+=== PRS List ===
+PRS 1:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	in_1
+PRS 2:
+	precs: 	at_1
+	del_precs: 	
+	adds: 	in_2
+PRS 3:
+	precs: 	at_2at_2
+	del_precs: 	at_2
+	adds: 	
+PRS 4:
+	precs: 	in_1
+	del_precs: 	in_1
+	adds: 	at_1
+PRS 5:
+	precs: 	at_1, in_2
+	del_precs: 	in_2
+	adds: 	
+PRS 6:
+	precs: 	at_2
+	del_precs: 	
+	adds: 	at_2
+PRS 7:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	driving_1
+PRS 8:
+	precs: 	at_1, empty_1
+	del_precs: 	empty_1
+	adds: 	driving_2
+PRS 9:
+	precs: 	at_2at_2
+	del_precs: 	at_2
+	adds: 	
+PRS 10:
+	precs: 	driving_1
+	del_precs: 	driving_1
+	adds: 	at_1
+PRS 11:
+	precs: 	at_1, driving_2
+	del_precs: 	driving_2
+	adds: 	empty_1
+PRS 12:
+	precs: 	at_2
+	del_precs: 	
+	adds: 	at_2
+PRS 13:
+	precs: 	at_1, driving_2
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 14:
+	precs: 	at_1, driving_2
+	del_precs: 	
+	adds: 	
+PRS 15:
+	precs: 	at_2, link_1
+	del_precs: 	at_2
+	adds: 	
+PRS 16:
+	precs: 	link_2
+	del_precs: 	
+	adds: 	at_2
+PRS 17:
+	precs: 	driving_1
+	del_precs: 	
+	adds: 	
+PRS 18:
+	precs: 	at_1
+	del_precs: 	at_1
+	adds: 	at_1
+PRS 19:
+	precs: 	at_1
+	del_precs: 	
+	adds: 	
+PRS 20:
+	precs: 	at_2, path_1
+	del_precs: 	at_2
+	adds: 	
+PRS 21:
+	precs: 	path_2
+	del_precs: 	
+	adds: 	at_2
+=== Transition rules ===
+TR 1:
+	null => at_1 -> in_1
+TR 2:
+	at_1 => null -> in_2
+TR 3:
+	at_2 => at_2 -> null
+TR 4:
+	null => in_1 -> at_1
+TR 5:
+	at_1 => in_2 -> null
+TR 6:
+	at_2 => null -> at_2
+TR 7:
+	null => at_1 -> driving_1
+TR 8:
+	at_1 => empty_1 -> driving_2
+TR 9:
+	at_2 => at_2 -> null
+TR 10:
+	null => driving_1 -> at_1
+TR 11:
+	at_1 => driving_2 -> empty_1
+TR 12:
+	at_2 => null -> at_2
+TR 13:
+	driving_2 => at_1 -> at_1
+TR 14:
+	link_1 => at_2 -> null
+TR 15:
+	link_2 => null -> at_2
+TR 16:
+	null => at_1 -> at_1
+TR 17:
+	path_1 => at_2 -> null
+TR 18:
+	path_2 => null -> at_2
+=== Property spaces ===
+PS 1:
+	{at_1, in_1, driving_1}	%%%	null => at_1 -> in_1 | null => in_1 -> at_1 | null => at_1 -> driving_1 | null => driving_1 -> at_1 | driving_2 => at_1 -> at_1 | null => at_1 -> at_1	%%%	truck1, truck2, driver1, driver2, package1, package2	%%%	{at_1} | {in_1} | {driving_1}
+PS 2:
+	{driving_2, empty_1}	%%%	at_1 => empty_1 -> driving_2 | at_1 => driving_2 -> empty_1	%%%	truck1, truck2	%%%	{empty_1} | {driving_2}
+PS 3:
+	{at_2}	%%%	at_2 => at_2 -> null | at_2 => null -> at_2 | at_2 => at_2 -> null | at_2 => null -> at_2 | link_1 => at_2 -> null | link_2 => null -> at_2 | path_1 => at_2 -> null | path_2 => null -> at_2	%%%	s2, s0	%%%	
+PS 4:
+	{in_2}	%%%	at_1 => null -> in_2 | at_1 => in_2 -> null	%%%	truck1, truck2, driver1, package1, package2, driver2	%%%	
+=== Types ===
+Type 0: truck1, truck2
+Type 1: s1, p1-0, p1-2
+Type 2: driver1, driver2, package1, package2
+Type 3: s0, s2
+=== Invariants ===
+(:derived (invariant-1)
+	(forall(?x - locatable ?y1 - location ?y2 - location)
+		(not (and  (at ?x ?y1)  (at ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-2)
+	(forall(?x - obj ?y1 - truck ?y2 - truck)
+		(not (and  (in ?x ?y1)  (in ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-3)
+	(forall(?x - driver ?y1 - truck ?y2 - truck)
+		(not (and  (driving ?x ?y1)  (driving ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-4)
+	(forall (?x - driver ?y1 - truck ?y2 - truck)
+		(not (and (driving ?x ?y1) (in ?x ?y2)))))
+(:derived (invariant-5)
+	(forall (?x - driver ?y1 - location ?y2 - truck)
+		(not (and (at ?x ?y1) (driving ?x ?y2)))))
+(:derived (invariant-6)
+	(forall (?x - obj ?y1 - location ?y2 - truck)
+		(not (and (at ?x ?y1) (in ?x ?y2)))))
+(:derived (invariant-7)
+	(forall(?x - truck ?y1 - driver ?y2 - driver)
+		(not (and  (driving ?y1 ?x)  (driving ?y2 ?x) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-8)
+	(forall (?x - truck ?y1 - driver)
+		(not (and (empty ?x) (driving ?y1 ?x)))))
