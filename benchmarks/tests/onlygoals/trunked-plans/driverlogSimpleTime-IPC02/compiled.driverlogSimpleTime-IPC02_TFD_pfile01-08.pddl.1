@@ -1,0 +1,399 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/tests/domains/driverlogSimpleTime-IPC02/domain-empty-constraints.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/tests/domains//driverlogSimpleTime-IPC02/pfile01-08.pddl
+
+init:
+1 (link_s1_s2) & 2 (path_p1-2_s2) & 3 (path_p1-0_s0) & 4 (at_package1_s1) & 5 (path_p1-0_s1) & 6 (link_s0_s2) & 7 (empty_truck1) & 8 (link_s2_s0) & 9 (at_package2_s0) & 10 (at_truck2_s0) & 11 (at_driver2_s1) & 12 (path_s2_p1-2) & 13 (at_driver1_s2) & 14 (empty_truck2) & 15 (path_s1_p1-0) & 16 (path_s0_p1-0) & 17 (link_s0_s1) & 18 (link_s2_s1) & 19 (path_p1-2_s1) & 20 (at_truck1_s1) & 21 (link_s1_s0) & 22 (path_s1_p1-2) & 23 not-(at_driver1_p1-2) & 24 not-(at_driver1_s1) & 25 not-(at_driver1_p1-0) & 26 not-(at_driver1_s0) & 27 not-(at_truck1_p1-2) & 28 not-(at_truck1_p1-0) & 29 not-(at_truck1_s2) & 30 not-(at_truck1_s0) & 31 not-(at_truck2_p1-2) & 32 not-(at_truck2_s1) & 33 not-(at_truck2_p1-0) & 34 not-(at_truck2_s2) & 35 not-(at_driver2_p1-2) & 36 not-(at_driver2_p1-0) & 37 not-(at_driver2_s2) & 38 not-(at_driver2_s0) & 39 not-(at_package1_p1-2) & 40 not-(at_package1_p1-0) & 41 not-(at_package1_s2) & 42 not-(at_package1_s0) & 43 not-(at_package2_p1-2) & 44 not-(at_package2_s1) & 45 not-(at_package2_p1-0) & 46 not-(at_package2_s2) & 47 not-(in_package1_truck1) & 48 not-(in_package1_truck2) & 49 not-(in_package2_truck1) & 50 not-(in_package2_truck2) & 51 not-(driving_driver1_truck1) & 52 not-(driving_driver1_truck2) & 53 not-(driving_driver2_truck1) & 54 not-(driving_driver2_truck2) & 55 not-(link_p1-2_p1-2) & 56 not-(link_p1-2_s1) & 57 not-(link_p1-2_p1-0) & 58 not-(link_p1-2_s2) & 59 not-(link_p1-2_s0) & 60 not-(link_s1_p1-2) & 61 not-(link_s1_s1) & 62 not-(link_s1_p1-0) & 63 not-(link_p1-0_p1-2) & 64 not-(link_p1-0_s1) & 65 not-(link_p1-0_p1-0) & 66 not-(link_p1-0_s2) & 67 not-(link_p1-0_s0) & 68 not-(link_s2_p1-2) & 69 not-(link_s2_p1-0) & 70 not-(link_s2_s2) & 71 not-(link_s0_p1-2) & 72 not-(link_s0_p1-0) & 73 not-(link_s0_s0) & 74 not-(path_p1-2_p1-2) & 75 not-(path_p1-2_p1-0) & 76 not-(path_p1-2_s0) & 77 not-(path_s1_s1) & 78 not-(path_s1_s2) & 79 not-(path_s1_s0) & 80 not-(path_p1-0_p1-2) & 81 not-(path_p1-0_p1-0) & 82 not-(path_p1-0_s2) & 83 not-(path_s2_s1) & 84 not-(path_s2_p1-0) & 85 not-(path_s2_s2) & 86 not-(path_s2_s0) & 87 not-(path_s0_p1-2) & 88 not-(path_s0_s1) & 89 not-(path_s0_s2) & 90 not-(path_s0_s0)
+
+goals:
+1 (at_driver1_s2) & 2 (at_truck1_s1) & 3 (at_package1_s2)
+makespan:
+245
+
+action:
+(load-truck_package1_truck1_s1)
+operator:
+load-truck
+start_time:
+1
+durations:
+20
+precs:
+1 (path_s1_s1) & 2 (in_package1_truck1) & 3 (at_package1_s1) & 4 (link_s1_s1) & 5 (empty_truck1) & 6 (at_truck1_s1)
+effs:
+7 (path_s1_s1) & 8 not-(path_s1_s1) & 9 (in_package1_truck1) & 10 not-(in_package1_truck1) & 11 (at_package1_s1) & 12 not-(at_package1_s1) & 13 (link_s1_s1) & 14 not-(link_s1_s1) & 15 (empty_truck1) & 16 not-(empty_truck1) & 17 (at_truck1_s1) & 18 not-(at_truck1_s1)
+
+action:
+(board-truck_driver2_truck1_s1)
+operator:
+board-truck
+start_time:
+1
+durations:
+10
+precs:
+1 (path_s1_s1) & 2 (at_driver2_s1) & 3 (link_s1_s1) & 4 (empty_truck1) & 5 (driving_driver2_truck1) & 6 (at_truck1_s1)
+effs:
+7 (path_s1_s1) & 8 not-(path_s1_s1) & 9 (at_driver2_s1) & 10 not-(at_driver2_s1) & 11 (link_s1_s1) & 12 not-(link_s1_s1) & 13 (empty_truck1) & 14 not-(empty_truck1) & 15 (driving_driver2_truck1) & 16 not-(driving_driver2_truck1) & 17 (at_truck1_s1) & 18 not-(at_truck1_s1)
+
+action:
+(drive-truck_truck1_s1_s2_driver2)
+operator:
+drive-truck
+start_time:
+22
+durations:
+100
+precs:
+1 (at_driver2_s2) & 2 (at_truck1_s1) & 3 (link_s2_s1) & 4 (path_s1_s2) & 5 (path_s1_s1) & 6 (path_s2_s2) & 7 (driving_driver2_truck1) & 8 (at_truck1_s2) & 9 (link_s1_s1) & 10 (link_s2_s2) & 11 (link_s1_s2) & 12 (path_s2_s1) & 13 (at_driver2_s1) & 14 (empty_truck1)
+effs:
+15 (at_driver2_s2) & 16 not-(at_driver2_s2) & 17 (at_truck1_s1) & 18 not-(at_truck1_s1) & 19 (link_s2_s1) & 20 not-(link_s2_s1) & 21 (path_s1_s2) & 22 not-(path_s1_s2) & 23 (path_s1_s1) & 24 not-(path_s1_s1) & 25 (path_s2_s2) & 26 not-(path_s2_s2) & 27 (driving_driver2_truck1) & 28 not-(driving_driver2_truck1) & 29 (at_truck1_s2) & 30 not-(at_truck1_s2) & 31 (link_s1_s1) & 32 not-(link_s1_s1) & 33 (link_s2_s2) & 34 not-(link_s2_s2) & 35 (link_s1_s2) & 36 not-(link_s1_s2) & 37 (path_s2_s1) & 38 not-(path_s2_s1) & 39 (at_driver2_s1) & 40 not-(at_driver2_s1) & 41 (empty_truck1) & 42 not-(empty_truck1)
+
+action:
+(unload-truck_package1_truck1_s2)
+operator:
+unload-truck
+start_time:
+123
+durations:
+20
+precs:
+1 (path_s2_s2) & 2 (in_package1_truck1) & 3 (at_package1_s2) & 4 (link_s2_s2) & 5 (empty_truck1) & 6 (at_truck1_s2)
+effs:
+7 (path_s2_s2) & 8 not-(path_s2_s2) & 9 (in_package1_truck1) & 10 not-(in_package1_truck1) & 11 (at_package1_s2) & 12 not-(at_package1_s2) & 13 (link_s2_s2) & 14 not-(link_s2_s2) & 15 (empty_truck1) & 16 not-(empty_truck1) & 17 (at_truck1_s2) & 18 not-(at_truck1_s2)
+
+action:
+(drive-truck_truck1_s2_s1_driver2)
+operator:
+drive-truck
+start_time:
+144
+durations:
+100
+precs:
+1 (at_driver2_s1) & 2 (at_truck1_s2) & 3 (link_s1_s2) & 4 (path_s2_s1) & 5 (path_s2_s2) & 6 (path_s1_s1) & 7 (driving_driver2_truck1) & 8 (at_truck1_s1) & 9 (link_s2_s2) & 10 (link_s1_s1) & 11 (link_s2_s1) & 12 (path_s1_s2) & 13 (at_driver2_s2) & 14 (empty_truck1)
+effs:
+15 (at_driver2_s1) & 16 not-(at_driver2_s1) & 17 (at_truck1_s2) & 18 not-(at_truck1_s2) & 19 (link_s1_s2) & 20 not-(link_s1_s2) & 21 (path_s2_s1) & 22 not-(path_s2_s1) & 23 (path_s2_s2) & 24 not-(path_s2_s2) & 25 (path_s1_s1) & 26 not-(path_s1_s1) & 27 (driving_driver2_truck1) & 28 not-(driving_driver2_truck1) & 29 (at_truck1_s1) & 30 not-(at_truck1_s1) & 31 (link_s2_s2) & 32 not-(link_s2_s2) & 33 (link_s1_s1) & 34 not-(link_s1_s1) & 35 (link_s2_s1) & 36 not-(link_s2_s1) & 37 (path_s1_s2) & 38 not-(path_s1_s2) & 39 (at_driver2_s2) & 40 not-(at_driver2_s2) & 41 (empty_truck1) & 42 not-(empty_truck1)
+
+constraints:
+(at_driver1_p1-0)
+mutex-predicate
+(at_driver1_p1-2) (at_driver1_s0) (at_driver1_s2) (at_driver1_s1)
+
+constraints:
+(at_driver1_p1-2)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_s0) (at_driver1_s2) (at_driver1_s1)
+
+constraints:
+(at_driver1_s0)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_p1-2) (at_driver1_s2) (at_driver1_s1)
+
+constraints:
+(at_driver1_s2)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_p1-2) (at_driver1_s0) (at_driver1_s1)
+
+constraints:
+(at_driver1_s1)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_p1-2) (at_driver1_s0) (at_driver1_s2) 
+
+constraints:
+(at_driver2_s1)
+mutex-predicate
+(at_driver2_p1-0) (at_driver2_s0) (at_driver2_s2) (at_driver2_p1-2)
+
+constraints:
+(at_driver2_p1-0)
+mutex-predicate
+(at_driver2_s1) (at_driver2_s0) (at_driver2_s2) (at_driver2_p1-2)
+
+constraints:
+(at_driver2_s0)
+mutex-predicate
+(at_driver2_s1) (at_driver2_p1-0) (at_driver2_s2) (at_driver2_p1-2)
+
+constraints:
+(at_driver2_s2)
+mutex-predicate
+(at_driver2_s1) (at_driver2_p1-0) (at_driver2_s0) (at_driver2_p1-2)
+
+constraints:
+(at_driver2_p1-2)
+mutex-predicate
+(at_driver2_s1) (at_driver2_p1-0) (at_driver2_s0) (at_driver2_s2) 
+
+constraints:
+(at_truck1_s2)
+mutex-predicate
+(at_truck1_s0) (at_truck1_p1-0) (at_truck1_s1) (at_truck1_p1-2)
+
+constraints:
+(at_truck1_s0)
+mutex-predicate
+(at_truck1_s2) (at_truck1_p1-0) (at_truck1_s1) (at_truck1_p1-2)
+
+constraints:
+(at_truck1_p1-0)
+mutex-predicate
+(at_truck1_s2) (at_truck1_s0) (at_truck1_s1) (at_truck1_p1-2)
+
+constraints:
+(at_truck1_s1)
+mutex-predicate
+(at_truck1_s2) (at_truck1_s0) (at_truck1_p1-0) (at_truck1_p1-2)
+
+constraints:
+(at_truck1_p1-2)
+mutex-predicate
+(at_truck1_s2) (at_truck1_s0) (at_truck1_p1-0) (at_truck1_s1) 
+
+constraints:
+(at_truck2_p1-0)
+mutex-predicate
+(at_truck2_p1-2) (at_truck2_s0) (at_truck2_s2) (at_truck2_s1)
+
+constraints:
+(at_truck2_p1-2)
+mutex-predicate
+(at_truck2_p1-0) (at_truck2_s0) (at_truck2_s2) (at_truck2_s1)
+
+constraints:
+(at_truck2_s0)
+mutex-predicate
+(at_truck2_p1-0) (at_truck2_p1-2) (at_truck2_s2) (at_truck2_s1)
+
+constraints:
+(at_truck2_s2)
+mutex-predicate
+(at_truck2_p1-0) (at_truck2_p1-2) (at_truck2_s0) (at_truck2_s1)
+
+constraints:
+(at_truck2_s1)
+mutex-predicate
+(at_truck2_p1-0) (at_truck2_p1-2) (at_truck2_s0) (at_truck2_s2) 
+
+constraints:
+(at_package1_p1-2)
+mutex-predicate
+(at_package1_p1-0) (at_package1_s0) (at_package1_s2) (at_package1_s1)
+
+constraints:
+(at_package1_p1-0)
+mutex-predicate
+(at_package1_p1-2) (at_package1_s0) (at_package1_s2) (at_package1_s1)
+
+constraints:
+(at_package1_s0)
+mutex-predicate
+(at_package1_p1-2) (at_package1_p1-0) (at_package1_s2) (at_package1_s1)
+
+constraints:
+(at_package1_s2)
+mutex-predicate
+(at_package1_p1-2) (at_package1_p1-0) (at_package1_s0) (at_package1_s1)
+
+constraints:
+(at_package1_s1)
+mutex-predicate
+(at_package1_p1-2) (at_package1_p1-0) (at_package1_s0) (at_package1_s2) 
+
+constraints:
+(at_package2_p1-2)
+mutex-predicate
+(at_package2_p1-0) (at_package2_s0) (at_package2_s1) (at_package2_s2)
+
+constraints:
+(at_package2_p1-0)
+mutex-predicate
+(at_package2_p1-2) (at_package2_s0) (at_package2_s1) (at_package2_s2)
+
+constraints:
+(at_package2_s0)
+mutex-predicate
+(at_package2_p1-2) (at_package2_p1-0) (at_package2_s1) (at_package2_s2)
+
+constraints:
+(at_package2_s1)
+mutex-predicate
+(at_package2_p1-2) (at_package2_p1-0) (at_package2_s0) (at_package2_s2)
+
+constraints:
+(at_package2_s2)
+mutex-predicate
+(at_package2_p1-2) (at_package2_p1-0) (at_package2_s0) (at_package2_s1) 
+
+constraints:
+(at_driver1_p1-0)
+mutex-predicate
+(at_driver1_p1-2) (at_driver1_s0) (at_driver1_s2) (driving_driver1_truck1) (driving_driver1_truck2) (at_driver1_s1)
+
+constraints:
+(at_driver1_p1-2)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_s0) (at_driver1_s2) (driving_driver1_truck1) (driving_driver1_truck2) (at_driver1_s1)
+
+constraints:
+(at_driver1_s0)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_p1-2) (at_driver1_s2) (driving_driver1_truck1) (driving_driver1_truck2) (at_driver1_s1)
+
+constraints:
+(at_driver1_s2)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_p1-2) (at_driver1_s0) (driving_driver1_truck1) (driving_driver1_truck2) (at_driver1_s1)
+
+constraints:
+(driving_driver1_truck1)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_p1-2) (at_driver1_s0) (at_driver1_s2) (driving_driver1_truck2) (at_driver1_s1)
+
+constraints:
+(driving_driver1_truck2)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_p1-2) (at_driver1_s0) (at_driver1_s2) (driving_driver1_truck1) (at_driver1_s1)
+
+constraints:
+(at_driver1_s1)
+mutex-predicate
+(at_driver1_p1-0) (at_driver1_p1-2) (at_driver1_s0) (at_driver1_s2) (driving_driver1_truck1) (driving_driver1_truck2) 
+
+constraints:
+(at_driver2_s1)
+mutex-predicate
+(at_driver2_p1-0) (at_driver2_s0) (at_driver2_s2) (driving_driver2_truck2) (driving_driver2_truck1) (at_driver2_p1-2)
+
+constraints:
+(at_driver2_p1-0)
+mutex-predicate
+(at_driver2_s1) (at_driver2_s0) (at_driver2_s2) (driving_driver2_truck2) (driving_driver2_truck1) (at_driver2_p1-2)
+
+constraints:
+(at_driver2_s0)
+mutex-predicate
+(at_driver2_s1) (at_driver2_p1-0) (at_driver2_s2) (driving_driver2_truck2) (driving_driver2_truck1) (at_driver2_p1-2)
+
+constraints:
+(at_driver2_s2)
+mutex-predicate
+(at_driver2_s1) (at_driver2_p1-0) (at_driver2_s0) (driving_driver2_truck2) (driving_driver2_truck1) (at_driver2_p1-2)
+
+constraints:
+(driving_driver2_truck2)
+mutex-predicate
+(at_driver2_s1) (at_driver2_p1-0) (at_driver2_s0) (at_driver2_s2) (driving_driver2_truck1) (at_driver2_p1-2)
+
+constraints:
+(driving_driver2_truck1)
+mutex-predicate
+(at_driver2_s1) (at_driver2_p1-0) (at_driver2_s0) (at_driver2_s2) (driving_driver2_truck2) (at_driver2_p1-2)
+
+constraints:
+(at_driver2_p1-2)
+mutex-predicate
+(at_driver2_s1) (at_driver2_p1-0) (at_driver2_s0) (at_driver2_s2) (driving_driver2_truck2) (driving_driver2_truck1) 
+
+constraints:
+(at_package1_p1-2)
+mutex-predicate
+(at_package1_p1-0) (at_package1_s0) (at_package1_s2) (in_package1_truck2) (in_package1_truck1) (at_package1_s1)
+
+constraints:
+(at_package1_p1-0)
+mutex-predicate
+(at_package1_p1-2) (at_package1_s0) (at_package1_s2) (in_package1_truck2) (in_package1_truck1) (at_package1_s1)
+
+constraints:
+(at_package1_s0)
+mutex-predicate
+(at_package1_p1-2) (at_package1_p1-0) (at_package1_s2) (in_package1_truck2) (in_package1_truck1) (at_package1_s1)
+
+constraints:
+(at_package1_s2)
+mutex-predicate
+(at_package1_p1-2) (at_package1_p1-0) (at_package1_s0) (in_package1_truck2) (in_package1_truck1) (at_package1_s1)
+
+constraints:
+(in_package1_truck2)
+mutex-predicate
+(at_package1_p1-2) (at_package1_p1-0) (at_package1_s0) (at_package1_s2) (in_package1_truck1) (at_package1_s1)
+
+constraints:
+(in_package1_truck1)
+mutex-predicate
+(at_package1_p1-2) (at_package1_p1-0) (at_package1_s0) (at_package1_s2) (in_package1_truck2) (at_package1_s1)
+
+constraints:
+(at_package1_s1)
+mutex-predicate
+(at_package1_p1-2) (at_package1_p1-0) (at_package1_s0) (at_package1_s2) (in_package1_truck2) (in_package1_truck1) 
+
+constraints:
+(in_package2_truck1)
+mutex-predicate
+(at_package2_p1-0) (at_package2_p1-2) (at_package2_s0) (at_package2_s1) (in_package2_truck2) (at_package2_s2)
+
+constraints:
+(at_package2_p1-0)
+mutex-predicate
+(in_package2_truck1) (at_package2_p1-2) (at_package2_s0) (at_package2_s1) (in_package2_truck2) (at_package2_s2)
+
+constraints:
+(at_package2_p1-2)
+mutex-predicate
+(in_package2_truck1) (at_package2_p1-0) (at_package2_s0) (at_package2_s1) (in_package2_truck2) (at_package2_s2)
+
+constraints:
+(at_package2_s0)
+mutex-predicate
+(in_package2_truck1) (at_package2_p1-0) (at_package2_p1-2) (at_package2_s1) (in_package2_truck2) (at_package2_s2)
+
+constraints:
+(at_package2_s1)
+mutex-predicate
+(in_package2_truck1) (at_package2_p1-0) (at_package2_p1-2) (at_package2_s0) (in_package2_truck2) (at_package2_s2)
+
+constraints:
+(in_package2_truck2)
+mutex-predicate
+(in_package2_truck1) (at_package2_p1-0) (at_package2_p1-2) (at_package2_s0) (at_package2_s1) (at_package2_s2)
+
+constraints:
+(at_package2_s2)
+mutex-predicate
+(in_package2_truck1) (at_package2_p1-0) (at_package2_p1-2) (at_package2_s0) (at_package2_s1) (in_package2_truck2) 
+
+constraints:
+(empty_truck1)
+mutex-predicate
+(driving_driver2_truck1) (driving_driver1_truck1)
+
+constraints:
+(driving_driver2_truck1)
+mutex-predicate
+(empty_truck1) (driving_driver1_truck1)
+
+constraints:
+(driving_driver1_truck1)
+mutex-predicate
+(empty_truck1) (driving_driver2_truck1) 
+
+constraints:
+(empty_truck2)
+mutex-predicate
+(driving_driver1_truck2) (driving_driver2_truck2)
+
+constraints:
+(driving_driver1_truck2)
+mutex-predicate
+(empty_truck2) (driving_driver2_truck2)
+
+constraints:
+(driving_driver2_truck2)
+mutex-predicate
+(empty_truck2) (driving_driver1_truck2) 
+

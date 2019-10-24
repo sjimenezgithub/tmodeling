@@ -1,0 +1,439 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/tests/domains/floortile/domain-empty-constraints.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/tests/domains//floortile/pfilep322-1-06.pddl
+
+init:
+1 (tile-right_tile-1-2_tile-1-1) & 2 (tile-right_tile-0-2_tile-0-1) & 3 (available-color_white) & 4 (robot-at_robot1_tile-2-2) & 5 (clear_tile-1-1) & 6 (tile-down_tile-0-1_tile-1-1) & 7 (tile-left_tile-1-1_tile-1-2) & 8 (tile-up_tile-2-1_tile-1-1) & 9 (tile-left_tile-0-1_tile-0-2) & 10 (clear_tile-2-1) & 11 (tile-up_tile-1-2_tile-0-2) & 12 (robot-has_robot2_white) & 13 (tile-down_tile-1-2_tile-2-2) & 14 (tile-up_tile-2-2_tile-1-2) & 15 (clear_tile-0-2) & 16 (available-color_black) & 17 (robot-has_robot1_black) & 18 (tile-down_tile-0-2_tile-1-2) & 19 (clear_tile-1-2) & 20 (clear_tile-2-2) & 21 (tile-down_tile-1-1_tile-2-1) & 22 (tile-up_tile-1-1_tile-0-1) & 23 (tile-right_tile-2-2_tile-2-1) & 24 (tile-left_tile-2-1_tile-2-2) & 25 (robot-at_robot2_tile-0-1) & 26 not-(robot-at_robot1_tile-1-1) & 27 not-(robot-at_robot1_tile-1-2) & 28 not-(robot-at_robot1_tile-0-2) & 29 not-(robot-at_robot1_tile-0-1) & 30 not-(robot-at_robot1_tile-2-1) & 31 not-(robot-at_robot2_tile-1-1) & 32 not-(robot-at_robot2_tile-1-2) & 33 not-(robot-at_robot2_tile-0-2) & 34 not-(robot-at_robot2_tile-2-2) & 35 not-(robot-at_robot2_tile-2-1) & 36 not-(tile-up_tile-1-1_tile-1-1) & 37 not-(tile-up_tile-1-1_tile-1-2) & 38 not-(tile-up_tile-1-1_tile-0-2) & 39 not-(tile-up_tile-1-1_tile-2-2) & 40 not-(tile-up_tile-1-1_tile-2-1) & 41 not-(tile-up_tile-1-2_tile-1-1) & 42 not-(tile-up_tile-1-2_tile-1-2) & 43 not-(tile-up_tile-1-2_tile-0-1) & 44 not-(tile-up_tile-1-2_tile-2-2) & 45 not-(tile-up_tile-1-2_tile-2-1) & 46 not-(tile-up_tile-0-2_tile-1-1) & 47 not-(tile-up_tile-0-2_tile-1-2) & 48 not-(tile-up_tile-0-2_tile-0-2) & 49 not-(tile-up_tile-0-2_tile-0-1) & 50 not-(tile-up_tile-0-2_tile-2-2) & 51 not-(tile-up_tile-0-2_tile-2-1) & 52 not-(tile-up_tile-0-1_tile-1-1) & 53 not-(tile-up_tile-0-1_tile-1-2) & 54 not-(tile-up_tile-0-1_tile-0-2) & 55 not-(tile-up_tile-0-1_tile-0-1) & 56 not-(tile-up_tile-0-1_tile-2-2) & 57 not-(tile-up_tile-0-1_tile-2-1) & 58 not-(tile-up_tile-2-2_tile-1-1) & 59 not-(tile-up_tile-2-2_tile-0-2) & 60 not-(tile-up_tile-2-2_tile-0-1) & 61 not-(tile-up_tile-2-2_tile-2-2) & 62 not-(tile-up_tile-2-2_tile-2-1) & 63 not-(tile-up_tile-2-1_tile-1-2) & 64 not-(tile-up_tile-2-1_tile-0-2) & 65 not-(tile-up_tile-2-1_tile-0-1) & 66 not-(tile-up_tile-2-1_tile-2-2) & 67 not-(tile-up_tile-2-1_tile-2-1) & 68 not-(tile-down_tile-1-1_tile-1-1) & 69 not-(tile-down_tile-1-1_tile-1-2) & 70 not-(tile-down_tile-1-1_tile-0-2) & 71 not-(tile-down_tile-1-1_tile-0-1) & 72 not-(tile-down_tile-1-1_tile-2-2) & 73 not-(tile-down_tile-1-2_tile-1-1) & 74 not-(tile-down_tile-1-2_tile-1-2) & 75 not-(tile-down_tile-1-2_tile-0-2) & 76 not-(tile-down_tile-1-2_tile-0-1) & 77 not-(tile-down_tile-1-2_tile-2-1) & 78 not-(tile-down_tile-0-2_tile-1-1) & 79 not-(tile-down_tile-0-2_tile-0-2) & 80 not-(tile-down_tile-0-2_tile-0-1) & 81 not-(tile-down_tile-0-2_tile-2-2) & 82 not-(tile-down_tile-0-2_tile-2-1) & 83 not-(tile-down_tile-0-1_tile-1-2) & 84 not-(tile-down_tile-0-1_tile-0-2) & 85 not-(tile-down_tile-0-1_tile-0-1) & 86 not-(tile-down_tile-0-1_tile-2-2) & 87 not-(tile-down_tile-0-1_tile-2-1) & 88 not-(tile-down_tile-2-2_tile-1-1) & 89 not-(tile-down_tile-2-2_tile-1-2) & 90 not-(tile-down_tile-2-2_tile-0-2) & 91 not-(tile-down_tile-2-2_tile-0-1) & 92 not-(tile-down_tile-2-2_tile-2-2) & 93 not-(tile-down_tile-2-2_tile-2-1) & 94 not-(tile-down_tile-2-1_tile-1-1) & 95 not-(tile-down_tile-2-1_tile-1-2) & 96 not-(tile-down_tile-2-1_tile-0-2) & 97 not-(tile-down_tile-2-1_tile-0-1) & 98 not-(tile-down_tile-2-1_tile-2-2) & 99 not-(tile-down_tile-2-1_tile-2-1) & 100 not-(tile-right_tile-1-1_tile-1-1) & 101 not-(tile-right_tile-1-1_tile-1-2) & 102 not-(tile-right_tile-1-1_tile-0-2) & 103 not-(tile-right_tile-1-1_tile-0-1) & 104 not-(tile-right_tile-1-1_tile-2-2) & 105 not-(tile-right_tile-1-1_tile-2-1) & 106 not-(tile-right_tile-1-2_tile-1-2) & 107 not-(tile-right_tile-1-2_tile-0-2) & 108 not-(tile-right_tile-1-2_tile-0-1) & 109 not-(tile-right_tile-1-2_tile-2-2) & 110 not-(tile-right_tile-1-2_tile-2-1) & 111 not-(tile-right_tile-0-2_tile-1-1) & 112 not-(tile-right_tile-0-2_tile-1-2) & 113 not-(tile-right_tile-0-2_tile-0-2) & 114 not-(tile-right_tile-0-2_tile-2-2) & 115 not-(tile-right_tile-0-2_tile-2-1) & 116 not-(tile-right_tile-0-1_tile-1-1) & 117 not-(tile-right_tile-0-1_tile-1-2) & 118 not-(tile-right_tile-0-1_tile-0-2) & 119 not-(tile-right_tile-0-1_tile-0-1) & 120 not-(tile-right_tile-0-1_tile-2-2) & 121 not-(tile-right_tile-0-1_tile-2-1) & 122 not-(tile-right_tile-2-2_tile-1-1) & 123 not-(tile-right_tile-2-2_tile-1-2) & 124 not-(tile-right_tile-2-2_tile-0-2) & 125 not-(tile-right_tile-2-2_tile-0-1) & 126 not-(tile-right_tile-2-2_tile-2-2) & 127 not-(tile-right_tile-2-1_tile-1-1) & 128 not-(tile-right_tile-2-1_tile-1-2) & 129 not-(tile-right_tile-2-1_tile-0-2) & 130 not-(tile-right_tile-2-1_tile-0-1) & 131 not-(tile-right_tile-2-1_tile-2-2) & 132 not-(tile-right_tile-2-1_tile-2-1) & 133 not-(tile-left_tile-1-1_tile-1-1) & 134 not-(tile-left_tile-1-1_tile-0-2) & 135 not-(tile-left_tile-1-1_tile-0-1) & 136 not-(tile-left_tile-1-1_tile-2-2) & 137 not-(tile-left_tile-1-1_tile-2-1) & 138 not-(tile-left_tile-1-2_tile-1-1) & 139 not-(tile-left_tile-1-2_tile-1-2) & 140 not-(tile-left_tile-1-2_tile-0-2) & 141 not-(tile-left_tile-1-2_tile-0-1) & 142 not-(tile-left_tile-1-2_tile-2-2) & 143 not-(tile-left_tile-1-2_tile-2-1) & 144 not-(tile-left_tile-0-2_tile-1-1) & 145 not-(tile-left_tile-0-2_tile-1-2) & 146 not-(tile-left_tile-0-2_tile-0-2) & 147 not-(tile-left_tile-0-2_tile-0-1) & 148 not-(tile-left_tile-0-2_tile-2-2) & 149 not-(tile-left_tile-0-2_tile-2-1) & 150 not-(tile-left_tile-0-1_tile-1-1) & 151 not-(tile-left_tile-0-1_tile-1-2) & 152 not-(tile-left_tile-0-1_tile-0-1) & 153 not-(tile-left_tile-0-1_tile-2-2) & 154 not-(tile-left_tile-0-1_tile-2-1) & 155 not-(tile-left_tile-2-2_tile-1-1) & 156 not-(tile-left_tile-2-2_tile-1-2) & 157 not-(tile-left_tile-2-2_tile-0-2) & 158 not-(tile-left_tile-2-2_tile-0-1) & 159 not-(tile-left_tile-2-2_tile-2-2) & 160 not-(tile-left_tile-2-2_tile-2-1) & 161 not-(tile-left_tile-2-1_tile-1-1) & 162 not-(tile-left_tile-2-1_tile-1-2) & 163 not-(tile-left_tile-2-1_tile-0-2) & 164 not-(tile-left_tile-2-1_tile-0-1) & 165 not-(tile-left_tile-2-1_tile-2-1) & 166 not-(clear_tile-0-1) & 167 not-(painted_tile-1-1_white) & 168 not-(painted_tile-1-1_black) & 169 not-(painted_tile-1-2_white) & 170 not-(painted_tile-1-2_black) & 171 not-(painted_tile-0-2_white) & 172 not-(painted_tile-0-2_black) & 173 not-(painted_tile-0-1_white) & 174 not-(painted_tile-0-1_black) & 175 not-(painted_tile-2-2_white) & 176 not-(painted_tile-2-2_black) & 177 not-(painted_tile-2-1_white) & 178 not-(painted_tile-2-1_black) & 179 not-(robot-has_robot1_white) & 180 not-(robot-has_robot2_black) & 181 not-(free-color_robot1) & 182 not-(free-color_robot2)
+
+goals:
+1 (painted_tile-1-1_black) & 2 (painted_tile-1-2_black) & 3 (painted_tile-2-1_black) & 4 (painted_tile-2-2_black)
+makespan:
+96
+
+action:
+(change-color_robot2_white_black)
+operator:
+change-color
+start_time:
+1
+durations:
+50
+precs:
+1 (free-color_robot2) & 2 (available-color_black) & 3 (robot-has_robot2_white) & 4 (available-color_white) & 5 (robot-has_robot2_black)
+effs:
+6 (free-color_robot2) & 7 not-(free-color_robot2) & 8 (available-color_black) & 9 not-(available-color_black) & 10 (robot-has_robot2_white) & 11 not-(robot-has_robot2_white) & 12 (available-color_white) & 13 not-(available-color_white) & 14 (robot-has_robot2_black) & 15 not-(robot-has_robot2_black)
+
+action:
+(right_robot2_tile-0-1_tile-0-2)
+operator:
+right
+start_time:
+1
+durations:
+10
+precs:
+1 (tile-left_tile-0-2_tile-0-2) & 2 (tile-right_tile-0-1_tile-0-1) & 3 (tile-down_tile-0-2_tile-0-2) & 4 (tile-up_tile-0-1_tile-0-2) & 5 (tile-up_tile-0-2_tile-0-2) & 6 (tile-up_tile-0-2_tile-0-1) & 7 (clear_tile-0-2) & 8 (tile-right_tile-0-2_tile-0-1) & 9 (tile-down_tile-0-1_tile-0-1) & 10 (tile-left_tile-0-2_tile-0-1) & 11 (robot-at_robot2_tile-0-2) & 12 (tile-left_tile-0-1_tile-0-1) & 13 (clear_tile-0-1) & 14 (tile-up_tile-0-1_tile-0-1) & 15 (tile-down_tile-0-2_tile-0-1) & 16 (tile-down_tile-0-1_tile-0-2) & 17 (free-color_robot2) & 18 (robot-at_robot2_tile-0-1) & 19 (tile-right_tile-0-1_tile-0-2) & 20 (tile-left_tile-0-1_tile-0-2) & 21 (tile-right_tile-0-2_tile-0-2)
+effs:
+22 (tile-left_tile-0-2_tile-0-2) & 23 not-(tile-left_tile-0-2_tile-0-2) & 24 (tile-right_tile-0-1_tile-0-1) & 25 not-(tile-right_tile-0-1_tile-0-1) & 26 (tile-down_tile-0-2_tile-0-2) & 27 not-(tile-down_tile-0-2_tile-0-2) & 28 (tile-up_tile-0-1_tile-0-2) & 29 not-(tile-up_tile-0-1_tile-0-2) & 30 (tile-up_tile-0-2_tile-0-2) & 31 not-(tile-up_tile-0-2_tile-0-2) & 32 (tile-up_tile-0-2_tile-0-1) & 33 not-(tile-up_tile-0-2_tile-0-1) & 34 (clear_tile-0-2) & 35 not-(clear_tile-0-2) & 36 (tile-right_tile-0-2_tile-0-1) & 37 not-(tile-right_tile-0-2_tile-0-1) & 38 (tile-down_tile-0-1_tile-0-1) & 39 not-(tile-down_tile-0-1_tile-0-1) & 40 (tile-left_tile-0-2_tile-0-1) & 41 not-(tile-left_tile-0-2_tile-0-1) & 42 (robot-at_robot2_tile-0-2) & 43 not-(robot-at_robot2_tile-0-2) & 44 (tile-left_tile-0-1_tile-0-1) & 45 not-(tile-left_tile-0-1_tile-0-1) & 46 (clear_tile-0-1) & 47 not-(clear_tile-0-1) & 48 (tile-up_tile-0-1_tile-0-1) & 49 not-(tile-up_tile-0-1_tile-0-1) & 50 (tile-down_tile-0-2_tile-0-1) & 51 not-(tile-down_tile-0-2_tile-0-1) & 52 (tile-down_tile-0-1_tile-0-2) & 53 not-(tile-down_tile-0-1_tile-0-2) & 54 (free-color_robot2) & 55 not-(free-color_robot2) & 56 (robot-at_robot2_tile-0-1) & 57 not-(robot-at_robot2_tile-0-1) & 58 (tile-right_tile-0-1_tile-0-2) & 59 not-(tile-right_tile-0-1_tile-0-2) & 60 (tile-left_tile-0-1_tile-0-2) & 61 not-(tile-left_tile-0-1_tile-0-2) & 62 (tile-right_tile-0-2_tile-0-2) & 63 not-(tile-right_tile-0-2_tile-0-2)
+
+action:
+(up_robot2_tile-0-2_tile-1-2)
+operator:
+up
+start_time:
+12
+durations:
+30
+precs:
+1 (tile-left_tile-1-2_tile-1-2) & 2 (tile-right_tile-0-2_tile-0-2) & 3 (tile-down_tile-1-2_tile-1-2) & 4 (tile-up_tile-0-2_tile-1-2) & 5 (tile-up_tile-1-2_tile-1-2) & 6 (tile-up_tile-1-2_tile-0-2) & 7 (clear_tile-1-2) & 8 (tile-right_tile-1-2_tile-0-2) & 9 (tile-down_tile-0-2_tile-0-2) & 10 (tile-left_tile-1-2_tile-0-2) & 11 (robot-at_robot2_tile-1-2) & 12 (tile-left_tile-0-2_tile-0-2) & 13 (clear_tile-0-2) & 14 (tile-up_tile-0-2_tile-0-2) & 15 (tile-down_tile-1-2_tile-0-2) & 16 (tile-down_tile-0-2_tile-1-2) & 17 (free-color_robot2) & 18 (robot-at_robot2_tile-0-2) & 19 (tile-right_tile-0-2_tile-1-2) & 20 (tile-left_tile-0-2_tile-1-2) & 21 (tile-right_tile-1-2_tile-1-2)
+effs:
+22 (tile-left_tile-1-2_tile-1-2) & 23 not-(tile-left_tile-1-2_tile-1-2) & 24 (tile-right_tile-0-2_tile-0-2) & 25 not-(tile-right_tile-0-2_tile-0-2) & 26 (tile-down_tile-1-2_tile-1-2) & 27 not-(tile-down_tile-1-2_tile-1-2) & 28 (tile-up_tile-0-2_tile-1-2) & 29 not-(tile-up_tile-0-2_tile-1-2) & 30 (tile-up_tile-1-2_tile-1-2) & 31 not-(tile-up_tile-1-2_tile-1-2) & 32 (tile-up_tile-1-2_tile-0-2) & 33 not-(tile-up_tile-1-2_tile-0-2) & 34 (clear_tile-1-2) & 35 not-(clear_tile-1-2) & 36 (tile-right_tile-1-2_tile-0-2) & 37 not-(tile-right_tile-1-2_tile-0-2) & 38 (tile-down_tile-0-2_tile-0-2) & 39 not-(tile-down_tile-0-2_tile-0-2) & 40 (tile-left_tile-1-2_tile-0-2) & 41 not-(tile-left_tile-1-2_tile-0-2) & 42 (robot-at_robot2_tile-1-2) & 43 not-(robot-at_robot2_tile-1-2) & 44 (tile-left_tile-0-2_tile-0-2) & 45 not-(tile-left_tile-0-2_tile-0-2) & 46 (clear_tile-0-2) & 47 not-(clear_tile-0-2) & 48 (tile-up_tile-0-2_tile-0-2) & 49 not-(tile-up_tile-0-2_tile-0-2) & 50 (tile-down_tile-1-2_tile-0-2) & 51 not-(tile-down_tile-1-2_tile-0-2) & 52 (tile-down_tile-0-2_tile-1-2) & 53 not-(tile-down_tile-0-2_tile-1-2) & 54 (free-color_robot2) & 55 not-(free-color_robot2) & 56 (robot-at_robot2_tile-0-2) & 57 not-(robot-at_robot2_tile-0-2) & 58 (tile-right_tile-0-2_tile-1-2) & 59 not-(tile-right_tile-0-2_tile-1-2) & 60 (tile-left_tile-0-2_tile-1-2) & 61 not-(tile-left_tile-0-2_tile-1-2) & 62 (tile-right_tile-1-2_tile-1-2) & 63 not-(tile-right_tile-1-2_tile-1-2)
+
+action:
+(paint-up_robot2_tile-2-2_tile-1-2_black)
+operator:
+paint-up
+start_time:
+53
+durations:
+20
+precs:
+1 (tile-left_tile-1-2_tile-1-2) & 2 (tile-right_tile-2-2_tile-2-2) & 3 (tile-down_tile-1-2_tile-1-2) & 4 (tile-up_tile-2-2_tile-1-2) & 5 (tile-up_tile-1-2_tile-1-2) & 6 (available-color_black) & 7 (tile-up_tile-1-2_tile-2-2) & 8 (clear_tile-1-2) & 9 (tile-right_tile-1-2_tile-2-2) & 10 (tile-down_tile-2-2_tile-2-2) & 11 (painted_tile-1-2_black) & 12 (tile-left_tile-1-2_tile-2-2) & 13 (robot-at_robot2_tile-1-2) & 14 (tile-left_tile-2-2_tile-2-2) & 15 (clear_tile-2-2) & 16 (tile-up_tile-2-2_tile-2-2) & 17 (tile-down_tile-1-2_tile-2-2) & 18 (painted_tile-2-2_black) & 19 (robot-has_robot2_black) & 20 (tile-down_tile-2-2_tile-1-2) & 21 (free-color_robot2) & 22 (robot-at_robot2_tile-2-2) & 23 (tile-right_tile-2-2_tile-1-2) & 24 (tile-left_tile-2-2_tile-1-2) & 25 (tile-right_tile-1-2_tile-1-2)
+effs:
+26 (tile-left_tile-1-2_tile-1-2) & 27 not-(tile-left_tile-1-2_tile-1-2) & 28 (tile-right_tile-2-2_tile-2-2) & 29 not-(tile-right_tile-2-2_tile-2-2) & 30 (tile-down_tile-1-2_tile-1-2) & 31 not-(tile-down_tile-1-2_tile-1-2) & 32 (tile-up_tile-2-2_tile-1-2) & 33 not-(tile-up_tile-2-2_tile-1-2) & 34 (tile-up_tile-1-2_tile-1-2) & 35 not-(tile-up_tile-1-2_tile-1-2) & 36 (available-color_black) & 37 not-(available-color_black) & 38 (tile-up_tile-1-2_tile-2-2) & 39 not-(tile-up_tile-1-2_tile-2-2) & 40 (clear_tile-1-2) & 41 not-(clear_tile-1-2) & 42 (tile-right_tile-1-2_tile-2-2) & 43 not-(tile-right_tile-1-2_tile-2-2) & 44 (tile-down_tile-2-2_tile-2-2) & 45 not-(tile-down_tile-2-2_tile-2-2) & 46 (painted_tile-1-2_black) & 47 not-(painted_tile-1-2_black) & 48 (tile-left_tile-1-2_tile-2-2) & 49 not-(tile-left_tile-1-2_tile-2-2) & 50 (robot-at_robot2_tile-1-2) & 51 not-(robot-at_robot2_tile-1-2) & 52 (tile-left_tile-2-2_tile-2-2) & 53 not-(tile-left_tile-2-2_tile-2-2) & 54 (clear_tile-2-2) & 55 not-(clear_tile-2-2) & 56 (tile-up_tile-2-2_tile-2-2) & 57 not-(tile-up_tile-2-2_tile-2-2) & 58 (tile-down_tile-1-2_tile-2-2) & 59 not-(tile-down_tile-1-2_tile-2-2) & 60 (painted_tile-2-2_black) & 61 not-(painted_tile-2-2_black) & 62 (robot-has_robot2_black) & 63 not-(robot-has_robot2_black) & 64 (tile-down_tile-2-2_tile-1-2) & 65 not-(tile-down_tile-2-2_tile-1-2) & 66 (free-color_robot2) & 67 not-(free-color_robot2) & 68 (robot-at_robot2_tile-2-2) & 69 not-(robot-at_robot2_tile-2-2) & 70 (tile-right_tile-2-2_tile-1-2) & 71 not-(tile-right_tile-2-2_tile-1-2) & 72 (tile-left_tile-2-2_tile-1-2) & 73 not-(tile-left_tile-2-2_tile-1-2) & 74 (tile-right_tile-1-2_tile-1-2) & 75 not-(tile-right_tile-1-2_tile-1-2)
+
+action:
+(left_robot2_tile-1-2_tile-1-1)
+operator:
+left
+start_time:
+53
+durations:
+10
+precs:
+1 (tile-left_tile-1-1_tile-1-1) & 2 (tile-right_tile-1-2_tile-1-2) & 3 (tile-down_tile-1-1_tile-1-1) & 4 (tile-up_tile-1-2_tile-1-1) & 5 (tile-up_tile-1-1_tile-1-1) & 6 (tile-up_tile-1-1_tile-1-2) & 7 (clear_tile-1-1) & 8 (tile-right_tile-1-1_tile-1-2) & 9 (tile-down_tile-1-2_tile-1-2) & 10 (tile-left_tile-1-1_tile-1-2) & 11 (robot-at_robot2_tile-1-1) & 12 (tile-left_tile-1-2_tile-1-2) & 13 (clear_tile-1-2) & 14 (tile-up_tile-1-2_tile-1-2) & 15 (tile-down_tile-1-1_tile-1-2) & 16 (tile-down_tile-1-2_tile-1-1) & 17 (free-color_robot2) & 18 (robot-at_robot2_tile-1-2) & 19 (tile-right_tile-1-2_tile-1-1) & 20 (tile-left_tile-1-2_tile-1-1) & 21 (tile-right_tile-1-1_tile-1-1)
+effs:
+22 (tile-left_tile-1-1_tile-1-1) & 23 not-(tile-left_tile-1-1_tile-1-1) & 24 (tile-right_tile-1-2_tile-1-2) & 25 not-(tile-right_tile-1-2_tile-1-2) & 26 (tile-down_tile-1-1_tile-1-1) & 27 not-(tile-down_tile-1-1_tile-1-1) & 28 (tile-up_tile-1-2_tile-1-1) & 29 not-(tile-up_tile-1-2_tile-1-1) & 30 (tile-up_tile-1-1_tile-1-1) & 31 not-(tile-up_tile-1-1_tile-1-1) & 32 (tile-up_tile-1-1_tile-1-2) & 33 not-(tile-up_tile-1-1_tile-1-2) & 34 (clear_tile-1-1) & 35 not-(clear_tile-1-1) & 36 (tile-right_tile-1-1_tile-1-2) & 37 not-(tile-right_tile-1-1_tile-1-2) & 38 (tile-down_tile-1-2_tile-1-2) & 39 not-(tile-down_tile-1-2_tile-1-2) & 40 (tile-left_tile-1-1_tile-1-2) & 41 not-(tile-left_tile-1-1_tile-1-2) & 42 (robot-at_robot2_tile-1-1) & 43 not-(robot-at_robot2_tile-1-1) & 44 (tile-left_tile-1-2_tile-1-2) & 45 not-(tile-left_tile-1-2_tile-1-2) & 46 (clear_tile-1-2) & 47 not-(clear_tile-1-2) & 48 (tile-up_tile-1-2_tile-1-2) & 49 not-(tile-up_tile-1-2_tile-1-2) & 50 (tile-down_tile-1-1_tile-1-2) & 51 not-(tile-down_tile-1-1_tile-1-2) & 52 (tile-down_tile-1-2_tile-1-1) & 53 not-(tile-down_tile-1-2_tile-1-1) & 54 (free-color_robot2) & 55 not-(free-color_robot2) & 56 (robot-at_robot2_tile-1-2) & 57 not-(robot-at_robot2_tile-1-2) & 58 (tile-right_tile-1-2_tile-1-1) & 59 not-(tile-right_tile-1-2_tile-1-1) & 60 (tile-left_tile-1-2_tile-1-1) & 61 not-(tile-left_tile-1-2_tile-1-1) & 62 (tile-right_tile-1-1_tile-1-1) & 63 not-(tile-right_tile-1-1_tile-1-1)
+
+action:
+(paint-up_robot2_tile-2-1_tile-1-1_black)
+operator:
+paint-up
+start_time:
+64
+durations:
+20
+precs:
+1 (tile-left_tile-1-1_tile-1-1) & 2 (tile-right_tile-2-1_tile-2-1) & 3 (tile-down_tile-1-1_tile-1-1) & 4 (tile-up_tile-2-1_tile-1-1) & 5 (tile-up_tile-1-1_tile-1-1) & 6 (available-color_black) & 7 (tile-up_tile-1-1_tile-2-1) & 8 (clear_tile-1-1) & 9 (tile-right_tile-1-1_tile-2-1) & 10 (tile-down_tile-2-1_tile-2-1) & 11 (painted_tile-1-1_black) & 12 (tile-left_tile-1-1_tile-2-1) & 13 (robot-at_robot2_tile-1-1) & 14 (tile-left_tile-2-1_tile-2-1) & 15 (clear_tile-2-1) & 16 (tile-up_tile-2-1_tile-2-1) & 17 (tile-down_tile-1-1_tile-2-1) & 18 (painted_tile-2-1_black) & 19 (robot-has_robot2_black) & 20 (tile-down_tile-2-1_tile-1-1) & 21 (free-color_robot2) & 22 (robot-at_robot2_tile-2-1) & 23 (tile-right_tile-2-1_tile-1-1) & 24 (tile-left_tile-2-1_tile-1-1) & 25 (tile-right_tile-1-1_tile-1-1)
+effs:
+26 (tile-left_tile-1-1_tile-1-1) & 27 not-(tile-left_tile-1-1_tile-1-1) & 28 (tile-right_tile-2-1_tile-2-1) & 29 not-(tile-right_tile-2-1_tile-2-1) & 30 (tile-down_tile-1-1_tile-1-1) & 31 not-(tile-down_tile-1-1_tile-1-1) & 32 (tile-up_tile-2-1_tile-1-1) & 33 not-(tile-up_tile-2-1_tile-1-1) & 34 (tile-up_tile-1-1_tile-1-1) & 35 not-(tile-up_tile-1-1_tile-1-1) & 36 (available-color_black) & 37 not-(available-color_black) & 38 (tile-up_tile-1-1_tile-2-1) & 39 not-(tile-up_tile-1-1_tile-2-1) & 40 (clear_tile-1-1) & 41 not-(clear_tile-1-1) & 42 (tile-right_tile-1-1_tile-2-1) & 43 not-(tile-right_tile-1-1_tile-2-1) & 44 (tile-down_tile-2-1_tile-2-1) & 45 not-(tile-down_tile-2-1_tile-2-1) & 46 (painted_tile-1-1_black) & 47 not-(painted_tile-1-1_black) & 48 (tile-left_tile-1-1_tile-2-1) & 49 not-(tile-left_tile-1-1_tile-2-1) & 50 (robot-at_robot2_tile-1-1) & 51 not-(robot-at_robot2_tile-1-1) & 52 (tile-left_tile-2-1_tile-2-1) & 53 not-(tile-left_tile-2-1_tile-2-1) & 54 (clear_tile-2-1) & 55 not-(clear_tile-2-1) & 56 (tile-up_tile-2-1_tile-2-1) & 57 not-(tile-up_tile-2-1_tile-2-1) & 58 (tile-down_tile-1-1_tile-2-1) & 59 not-(tile-down_tile-1-1_tile-2-1) & 60 (painted_tile-2-1_black) & 61 not-(painted_tile-2-1_black) & 62 (robot-has_robot2_black) & 63 not-(robot-has_robot2_black) & 64 (tile-down_tile-2-1_tile-1-1) & 65 not-(tile-down_tile-2-1_tile-1-1) & 66 (free-color_robot2) & 67 not-(free-color_robot2) & 68 (robot-at_robot2_tile-2-1) & 69 not-(robot-at_robot2_tile-2-1) & 70 (tile-right_tile-2-1_tile-1-1) & 71 not-(tile-right_tile-2-1_tile-1-1) & 72 (tile-left_tile-2-1_tile-1-1) & 73 not-(tile-left_tile-2-1_tile-1-1) & 74 (tile-right_tile-1-1_tile-1-1) & 75 not-(tile-right_tile-1-1_tile-1-1)
+
+action:
+(down_robot2_tile-1-1_tile-0-1)
+operator:
+down
+start_time:
+64
+durations:
+10
+precs:
+1 (tile-left_tile-0-1_tile-0-1) & 2 (tile-right_tile-1-1_tile-1-1) & 3 (tile-down_tile-0-1_tile-0-1) & 4 (tile-up_tile-1-1_tile-0-1) & 5 (tile-up_tile-0-1_tile-0-1) & 6 (tile-up_tile-0-1_tile-1-1) & 7 (clear_tile-0-1) & 8 (tile-right_tile-0-1_tile-1-1) & 9 (tile-down_tile-1-1_tile-1-1) & 10 (tile-left_tile-0-1_tile-1-1) & 11 (robot-at_robot2_tile-0-1) & 12 (tile-left_tile-1-1_tile-1-1) & 13 (clear_tile-1-1) & 14 (tile-up_tile-1-1_tile-1-1) & 15 (tile-down_tile-0-1_tile-1-1) & 16 (tile-down_tile-1-1_tile-0-1) & 17 (free-color_robot2) & 18 (robot-at_robot2_tile-1-1) & 19 (tile-right_tile-1-1_tile-0-1) & 20 (tile-left_tile-1-1_tile-0-1) & 21 (tile-right_tile-0-1_tile-0-1)
+effs:
+22 (tile-left_tile-0-1_tile-0-1) & 23 not-(tile-left_tile-0-1_tile-0-1) & 24 (tile-right_tile-1-1_tile-1-1) & 25 not-(tile-right_tile-1-1_tile-1-1) & 26 (tile-down_tile-0-1_tile-0-1) & 27 not-(tile-down_tile-0-1_tile-0-1) & 28 (tile-up_tile-1-1_tile-0-1) & 29 not-(tile-up_tile-1-1_tile-0-1) & 30 (tile-up_tile-0-1_tile-0-1) & 31 not-(tile-up_tile-0-1_tile-0-1) & 32 (tile-up_tile-0-1_tile-1-1) & 33 not-(tile-up_tile-0-1_tile-1-1) & 34 (clear_tile-0-1) & 35 not-(clear_tile-0-1) & 36 (tile-right_tile-0-1_tile-1-1) & 37 not-(tile-right_tile-0-1_tile-1-1) & 38 (tile-down_tile-1-1_tile-1-1) & 39 not-(tile-down_tile-1-1_tile-1-1) & 40 (tile-left_tile-0-1_tile-1-1) & 41 not-(tile-left_tile-0-1_tile-1-1) & 42 (robot-at_robot2_tile-0-1) & 43 not-(robot-at_robot2_tile-0-1) & 44 (tile-left_tile-1-1_tile-1-1) & 45 not-(tile-left_tile-1-1_tile-1-1) & 46 (clear_tile-1-1) & 47 not-(clear_tile-1-1) & 48 (tile-up_tile-1-1_tile-1-1) & 49 not-(tile-up_tile-1-1_tile-1-1) & 50 (tile-down_tile-0-1_tile-1-1) & 51 not-(tile-down_tile-0-1_tile-1-1) & 52 (tile-down_tile-1-1_tile-0-1) & 53 not-(tile-down_tile-1-1_tile-0-1) & 54 (free-color_robot2) & 55 not-(free-color_robot2) & 56 (robot-at_robot2_tile-1-1) & 57 not-(robot-at_robot2_tile-1-1) & 58 (tile-right_tile-1-1_tile-0-1) & 59 not-(tile-right_tile-1-1_tile-0-1) & 60 (tile-left_tile-1-1_tile-0-1) & 61 not-(tile-left_tile-1-1_tile-0-1) & 62 (tile-right_tile-0-1_tile-0-1) & 63 not-(tile-right_tile-0-1_tile-0-1)
+
+action:
+(paint-down_robot1_tile-1-2_tile-2-2_black)
+operator:
+paint-down
+start_time:
+64
+durations:
+20
+precs:
+1 (tile-left_tile-2-2_tile-2-2) & 2 (tile-right_tile-1-2_tile-1-2) & 3 (tile-down_tile-2-2_tile-2-2) & 4 (tile-up_tile-1-2_tile-2-2) & 5 (tile-up_tile-2-2_tile-2-2) & 6 (available-color_black) & 7 (tile-up_tile-2-2_tile-1-2) & 8 (clear_tile-2-2) & 9 (tile-right_tile-2-2_tile-1-2) & 10 (tile-down_tile-1-2_tile-1-2) & 11 (painted_tile-2-2_black) & 12 (tile-left_tile-2-2_tile-1-2) & 13 (robot-at_robot1_tile-2-2) & 14 (tile-left_tile-1-2_tile-1-2) & 15 (clear_tile-1-2) & 16 (tile-up_tile-1-2_tile-1-2) & 17 (tile-down_tile-2-2_tile-1-2) & 18 (painted_tile-1-2_black) & 19 (robot-has_robot1_black) & 20 (tile-down_tile-1-2_tile-2-2) & 21 (free-color_robot1) & 22 (robot-at_robot1_tile-1-2) & 23 (tile-right_tile-1-2_tile-2-2) & 24 (tile-left_tile-1-2_tile-2-2) & 25 (tile-right_tile-2-2_tile-2-2)
+effs:
+26 (tile-left_tile-2-2_tile-2-2) & 27 not-(tile-left_tile-2-2_tile-2-2) & 28 (tile-right_tile-1-2_tile-1-2) & 29 not-(tile-right_tile-1-2_tile-1-2) & 30 (tile-down_tile-2-2_tile-2-2) & 31 not-(tile-down_tile-2-2_tile-2-2) & 32 (tile-up_tile-1-2_tile-2-2) & 33 not-(tile-up_tile-1-2_tile-2-2) & 34 (tile-up_tile-2-2_tile-2-2) & 35 not-(tile-up_tile-2-2_tile-2-2) & 36 (available-color_black) & 37 not-(available-color_black) & 38 (tile-up_tile-2-2_tile-1-2) & 39 not-(tile-up_tile-2-2_tile-1-2) & 40 (clear_tile-2-2) & 41 not-(clear_tile-2-2) & 42 (tile-right_tile-2-2_tile-1-2) & 43 not-(tile-right_tile-2-2_tile-1-2) & 44 (tile-down_tile-1-2_tile-1-2) & 45 not-(tile-down_tile-1-2_tile-1-2) & 46 (painted_tile-2-2_black) & 47 not-(painted_tile-2-2_black) & 48 (tile-left_tile-2-2_tile-1-2) & 49 not-(tile-left_tile-2-2_tile-1-2) & 50 (robot-at_robot1_tile-2-2) & 51 not-(robot-at_robot1_tile-2-2) & 52 (tile-left_tile-1-2_tile-1-2) & 53 not-(tile-left_tile-1-2_tile-1-2) & 54 (clear_tile-1-2) & 55 not-(clear_tile-1-2) & 56 (tile-up_tile-1-2_tile-1-2) & 57 not-(tile-up_tile-1-2_tile-1-2) & 58 (tile-down_tile-2-2_tile-1-2) & 59 not-(tile-down_tile-2-2_tile-1-2) & 60 (painted_tile-1-2_black) & 61 not-(painted_tile-1-2_black) & 62 (robot-has_robot1_black) & 63 not-(robot-has_robot1_black) & 64 (tile-down_tile-1-2_tile-2-2) & 65 not-(tile-down_tile-1-2_tile-2-2) & 66 (free-color_robot1) & 67 not-(free-color_robot1) & 68 (robot-at_robot1_tile-1-2) & 69 not-(robot-at_robot1_tile-1-2) & 70 (tile-right_tile-1-2_tile-2-2) & 71 not-(tile-right_tile-1-2_tile-2-2) & 72 (tile-left_tile-1-2_tile-2-2) & 73 not-(tile-left_tile-1-2_tile-2-2) & 74 (tile-right_tile-2-2_tile-2-2) & 75 not-(tile-right_tile-2-2_tile-2-2)
+
+action:
+(paint-up_robot2_tile-1-1_tile-0-1_black)
+operator:
+paint-up
+start_time:
+75
+durations:
+20
+precs:
+1 (tile-left_tile-0-1_tile-0-1) & 2 (tile-right_tile-1-1_tile-1-1) & 3 (tile-down_tile-0-1_tile-0-1) & 4 (tile-up_tile-1-1_tile-0-1) & 5 (tile-up_tile-0-1_tile-0-1) & 6 (available-color_black) & 7 (tile-up_tile-0-1_tile-1-1) & 8 (clear_tile-0-1) & 9 (tile-right_tile-0-1_tile-1-1) & 10 (tile-down_tile-1-1_tile-1-1) & 11 (painted_tile-0-1_black) & 12 (tile-left_tile-0-1_tile-1-1) & 13 (robot-at_robot2_tile-0-1) & 14 (tile-left_tile-1-1_tile-1-1) & 15 (clear_tile-1-1) & 16 (tile-up_tile-1-1_tile-1-1) & 17 (tile-down_tile-0-1_tile-1-1) & 18 (painted_tile-1-1_black) & 19 (robot-has_robot2_black) & 20 (tile-down_tile-1-1_tile-0-1) & 21 (free-color_robot2) & 22 (robot-at_robot2_tile-1-1) & 23 (tile-right_tile-1-1_tile-0-1) & 24 (tile-left_tile-1-1_tile-0-1) & 25 (tile-right_tile-0-1_tile-0-1)
+effs:
+26 (tile-left_tile-0-1_tile-0-1) & 27 not-(tile-left_tile-0-1_tile-0-1) & 28 (tile-right_tile-1-1_tile-1-1) & 29 not-(tile-right_tile-1-1_tile-1-1) & 30 (tile-down_tile-0-1_tile-0-1) & 31 not-(tile-down_tile-0-1_tile-0-1) & 32 (tile-up_tile-1-1_tile-0-1) & 33 not-(tile-up_tile-1-1_tile-0-1) & 34 (tile-up_tile-0-1_tile-0-1) & 35 not-(tile-up_tile-0-1_tile-0-1) & 36 (available-color_black) & 37 not-(available-color_black) & 38 (tile-up_tile-0-1_tile-1-1) & 39 not-(tile-up_tile-0-1_tile-1-1) & 40 (clear_tile-0-1) & 41 not-(clear_tile-0-1) & 42 (tile-right_tile-0-1_tile-1-1) & 43 not-(tile-right_tile-0-1_tile-1-1) & 44 (tile-down_tile-1-1_tile-1-1) & 45 not-(tile-down_tile-1-1_tile-1-1) & 46 (painted_tile-0-1_black) & 47 not-(painted_tile-0-1_black) & 48 (tile-left_tile-0-1_tile-1-1) & 49 not-(tile-left_tile-0-1_tile-1-1) & 50 (robot-at_robot2_tile-0-1) & 51 not-(robot-at_robot2_tile-0-1) & 52 (tile-left_tile-1-1_tile-1-1) & 53 not-(tile-left_tile-1-1_tile-1-1) & 54 (clear_tile-1-1) & 55 not-(clear_tile-1-1) & 56 (tile-up_tile-1-1_tile-1-1) & 57 not-(tile-up_tile-1-1_tile-1-1) & 58 (tile-down_tile-0-1_tile-1-1) & 59 not-(tile-down_tile-0-1_tile-1-1) & 60 (painted_tile-1-1_black) & 61 not-(painted_tile-1-1_black) & 62 (robot-has_robot2_black) & 63 not-(robot-has_robot2_black) & 64 (tile-down_tile-1-1_tile-0-1) & 65 not-(tile-down_tile-1-1_tile-0-1) & 66 (free-color_robot2) & 67 not-(free-color_robot2) & 68 (robot-at_robot2_tile-1-1) & 69 not-(robot-at_robot2_tile-1-1) & 70 (tile-right_tile-1-1_tile-0-1) & 71 not-(tile-right_tile-1-1_tile-0-1) & 72 (tile-left_tile-1-1_tile-0-1) & 73 not-(tile-left_tile-1-1_tile-0-1) & 74 (tile-right_tile-0-1_tile-0-1) & 75 not-(tile-right_tile-0-1_tile-0-1)
+
+constraints:
+(robot-at_robot1_tile-0-1)
+mutex-predicate
+(robot-at_robot2_tile-0-1)
+
+constraints:
+(robot-at_robot2_tile-0-1)
+mutex-predicate
+(robot-at_robot1_tile-0-1) 
+
+constraints:
+(robot-at_robot1_tile-2-2)
+mutex-predicate
+(robot-at_robot2_tile-2-2)
+
+constraints:
+(robot-at_robot2_tile-2-2)
+mutex-predicate
+(robot-at_robot1_tile-2-2) 
+
+constraints:
+(painted_tile-0-2_white)
+mutex-predicate
+(clear_tile-0-2) (painted_tile-0-2_black)
+
+constraints:
+(clear_tile-0-2)
+mutex-predicate
+(painted_tile-0-2_white) (painted_tile-0-2_black)
+
+constraints:
+(painted_tile-0-2_black)
+mutex-predicate
+(painted_tile-0-2_white) (clear_tile-0-2) 
+
+constraints:
+(painted_tile-1-1_white)
+mutex-predicate
+(clear_tile-1-1) (painted_tile-1-1_black)
+
+constraints:
+(clear_tile-1-1)
+mutex-predicate
+(painted_tile-1-1_white) (painted_tile-1-1_black)
+
+constraints:
+(painted_tile-1-1_black)
+mutex-predicate
+(painted_tile-1-1_white) (clear_tile-1-1) 
+
+constraints:
+(painted_tile-1-2_white)
+mutex-predicate
+(clear_tile-1-2) (painted_tile-1-2_black)
+
+constraints:
+(clear_tile-1-2)
+mutex-predicate
+(painted_tile-1-2_white) (painted_tile-1-2_black)
+
+constraints:
+(painted_tile-1-2_black)
+mutex-predicate
+(painted_tile-1-2_white) (clear_tile-1-2) 
+
+constraints:
+(painted_tile-2-1_black)
+mutex-predicate
+(painted_tile-2-1_white) (clear_tile-2-1)
+
+constraints:
+(painted_tile-2-1_white)
+mutex-predicate
+(painted_tile-2-1_black) (clear_tile-2-1)
+
+constraints:
+(clear_tile-2-1)
+mutex-predicate
+(painted_tile-2-1_black) (painted_tile-2-1_white) 
+
+constraints:
+(clear_tile-2-2)
+mutex-predicate
+(painted_tile-2-2_white) (painted_tile-2-2_black)
+
+constraints:
+(painted_tile-2-2_white)
+mutex-predicate
+(clear_tile-2-2) (painted_tile-2-2_black)
+
+constraints:
+(painted_tile-2-2_black)
+mutex-predicate
+(clear_tile-2-2) (painted_tile-2-2_white) 
+
+constraints:
+(robot-at_robot1_tile-0-1)
+mutex-predicate
+(robot-at_robot2_tile-0-1) (painted_tile-0-1_black) (painted_tile-0-1_white)
+
+constraints:
+(robot-at_robot2_tile-0-1)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (painted_tile-0-1_black) (painted_tile-0-1_white)
+
+constraints:
+(painted_tile-0-1_black)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (robot-at_robot2_tile-0-1) (painted_tile-0-1_white)
+
+constraints:
+(painted_tile-0-1_white)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (robot-at_robot2_tile-0-1) (painted_tile-0-1_black) 
+
+constraints:
+(painted_tile-2-2_black)
+mutex-predicate
+(robot-at_robot2_tile-2-2) (robot-at_robot1_tile-2-2) (painted_tile-2-2_white)
+
+constraints:
+(robot-at_robot2_tile-2-2)
+mutex-predicate
+(painted_tile-2-2_black) (robot-at_robot1_tile-2-2) (painted_tile-2-2_white)
+
+constraints:
+(robot-at_robot1_tile-2-2)
+mutex-predicate
+(painted_tile-2-2_black) (robot-at_robot2_tile-2-2) (painted_tile-2-2_white)
+
+constraints:
+(painted_tile-2-2_white)
+mutex-predicate
+(painted_tile-2-2_black) (robot-at_robot2_tile-2-2) (robot-at_robot1_tile-2-2) 
+
+constraints:
+(robot-at_robot1_tile-0-1)
+mutex-predicate
+(robot-at_robot2_tile-0-1) (clear_tile-0-1)
+
+constraints:
+(robot-at_robot2_tile-0-1)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (clear_tile-0-1)
+
+constraints:
+(clear_tile-0-1)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (robot-at_robot2_tile-0-1) 
+
+constraints:
+(robot-at_robot1_tile-0-2)
+mutex-predicate
+(clear_tile-0-2) (robot-at_robot2_tile-0-2)
+
+constraints:
+(clear_tile-0-2)
+mutex-predicate
+(robot-at_robot1_tile-0-2) (robot-at_robot2_tile-0-2)
+
+constraints:
+(robot-at_robot2_tile-0-2)
+mutex-predicate
+(robot-at_robot1_tile-0-2) (clear_tile-0-2) 
+
+constraints:
+(clear_tile-1-1)
+mutex-predicate
+(robot-at_robot1_tile-1-1) (robot-at_robot2_tile-1-1)
+
+constraints:
+(robot-at_robot1_tile-1-1)
+mutex-predicate
+(clear_tile-1-1) (robot-at_robot2_tile-1-1)
+
+constraints:
+(robot-at_robot2_tile-1-1)
+mutex-predicate
+(clear_tile-1-1) (robot-at_robot1_tile-1-1) 
+
+constraints:
+(clear_tile-1-2)
+mutex-predicate
+(robot-at_robot1_tile-1-2) (robot-at_robot2_tile-1-2)
+
+constraints:
+(robot-at_robot1_tile-1-2)
+mutex-predicate
+(clear_tile-1-2) (robot-at_robot2_tile-1-2)
+
+constraints:
+(robot-at_robot2_tile-1-2)
+mutex-predicate
+(clear_tile-1-2) (robot-at_robot1_tile-1-2) 
+
+constraints:
+(robot-at_robot2_tile-2-1)
+mutex-predicate
+(robot-at_robot1_tile-2-1) (clear_tile-2-1)
+
+constraints:
+(robot-at_robot1_tile-2-1)
+mutex-predicate
+(robot-at_robot2_tile-2-1) (clear_tile-2-1)
+
+constraints:
+(clear_tile-2-1)
+mutex-predicate
+(robot-at_robot2_tile-2-1) (robot-at_robot1_tile-2-1) 
+
+constraints:
+(clear_tile-2-2)
+mutex-predicate
+(robot-at_robot1_tile-2-2) (robot-at_robot2_tile-2-2)
+
+constraints:
+(robot-at_robot1_tile-2-2)
+mutex-predicate
+(clear_tile-2-2) (robot-at_robot2_tile-2-2)
+
+constraints:
+(robot-at_robot2_tile-2-2)
+mutex-predicate
+(clear_tile-2-2) (robot-at_robot1_tile-2-2) 
+
+constraints:
+(robot-has_robot1_black)
+mutex-predicate
+(robot-has_robot1_white)
+
+constraints:
+(robot-has_robot1_white)
+mutex-predicate
+(robot-has_robot1_black) 
+
+constraints:
+(robot-has_robot2_white)
+mutex-predicate
+(robot-has_robot2_black)
+
+constraints:
+(robot-has_robot2_black)
+mutex-predicate
+(robot-has_robot2_white) 
+
+constraints:
+(robot-at_robot1_tile-0-1)
+mutex-predicate
+(robot-at_robot1_tile-2-2) (robot-at_robot1_tile-1-2) (robot-at_robot1_tile-0-2) (robot-at_robot1_tile-1-1) (robot-at_robot1_tile-2-1)
+
+constraints:
+(robot-at_robot1_tile-2-2)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (robot-at_robot1_tile-1-2) (robot-at_robot1_tile-0-2) (robot-at_robot1_tile-1-1) (robot-at_robot1_tile-2-1)
+
+constraints:
+(robot-at_robot1_tile-1-2)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (robot-at_robot1_tile-2-2) (robot-at_robot1_tile-0-2) (robot-at_robot1_tile-1-1) (robot-at_robot1_tile-2-1)
+
+constraints:
+(robot-at_robot1_tile-0-2)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (robot-at_robot1_tile-2-2) (robot-at_robot1_tile-1-2) (robot-at_robot1_tile-1-1) (robot-at_robot1_tile-2-1)
+
+constraints:
+(robot-at_robot1_tile-1-1)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (robot-at_robot1_tile-2-2) (robot-at_robot1_tile-1-2) (robot-at_robot1_tile-0-2) (robot-at_robot1_tile-2-1)
+
+constraints:
+(robot-at_robot1_tile-2-1)
+mutex-predicate
+(robot-at_robot1_tile-0-1) (robot-at_robot1_tile-2-2) (robot-at_robot1_tile-1-2) (robot-at_robot1_tile-0-2) (robot-at_robot1_tile-1-1) 
+
+constraints:
+(robot-at_robot2_tile-0-1)
+mutex-predicate
+(robot-at_robot2_tile-1-2) (robot-at_robot2_tile-1-1) (robot-at_robot2_tile-2-2) (robot-at_robot2_tile-0-2) (robot-at_robot2_tile-2-1)
+
+constraints:
+(robot-at_robot2_tile-1-2)
+mutex-predicate
+(robot-at_robot2_tile-0-1) (robot-at_robot2_tile-1-1) (robot-at_robot2_tile-2-2) (robot-at_robot2_tile-0-2) (robot-at_robot2_tile-2-1)
+
+constraints:
+(robot-at_robot2_tile-1-1)
+mutex-predicate
+(robot-at_robot2_tile-0-1) (robot-at_robot2_tile-1-2) (robot-at_robot2_tile-2-2) (robot-at_robot2_tile-0-2) (robot-at_robot2_tile-2-1)
+
+constraints:
+(robot-at_robot2_tile-2-2)
+mutex-predicate
+(robot-at_robot2_tile-0-1) (robot-at_robot2_tile-1-2) (robot-at_robot2_tile-1-1) (robot-at_robot2_tile-0-2) (robot-at_robot2_tile-2-1)
+
+constraints:
+(robot-at_robot2_tile-0-2)
+mutex-predicate
+(robot-at_robot2_tile-0-1) (robot-at_robot2_tile-1-2) (robot-at_robot2_tile-1-1) (robot-at_robot2_tile-2-2) (robot-at_robot2_tile-2-1)
+
+constraints:
+(robot-at_robot2_tile-2-1)
+mutex-predicate
+(robot-at_robot2_tile-0-1) (robot-at_robot2_tile-1-2) (robot-at_robot2_tile-1-1) (robot-at_robot2_tile-2-2) (robot-at_robot2_tile-0-2) 
+
+
+
+end:
