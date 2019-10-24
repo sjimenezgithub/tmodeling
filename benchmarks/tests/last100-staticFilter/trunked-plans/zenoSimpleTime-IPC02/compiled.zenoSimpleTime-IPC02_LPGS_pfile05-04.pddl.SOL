@@ -1,0 +1,610 @@
+domain:
+/home/slimbook/research/tmodeling/benchmarks/tests/domains/zenoSimpleTime-IPC02/domain-empty-constraints.pddl
+
+problem:
+/home/slimbook/research/tmodeling/benchmarks/tests/domains//zenoSimpleTime-IPC02/pfile05-04.pddl
+
+init:
+1 (next_fl3_fl4) & 2 (at_person1_city3) & 3 (at_person3_city1) & 4 (at_person4_city0) & 5 (next_fl5_fl6) & 6 (next_fl4_fl5) & 7 (at_plane2_city2) & 8 (next_fl0_fl1) & 9 (next_fl1_fl2) & 10 (next_fl2_fl3) & 11 (fuel-level_plane1_fl3) & 12 (fuel-level_plane2_fl1) & 13 (at_person2_city3) & 14 (at_plane1_city0) & 15 not-(at_person1_city2) & 16 not-(at_person1_city1) & 17 not-(at_person1_city0) & 18 not-(at_person2_city2) & 19 not-(at_person2_city1) & 20 not-(at_person2_city0) & 21 not-(at_person4_city3) & 22 not-(at_person4_city2) & 23 not-(at_person4_city1) & 24 not-(at_plane2_city3) & 25 not-(at_plane2_city1) & 26 not-(at_plane2_city0) & 27 not-(at_plane1_city3) & 28 not-(at_plane1_city2) & 29 not-(at_plane1_city1) & 30 not-(at_person3_city3) & 31 not-(at_person3_city2) & 32 not-(at_person3_city0) & 33 not-(in_person1_plane2) & 34 not-(in_person1_plane1) & 35 not-(in_person2_plane2) & 36 not-(in_person2_plane1) & 37 not-(in_person4_plane2) & 38 not-(in_person4_plane1) & 39 not-(in_person3_plane2) & 40 not-(in_person3_plane1) & 41 not-(fuel-level_plane2_fl4) & 42 not-(fuel-level_plane2_fl3) & 43 not-(fuel-level_plane2_fl0) & 44 not-(fuel-level_plane2_fl2) & 45 not-(fuel-level_plane2_fl5) & 46 not-(fuel-level_plane2_fl6) & 47 not-(fuel-level_plane1_fl4) & 48 not-(fuel-level_plane1_fl0) & 49 not-(fuel-level_plane1_fl1) & 50 not-(fuel-level_plane1_fl2) & 51 not-(fuel-level_plane1_fl5) & 52 not-(fuel-level_plane1_fl6) & 53 not-(next_fl4_fl4) & 54 not-(next_fl4_fl3) & 55 not-(next_fl4_fl0) & 56 not-(next_fl4_fl1) & 57 not-(next_fl4_fl2) & 58 not-(next_fl4_fl6) & 59 not-(next_fl3_fl3) & 60 not-(next_fl3_fl0) & 61 not-(next_fl3_fl1) & 62 not-(next_fl3_fl2) & 63 not-(next_fl3_fl5) & 64 not-(next_fl3_fl6) & 65 not-(next_fl0_fl4) & 66 not-(next_fl0_fl3) & 67 not-(next_fl0_fl0) & 68 not-(next_fl0_fl2) & 69 not-(next_fl0_fl5) & 70 not-(next_fl0_fl6) & 71 not-(next_fl1_fl4) & 72 not-(next_fl1_fl3) & 73 not-(next_fl1_fl0) & 74 not-(next_fl1_fl1) & 75 not-(next_fl1_fl5) & 76 not-(next_fl1_fl6) & 77 not-(next_fl2_fl4) & 78 not-(next_fl2_fl0) & 79 not-(next_fl2_fl1) & 80 not-(next_fl2_fl2) & 81 not-(next_fl2_fl5) & 82 not-(next_fl2_fl6) & 83 not-(next_fl5_fl4) & 84 not-(next_fl5_fl3) & 85 not-(next_fl5_fl0) & 86 not-(next_fl5_fl1) & 87 not-(next_fl5_fl2) & 88 not-(next_fl5_fl5) & 89 not-(next_fl6_fl4) & 90 not-(next_fl6_fl3) & 91 not-(next_fl6_fl0) & 92 not-(next_fl6_fl1) & 93 not-(next_fl6_fl2) & 94 not-(next_fl6_fl5) & 95 not-(next_fl6_fl6)
+
+goals:
+1 (next_fl3_fl4) & 2 (next_fl5_fl6) & 3 (next_fl4_fl5) & 4 (next_fl0_fl1) & 5 (next_fl1_fl2) & 6 (next_fl2_fl3) & 7 (at_person2_city2) & 8 (at_person1_city1) & 9 (at_plane1_city3) & 10 (fuel-level_plane1_fl3) & 11 (at_person4_city3) & 12 (at_plane2_city3) & 13 (fuel-level_plane2_fl0) & 14 (at_person3_city3) & 15 not-(at_person1_city3) & 16 not-(at_person1_city2) & 17 not-(at_person1_city0) & 18 not-(at_person2_city3) & 19 not-(at_person2_city1) & 20 not-(at_person2_city0) & 21 not-(at_person4_city2) & 22 not-(at_person4_city1) & 23 not-(at_person4_city0) & 24 not-(at_plane2_city2) & 25 not-(at_plane2_city1) & 26 not-(at_plane2_city0) & 27 not-(at_plane1_city2) & 28 not-(at_plane1_city1) & 29 not-(at_plane1_city0) & 30 not-(at_person3_city2) & 31 not-(at_person3_city1) & 32 not-(at_person3_city0) & 33 not-(in_person1_plane2) & 34 not-(in_person1_plane1) & 35 not-(in_person2_plane2) & 36 not-(in_person2_plane1) & 37 not-(in_person4_plane2) & 38 not-(in_person4_plane1) & 39 not-(in_person3_plane2) & 40 not-(in_person3_plane1) & 41 not-(fuel-level_plane2_fl4) & 42 not-(fuel-level_plane2_fl3) & 43 not-(fuel-level_plane2_fl1) & 44 not-(fuel-level_plane2_fl2) & 45 not-(fuel-level_plane2_fl5) & 46 not-(fuel-level_plane2_fl6) & 47 not-(fuel-level_plane1_fl4) & 48 not-(fuel-level_plane1_fl0) & 49 not-(fuel-level_plane1_fl1) & 50 not-(fuel-level_plane1_fl2) & 51 not-(fuel-level_plane1_fl5) & 52 not-(fuel-level_plane1_fl6) & 53 not-(next_fl4_fl4) & 54 not-(next_fl4_fl3) & 55 not-(next_fl4_fl0) & 56 not-(next_fl4_fl1) & 57 not-(next_fl4_fl2) & 58 not-(next_fl4_fl6) & 59 not-(next_fl3_fl3) & 60 not-(next_fl3_fl0) & 61 not-(next_fl3_fl1) & 62 not-(next_fl3_fl2) & 63 not-(next_fl3_fl5) & 64 not-(next_fl3_fl6) & 65 not-(next_fl0_fl4) & 66 not-(next_fl0_fl3) & 67 not-(next_fl0_fl0) & 68 not-(next_fl0_fl2) & 69 not-(next_fl0_fl5) & 70 not-(next_fl0_fl6) & 71 not-(next_fl1_fl4) & 72 not-(next_fl1_fl3) & 73 not-(next_fl1_fl0) & 74 not-(next_fl1_fl1) & 75 not-(next_fl1_fl5) & 76 not-(next_fl1_fl6) & 77 not-(next_fl2_fl4) & 78 not-(next_fl2_fl0) & 79 not-(next_fl2_fl1) & 80 not-(next_fl2_fl2) & 81 not-(next_fl2_fl5) & 82 not-(next_fl2_fl6) & 83 not-(next_fl5_fl4) & 84 not-(next_fl5_fl3) & 85 not-(next_fl5_fl0) & 86 not-(next_fl5_fl1) & 87 not-(next_fl5_fl2) & 88 not-(next_fl5_fl5) & 89 not-(next_fl6_fl4) & 90 not-(next_fl6_fl3) & 91 not-(next_fl6_fl0) & 92 not-(next_fl6_fl1) & 93 not-(next_fl6_fl2) & 94 not-(next_fl6_fl5) & 95 not-(next_fl6_fl6)
+makespan:
+987
+
+action:
+(board_person4_plane1_city0)
+operator:
+board
+start_time:
+1
+durations:
+20
+precs:
+1 (in_person4_plane1) & 2 (at_plane1_city0) & 3 (at_person4_city0)
+effs:
+4 (in_person4_plane1) & 5 not-(in_person4_plane1) & 6 (at_plane1_city0) & 7 not-(at_plane1_city0) & 8 (at_person4_city0) & 9 not-(at_person4_city0)
+
+action:
+(fly_plane2_city2_city0_fl1_fl0)
+operator:
+fly
+start_time:
+1
+durations:
+180
+precs:
+1 (fuel-level_plane2_fl1) & 2 (at_plane2_city2) & 3 (next_fl0_fl0) & 4 (fuel-level_plane2_fl0) & 5 (next_fl0_fl1) & 6 (at_plane2_city0) & 7 (next_fl1_fl1) & 8 (next_fl1_fl0)
+effs:
+9 (fuel-level_plane2_fl1) & 10 not-(fuel-level_plane2_fl1) & 11 (at_plane2_city2) & 12 not-(at_plane2_city2) & 13 (next_fl0_fl0) & 14 not-(next_fl0_fl0) & 15 (fuel-level_plane2_fl0) & 16 not-(fuel-level_plane2_fl0) & 17 (next_fl0_fl1) & 18 not-(next_fl0_fl1) & 19 (at_plane2_city0) & 20 not-(at_plane2_city0) & 21 (next_fl1_fl1) & 22 not-(next_fl1_fl1) & 23 (next_fl1_fl0) & 24 not-(next_fl1_fl0)
+
+action:
+(zoom_plane1_city0_city3_fl3_fl2_fl1)
+operator:
+zoom
+start_time:
+22
+durations:
+100
+precs:
+1 (next_fl1_fl2) & 2 (fuel-level_plane1_fl3) & 3 (fuel-level_plane1_fl1) & 4 (at_plane1_city0) & 5 (next_fl2_fl2) & 6 (next_fl3_fl1) & 7 (next_fl2_fl1) & 8 (fuel-level_plane1_fl2) & 9 (next_fl2_fl3) & 10 (at_plane1_city3) & 11 (next_fl1_fl3) & 12 (next_fl3_fl3) & 13 (next_fl3_fl2) & 14 (next_fl1_fl1)
+effs:
+15 (next_fl1_fl2) & 16 not-(next_fl1_fl2) & 17 (fuel-level_plane1_fl3) & 18 not-(fuel-level_plane1_fl3) & 19 (fuel-level_plane1_fl1) & 20 not-(fuel-level_plane1_fl1) & 21 (at_plane1_city0) & 22 not-(at_plane1_city0) & 23 (next_fl2_fl2) & 24 not-(next_fl2_fl2) & 25 (next_fl3_fl1) & 26 not-(next_fl3_fl1) & 27 (next_fl2_fl1) & 28 not-(next_fl2_fl1) & 29 (fuel-level_plane1_fl2) & 30 not-(fuel-level_plane1_fl2) & 31 (next_fl2_fl3) & 32 not-(next_fl2_fl3) & 33 (at_plane1_city3) & 34 not-(at_plane1_city3) & 35 (next_fl1_fl3) & 36 not-(next_fl1_fl3) & 37 (next_fl3_fl3) & 38 not-(next_fl3_fl3) & 39 (next_fl3_fl2) & 40 not-(next_fl3_fl2) & 41 (next_fl1_fl1) & 42 not-(next_fl1_fl1)
+
+action:
+(board_person2_plane1_city3)
+operator:
+board
+start_time:
+123
+durations:
+20
+precs:
+1 (in_person2_plane1) & 2 (at_plane1_city3) & 3 (at_person2_city3)
+effs:
+4 (in_person2_plane1) & 5 not-(in_person2_plane1) & 6 (at_plane1_city3) & 7 not-(at_plane1_city3) & 8 (at_person2_city3) & 9 not-(at_person2_city3)
+
+action:
+(fly_plane1_city3_city2_fl1_fl0)
+operator:
+fly
+start_time:
+144
+durations:
+180
+precs:
+1 (fuel-level_plane1_fl1) & 2 (at_plane1_city3) & 3 (next_fl0_fl0) & 4 (fuel-level_plane1_fl0) & 5 (next_fl0_fl1) & 6 (at_plane1_city2) & 7 (next_fl1_fl1) & 8 (next_fl1_fl0)
+effs:
+9 (fuel-level_plane1_fl1) & 10 not-(fuel-level_plane1_fl1) & 11 (at_plane1_city3) & 12 not-(at_plane1_city3) & 13 (next_fl0_fl0) & 14 not-(next_fl0_fl0) & 15 (fuel-level_plane1_fl0) & 16 not-(fuel-level_plane1_fl0) & 17 (next_fl0_fl1) & 18 not-(next_fl0_fl1) & 19 (at_plane1_city2) & 20 not-(at_plane1_city2) & 21 (next_fl1_fl1) & 22 not-(next_fl1_fl1) & 23 (next_fl1_fl0) & 24 not-(next_fl1_fl0)
+
+action:
+(refuel_plane2_city0_fl0_fl1)
+operator:
+refuel
+start_time:
+185
+durations:
+73
+precs:
+1 (fuel-level_plane2_fl1) & 2 (at_plane2_city0) & 3 (next_fl0_fl1) & 4 (fuel-level_plane2_fl0) & 5 (next_fl0_fl0) & 6 (next_fl1_fl0) & 7 (next_fl1_fl1)
+effs:
+8 (fuel-level_plane2_fl1) & 9 not-(fuel-level_plane2_fl1) & 10 (at_plane2_city0) & 11 not-(at_plane2_city0) & 12 (next_fl0_fl1) & 13 not-(next_fl0_fl1) & 14 (fuel-level_plane2_fl0) & 15 not-(fuel-level_plane2_fl0) & 16 (next_fl0_fl0) & 17 not-(next_fl0_fl0) & 18 (next_fl1_fl0) & 19 not-(next_fl1_fl0) & 20 (next_fl1_fl1) & 21 not-(next_fl1_fl1)
+
+action:
+(fly_plane2_city0_city3_fl1_fl0)
+operator:
+fly
+start_time:
+259
+durations:
+180
+precs:
+1 (fuel-level_plane2_fl1) & 2 (at_plane2_city0) & 3 (next_fl0_fl0) & 4 (fuel-level_plane2_fl0) & 5 (next_fl0_fl1) & 6 (at_plane2_city3) & 7 (next_fl1_fl1) & 8 (next_fl1_fl0)
+effs:
+9 (fuel-level_plane2_fl1) & 10 not-(fuel-level_plane2_fl1) & 11 (at_plane2_city0) & 12 not-(at_plane2_city0) & 13 (next_fl0_fl0) & 14 not-(next_fl0_fl0) & 15 (fuel-level_plane2_fl0) & 16 not-(fuel-level_plane2_fl0) & 17 (next_fl0_fl1) & 18 not-(next_fl0_fl1) & 19 (at_plane2_city3) & 20 not-(at_plane2_city3) & 21 (next_fl1_fl1) & 22 not-(next_fl1_fl1) & 23 (next_fl1_fl0) & 24 not-(next_fl1_fl0)
+
+action:
+(debark_person2_plane1_city2)
+operator:
+debark
+start_time:
+327
+durations:
+30
+precs:
+1 (in_person2_plane1) & 2 (at_plane1_city2) & 3 (at_person2_city2)
+effs:
+4 (in_person2_plane1) & 5 not-(in_person2_plane1) & 6 (at_plane1_city2) & 7 not-(at_plane1_city2) & 8 (at_person2_city2) & 9 not-(at_person2_city2)
+
+action:
+(refuel_plane1_city2_fl0_fl1)
+operator:
+refuel
+start_time:
+327
+durations:
+73
+precs:
+1 (fuel-level_plane1_fl1) & 2 (at_plane1_city2) & 3 (next_fl0_fl1) & 4 (fuel-level_plane1_fl0) & 5 (next_fl0_fl0) & 6 (next_fl1_fl0) & 7 (next_fl1_fl1)
+effs:
+8 (fuel-level_plane1_fl1) & 9 not-(fuel-level_plane1_fl1) & 10 (at_plane1_city2) & 11 not-(at_plane1_city2) & 12 (next_fl0_fl1) & 13 not-(next_fl0_fl1) & 14 (fuel-level_plane1_fl0) & 15 not-(fuel-level_plane1_fl0) & 16 (next_fl0_fl0) & 17 not-(next_fl0_fl0) & 18 (next_fl1_fl0) & 19 not-(next_fl1_fl0) & 20 (next_fl1_fl1) & 21 not-(next_fl1_fl1)
+
+action:
+(refuel_plane1_city2_fl1_fl2)
+operator:
+refuel
+start_time:
+401
+durations:
+73
+precs:
+1 (fuel-level_plane1_fl2) & 2 (at_plane1_city2) & 3 (next_fl1_fl2) & 4 (fuel-level_plane1_fl1) & 5 (next_fl1_fl1) & 6 (next_fl2_fl1) & 7 (next_fl2_fl2)
+effs:
+8 (fuel-level_plane1_fl2) & 9 not-(fuel-level_plane1_fl2) & 10 (at_plane1_city2) & 11 not-(at_plane1_city2) & 12 (next_fl1_fl2) & 13 not-(next_fl1_fl2) & 14 (fuel-level_plane1_fl1) & 15 not-(fuel-level_plane1_fl1) & 16 (next_fl1_fl1) & 17 not-(next_fl1_fl1) & 18 (next_fl2_fl1) & 19 not-(next_fl2_fl1) & 20 (next_fl2_fl2) & 21 not-(next_fl2_fl2)
+
+action:
+(board_person1_plane2_city3)
+operator:
+board
+start_time:
+442
+durations:
+20
+precs:
+1 (in_person1_plane2) & 2 (at_plane2_city3) & 3 (at_person1_city3)
+effs:
+4 (in_person1_plane2) & 5 not-(in_person1_plane2) & 6 (at_plane2_city3) & 7 not-(at_plane2_city3) & 8 (at_person1_city3) & 9 not-(at_person1_city3)
+
+action:
+(refuel_plane2_city3_fl0_fl1)
+operator:
+refuel
+start_time:
+442
+durations:
+73
+precs:
+1 (fuel-level_plane2_fl1) & 2 (at_plane2_city3) & 3 (next_fl0_fl1) & 4 (fuel-level_plane2_fl0) & 5 (next_fl0_fl0) & 6 (next_fl1_fl0) & 7 (next_fl1_fl1)
+effs:
+8 (fuel-level_plane2_fl1) & 9 not-(fuel-level_plane2_fl1) & 10 (at_plane2_city3) & 11 not-(at_plane2_city3) & 12 (next_fl0_fl1) & 13 not-(next_fl0_fl1) & 14 (fuel-level_plane2_fl0) & 15 not-(fuel-level_plane2_fl0) & 16 (next_fl0_fl0) & 17 not-(next_fl0_fl0) & 18 (next_fl1_fl0) & 19 not-(next_fl1_fl0) & 20 (next_fl1_fl1) & 21 not-(next_fl1_fl1)
+
+action:
+(refuel_plane1_city2_fl2_fl3)
+operator:
+refuel
+start_time:
+476
+durations:
+73
+precs:
+1 (fuel-level_plane1_fl3) & 2 (at_plane1_city2) & 3 (next_fl2_fl3) & 4 (fuel-level_plane1_fl2) & 5 (next_fl2_fl2) & 6 (next_fl3_fl2) & 7 (next_fl3_fl3)
+effs:
+8 (fuel-level_plane1_fl3) & 9 not-(fuel-level_plane1_fl3) & 10 (at_plane1_city2) & 11 not-(at_plane1_city2) & 12 (next_fl2_fl3) & 13 not-(next_fl2_fl3) & 14 (fuel-level_plane1_fl2) & 15 not-(fuel-level_plane1_fl2) & 16 (next_fl2_fl2) & 17 not-(next_fl2_fl2) & 18 (next_fl3_fl2) & 19 not-(next_fl3_fl2) & 20 (next_fl3_fl3) & 21 not-(next_fl3_fl3)
+
+action:
+(fly_plane2_city3_city1_fl1_fl0)
+operator:
+fly
+start_time:
+517
+durations:
+180
+precs:
+1 (fuel-level_plane2_fl1) & 2 (at_plane2_city3) & 3 (next_fl0_fl0) & 4 (fuel-level_plane2_fl0) & 5 (next_fl0_fl1) & 6 (at_plane2_city1) & 7 (next_fl1_fl1) & 8 (next_fl1_fl0)
+effs:
+9 (fuel-level_plane2_fl1) & 10 not-(fuel-level_plane2_fl1) & 11 (at_plane2_city3) & 12 not-(at_plane2_city3) & 13 (next_fl0_fl0) & 14 not-(next_fl0_fl0) & 15 (fuel-level_plane2_fl0) & 16 not-(fuel-level_plane2_fl0) & 17 (next_fl0_fl1) & 18 not-(next_fl0_fl1) & 19 (at_plane2_city1) & 20 not-(at_plane2_city1) & 21 (next_fl1_fl1) & 22 not-(next_fl1_fl1) & 23 (next_fl1_fl0) & 24 not-(next_fl1_fl0)
+
+action:
+(refuel_plane1_city2_fl3_fl4)
+operator:
+refuel
+start_time:
+551
+durations:
+73
+precs:
+1 (fuel-level_plane1_fl4) & 2 (at_plane1_city2) & 3 (next_fl3_fl4) & 4 (fuel-level_plane1_fl3) & 5 (next_fl3_fl3) & 6 (next_fl4_fl3) & 7 (next_fl4_fl4)
+effs:
+8 (fuel-level_plane1_fl4) & 9 not-(fuel-level_plane1_fl4) & 10 (at_plane1_city2) & 11 not-(at_plane1_city2) & 12 (next_fl3_fl4) & 13 not-(next_fl3_fl4) & 14 (fuel-level_plane1_fl3) & 15 not-(fuel-level_plane1_fl3) & 16 (next_fl3_fl3) & 17 not-(next_fl3_fl3) & 18 (next_fl4_fl3) & 19 not-(next_fl4_fl3) & 20 (next_fl4_fl4) & 21 not-(next_fl4_fl4)
+
+action:
+(fly_plane1_city2_city3_fl4_fl3)
+operator:
+fly
+start_time:
+625
+durations:
+180
+precs:
+1 (fuel-level_plane1_fl4) & 2 (at_plane1_city2) & 3 (next_fl3_fl3) & 4 (fuel-level_plane1_fl3) & 5 (next_fl3_fl4) & 6 (at_plane1_city3) & 7 (next_fl4_fl4) & 8 (next_fl4_fl3)
+effs:
+9 (fuel-level_plane1_fl4) & 10 not-(fuel-level_plane1_fl4) & 11 (at_plane1_city2) & 12 not-(at_plane1_city2) & 13 (next_fl3_fl3) & 14 not-(next_fl3_fl3) & 15 (fuel-level_plane1_fl3) & 16 not-(fuel-level_plane1_fl3) & 17 (next_fl3_fl4) & 18 not-(next_fl3_fl4) & 19 (at_plane1_city3) & 20 not-(at_plane1_city3) & 21 (next_fl4_fl4) & 22 not-(next_fl4_fl4) & 23 (next_fl4_fl3) & 24 not-(next_fl4_fl3)
+
+action:
+(debark_person1_plane2_city1)
+operator:
+debark
+start_time:
+700
+durations:
+30
+precs:
+1 (in_person1_plane2) & 2 (at_plane2_city1) & 3 (at_person1_city1)
+effs:
+4 (in_person1_plane2) & 5 not-(in_person1_plane2) & 6 (at_plane2_city1) & 7 not-(at_plane2_city1) & 8 (at_person1_city1) & 9 not-(at_person1_city1)
+
+action:
+(board_person3_plane2_city1)
+operator:
+board
+start_time:
+700
+durations:
+20
+precs:
+1 (in_person3_plane2) & 2 (at_plane2_city1) & 3 (at_person3_city1)
+effs:
+4 (in_person3_plane2) & 5 not-(in_person3_plane2) & 6 (at_plane2_city1) & 7 not-(at_plane2_city1) & 8 (at_person3_city1) & 9 not-(at_person3_city1)
+
+action:
+(refuel_plane2_city1_fl0_fl1)
+operator:
+refuel
+start_time:
+700
+durations:
+73
+precs:
+1 (fuel-level_plane2_fl1) & 2 (at_plane2_city1) & 3 (next_fl0_fl1) & 4 (fuel-level_plane2_fl0) & 5 (next_fl0_fl0) & 6 (next_fl1_fl0) & 7 (next_fl1_fl1)
+effs:
+8 (fuel-level_plane2_fl1) & 9 not-(fuel-level_plane2_fl1) & 10 (at_plane2_city1) & 11 not-(at_plane2_city1) & 12 (next_fl0_fl1) & 13 not-(next_fl0_fl1) & 14 (fuel-level_plane2_fl0) & 15 not-(fuel-level_plane2_fl0) & 16 (next_fl0_fl0) & 17 not-(next_fl0_fl0) & 18 (next_fl1_fl0) & 19 not-(next_fl1_fl0) & 20 (next_fl1_fl1) & 21 not-(next_fl1_fl1)
+
+action:
+(fly_plane2_city1_city3_fl1_fl0)
+operator:
+fly
+start_time:
+774
+durations:
+180
+precs:
+1 (fuel-level_plane2_fl1) & 2 (at_plane2_city1) & 3 (next_fl0_fl0) & 4 (fuel-level_plane2_fl0) & 5 (next_fl0_fl1) & 6 (at_plane2_city3) & 7 (next_fl1_fl1) & 8 (next_fl1_fl0)
+effs:
+9 (fuel-level_plane2_fl1) & 10 not-(fuel-level_plane2_fl1) & 11 (at_plane2_city1) & 12 not-(at_plane2_city1) & 13 (next_fl0_fl0) & 14 not-(next_fl0_fl0) & 15 (fuel-level_plane2_fl0) & 16 not-(fuel-level_plane2_fl0) & 17 (next_fl0_fl1) & 18 not-(next_fl0_fl1) & 19 (at_plane2_city3) & 20 not-(at_plane2_city3) & 21 (next_fl1_fl1) & 22 not-(next_fl1_fl1) & 23 (next_fl1_fl0) & 24 not-(next_fl1_fl0)
+
+action:
+(debark_person4_plane1_city3)
+operator:
+debark
+start_time:
+808
+durations:
+30
+precs:
+1 (in_person4_plane1) & 2 (at_plane1_city3) & 3 (at_person4_city3)
+effs:
+4 (in_person4_plane1) & 5 not-(in_person4_plane1) & 6 (at_plane1_city3) & 7 not-(at_plane1_city3) & 8 (at_person4_city3) & 9 not-(at_person4_city3)
+
+action:
+(debark_person3_plane2_city3)
+operator:
+debark
+start_time:
+956
+durations:
+30
+precs:
+1 (in_person3_plane2) & 2 (at_plane2_city3) & 3 (at_person3_city3)
+effs:
+4 (in_person3_plane2) & 5 not-(in_person3_plane2) & 6 (at_plane2_city3) & 7 not-(at_plane2_city3) & 8 (at_person3_city3) & 9 not-(at_person3_city3)
+
+constraints:
+(at_plane1_city2)
+mutex-predicate
+(at_plane1_city3) (at_plane1_city1) (at_plane1_city0)
+
+constraints:
+(at_plane1_city3)
+mutex-predicate
+(at_plane1_city2) (at_plane1_city1) (at_plane1_city0)
+
+constraints:
+(at_plane1_city1)
+mutex-predicate
+(at_plane1_city2) (at_plane1_city3) (at_plane1_city0)
+
+constraints:
+(at_plane1_city0)
+mutex-predicate
+(at_plane1_city2) (at_plane1_city3) (at_plane1_city1) 
+
+constraints:
+(at_plane2_city1)
+mutex-predicate
+(at_plane2_city2) (at_plane2_city3) (at_plane2_city0)
+
+constraints:
+(at_plane2_city2)
+mutex-predicate
+(at_plane2_city1) (at_plane2_city3) (at_plane2_city0)
+
+constraints:
+(at_plane2_city3)
+mutex-predicate
+(at_plane2_city1) (at_plane2_city2) (at_plane2_city0)
+
+constraints:
+(at_plane2_city0)
+mutex-predicate
+(at_plane2_city1) (at_plane2_city2) (at_plane2_city3) 
+
+constraints:
+(at_person1_city0)
+mutex-predicate
+(at_person1_city2) (at_person1_city3) (at_person1_city1)
+
+constraints:
+(at_person1_city2)
+mutex-predicate
+(at_person1_city0) (at_person1_city3) (at_person1_city1)
+
+constraints:
+(at_person1_city3)
+mutex-predicate
+(at_person1_city0) (at_person1_city2) (at_person1_city1)
+
+constraints:
+(at_person1_city1)
+mutex-predicate
+(at_person1_city0) (at_person1_city2) (at_person1_city3) 
+
+constraints:
+(at_person2_city1)
+mutex-predicate
+(at_person2_city3) (at_person2_city0) (at_person2_city2)
+
+constraints:
+(at_person2_city3)
+mutex-predicate
+(at_person2_city1) (at_person2_city0) (at_person2_city2)
+
+constraints:
+(at_person2_city0)
+mutex-predicate
+(at_person2_city1) (at_person2_city3) (at_person2_city2)
+
+constraints:
+(at_person2_city2)
+mutex-predicate
+(at_person2_city1) (at_person2_city3) (at_person2_city0) 
+
+constraints:
+(at_person3_city0)
+mutex-predicate
+(at_person3_city1) (at_person3_city3) (at_person3_city2)
+
+constraints:
+(at_person3_city1)
+mutex-predicate
+(at_person3_city0) (at_person3_city3) (at_person3_city2)
+
+constraints:
+(at_person3_city3)
+mutex-predicate
+(at_person3_city0) (at_person3_city1) (at_person3_city2)
+
+constraints:
+(at_person3_city2)
+mutex-predicate
+(at_person3_city0) (at_person3_city1) (at_person3_city3) 
+
+constraints:
+(at_person4_city3)
+mutex-predicate
+(at_person4_city1) (at_person4_city2) (at_person4_city0)
+
+constraints:
+(at_person4_city1)
+mutex-predicate
+(at_person4_city3) (at_person4_city2) (at_person4_city0)
+
+constraints:
+(at_person4_city2)
+mutex-predicate
+(at_person4_city3) (at_person4_city1) (at_person4_city0)
+
+constraints:
+(at_person4_city0)
+mutex-predicate
+(at_person4_city3) (at_person4_city1) (at_person4_city2) 
+
+constraints:
+(in_person1_plane1)
+mutex-predicate
+(at_person1_city3) (in_person1_plane2) (at_person1_city0) (at_person1_city2) (at_person1_city1)
+
+constraints:
+(at_person1_city3)
+mutex-predicate
+(in_person1_plane1) (in_person1_plane2) (at_person1_city0) (at_person1_city2) (at_person1_city1)
+
+constraints:
+(in_person1_plane2)
+mutex-predicate
+(in_person1_plane1) (at_person1_city3) (at_person1_city0) (at_person1_city2) (at_person1_city1)
+
+constraints:
+(at_person1_city0)
+mutex-predicate
+(in_person1_plane1) (at_person1_city3) (in_person1_plane2) (at_person1_city2) (at_person1_city1)
+
+constraints:
+(at_person1_city2)
+mutex-predicate
+(in_person1_plane1) (at_person1_city3) (in_person1_plane2) (at_person1_city0) (at_person1_city1)
+
+constraints:
+(at_person1_city1)
+mutex-predicate
+(in_person1_plane1) (at_person1_city3) (in_person1_plane2) (at_person1_city0) (at_person1_city2) 
+
+constraints:
+(at_person2_city3)
+mutex-predicate
+(at_person2_city2) (in_person2_plane2) (at_person2_city1) (at_person2_city0) (in_person2_plane1)
+
+constraints:
+(at_person2_city2)
+mutex-predicate
+(at_person2_city3) (in_person2_plane2) (at_person2_city1) (at_person2_city0) (in_person2_plane1)
+
+constraints:
+(in_person2_plane2)
+mutex-predicate
+(at_person2_city3) (at_person2_city2) (at_person2_city1) (at_person2_city0) (in_person2_plane1)
+
+constraints:
+(at_person2_city1)
+mutex-predicate
+(at_person2_city3) (at_person2_city2) (in_person2_plane2) (at_person2_city0) (in_person2_plane1)
+
+constraints:
+(at_person2_city0)
+mutex-predicate
+(at_person2_city3) (at_person2_city2) (in_person2_plane2) (at_person2_city1) (in_person2_plane1)
+
+constraints:
+(in_person2_plane1)
+mutex-predicate
+(at_person2_city3) (at_person2_city2) (in_person2_plane2) (at_person2_city1) (at_person2_city0) 
+
+constraints:
+(at_person3_city3)
+mutex-predicate
+(in_person3_plane1) (at_person3_city0) (in_person3_plane2) (at_person3_city1) (at_person3_city2)
+
+constraints:
+(in_person3_plane1)
+mutex-predicate
+(at_person3_city3) (at_person3_city0) (in_person3_plane2) (at_person3_city1) (at_person3_city2)
+
+constraints:
+(at_person3_city0)
+mutex-predicate
+(at_person3_city3) (in_person3_plane1) (in_person3_plane2) (at_person3_city1) (at_person3_city2)
+
+constraints:
+(in_person3_plane2)
+mutex-predicate
+(at_person3_city3) (in_person3_plane1) (at_person3_city0) (at_person3_city1) (at_person3_city2)
+
+constraints:
+(at_person3_city1)
+mutex-predicate
+(at_person3_city3) (in_person3_plane1) (at_person3_city0) (in_person3_plane2) (at_person3_city2)
+
+constraints:
+(at_person3_city2)
+mutex-predicate
+(at_person3_city3) (in_person3_plane1) (at_person3_city0) (in_person3_plane2) (at_person3_city1) 
+
+constraints:
+(at_person4_city0)
+mutex-predicate
+(at_person4_city2) (at_person4_city1) (at_person4_city3) (in_person4_plane1) (in_person4_plane2)
+
+constraints:
+(at_person4_city2)
+mutex-predicate
+(at_person4_city0) (at_person4_city1) (at_person4_city3) (in_person4_plane1) (in_person4_plane2)
+
+constraints:
+(at_person4_city1)
+mutex-predicate
+(at_person4_city0) (at_person4_city2) (at_person4_city3) (in_person4_plane1) (in_person4_plane2)
+
+constraints:
+(at_person4_city3)
+mutex-predicate
+(at_person4_city0) (at_person4_city2) (at_person4_city1) (in_person4_plane1) (in_person4_plane2)
+
+constraints:
+(in_person4_plane1)
+mutex-predicate
+(at_person4_city0) (at_person4_city2) (at_person4_city1) (at_person4_city3) (in_person4_plane2)
+
+constraints:
+(in_person4_plane2)
+mutex-predicate
+(at_person4_city0) (at_person4_city2) (at_person4_city1) (at_person4_city3) (in_person4_plane1) 
+
+constraints:
+(fuel-level_plane1_fl1)
+mutex-predicate
+(fuel-level_plane1_fl5) (fuel-level_plane1_fl4) (fuel-level_plane1_fl3) (fuel-level_plane1_fl6) (fuel-level_plane1_fl2) (fuel-level_plane1_fl0)
+
+constraints:
+(fuel-level_plane1_fl5)
+mutex-predicate
+(fuel-level_plane1_fl1) (fuel-level_plane1_fl4) (fuel-level_plane1_fl3) (fuel-level_plane1_fl6) (fuel-level_plane1_fl2) (fuel-level_plane1_fl0)
+
+constraints:
+(fuel-level_plane1_fl4)
+mutex-predicate
+(fuel-level_plane1_fl1) (fuel-level_plane1_fl5) (fuel-level_plane1_fl3) (fuel-level_plane1_fl6) (fuel-level_plane1_fl2) (fuel-level_plane1_fl0)
+
+constraints:
+(fuel-level_plane1_fl3)
+mutex-predicate
+(fuel-level_plane1_fl1) (fuel-level_plane1_fl5) (fuel-level_plane1_fl4) (fuel-level_plane1_fl6) (fuel-level_plane1_fl2) (fuel-level_plane1_fl0)
+
+constraints:
+(fuel-level_plane1_fl6)
+mutex-predicate
+(fuel-level_plane1_fl1) (fuel-level_plane1_fl5) (fuel-level_plane1_fl4) (fuel-level_plane1_fl3) (fuel-level_plane1_fl2) (fuel-level_plane1_fl0)
+
+constraints:
+(fuel-level_plane1_fl2)
+mutex-predicate
+(fuel-level_plane1_fl1) (fuel-level_plane1_fl5) (fuel-level_plane1_fl4) (fuel-level_plane1_fl3) (fuel-level_plane1_fl6) (fuel-level_plane1_fl0)
+
+constraints:
+(fuel-level_plane1_fl0)
+mutex-predicate
+(fuel-level_plane1_fl1) (fuel-level_plane1_fl5) (fuel-level_plane1_fl4) (fuel-level_plane1_fl3) (fuel-level_plane1_fl6) (fuel-level_plane1_fl2) 
+
+constraints:
+(fuel-level_plane2_fl3)
+mutex-predicate
+(fuel-level_plane2_fl0) (fuel-level_plane2_fl6) (fuel-level_plane2_fl4) (fuel-level_plane2_fl1) (fuel-level_plane2_fl2) (fuel-level_plane2_fl5)
+
+constraints:
+(fuel-level_plane2_fl0)
+mutex-predicate
+(fuel-level_plane2_fl3) (fuel-level_plane2_fl6) (fuel-level_plane2_fl4) (fuel-level_plane2_fl1) (fuel-level_plane2_fl2) (fuel-level_plane2_fl5)
+
+constraints:
+(fuel-level_plane2_fl6)
+mutex-predicate
+(fuel-level_plane2_fl3) (fuel-level_plane2_fl0) (fuel-level_plane2_fl4) (fuel-level_plane2_fl1) (fuel-level_plane2_fl2) (fuel-level_plane2_fl5)
+
+constraints:
+(fuel-level_plane2_fl4)
+mutex-predicate
+(fuel-level_plane2_fl3) (fuel-level_plane2_fl0) (fuel-level_plane2_fl6) (fuel-level_plane2_fl1) (fuel-level_plane2_fl2) (fuel-level_plane2_fl5)
+
+constraints:
+(fuel-level_plane2_fl1)
+mutex-predicate
+(fuel-level_plane2_fl3) (fuel-level_plane2_fl0) (fuel-level_plane2_fl6) (fuel-level_plane2_fl4) (fuel-level_plane2_fl2) (fuel-level_plane2_fl5)
+
+constraints:
+(fuel-level_plane2_fl2)
+mutex-predicate
+(fuel-level_plane2_fl3) (fuel-level_plane2_fl0) (fuel-level_plane2_fl6) (fuel-level_plane2_fl4) (fuel-level_plane2_fl1) (fuel-level_plane2_fl5)
+
+constraints:
+(fuel-level_plane2_fl5)
+mutex-predicate
+(fuel-level_plane2_fl3) (fuel-level_plane2_fl0) (fuel-level_plane2_fl6) (fuel-level_plane2_fl4) (fuel-level_plane2_fl1) (fuel-level_plane2_fl2) 
+
