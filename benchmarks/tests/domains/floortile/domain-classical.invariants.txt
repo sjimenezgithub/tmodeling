@@ -1,0 +1,194 @@
+=== Limited Instantiation with N=2 (Rintanen 2017)
+For type <object>: 0 objects
+For type <robot>: 2 objects
+For type <tile>: 4 objects
+For type <color>: 3 objects
+=== PRS List ===
+PRS 1:
+	precs: 	robot-has_1
+	del_precs: 	robot-has_1
+	adds: 	robot-has_1
+PRS 2:
+	precs: 	robot-has_1
+	del_precs: 	
+	adds: 	
+PRS 3:
+	precs: 	robot-has_2
+	del_precs: 	robot-has_2
+	adds: 	
+PRS 4:
+	precs: 	available-color_1
+	del_precs: 	
+	adds: 	robot-has_2
+PRS 5:
+	precs: 	robot-at_1, robot-has_1
+	del_precs: 	
+	adds: 	
+PRS 6:
+	precs: 	tile-up_1, clear_1
+	del_precs: 	clear_1
+	adds: 	painted_1
+PRS 7:
+	precs: 	robot-at_2, tile-up_2
+	del_precs: 	
+	adds: 	
+PRS 8:
+	precs: 	robot-has_2
+	del_precs: 	
+	adds: 	painted_2
+PRS 9:
+	precs: 	robot-at_1, robot-has_1
+	del_precs: 	
+	adds: 	
+PRS 10:
+	precs: 	tile-down_1, clear_1
+	del_precs: 	clear_1
+	adds: 	painted_1
+PRS 11:
+	precs: 	robot-at_2, tile-down_2
+	del_precs: 	
+	adds: 	
+PRS 12:
+	precs: 	robot-has_2
+	del_precs: 	
+	adds: 	painted_2
+PRS 13:
+	precs: 	robot-at_1
+	del_precs: 	robot-at_1
+	adds: 	robot-at_1
+PRS 14:
+	precs: 	robot-at_1
+	del_precs: 	
+	adds: 	
+PRS 15:
+	precs: 	robot-at_2, tile-up_2
+	del_precs: 	robot-at_2
+	adds: 	clear_1
+PRS 16:
+	precs: 	tile-up_1, clear_1
+	del_precs: 	clear_1
+	adds: 	robot-at_2
+PRS 17:
+	precs: 	robot-at_1
+	del_precs: 	robot-at_1
+	adds: 	robot-at_1
+PRS 18:
+	precs: 	robot-at_1
+	del_precs: 	
+	adds: 	
+PRS 19:
+	precs: 	robot-at_2, tile-down_2
+	del_precs: 	robot-at_2
+	adds: 	clear_1
+PRS 20:
+	precs: 	tile-down_1, clear_1
+	del_precs: 	clear_1
+	adds: 	robot-at_2
+PRS 21:
+	precs: 	robot-at_1
+	del_precs: 	robot-at_1
+	adds: 	robot-at_1
+PRS 22:
+	precs: 	robot-at_1
+	del_precs: 	
+	adds: 	
+PRS 23:
+	precs: 	robot-at_2, tile-right_2
+	del_precs: 	robot-at_2
+	adds: 	clear_1
+PRS 24:
+	precs: 	tile-right_1, clear_1
+	del_precs: 	clear_1
+	adds: 	robot-at_2
+PRS 25:
+	precs: 	robot-at_1
+	del_precs: 	robot-at_1
+	adds: 	robot-at_1
+PRS 26:
+	precs: 	robot-at_1
+	del_precs: 	
+	adds: 	
+PRS 27:
+	precs: 	robot-at_2, tile-left_2
+	del_precs: 	robot-at_2
+	adds: 	clear_1
+PRS 28:
+	precs: 	tile-left_1, clear_1
+	del_precs: 	clear_1
+	adds: 	robot-at_2
+=== Transition rules ===
+TR 1:
+	null => robot-has_1 -> robot-has_1
+TR 2:
+	null => robot-has_2 -> null
+TR 3:
+	available-color_1 => null -> robot-has_2
+TR 4:
+	tile-up_1 => clear_1 -> painted_1
+TR 5:
+	robot-has_2 => null -> painted_2
+TR 6:
+	tile-down_1 => clear_1 -> painted_1
+TR 7:
+	robot-has_2 => null -> painted_2
+TR 8:
+	null => robot-at_1 -> robot-at_1
+TR 9:
+	tile-up_2 => robot-at_2 -> clear_1
+TR 10:
+	tile-up_1 => clear_1 -> robot-at_2
+TR 11:
+	null => robot-at_1 -> robot-at_1
+TR 12:
+	tile-down_2 => robot-at_2 -> clear_1
+TR 13:
+	tile-down_1 => clear_1 -> robot-at_2
+TR 14:
+	null => robot-at_1 -> robot-at_1
+TR 15:
+	tile-right_2 => robot-at_2 -> clear_1
+TR 16:
+	tile-right_1 => clear_1 -> robot-at_2
+TR 17:
+	null => robot-at_1 -> robot-at_1
+TR 18:
+	tile-left_2 => robot-at_2 -> clear_1
+TR 19:
+	tile-left_1 => clear_1 -> robot-at_2
+=== Property spaces ===
+PS 1:
+	{robot-at_2, clear_1, painted_1}	%%%	tile-up_1 => clear_1 -> painted_1 | tile-down_1 => clear_1 -> painted_1 | tile-up_2 => robot-at_2 -> clear_1 | tile-up_1 => clear_1 -> robot-at_2 | tile-down_2 => robot-at_2 -> clear_1 | tile-down_1 => clear_1 -> robot-at_2 | tile-right_2 => robot-at_2 -> clear_1 | tile-right_1 => clear_1 -> robot-at_2 | tile-left_2 => robot-at_2 -> clear_1 | tile-left_1 => clear_1 -> robot-at_2	%%%	tile-4-3, tile-0-4, tile-2-3, tile-4-2, tile-2-1, tile-2-4, tile-0-1, tile-0-2, tile-0-3, tile-1-1, tile-2-2, tile-1-3, tile-1-2, tile-3-3, tile-1-4, tile-3-1, tile-4-1, tile-4-4, tile-3-4, tile-3-2	%%%	{robot-at_2} | {clear_1} | {painted_1}
+PS 2:
+	{robot-has_2}	%%%	null => robot-has_2 -> null | available-color_1 => null -> robot-has_2	%%%	white, black	%%%	
+PS 3:
+	{robot-has_1}	%%%	null => robot-has_1 -> robot-has_1	%%%	robot2, robot1	%%%	{robot-has_1}
+PS 4:
+	{painted_2}	%%%	robot-has_2 => null -> painted_2 | robot-has_2 => null -> painted_2	%%%	white, black	%%%	
+PS 5:
+	{robot-at_1}	%%%	null => robot-at_1 -> robot-at_1 | null => robot-at_1 -> robot-at_1 | null => robot-at_1 -> robot-at_1 | null => robot-at_1 -> robot-at_1	%%%	robot2, robot1	%%%	{robot-at_1}
+=== Types ===
+Type 0: white, black
+Type 1: tile-0-1, tile-0-2, tile-0-3, tile-0-4, tile-1-1, tile-1-2, tile-1-3, tile-1-4, tile-2-1, tile-2-2, tile-2-3, tile-2-4, tile-3-1, tile-3-2, tile-3-3, tile-3-4, tile-4-1, tile-4-2, tile-4-3, tile-4-4
+Type 2: robot1, robot2
+=== Invariants ===
+(:derived (invariant-1)
+	(forall(?x - tile ?y1 - robot ?y2 - robot)
+		(not (and  (robot-at ?y1 ?x)  (robot-at ?y2 ?x) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-2)
+	(forall(?x - tile ?y1 - color ?y2 - color)
+		(not (and  (painted ?x ?y1)  (painted ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-3)
+	(forall (?x - tile ?y1 - color)
+		(not (and (clear ?x) (painted ?x ?y1)))))
+(:derived (invariant-4)
+	(forall (?x - tile ?y1 - color ?y2 - robot)
+		(not (and (painted ?x ?y1) (robot-at ?y2 ?x)))))
+(:derived (invariant-5)
+	(forall (?x - tile ?y1 - robot)
+		(not (and (clear ?x) (robot-at ?y1 ?x)))))
+(:derived (invariant-6)
+	(forall(?x - robot ?y1 - color ?y2 - color)
+		(not (and  (robot-has ?x ?y1)  (robot-has ?x ?y2) (not (= ?y1 ?y2)) ))))
+(:derived (invariant-7)
+	(forall(?x - robot ?y1 - tile ?y2 - tile)
+		(not (and  (robot-at ?x ?y1)  (robot-at ?x ?y2) (not (= ?y1 ?y2)) ))))
